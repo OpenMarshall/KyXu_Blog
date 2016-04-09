@@ -99,6 +99,106 @@
   </entry>
   
   <entry>
+    <title>阿里 iOS 开发实习电话面试记录（二）</title>
+    <link href="/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>/2016/03/29/阿里-iOS-开发实习电话面试记录（二）/</id>
+    <published>2016-03-29T06:58:00.000Z</published>
+    <updated>2016-04-09T06:58:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS 客户端开发的三面。&lt;/p&gt;
+&lt;p&gt;这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;（我在简历上写自己独立开发了几个 App）说一下你自己做的那个 App（随便挑了一个）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;（我大概阐述了产品方向之后，他问我技术上最难的是什么，然后随口提到了要保存图片到相册）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;关于 iOS 系统相册，有哪些相关方案可以获取？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以前的 AssetsLibrary 和现在的 Photos 框架都知道吗？&lt;br&gt;（我说了关于现在引入 Photos 和 PhotosUI 之后可以获取 LivePhoto 的问题）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;都熟悉哪些框架，有没有特别了解的？&lt;br&gt;（我说我熟悉 WebKit，然后他就问了我 GCD = =）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;（发现我会用 GCD 之后）能不能说一下底层？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;（我说我知道点 ARC 相关的底层实现，就说了一通，他很满意，这里要强烈推荐下面这本书）&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7b1d63a98ab4148d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Objective-C 高级编程&quot;&gt;&lt;br&gt;同类型的问题还有 assign、weak 的区别，ARC 如何实现，编译时、运行时区别，weak 属性的对象在废弃后 指针是如何指向 nil 的……&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;平时了解一些架构吗？&lt;br&gt;（我说我知道 MVC、MVVM。其他的光知道没用过，不敢拿出来装B）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;说一下 MVVM&lt;br&gt;（泪奔，难得在面试的时候能碰上自己很熟悉的，推荐不熟悉的看看最近挺火的文章&lt;a href=&quot;https://realm.io/cn/news/doios-natasha-murashev-protocol-oriented-mvvm/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《面向协议的 MVVM 架构介绍》&lt;/a&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;知道 KVO、KVC 吗？&lt;br&gt;（虽然这个东西大家都在用，但是查一下还是能查出来一些自己不知道的，心里没底的，建议现在就去 Google 一下）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;你平时做 App 之后，有什么推广途径？&lt;br&gt;（其中我提到了一些推广平台，国内的有 36Kr 的 &lt;a href=&quot;http://next.36kr.com/posts&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NEXT&lt;/a&gt;、爱范儿的 &lt;a href=&quot;http://mindstore.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MindStore&lt;/a&gt; 和 &lt;a href=&quot;https://itunes.apple.com/app/id966457637&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AppSo&lt;/a&gt;，国外的有 &lt;a href=&quot;https://www.producthunt.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ProductHunt&lt;/a&gt;，好像他在听的时候还在一边拿笔记，人家也还在学习啊~）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS 客户端开发的三面。&lt;/p&gt;
+&lt;p&gt;这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Swift Print 高级用法</title>
+    <link href="/2016/03/27/Swift-Print-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+    <id>/2016/03/27/Swift-Print-高级用法/</id>
+    <published>2016-03-27T06:59:00.000Z</published>
+    <updated>2016-04-09T07:01:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt;这个东西不是我写的，&lt;a href=&quot;http://stackoverflow.com/questions/30865233/print-without-newline-in-swift-2-0/30865283#30865283&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;出自 StackOverFlow&lt;/a&gt;，但我觉得实在是写得太好了，于是截取了该部分分享出来，感谢原作者。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-36ae85cb732a2b30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;StackOverFlow&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个东西不是我写的，&lt;a href=&quot;http://stackoverflow.com/questions/30865233/print-without-newline-in-swift-2-0/30865283#30865283&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里 iOS 开发实习电话面试记录（一）</title>
+    <link href="/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/</id>
+    <published>2016-03-19T06:59:54.000Z</published>
+    <updated>2016-04-09T07:00:49.000Z</updated>
+    
+    <content type="html">&lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
+&lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。&lt;/p&gt;
+&lt;h2 id=&quot;第二轮&quot;&gt;第二轮&lt;/h2&gt;&lt;p&gt;这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独立做了几个 App，然后他让我自我介绍之后，问我是不是整个产品全部是独立做的，我说是，他就只问这个层面的东西了。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;怎么想到要做这些东西的，idea 的来源？&lt;/li&gt;
+&lt;li&gt;身边的人都在用吗？&lt;/li&gt;
+&lt;li&gt;App 更新情况怎么样，通过什么来更新，怎么了解自己做的东西的缺陷？&lt;/li&gt;
+&lt;li&gt;知不知道平时自己的东西活跃度怎么样，每天有多少人用？&lt;/li&gt;
+&lt;li&gt;怎么推广自己的东西，推广渠道？除了你已经采用的这些渠道，再想点别的？&lt;/li&gt;
+&lt;li&gt;你看淘宝客户端一般都是全五星评论，你怎么来让你的 App 在 AppStore 呈现好的评分？&lt;/li&gt;
+&lt;li&gt;（之前谈到有些 App 因为产品思路不对的问题，做失败了）这些放弃了的 App 是哪里有问题？&lt;/li&gt;
+&lt;li&gt;如果一定要拯救一下这些 App，你该怎么更新？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;基本就是这些问题，最后说我可以问他一个问题，我就问了一下招聘流程，然后他说每年都有小的变动，目前我也只能保证电话畅通了……&lt;/p&gt;
+&lt;p&gt;目测后面的人要猛问技术问题了，Not Afraid。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
+&lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、Tab
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>生成高斯模糊效果背景</title>
     <link href="/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
     <id>/2015/08/07/生成高斯模糊效果背景/</id>

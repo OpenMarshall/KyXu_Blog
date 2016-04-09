@@ -78,32 +78,27 @@
 
 
 
-<meta name="description" content="做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
-我把这个处理过程用 Swift 封装成了一个函数，供大家参考。
-//创建高斯模糊效果的背景
-func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
-    //处理原始NSData数">
+<meta name="description" content="iOS 客户端开发的三面。
+这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：
+
+（我在简历上写自己独立开发了几个 App）说一下你自己做的那个 App（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生成高斯模糊效果背景">
-<meta property="og:url" content="/2015/08/07/生成高斯模糊效果背景/index.html">
+<meta property="og:title" content="阿里 iOS 开发实习电话面试记录（二）">
+<meta property="og:url" content="/2016/03/29/阿里-iOS-开发实习电话面试记录（二）/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
-我把这个处理过程用 Swift 封装成了一个函数，供大家参考。
-//创建高斯模糊效果的背景
-func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
-    //处理原始NSData数">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T03:45:04.000Z">
+<meta property="og:description" content="iOS 客户端开发的三面。
+这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：
+
+（我在简历上写自己独立开发了几个 App）说一下你自己做的那个 App（">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7b1d63a98ab4148d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T06:58:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生成高斯模糊效果背景">
-<meta name="twitter:description" content="做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
-我把这个处理过程用 Swift 封装成了一个函数，供大家参考。
-//创建高斯模糊效果的背景
-func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
-    //处理原始NSData数">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta name="twitter:title" content="阿里 iOS 开发实习电话面试记录（二）">
+<meta name="twitter:description" content="iOS 客户端开发的三面。
+这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：
+
+（我在简历上写自己独立开发了几个 App）说一下你自己做的那个 App（">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-7b1d63a98ab4148d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -121,7 +116,7 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
   };
 </script>
 
-  <title> 生成高斯模糊效果背景 | KyXu Tech </title>
+  <title> 阿里 iOS 开发实习电话面试记录（二） | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +256,7 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
             
             
               
-                生成高斯模糊效果背景
+                阿里 iOS 开发实习电话面试记录（二）
               
             
           </h1>
@@ -273,8 +268,8 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-07T11:44:36+08:00" content="2015-08-07">
-              2015-08-07
+            <time itemprop="dateCreated" datetime="2016-03-29T14:58:00+08:00" content="2016-03-29">
+              2016-03-29
             </time>
           </span>
 
@@ -300,37 +295,32 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
       
 
       
-        <p>做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。</p>
-<p>我把这个处理过程用 Swift 封装成了一个函数，供大家参考。</p>
-<pre><code>//创建高斯模糊效果的背景
-func createBlurBackground (image:<span class="type">UIImage</span>,view:<span class="type">UIView</span>,blurRadius:<span class="type">Float</span>) {
-    //处理原始<span class="type">NSData</span>数据
-    <span class="keyword">let</span> originImage = <span class="type">CIImage</span>(<span class="type">CGImage</span>: image.<span class="type">CGImage</span> )
-    //创建高斯模糊滤镜
-    <span class="keyword">let</span> filter = <span class="type">CIFilter</span>(name: <span class="string">"CIGaussianBlur"</span>)
-    filter.setValue(originImage, forKey: kCIInputImageKey)
-    filter.setValue(<span class="type">NSNumber</span>(<span class="type">float</span>: blurRadius), forKey: <span class="string">"inputRadius"</span>)
-    //生成模糊图片
-    <span class="keyword">let</span> context = <span class="type">CIContext</span>(options: <span class="keyword">nil</span>)
-    <span class="keyword">let</span> <span class="literal">result</span>:<span class="type">CIImage</span> = filter.valueForKey(kCIOutputImageKey) <span class="keyword">as</span>! <span class="type">CIImage</span>
-    <span class="keyword">let</span> blurImage = <span class="type">UIImage</span>(<span class="type">CGImage</span>: context.createCGImage(<span class="literal">result</span>, fromRect: <span class="literal">result</span>.extent()))
-    //将模糊图片加入背景
-    <span class="keyword">let</span> w = self.view.frame.width
-    <span class="keyword">let</span> h = self.view.frame.height
-    <span class="keyword">let</span> blurImageView = <span class="type">UIImageView</span>(frame: <span class="type">CGRectMake</span>(-w/<span class="number">2</span>, -h/<span class="number">2</span>, <span class="number">2</span>*w, <span class="number">2</span>*h)) //模糊背景是界面的<span class="number">4</span>倍大小
-    blurImageView.contentMode = <span class="type">UIViewContentMode</span>.<span class="type">ScaleAspectFill</span> //使图片充满<span class="type">ImageView</span>
-    blurImageView.autoresizingMask = <span class="type">UIViewAutoresizing</span>.<span class="type">FlexibleWidth</span> | <span class="type">UIViewAutoresizing</span>.<span class="type">FlexibleHeight</span> //保持原图长宽比
-    blurImageView.image = blurImage
-    self.view.insertSubview(blurImageView, belowSubview: view) //保证模糊背景在原图片<span class="type">View</span>的下层
-}
-</code></pre><p>三个参数分别为：image（原始清晰图片）、view（你需要将生成的模糊背景插入在这个view的下层当做背景）、blurRadius（高斯模糊处理的模糊半径）</p>
-<p>其中 let context = CIContext(options: nil)<br>这一句，在真机测试时，会引起控制台报错</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="控制台输出"></p>
-<p>这是苹果的一个 Bug ，想要回避这个信息输出可以用下面这一句进行替换：<br>let context = CIContext(options:[kCIContextUseSoftwareRenderer : true])<br>这句可以使图片渲染工作在 CPU 而非 GPU 完成，从而绕过这个 Bug，但是会引起效率下降，耗时大大增加，不推荐使用。</p>
-<p>使用效果展示：</p>
-<pre><code><span class="keyword">self.createBlurBackground(img, </span>view: <span class="keyword">self.gifView, </span><span class="keyword">blurRadius: </span><span class="number">50</span>)
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用前"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用后"></p>
+        <p>iOS 客户端开发的三面。</p>
+<p>这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：</p>
+<ol>
+<li><p>（我在简历上写自己独立开发了几个 App）说一下你自己做的那个 App（随便挑了一个）</p>
+</li>
+<li><p>（我大概阐述了产品方向之后，他问我技术上最难的是什么，然后随口提到了要保存图片到相册）</p>
+</li>
+<li><p>关于 iOS 系统相册，有哪些相关方案可以获取？</p>
+</li>
+<li><p>以前的 AssetsLibrary 和现在的 Photos 框架都知道吗？<br>（我说了关于现在引入 Photos 和 PhotosUI 之后可以获取 LivePhoto 的问题）</p>
+</li>
+<li><p>都熟悉哪些框架，有没有特别了解的？<br>（我说我熟悉 WebKit，然后他就问了我 GCD = =）</p>
+</li>
+<li><p>（发现我会用 GCD 之后）能不能说一下底层？</p>
+</li>
+<li><p>（我说我知道点 ARC 相关的底层实现，就说了一通，他很满意，这里要强烈推荐下面这本书）<br><img src="http://upload-images.jianshu.io/upload_images/251884-7b1d63a98ab4148d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Objective-C 高级编程"><br>同类型的问题还有 assign、weak 的区别，ARC 如何实现，编译时、运行时区别，weak 属性的对象在废弃后 指针是如何指向 nil 的……</p>
+</li>
+<li><p>平时了解一些架构吗？<br>（我说我知道 MVC、MVVM。其他的光知道没用过，不敢拿出来装B）</p>
+</li>
+<li><p>说一下 MVVM<br>（泪奔，难得在面试的时候能碰上自己很熟悉的，推荐不熟悉的看看最近挺火的文章<a href="https://realm.io/cn/news/doios-natasha-murashev-protocol-oriented-mvvm/" target="_blank" rel="external">《面向协议的 MVVM 架构介绍》</a>）</p>
+</li>
+<li><p>知道 KVO、KVC 吗？<br>（虽然这个东西大家都在用，但是查一下还是能查出来一些自己不知道的，心里没底的，建议现在就去 Google 一下）</p>
+</li>
+<li><p>你平时做 App 之后，有什么推广途径？<br>（其中我提到了一些推广平台，国内的有 36Kr 的 <a href="http://next.36kr.com/posts" target="_blank" rel="external">NEXT</a>、爱范儿的 <a href="http://mindstore.io/" target="_blank" rel="external">MindStore</a> 和 <a href="https://itunes.apple.com/app/id966457637" target="_blank" rel="external">AppSo</a>，国外的有 <a href="https://www.producthunt.com/" target="_blank" rel="external">ProductHunt</a>，好像他在听的时候还在一边拿笔记，人家也还在学习啊~）</p>
+</li>
+</ol>
 
       
     </div>
@@ -354,12 +344,16 @@ func createBlurBackground (image:<span class="type">UIImage</span>,view:<span cl
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/27/Swift-Print-高级用法/" rel="next" title="Swift Print 高级用法">
+                <i class="fa fa-chevron-left"></i> Swift Print 高级用法
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/" rel="prev" title="阿里 iOS 开发实习电话面试记录（一）">
-                阿里 iOS 开发实习电话面试记录（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/06/扯淡-Method-Swizzling/" rel="prev" title="扯淡 Method Swizzling">
+                扯淡 Method Swizzling <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
