@@ -90,15 +90,15 @@ if let paste = UIPasteboard.generalPasteboard().string where
 //识别剪贴板中的内容
 if let paste = UIPasteboard.generalPasteboard().string where
     (paste.hasPrefix(&quot;http://&quot;) || past">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:35:09.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/251884-91cc90cfce77a310.png">
+<meta property="og:updated_time" content="2016-04-09T15:54:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自动识别剪贴板内容">
 <meta name="twitter:description" content="之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~
 //识别剪贴板中的内容
 if let paste = UIPasteboard.generalPasteboard().string where
     (paste.hasPrefix(&quot;http://&quot;) || past">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/251884-91cc90cfce77a310.png">
 
 
 
@@ -321,7 +321,7 @@ if let paste = UIPasteboard.generalPasteboard().string where
 }
 </code></pre><p>获取设备的剪贴板很简单，第一行代码就搞定了，if 语句中判断了一下剪贴板中的内容是不是链接，注意http和https都要写上，这点很容易被忽略（在浏览器地址栏中复制以www.开头的文本会自动在剪贴板中转为http或https开头的链接）。</p>
 <p>更值得注意的是，因为你需要让 App 在每次从后台进入前台的时候都检测一下剪贴板中有没有链接，所以以上方法要放在 AppDelegate 文件的 applicationWillEnterForeground 方法中。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="AppDelegate.swift"></p>
+<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/251884-91cc90cfce77a310.png" alt="AppDelegate.swift"></p>
 <p>而这个方法中是不能通过 self 来调用 ViewController 的，所以要曲线救国的话，你需要手动获取 Storyboard、ViewController，再设置window的rootViewController 才能去掉所有报错和警告。</p>
 <p>（这里我只是把剪贴板中的链接输出到控制台了，想要自己用 UIWebView 打开链接的话，在// your implementation 这句注释这里写自己的方法吧）</p>
 <p><br>【150928 更新】</p>
