@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next mist use-motion">
+<html class="theme-next mist">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -96,9 +94,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"hide"},
     fancybox: true,
-    motion: true,
+    motion: false,
     duoshuo: {
       userId: 0,
       author: '博主'
@@ -204,7 +202,7 @@
         <li class="menu-item menu-item-开源">
           <a href="https://github.com/OpenMarshall" rel="section">
             
-              <i class="menu-item-icon fa fa-github-square fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
             
             开源
           </a>
@@ -292,73 +290,17 @@
       
         
           
-            <h3 id="写在前面">写在前面</h3><p>关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。<br>而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。<br>本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。</p>
-<hr>
-<h3 id="这是个啥">这是个啥</h3><ol>
-<li>swizz 这个词在英语里面是“欺骗”的意思。<br>Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，<strong>是用来互换两个方法的实现的技巧。</strong></li>
-<li>这东西并不常用，比如我们用方法 A 实现了 a 这件事，方法 B 实现了 b 这件事，现在你非要用 A 实现 b，B 实现 a，即便技术上是可行的，你图个啥？回头再换回来你还记得不？再换第三次呢？</li>
-<li>那么什么时候可能需要用到这个东西呢？调试的时候。<br>如果方法 A、B 我都知道怎么实现的，那确实不用换。但是假如方法 A 的实现被隐藏了，那么我是不是可以用方法 B 调用方法 A，再顺便添加点别的功能，然后进行 A、B 实现 swizz。<br>这样再调用方法 A 的时候，就多了一点我们之前顺便添加的功能。<br>有人会说，你这有意思么，你直接调用方法 B 不就得了，为啥还要换？重点在于，方法 A 如何被调用可能不是我们可以决定的啊。或许这个方法已经在无数个地方被调用了无数次，那我想批量替换的话，当然就可以 swizz 了。</li>
-</ol>
-<hr>
-<h3 id="举栗子">举栗子</h3><p>比如说，在某个项目中，NSArray 实例的下面这个方法被调用了 N 多次</p>
-<pre><code><span class="func"><span class="keyword">func</span> <span class="title">containsObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Bool</span>
-</code></pre><p>现在我想调试一下，看看如果这个方法返回 true，即数组包含我们传入的元素的时候，这个元素在数据的什么位置（index）。</p>
-<pre><code><span class="func"><span class="keyword">func</span> <span class="title">indexOfObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Int</span>
-</code></pre><p>当然直接调用上面这个方法就可以知道 index，但是 <code>containsObject</code> 被使用了太多次，Xcode 现在又不支持 Swift 重构，懒得改了。那就写个新方法，给原方法加个可以输出 index 的功能，再用 swizz 替换一下两个方法的实现吧。</p>
-<p>这里我贴了完整的一个 demo 的代码，你可以直接粘到 Xcode 里面运行。</p>
-<pre><code><span class="keyword">import</span> UIKit
+          写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
 
-<span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>{
+这是个啥
+swizz 这个词在英语里面是“欺骗
+          ...
 
-    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
-        <span class="keyword">super</span>.viewDidLoad()
-
-        <span class="keyword">let</span> arr = <span class="type">NSArray</span>(array: [<span class="string">"Swift"</span>,<span class="string">"Method"</span>,<span class="string">"Swizzling"</span>])
-
-        <span class="built_in">print</span>(<span class="string">"-----Swizzling 之前-----"</span>)
-        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// true</span>
-
-        <span class="type">NSArray</span>.swizz() <span class="comment">// 方法互换</span>
-
-        <span class="built_in">print</span>(<span class="string">"-----Swizzling 之后-----"</span>)
-        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// 先输出 index，再 true</span>
-
-        <span class="type">NSArray</span>.swizz() <span class="comment">// 方法再换回来</span>
-
-        <span class="built_in">print</span>(<span class="string">"-----Swizzling 两下-----"</span>)
-        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// true</span>
-    }
-
-}
-
-<span class="class"><span class="keyword">extension</span> <span class="title">NSArray</span> </span>{
-
-    <span class="comment">// 用来和默认方法进行替换的方法</span>
-    <span class="func"><span class="keyword">func</span> <span class="title">myContainsObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Bool</span> {
-        <span class="comment">// 输出元素的 index，这是默认的原方法不具有的功能</span>
-        <span class="keyword">if</span> <span class="keyword">self</span>.myContainsObject(anObject) {
-            <span class="built_in">print</span>(<span class="string">"index：\\(self.indexOfObject(anObject))"</span>)
-        }
-        <span class="comment">// 不会产生死循环，因为运行期间，下面的方法已经被替换成了默认的 containsObject</span>
-        <span class="keyword">return</span> <span class="keyword">self</span>.myContainsObject(anObject)
-    }
-
-    <span class="comment">// 用来给不同方法互相替换的方法</span>
-    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">swizz</span>() </span>{
-        <span class="keyword">let</span> originalMethod = class_getInstanceMethod(<span class="type">NSArray</span>.<span class="keyword">self</span>, #selector(containsObject(<span class="number">_</span>:)))
-        <span class="keyword">let</span> swizzledMethod = class_getInstanceMethod(<span class="type">NSArray</span>.<span class="keyword">self</span>, #selector(myContainsObject(<span class="number">_</span>:)))
-        method_exchangeImplementations(originalMethod, swizzledMethod)
-    }
-}
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="console"><br>【注意几点】</p>
-<ol>
-<li>这里我先后调用了三次 <code>containsObject</code> 这个方法，其中第二次，它的内部实现被  <code>myContainsObject</code> 这个方法的内部实现替换掉了。</li>
-<li><code>myContainsObject</code> 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 <code>myContainsObject</code> 这个词在你的脑子里换成 <code>containsObject</code>（如果确定此时两个方法确实互换了实现）。</li>
-</ol>
-<hr>
-<h3 id="最后">最后</h3><p>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/06/扯淡-Method-Swizzling/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -449,39 +391,17 @@
       
         
           
-            <p>做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。</p>
-<p>我把这个处理过程用 Swift 封装成了一个函数，供大家参考。</p>
-<pre><code>//创建高斯模糊效果的背景
-func createBlurBackground (image:<span class="type">UIImage</span>,view:<span class="type">UIView</span>,blurRadius:<span class="type">Float</span>) {
-    //处理原始<span class="type">NSData</span>数据
-    <span class="keyword">let</span> originImage = <span class="type">CIImage</span>(<span class="type">CGImage</span>: image.<span class="type">CGImage</span> )
-    //创建高斯模糊滤镜
-    <span class="keyword">let</span> filter = <span class="type">CIFilter</span>(name: <span class="string">"CIGaussianBlur"</span>)
-    filter.setValue(originImage, forKey: kCIInputImageKey)
-    filter.setValue(<span class="type">NSNumber</span>(<span class="type">float</span>: blurRadius), forKey: <span class="string">"inputRadius"</span>)
-    //生成模糊图片
-    <span class="keyword">let</span> context = <span class="type">CIContext</span>(options: <span class="keyword">nil</span>)
-    <span class="keyword">let</span> <span class="literal">result</span>:<span class="type">CIImage</span> = filter.valueForKey(kCIOutputImageKey) <span class="keyword">as</span>! <span class="type">CIImage</span>
-    <span class="keyword">let</span> blurImage = <span class="type">UIImage</span>(<span class="type">CGImage</span>: context.createCGImage(<span class="literal">result</span>, fromRect: <span class="literal">result</span>.extent()))
-    //将模糊图片加入背景
-    <span class="keyword">let</span> w = self.view.frame.width
-    <span class="keyword">let</span> h = self.view.frame.height
-    <span class="keyword">let</span> blurImageView = <span class="type">UIImageView</span>(frame: <span class="type">CGRectMake</span>(-w/<span class="number">2</span>, -h/<span class="number">2</span>, <span class="number">2</span>*w, <span class="number">2</span>*h)) //模糊背景是界面的<span class="number">4</span>倍大小
-    blurImageView.contentMode = <span class="type">UIViewContentMode</span>.<span class="type">ScaleAspectFill</span> //使图片充满<span class="type">ImageView</span>
-    blurImageView.autoresizingMask = <span class="type">UIViewAutoresizing</span>.<span class="type">FlexibleWidth</span> | <span class="type">UIViewAutoresizing</span>.<span class="type">FlexibleHeight</span> //保持原图长宽比
-    blurImageView.image = blurImage
-    self.view.insertSubview(blurImageView, belowSubview: view) //保证模糊背景在原图片<span class="type">View</span>的下层
-}
-</code></pre><p>三个参数分别为：image（原始清晰图片）、view（你需要将生成的模糊背景插入在这个view的下层当做背景）、blurRadius（高斯模糊处理的模糊半径）</p>
-<p>其中 let context = CIContext(options: nil)<br>这一句，在真机测试时，会引起控制台报错</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="控制台输出"></p>
-<p>这是苹果的一个 Bug ，想要回避这个信息输出可以用下面这一句进行替换：<br>let context = CIContext(options:[kCIContextUseSoftwareRenderer : true])<br>这句可以使图片渲染工作在 CPU 而非 GPU 完成，从而绕过这个 Bug，但是会引起效率下降，耗时大大增加，不推荐使用。</p>
-<p>使用效果展示：</p>
-<pre><code><span class="keyword">self.createBlurBackground(img, </span>view: <span class="keyword">self.gifView, </span><span class="keyword">blurRadius: </span><span class="number">50</span>)
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用前"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用后"></p>
+          做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
+我把这个处理过程用 Swift 封装成了一个函数，供大家参考。
+//创建高斯模糊效果的背景
+func createBlurBackground (image:UIImage
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/07/生成高斯模糊效果背景/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
