@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyxu.tech/"/>
-  <updated>2016-04-09T03:14:38.000Z</updated>
+  <updated>2016-04-09T03:41:43.000Z</updated>
   <id>http://kyxu.tech/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kyxu.tech/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
     <id>http://kyxu.tech/2016/04/06/扯淡-Method-Swizzling/</id>
     <published>2016-04-06T03:11:29.000Z</published>
-    <updated>2016-04-09T03:14:38.000Z</updated>
+    <updated>2016-04-09T03:41:43.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;&lt;p&gt;关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。&lt;br&gt;而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。&lt;br&gt;本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。&lt;/p&gt;
 &lt;hr&gt;
@@ -96,7 +96,57 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://kyxu.tech/tags/iOS/"/>
+  </entry>
+  
+  <entry>
+    <title>生成高斯模糊效果背景</title>
+    <link href="http://kyxu.tech/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
+    <id>http://kyxu.tech/2015/08/07/生成高斯模糊效果背景/</id>
+    <published>2015-08-07T03:44:36.000Z</published>
+    <updated>2016-04-09T03:45:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。&lt;/p&gt;
+&lt;p&gt;我把这个处理过程用 Swift 封装成了一个函数，供大家参考。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//创建高斯模糊效果的背景
+func createBlurBackground (image:&lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;,view:&lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;,blurRadius:&lt;span class=&quot;type&quot;&gt;Float&lt;/span&gt;) {
+    //处理原始&lt;span class=&quot;type&quot;&gt;NSData&lt;/span&gt;数据
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; originImage = &lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt;: image.&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt; )
+    //创建高斯模糊滤镜
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; filter = &lt;span class=&quot;type&quot;&gt;CIFilter&lt;/span&gt;(name: &lt;span class=&quot;string&quot;&gt;&quot;CIGaussianBlur&quot;&lt;/span&gt;)
+    filter.setValue(originImage, forKey: kCIInputImageKey)
+    filter.setValue(&lt;span class=&quot;type&quot;&gt;NSNumber&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;float&lt;/span&gt;: blurRadius), forKey: &lt;span class=&quot;string&quot;&gt;&quot;inputRadius&quot;&lt;/span&gt;)
+    //生成模糊图片
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; context = &lt;span class=&quot;type&quot;&gt;CIContext&lt;/span&gt;(options: &lt;span class=&quot;keyword&quot;&gt;nil&lt;/span&gt;)
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;:&lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt; = filter.valueForKey(kCIOutputImageKey) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; blurImage = &lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt;: context.createCGImage(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;, fromRect: &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;.extent()))
+    //将模糊图片加入背景
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = self.view.frame.width
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; h = self.view.frame.height
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; blurImageView = &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRectMake&lt;/span&gt;(-w/&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, -h/&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*w, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*h)) //模糊背景是界面的&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;倍大小
+    blurImageView.contentMode = &lt;span class=&quot;type&quot;&gt;UIViewContentMode&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;ScaleAspectFill&lt;/span&gt; //使图片充满&lt;span class=&quot;type&quot;&gt;ImageView&lt;/span&gt;
+    blurImageView.autoresizingMask = &lt;span class=&quot;type&quot;&gt;UIViewAutoresizing&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FlexibleWidth&lt;/span&gt; | &lt;span class=&quot;type&quot;&gt;UIViewAutoresizing&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FlexibleHeight&lt;/span&gt; //保持原图长宽比
+    blurImageView.image = blurImage
+    self.view.insertSubview(blurImageView, belowSubview: view) //保证模糊背景在原图片&lt;span class=&quot;type&quot;&gt;View&lt;/span&gt;的下层
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三个参数分别为：image（原始清晰图片）、view（你需要将生成的模糊背景插入在这个view的下层当做背景）、blurRadius（高斯模糊处理的模糊半径）&lt;/p&gt;
+&lt;p&gt;其中 let context = CIContext(options: nil)&lt;br&gt;这一句，在真机测试时，会引起控制台报错&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;控制台输出&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这是苹果的一个 Bug ，想要回避这个信息输出可以用下面这一句进行替换：&lt;br&gt;let context = CIContext(options:[kCIContextUseSoftwareRenderer : true])&lt;br&gt;这句可以使图片渲染工作在 CPU 而非 GPU 完成，从而绕过这个 Bug，但是会引起效率下降，耗时大大增加，不推荐使用。&lt;/p&gt;
+&lt;p&gt;使用效果展示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self.createBlurBackground(img, &lt;/span&gt;view: &lt;span class=&quot;keyword&quot;&gt;self.gifView, &lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;blurRadius: &lt;/span&gt;&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;使用前&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;使用后&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。&lt;/p&gt;
+&lt;p&gt;我把这个处理过程用 Swift 封装成了一个函数，供大家参考。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//创建高斯模糊效果的背景
+func 
+    
+    </summary>
+    
     
   </entry>
   
