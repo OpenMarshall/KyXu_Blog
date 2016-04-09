@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KyXu" />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,16 +78,25 @@
 
 
 
-<meta name="description" content="大三学生 / 独立开发">
+<meta name="description" content="今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。
+就会有下面这行代码
+webview.frame = UIScreen.mainScreen().bounds
+进一步地，我想把这个步骤封装为一个函数，因为比如这个页面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="腾讯 iOS 开发实习电话面试记录（一）">
-<meta property="og:url" content="/2016/04/09/腾讯-iOS-开发实习电话面试记录（一）/index.html">
+<meta property="og:title" content="使用 protocol 与 extension 来限制函数作用域">
+<meta property="og:url" content="/2016/03/12/使用-protocol-与-extension-来限制函数作用域/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="大三学生 / 独立开发">
-<meta property="og:updated_time" content="2016-04-09T07:09:35.000Z">
+<meta property="og:description" content="今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。
+就会有下面这行代码
+webview.frame = UIScreen.mainScreen().bounds
+进一步地，我想把这个步骤封装为一个函数，因为比如这个页面">
+<meta property="og:updated_time" content="2016-04-09T07:12:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="腾讯 iOS 开发实习电话面试记录（一）">
-<meta name="twitter:description" content="大三学生 / 独立开发">
+<meta name="twitter:title" content="使用 protocol 与 extension 来限制函数作用域">
+<meta name="twitter:description" content="今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。
+就会有下面这行代码
+webview.frame = UIScreen.mainScreen().bounds
+进一步地，我想把这个步骤封装为一个函数，因为比如这个页面">
 
 
 
@@ -105,7 +114,7 @@
   };
 </script>
 
-  <title> 腾讯 iOS 开发实习电话面试记录（一） | KyXu Tech </title>
+  <title> 使用 protocol 与 extension 来限制函数作用域 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +254,7 @@
             
             
               
-                腾讯 iOS 开发实习电话面试记录（一）
+                使用 protocol 与 extension 来限制函数作用域
               
             
           </h1>
@@ -257,8 +266,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-09T15:09:35+08:00" content="2016-04-09">
-              2016-04-09
+            <time itemprop="dateCreated" datetime="2016-03-12T15:07:31+08:00" content="2016-03-12">
+              2016-03-12
             </time>
           </span>
 
@@ -284,7 +293,36 @@
       
 
       
-        
+        <p>今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。</p>
+<p>就会有下面这行代码</p>
+<pre><code>webview<span class="class">.frame</span> = UIScreen.<span class="function"><span class="title">mainScreen</span><span class="params">()</span></span>.bounds
+</code></pre><p>进一步地，我想把这个步骤封装为一个函数，因为比如这个页面屏幕旋转时，或者在其他页面，我都可能需要用到它。</p>
+<pre><code><span class="component">func expandView(view:UIView) {
+    if view<span class="string">.isKindOfClass(UIWebView)</span> || view<span class="string">.isKindOfClass(WKWebView)</span> {
+        view<span class="string">.frame</span> = UIScreen<span class="string">.mainScreen().bounds</span>
+    }</span>
+}
+</code></pre><p>这段代码是说，我们现在可以把 UIWebView 和 WKWebView 都扩展到最大了，其他 UIView 被传入的时候，不会有任何意义。但这不是我想要的，我希望其他 UIView 根本无法调用这个函数，以免产生误解。</p>
+<p>于是我写了下面这段代码：</p>
+<pre><code><span class="class"><span class="keyword">protocol</span> <span class="title">ExpandableView</span> </span>{
+    <span class="func"><span class="keyword">func</span> <span class="title">expandToFullView</span><span class="params">()</span></span>
+}
+
+<span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">expand</span><span class="params">(view:UIView)</span></span> {
+    view.frame = <span class="type">UIScreen</span>.mainScreen().bounds
+}
+
+<span class="class"><span class="keyword">extension</span> <span class="title">WKWebView</span>: <span class="title">ExpandableView</span> </span>{
+    <span class="func"><span class="keyword">func</span> <span class="title">expandToFullView</span><span class="params">()</span></span> { expand(<span class="keyword">self</span>) }
+}
+
+<span class="class"><span class="keyword">extension</span> <span class="title">UIWebView</span>: <span class="title">ExpandableView</span> </span>{
+    <span class="func"><span class="keyword">func</span> <span class="title">expandToFullView</span><span class="params">()</span></span> { expand(<span class="keyword">self</span>) }
+}
+</code></pre><p>现在，UIWebView 和 WKWebView 都可以通过 ExpandableView 这个协议，来使用我们定义好的（具有扩展一个 View 到整个界面大小这层意义的） expandToFullView 这个函数，而且因为这个函数的实现实际上是 expand 这个函数，所以他们表现起来是一样的。与此同时，expand 这个函数本身被声明为了 private，这使得这个函数不会在其他源文件以其他方式被调用。</p>
+<hr>
+<p>这段代码被应用在了 <a href="https://github.com/OpenMarshall/SwiftGG" target="_blank" rel="external">这个项目</a> 的 <a href="https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/WebviewExtension.swift" target="_blank" rel="external">这个文件</a>。</p>
+
       
     </div>
     
@@ -302,18 +340,28 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/09/使用-protocol-与-extension-来限制函数作用域/" rel="next" title="使用 protocol 与 extension 来限制函数作用域">
-                <i class="fa fa-chevron-left"></i> 使用 protocol 与 extension 来限制函数作用域
+              <a href="/2016/03/11/我用-JS-抓了-SwiftGG，做了个客户端/" rel="next" title="我用 JS 抓了 SwiftGG，做了个客户端">
+                <i class="fa fa-chevron-left"></i> 我用 JS 抓了 SwiftGG，做了个客户端
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/13/伪造一个-SFSafariViewController/" rel="prev" title="伪造一个 SFSafariViewController">
+                伪造一个 SFSafariViewController <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -391,7 +439,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

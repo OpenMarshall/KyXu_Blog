@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-09T07:09:35.000Z</updated>
+  <updated>2016-04-09T07:12:48.000Z</updated>
   <id>/</id>
   
   <author>
@@ -16,114 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>腾讯 iOS 开发实习电话面试记录（一）</title>
-    <link href="/2016/04/09/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>/2016/04/09/腾讯-iOS-开发实习电话面试记录（一）/</id>
-    <published>2016-04-09T07:09:35.000Z</published>
-    <updated>2016-04-09T07:09:35.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用 protocol 与 extension 来限制函数作用域</title>
-    <link href="/2016/04/09/%E4%BD%BF%E7%94%A8-protocol-%E4%B8%8E-extension-%E6%9D%A5%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>/2016/04/09/使用-protocol-与-extension-来限制函数作用域/</id>
-    <published>2016-04-09T07:07:31.000Z</published>
-    <updated>2016-04-09T07:07:31.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>在你的 App 中使用《一拳超人》背景色</title>
-    <link href="/2016/04/09/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
-    <id>/2016/04/09/在你的-App-中使用《一拳超人》背景色/</id>
-    <published>2016-04-09T07:05:32.000Z</published>
-    <updated>2016-04-09T07:05:33.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯 iOS 开发实习电话面试记录（二）</title>
-    <link href="/2016/04/09/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>/2016/04/09/腾讯-iOS-开发实习电话面试记录（二）/</id>
-    <published>2016-04-09T07:04:28.000Z</published>
-    <updated>2016-04-09T07:04:28.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Adobe Xd 简明教程 &lt;对比 Sketch&gt;</title>
-    <link href="/2016/04/09/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
-    <id>/2016/04/09/Adobe-Xd-简明教程-对比-Sketch/</id>
-    <published>2016-04-09T07:02:32.000Z</published>
-    <updated>2016-04-09T07:02:52.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。&lt;/p&gt;
-&lt;p&gt;如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative Cloud Desktop，我传了一份到&lt;a href=&quot;http://yun.baidu.com/share/link?shareid=3274616498&amp;amp;uk=2097307015&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度盘&lt;/a&gt;，戳链接下载吧。如果用不了的话，里面还有一份 Creative Cloud Installer，装上 Creative Cloud Desktop 之后，可以在线安装 Xd。Sketch 是收费软件，就不给地址了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这阵容！&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在那个没有 Sketch 的年代，Photoshop 作为图像处理软件之王，横行了很久。Sketch 出现之后呢，虽然 Photoshop 依然在横行，但是在 UI 这个领域，至少被 Sketch 冲击地不轻。而 Photoshop 有自己的产品定位，就是做综合功能最强大的 CG 软件（实际上它也确实做到了），不能为了 Sketch 而改掉自己。&lt;strong&gt;等了好久终于等到今天！Adobe 出了一款和 Sketch 定位一模一样的产品 —— Adobe Xd！&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;基础&quot;&gt;基础&lt;/h1&gt;&lt;p&gt;如果您已经会用 Sketch 的话，那是最好，如果是不会做 UI 的程序员的话……快去学一下噻（也只能凑合着看啦）&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;正文&quot;&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-907915cdb210cd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch &amp;amp; Xd&quot;&gt;&lt;br&gt;如图，左边是 Sketch，右边是 Xd，我分别加入了一个初始的 iPhone 6 大小的 Artboard，别说两边界面基本一样，就连用词都没差。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-cc71589e434133e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Insert&quot;&gt;&lt;br&gt;Sketch 把插入新元素这个功能放到了 Insert 里面，平时使用基本都是用快捷键的，虽然 Xd 也支持用快捷键来调用这些工具，但是默认左边还有个边栏一直放在这，和 Photoshop 如出一辙，要知道 Xd 的工具比 Photoshop 少的不是一点半点啊，个人感觉这个栏有点鸡肋。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-84745362c36c3019.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd 左栏&quot;&gt;&lt;br&gt;而 Sketch 那个丰富的顶部工具栏，在 Xd 里面被分拆了。如 Union、Subtract 等布尔运算，被放到了右侧栏，Mask、Group 等功能，放到了软件的顶部菜单栏里面，这使得 Xd 看起来更简洁一些。不过无所谓，在两个软件里，这些功能都可以用快捷键使用。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-c2984ebd38dab1b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch 顶部工具栏&quot;&gt;&lt;br&gt;那么 Xd 的顶部放了什么呢&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-ae4cceed563422d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;通过这个入口，加入了做原型的功能！一看就明了，有木有！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a54c9d717608162a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;如果你是做 iOS 开发的，这些 Segue、Easing、Duration、TARGET 的用词，不能再熟悉了，对开发人员不能再友好。&lt;/p&gt;
-&lt;p&gt;回到 Xd 的 Design 这个地方，我发现缺少了 Sketch 左边那个图层管理的列表，还是有些别扭。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-6390d788d164d403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;一个较为复杂的 Sketch 项目&quot;&gt;&lt;/p&gt;
-&lt;p&gt;比如对于上面这个界面，如果没有左边这个管理界面的话，而如果这个东西又是别人做的，我必须要逐个点击才知道谁和谁是一组的，就很麻烦。而且在 Xd 里面，不导出，你是不知道某一个图层的名字的。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-76e65022be7f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;比如这么一个圆形，虽然导出的时候我可以更改它的命名，但是如果我有20个不同的圆，我可能会希望先全部命名好，再批量导出。&lt;/p&gt;
-&lt;p&gt;不过在导出的时候，除了文件命名这个事情之外，有一个地方 Xd 做的非常棒，那就是自动生成 1x、2x、3x 等不同尺寸。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-28f74ff40fd51eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;虽然在 Sketch 里面我们可以给每一个图层加一个 Slice，再给 Slice 设定导出的 1x、2x、3x，还是没有 Xd 的这个解决方案好。针对 Android，Xd 也给了相应的从 ldpi 到 xxxhdpi 的六种规格。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-f1227259089e931e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Slice&quot;&gt;&lt;br&gt;当然也不是说 Sketch 的 Slice 就一无是处，繁琐的东西它当然就自定义程度高一些。比如我们做了一个圆形，要导出一个左半圆和右半圆，那当然用 Slice 要方便的多。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;除此之外，Sketch 还有安装插件的功能，也凭借先发优势积累了大量的资源和论坛内容。不知道可以做原型的 Xd 和它的好爸爸 Adobe，能不能有机会一举杀入 Sketch 的阵地。&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;&lt;p&gt;因为我个人平时不做原型，对这个要求不高，所以现在 Xd 做原型的功能对我来说，简单、够用。&lt;br&gt;假设原型工具占了产品界面设计过程的 20%，那么 Adobe 可能会希望把以前的 PS + Sketch = 80% 的情况，变成 PS + Xd = 100% 吧。&lt;br&gt;就目前工作来说，我会尝试开始用 Xd，遇到个别情况，Xd 不顺手的话，会打开 Sketch，两把刷子一起用，等时间长了，哪个更适合我就有概念了。相当长的一段时间内，我是不会删掉 Sketch 的，就凭那些优质的 Sketch 资源，我也不会删。&lt;br&gt;于个人喜好，虽然我忠爱 Adobe，但垄断总是不好的，Sketch 坚挺住啊！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望
-    
-    </summary>
-    
-    
-      <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
     <title>扯淡 Method Swizzling</title>
     <link href="/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
     <id>/2016/04/06/扯淡-Method-Swizzling/</id>
     <published>2016-04-06T03:11:29.000Z</published>
-    <updated>2016-04-09T06:32:43.000Z</updated>
+    <updated>2016-04-09T07:12:48.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;&lt;p&gt;关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。&lt;br&gt;而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。&lt;br&gt;本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。&lt;/p&gt;
 &lt;hr&gt;
@@ -199,6 +96,8 @@
     </summary>
     
     
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
   </entry>
   
   <entry>
@@ -206,7 +105,7 @@
     <link href="/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>/2016/03/29/阿里-iOS-开发实习电话面试记录（二）/</id>
     <published>2016-03-29T06:58:00.000Z</published>
-    <updated>2016-04-09T06:58:21.000Z</updated>
+    <updated>2016-04-09T07:12:46.000Z</updated>
     
     <content type="html">&lt;p&gt;iOS 客户端开发的三面。&lt;/p&gt;
 &lt;p&gt;这次的面试官，一听他说话，年纪就不小了，感觉差不多也是个全栈。他问的 iOS 相关的问题我 90% 都答上来了，提到操作系统、计算机网络、算法之类的，我直说因为长期不投入实用，都忘了，他就说那就不问这方面的了，最后还劝告说，这些更多是方法论的东西，建议我学好，下面是他问了的 iOS 相关的问题：&lt;/p&gt;
@@ -244,6 +143,8 @@
     </summary>
     
     
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
+    
   </entry>
   
   <entry>
@@ -272,7 +173,7 @@
     <link href="/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/</id>
     <published>2016-03-19T06:59:54.000Z</published>
-    <updated>2016-04-09T07:00:49.000Z</updated>
+    <updated>2016-04-09T07:12:13.000Z</updated>
     
     <content type="html">&lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
 &lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。&lt;/p&gt;
@@ -298,6 +199,131 @@
     
     </summary>
     
+    
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>腾讯 iOS 开发实习电话面试记录（二）</title>
+    <link href="/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/</id>
+    <published>2016-03-16T07:04:28.000Z</published>
+    <updated>2016-04-09T07:12:51.000Z</updated>
+    
+    <content type="html">&lt;p&gt;继上一篇文章&lt;a href=&quot;http://www.jianshu.com/p/8e8871a9677a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【面试】腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。&lt;/p&gt;
+&lt;p&gt;（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;说一下 C/C++ 里面变量定义和声明的区别&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OC 里面的 property 有没有像 Swift 里面一样的 public 和 private 之分&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我看你简历里面说你写过超过5万行 Swift，你怎么知道你写过 5 万行？&lt;br&gt;（我说可以通过 Terminal 来统计我的项目文件夹里面任意后缀文件的行数）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;你这个5万行，包括第三方 API 吗？&lt;br&gt;（我说不包括，不过只要他问 Swift 少问 OC，我还是有信心）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;你说一下你对 Swift 这门语言的理解，有什么和 C、C++ 或 OC 不同的地方？&lt;br&gt;（我说了关于 protocol 和 extension 相关的东西，还有关于 OC 里面的 NSString 浅复制，现在 Swift 对 String 类型是深复制，以及 Swift 对这个值拷贝的优化的问题……会的东西还是要多说）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;平时你对你上架的这些产品是怎么监测崩溃情况的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;平时怎么检测内存泄露，有什么解决方案&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TableView 滑动卡顿有什么优化方案&lt;br&gt;（这个因为刚好在面试之前还准备了一下，噼里啪啦说了好多，可能还说了点面试官不知道的东西。然后他说你怎么知道这些东西的，平时都在用吗，我说都是在网上看的，因为平时没有做过非常复杂的 Cell，所以实际应用起来了的优化手段并不多）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;说一下 HTTP 协议&lt;br&gt;（我说不会，就简单说了下 http 和 https 的区别，和 iOS 9 开始引导访问 https 的问题，大家可以背一下这一段：&lt;strong&gt;【为了强制增强数据访问安全， iOS9 默认会把所有从&lt;code&gt;NSURLConnection&lt;/code&gt; 、 &lt;code&gt;CFURL&lt;/code&gt; 、 &lt;code&gt;NSURLSession&lt;/code&gt;发出的 HTTP 请求，都改为 HTTPS 请求：iOS9.x-SDK编译时，默认会让所有从&lt;code&gt;NSURLConnection&lt;/code&gt; 、 &lt;code&gt;CFURL&lt;/code&gt; 、 &lt;code&gt;NSURLSession&lt;/code&gt;发出的 HTTP 请求统一采用 TLS 1.2（SSL 3.1） 协议。】&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;说一下你最复杂的一个项目的技术内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;你所有项目都是你独立开发完成的吗，包括切图、UI&lt;br&gt;（我说是，不过他也没问我 Photoshop，就此作罢）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;说一下不同版本 iPhone 的分辨率&lt;br&gt;（我说我没背下来那个 320*568 什么的分辨率，但我知道硬件屏幕上 dot 的数量和软件屏幕 pixel 数量的关系，而且很特殊的一点是，虽然 iPhone 3GS 对应的是 1x，iPhone 4S 开始对应 2x，但是 iPhone 6+ 对应的所谓 3x 实际上是 1：2.6几，Apple 帮我们做了把 3x 的图做成 2.6x 的这个工作）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;你平时是怎么做技术积累的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;好像电话面试就此结束了，下次面试是面试官来本地走校招流程，然后之前打过电话、简历评级够好的，现场面试的时候会比较容易给 offer。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继上一篇文章&lt;a href=&quot;http://www.jianshu.com/p/8e8871a9677a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【面试】腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;后，又接到了第二个电话，继续记录。根据回忆写的，
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Adobe Xd 简明教程 &lt;对比 Sketch&gt;</title>
+    <link href="/2016/03/16/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
+    <id>/2016/03/16/Adobe-Xd-简明教程-对比-Sketch/</id>
+    <published>2016-03-16T07:02:32.000Z</published>
+    <updated>2016-04-09T07:12:50.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。&lt;/p&gt;
+&lt;p&gt;如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative Cloud Desktop，我传了一份到&lt;a href=&quot;http://yun.baidu.com/share/link?shareid=3274616498&amp;amp;uk=2097307015&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度盘&lt;/a&gt;，戳链接下载吧。如果用不了的话，里面还有一份 Creative Cloud Installer，装上 Creative Cloud Desktop 之后，可以在线安装 Xd。Sketch 是收费软件，就不给地址了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这阵容！&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在那个没有 Sketch 的年代，Photoshop 作为图像处理软件之王，横行了很久。Sketch 出现之后呢，虽然 Photoshop 依然在横行，但是在 UI 这个领域，至少被 Sketch 冲击地不轻。而 Photoshop 有自己的产品定位，就是做综合功能最强大的 CG 软件（实际上它也确实做到了），不能为了 Sketch 而改掉自己。&lt;strong&gt;等了好久终于等到今天！Adobe 出了一款和 Sketch 定位一模一样的产品 —— Adobe Xd！&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;基础&quot;&gt;基础&lt;/h1&gt;&lt;p&gt;如果您已经会用 Sketch 的话，那是最好，如果是不会做 UI 的程序员的话……快去学一下噻（也只能凑合着看啦）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;正文&quot;&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-907915cdb210cd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch &amp;amp; Xd&quot;&gt;&lt;br&gt;如图，左边是 Sketch，右边是 Xd，我分别加入了一个初始的 iPhone 6 大小的 Artboard，别说两边界面基本一样，就连用词都没差。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-cc71589e434133e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Insert&quot;&gt;&lt;br&gt;Sketch 把插入新元素这个功能放到了 Insert 里面，平时使用基本都是用快捷键的，虽然 Xd 也支持用快捷键来调用这些工具，但是默认左边还有个边栏一直放在这，和 Photoshop 如出一辙，要知道 Xd 的工具比 Photoshop 少的不是一点半点啊，个人感觉这个栏有点鸡肋。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-84745362c36c3019.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd 左栏&quot;&gt;&lt;br&gt;而 Sketch 那个丰富的顶部工具栏，在 Xd 里面被分拆了。如 Union、Subtract 等布尔运算，被放到了右侧栏，Mask、Group 等功能，放到了软件的顶部菜单栏里面，这使得 Xd 看起来更简洁一些。不过无所谓，在两个软件里，这些功能都可以用快捷键使用。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-c2984ebd38dab1b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch 顶部工具栏&quot;&gt;&lt;br&gt;那么 Xd 的顶部放了什么呢&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-ae4cceed563422d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;通过这个入口，加入了做原型的功能！一看就明了，有木有！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a54c9d717608162a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;如果你是做 iOS 开发的，这些 Segue、Easing、Duration、TARGET 的用词，不能再熟悉了，对开发人员不能再友好。&lt;/p&gt;
+&lt;p&gt;回到 Xd 的 Design 这个地方，我发现缺少了 Sketch 左边那个图层管理的列表，还是有些别扭。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-6390d788d164d403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;一个较为复杂的 Sketch 项目&quot;&gt;&lt;/p&gt;
+&lt;p&gt;比如对于上面这个界面，如果没有左边这个管理界面的话，而如果这个东西又是别人做的，我必须要逐个点击才知道谁和谁是一组的，就很麻烦。而且在 Xd 里面，不导出，你是不知道某一个图层的名字的。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-76e65022be7f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;比如这么一个圆形，虽然导出的时候我可以更改它的命名，但是如果我有20个不同的圆，我可能会希望先全部命名好，再批量导出。&lt;/p&gt;
+&lt;p&gt;不过在导出的时候，除了文件命名这个事情之外，有一个地方 Xd 做的非常棒，那就是自动生成 1x、2x、3x 等不同尺寸。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-28f74ff40fd51eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;虽然在 Sketch 里面我们可以给每一个图层加一个 Slice，再给 Slice 设定导出的 1x、2x、3x，还是没有 Xd 的这个解决方案好。针对 Android，Xd 也给了相应的从 ldpi 到 xxxhdpi 的六种规格。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-f1227259089e931e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Slice&quot;&gt;&lt;br&gt;当然也不是说 Sketch 的 Slice 就一无是处，繁琐的东西它当然就自定义程度高一些。比如我们做了一个圆形，要导出一个左半圆和右半圆，那当然用 Slice 要方便的多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;除此之外，Sketch 还有安装插件的功能，也凭借先发优势积累了大量的资源和论坛内容。不知道可以做原型的 Xd 和它的好爸爸 Adobe，能不能有机会一举杀入 Sketch 的阵地。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;&lt;p&gt;因为我个人平时不做原型，对这个要求不高，所以现在 Xd 做原型的功能对我来说，简单、够用。&lt;br&gt;假设原型工具占了产品界面设计过程的 20%，那么 Adobe 可能会希望把以前的 PS + Sketch = 80% 的情况，变成 PS + Xd = 100% 吧。&lt;br&gt;就目前工作来说，我会尝试开始用 Xd，遇到个别情况，Xd 不顺手的话，会打开 Sketch，两把刷子一起用，等时间长了，哪个更适合我就有概念了。相当长的一段时间内，我是不会删掉 Sketch 的，就凭那些优质的 Sketch 资源，我也不会删。&lt;br&gt;于个人喜好，虽然我忠爱 Adobe，但垄断总是不好的，Sketch 坚挺住啊！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望
+    
+    </summary>
+    
+    
+      <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在你的 App 中使用《一拳超人》背景色</title>
+    <link href="/2016/03/14/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
+    <id>/2016/03/14/在你的-App-中使用《一拳超人》背景色/</id>
+    <published>2016-03-14T07:05:32.000Z</published>
+    <updated>2016-04-09T07:12:41.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d73875e0c306da18.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;OnePunchColor.gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;###&lt;a href=&quot;https://github.com/OpenMarshall/OnePunchColor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是 Github 项目地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;我从《一拳超人》动画中吸取了22种和白色非常匹配的颜色，现在你可以通过 &lt;code&gt;UIColor&lt;/code&gt; 或者 &lt;code&gt;UIView&lt;/code&gt; 来通过一行代码调用这些颜色。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// quick version&lt;/span&gt;
+self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.punch&lt;/span&gt;()
+
+&lt;span class=&quot;comment&quot;&gt;// slow version&lt;/span&gt;
+self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.punchWithInterval&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)
+
+&lt;span class=&quot;comment&quot;&gt;// complete version&lt;/span&gt;
+self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.backgroundColor&lt;/span&gt; = UIColor.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;onePunchColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###&lt;a href=&quot;https://itunes.apple.com/app/id1078241816&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AppStore 上的这个 App&lt;/a&gt; 应用了这段代码&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d73875e0c306da18.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;OnePunchColor.gif&quot;
+    
+    </summary>
+    
+    
+      <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
@@ -373,6 +399,56 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
   </entry>
   
   <entry>
+    <title>使用 protocol 与 extension 来限制函数作用域</title>
+    <link href="/2016/03/12/%E4%BD%BF%E7%94%A8-protocol-%E4%B8%8E-extension-%E6%9D%A5%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>/2016/03/12/使用-protocol-与-extension-来限制函数作用域/</id>
+    <published>2016-03-12T07:07:31.000Z</published>
+    <updated>2016-04-09T07:12:44.000Z</updated>
+    
+    <content type="html">&lt;p&gt;今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。&lt;/p&gt;
+&lt;p&gt;就会有下面这行代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;webview&lt;span class=&quot;class&quot;&gt;.frame&lt;/span&gt; = UIScreen.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;mainScreen&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.bounds
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;进一步地，我想把这个步骤封装为一个函数，因为比如这个页面屏幕旋转时，或者在其他页面，我都可能需要用到它。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;component&quot;&gt;func expandView(view:UIView) {
+    if view&lt;span class=&quot;string&quot;&gt;.isKindOfClass(UIWebView)&lt;/span&gt; || view&lt;span class=&quot;string&quot;&gt;.isKindOfClass(WKWebView)&lt;/span&gt; {
+        view&lt;span class=&quot;string&quot;&gt;.frame&lt;/span&gt; = UIScreen&lt;span class=&quot;string&quot;&gt;.mainScreen().bounds&lt;/span&gt;
+    }&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码是说，我们现在可以把 UIWebView 和 WKWebView 都扩展到最大了，其他 UIView 被传入的时候，不会有任何意义。但这不是我想要的，我希望其他 UIView 根本无法调用这个函数，以免产生误解。&lt;/p&gt;
+&lt;p&gt;于是我写了下面这段代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+}
+
+&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(view:UIView)&lt;/span&gt;&lt;/span&gt; {
+    view.frame = &lt;span class=&quot;type&quot;&gt;UIScreen&lt;/span&gt;.mainScreen().bounds
+}
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;WKWebView&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; { expand(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) }
+}
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIWebView&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; { expand(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在，UIWebView 和 WKWebView 都可以通过 ExpandableView 这个协议，来使用我们定义好的（具有扩展一个 View 到整个界面大小这层意义的） expandToFullView 这个函数，而且因为这个函数的实现实际上是 expand 这个函数，所以他们表现起来是一样的。与此同时，expand 这个函数本身被声明为了 private，这使得这个函数不会在其他源文件以其他方式被调用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这段代码被应用在了 &lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个项目&lt;/a&gt; 的 &lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/WebviewExtension.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个文件&lt;/a&gt;。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。&lt;/p&gt;
+&lt;p&gt;就会有下面这行代码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我用 JS 抓了 SwiftGG，做了个客户端</title>
     <link href="/2016/03/11/%E6%88%91%E7%94%A8-JS-%E6%8A%93%E4%BA%86-SwiftGG%EF%BC%8C%E5%81%9A%E4%BA%86%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
     <id>/2016/03/11/我用-JS-抓了-SwiftGG，做了个客户端/</id>
@@ -394,6 +470,58 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     
     
       <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>腾讯 iOS 开发实习电话面试记录（一）</title>
+    <link href="/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>/2016/03/08/腾讯-iOS-开发实习电话面试记录（一）/</id>
+    <published>2016-03-08T07:09:35.000Z</published>
+    <updated>2016-04-09T07:12:42.000Z</updated>
+    
+    <content type="html">&lt;p&gt;目前大三，准备暑假去腾讯做 iOS 开发实习，昨天接到了电话面试，（应该是那个部门的 iOS 开发组组长打来的，我也不确定），来分享一下他问的那些题目。&lt;/p&gt;
+&lt;p&gt;感觉他提问是按照我写的简历来问的，而且考虑到我是准备去做实习生，也可能问的相对简单，我根据回忆写一下，大家就凑合着看吧。&lt;/p&gt;
+&lt;p&gt;1.我看你也上线了几个项目，说一下你做过的这些东西，工程体量大概都是多大，代码有多少行？&lt;br&gt;（我说多的有五六千行，少的就一千行）&lt;/p&gt;
+&lt;p&gt;2.你那个五六千行的项目是干嘛的？&lt;br&gt;（一个招聘会信息聚合应用）&lt;/p&gt;
+&lt;p&gt;3.这个项目用户量有多少？&lt;br&gt;（我说这个项目没多少用户，我个人用户最多是项目是 &lt;a href=&quot;https://itunes.apple.com/app/id1028844347&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gif Master&lt;/a&gt;，然后提到了用户量）&lt;/p&gt;
+&lt;p&gt;4.你怎么知道你这个 App 有多少活跃用户的？用的友盟吗？&lt;br&gt;（我说我用 Flurry，通过 App 更新情况也能看出来）&lt;/p&gt;
+&lt;p&gt;5.那你跟我说说你这个 Gif Master 是干嘛的？&lt;br&gt;（……说了一堆，其中重点是提到了，可以把某一条微博作为网页提出来，然后抓取这个网页中的 Gif 图，再分享到微信）&lt;/p&gt;
+&lt;p&gt;6.你是怎么把这个 Gif 图从微博上抓下来的？&lt;br&gt;（因为是用的从 Github 上找到的一个现成的方法，所以我并不清楚具体的技术细节，就只说了是把整个图片作为 NSData 提取出来的）&lt;/p&gt;
+&lt;p&gt;7.你是怎么把图片分享到微信的？&lt;br&gt;（用的是 mob 的 SDK，不只是分享到微信，还能分享到 QQ 和微博。因为微信原生不支持 Gif，所以是做为表情分享过去的）&lt;/p&gt;
+&lt;p&gt;8.你统计过你这个 App 的 Crash 情况吗？&lt;br&gt;（我说我在用雅虎的 Flurry 平台，这里面有非常详细的数据。但是实话实话，我并没有详细地监测用户如何触发了 crash，而更多地是自己不断地试用，然后解决问题。）&lt;/p&gt;
+&lt;p&gt;9.你是如何监测这个 App 的内存情况的，以及如何处理内容泄露？&lt;/p&gt;
+&lt;p&gt;10.平时用过 WebView 吗，你在用的时候除了单纯地用它加载网页，还用过其他的吗？&lt;br&gt;（我说用过 JS 交互）&lt;/p&gt;
+&lt;p&gt;11.（这里忘了他问了啥了，但是我觉得总要说点东西，而且我确实经常用 WebView，就说了下 UIWebView 和 WKWebView 在 JS 交互上的区别）&lt;/p&gt;
+&lt;p&gt;12.说一下你自己理解的 RunTime&lt;/p&gt;
+&lt;p&gt;13.知道 RunLoop 吗？&lt;br&gt;（我只在 NSTimer 里面用过，所以知道这个东西，但不是很了解，就实话实说了，然后他继续问细节，我算是说出来了一半，就下一个问题了）&lt;/p&gt;
+&lt;p&gt;14.Objective-C 里面 property 写成 assign 和 weak 的区别？&lt;br&gt;（这里还说了一下 weak 解决循环引用的问题）&lt;/p&gt;
+&lt;p&gt;15.知道 STL 吗（问了 List 和 Vector）&lt;/p&gt;
+&lt;p&gt;16.用过 TableView 吗，平时怎么解决 TableView 滑动卡顿问题的？&lt;/p&gt;
+&lt;p&gt;17.懂网络方面的问题吗？TCP/IP 三次握手？&lt;br&gt;（我说不知道，就仅仅是平时与服务器交互用过 get post）&lt;/p&gt;
+&lt;p&gt;18.说一下 get post 的区别？&lt;br&gt;（我说出来了，这时候已经开始感觉到这个人什么都会，就算他问的问题你不知道，也要随便说点相关的自己知道的，因为他一定可以把这个问题无限延伸下去）&lt;/p&gt;
+&lt;p&gt;19.你写过这么多代码了，知道设计模式吗？&lt;br&gt;（我说知道 MVC 和 MVVM，然后他让我说一下单例模式 - 显然仅仅会用是不够的，这题我算答出来一半）&lt;/p&gt;
+&lt;p&gt;20.知道观察者吗？&lt;br&gt;（监听事件那个 observer 嘛，这个我还是非常熟悉）&lt;/p&gt;
+&lt;p&gt;21.知道本地存储吗？&lt;br&gt;（这个我也非常熟悉，巴拉巴拉说了一堆 NSUserDefaults、Plist，还有如何存储自定义类型的问题，然后他说你知道 NSUserDefaults 本质上也是用 Plist 存储的吗，我诚实地说不知道，他又说除此之外其实还有 keychain 存储的方法，我也诚实的说我知道这种方法，但我自己没用过）&lt;/p&gt;
+&lt;p&gt;22.你发布的那些 App 都是自己独立完成的吗？&lt;br&gt;（我说是，但是他可能怕我撒谎，还要继续问一下）&lt;/p&gt;
+&lt;p&gt;23.说一下你平时发布 App 的流程&lt;/p&gt;
+&lt;p&gt;24.是你自己买的开发者账号吗？有 iPhone 吗？&lt;br&gt;（of course~）&lt;/p&gt;
+&lt;p&gt;25.是怎么想到要做 iOS 或者 Android 开发这个行当的？&lt;br&gt;（我说了我的心路历程  = = ）&lt;/p&gt;
+&lt;p&gt;26.会用 C++ 吗？&lt;br&gt;（我说我学了，但是没在实际项目中用过）&lt;/p&gt;
+&lt;p&gt;27.C++ 里面传递一个引用和传递一个指针有什么区别？&lt;br&gt;（其实我是知道的，但是当时懵逼了，瞎说了一通，大概是说错了）&lt;/p&gt;
+&lt;p&gt;28.问了多线程、主线程阻塞、UI 更新、异步这一块的问题&lt;/p&gt;
+&lt;p&gt;29.全剧终，他说过两天还要再有人给我打电话，所以我感觉应该第一关是过了，据说下一面是总监面，如果顺利通过的话，再来写第二篇&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;目前大三，准备暑假去腾讯做 iOS 开发实习，昨天接到了电话面试，（应该是那个部门的 iOS 开发组组长打来的，我也不确定），来分享一下他问的那些题目。&lt;/p&gt;
+&lt;p&gt;感觉他提问是按照我写的简历来问的，而且考虑到我是准备去做实习生，也可能问的相对简单，我根据回忆写一下，大家
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -510,7 +638,7 @@ setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;test
     <link href="/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
     <id>/2015/08/07/生成高斯模糊效果背景/</id>
     <published>2015-08-07T03:44:36.000Z</published>
-    <updated>2016-04-09T03:45:04.000Z</updated>
+    <updated>2016-04-09T07:12:49.000Z</updated>
     
     <content type="html">&lt;p&gt;做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。&lt;/p&gt;
 &lt;p&gt;我把这个处理过程用 Swift 封装成了一个函数，供大家参考。&lt;/p&gt;
@@ -554,6 +682,8 @@ func
     
     </summary>
     
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
