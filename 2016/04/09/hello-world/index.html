@@ -3,23 +3,34 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Hexo</title>
+  <title>扯淡 Method Swizzling | KyXu 的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="###写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
+
+###这是个啥
+
+swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="扯淡 Method Swizzling">
 <meta property="og:url" content="http://kyxu.tech/2016/04/09/hello-world/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-04-08T17:11:10.000Z">
+<meta property="og:site_name" content="KyXu 的技术博客">
+<meta property="og:description" content="###写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
+
+###这是个啥
+
+swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T02:31:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="扯淡 Method Swizzling">
+<meta name="twitter:description" content="###写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
+
+###这是个啥
+
+swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="KyXu 的技术博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +51,7 @@ Quick">
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">KyXu 的技术博客</a>
       </h1>
       
     </div>
@@ -80,7 +91,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      扯淡 Method Swizzling
     </h1>
   
 
@@ -88,20 +99,77 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>###写在前面<br>关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。<br>而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。<br>本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。</p>
+<hr>
+<p>###这是个啥</p>
+<ol>
+<li>swizz 这个词在英语里面是“欺骗”的意思。<br>Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，<strong>是用来互换两个方法的实现的技巧。</strong></li>
+<li>这东西并不常用，比如我们用方法 A 实现了 a 这件事，方法 B 实现了 b 这件事，现在你非要用 A 实现 b，B 实现 a，即便技术上是可行的，你图个啥？回头再换回来你还记得不？再换第三次呢？</li>
+<li>那么什么时候可能需要用到这个东西呢？调试的时候。<br>如果方法 A、B 我都知道怎么实现的，那确实不用换。但是假如方法 A 的实现被隐藏了，那么我是不是可以用方法 B 调用方法 A，再顺便添加点别的功能，然后进行 A、B 实现 swizz。<br>这样再调用方法 A 的时候，就多了一点我们之前顺便添加的功能。<br>有人会说，你这有意思么，你直接调用方法 B 不就得了，为啥还要换？重点在于，方法 A 如何被调用可能不是我们可以决定的啊。或许这个方法已经在无数个地方被调用了无数次，那我想批量替换的话，当然就可以 swizz 了。</li>
+</ol>
+<hr>
+<p>###举栗子<br>比如说，在某个项目中，NSArray 实例的下面这个方法被调用了 N 多次</p>
+<pre><code><span class="func"><span class="keyword">func</span> <span class="title">containsObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Bool</span>
+</code></pre><p>现在我想调试一下，看看如果这个方法返回 true，即数组包含我们传入的元素的时候，这个元素在数据的什么位置（index）。</p>
+<pre><code><span class="func"><span class="keyword">func</span> <span class="title">indexOfObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Int</span>
+</code></pre><p>当然直接调用上面这个方法就可以知道 index，但是 <code>containsObject</code> 被使用了太多次，Xcode 现在又不支持 Swift 重构，懒得改了。那就写个新方法，给原方法加个可以输出 index 的功能，再用 swizz 替换一下两个方法的实现吧。</p>
+<p>这里我贴了完整的一个 demo 的代码，你可以直接粘到 Xcode 里面运行。</p>
+<pre><code><span class="keyword">import</span> UIKit
+
+<span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>{
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.viewDidLoad()
+
+        <span class="keyword">let</span> arr = <span class="type">NSArray</span>(array: [<span class="string">"Swift"</span>,<span class="string">"Method"</span>,<span class="string">"Swizzling"</span>])
+
+        <span class="built_in">print</span>(<span class="string">"-----Swizzling 之前-----"</span>)
+        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// true</span>
+
+        <span class="type">NSArray</span>.swizz() <span class="comment">// 方法互换</span>
+
+        <span class="built_in">print</span>(<span class="string">"-----Swizzling 之后-----"</span>)
+        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// 先输出 index，再 true</span>
+
+        <span class="type">NSArray</span>.swizz() <span class="comment">// 方法再换回来</span>
+
+        <span class="built_in">print</span>(<span class="string">"-----Swizzling 两下-----"</span>)
+        <span class="built_in">print</span>(arr.containsObject(<span class="string">"Swift"</span>)) <span class="comment">// true</span>
+    }
+
+}
+
+<span class="class"><span class="keyword">extension</span> <span class="title">NSArray</span> </span>{
+
+    <span class="comment">// 用来和默认方法进行替换的方法</span>
+    <span class="func"><span class="keyword">func</span> <span class="title">myContainsObject</span><span class="params">(anObject: AnyObject)</span></span> -&gt; <span class="type">Bool</span> {
+        <span class="comment">// 输出元素的 index，这是默认的原方法不具有的功能</span>
+        <span class="keyword">if</span> <span class="keyword">self</span>.myContainsObject(anObject) {
+            <span class="built_in">print</span>(<span class="string">"index：\\(self.indexOfObject(anObject))"</span>)
+        }
+        <span class="comment">// 不会产生死循环，因为运行期间，下面的方法已经被替换成了默认的 containsObject</span>
+        <span class="keyword">return</span> <span class="keyword">self</span>.myContainsObject(anObject)
+    }
+
+    <span class="comment">// 用来给不同方法互相替换的方法</span>
+    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">swizz</span>() </span>{
+        <span class="keyword">let</span> originalMethod = class_getInstanceMethod(<span class="type">NSArray</span>.<span class="keyword">self</span>, #selector(containsObject(<span class="number">_</span>:)))
+        <span class="keyword">let</span> swizzledMethod = class_getInstanceMethod(<span class="type">NSArray</span>.<span class="keyword">self</span>, #selector(myContainsObject(<span class="number">_</span>:)))
+        method_exchangeImplementations(originalMethod, swizzledMethod)
+    }
+}
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="console"><br>【注意几点】</p>
+<ol>
+<li>这里我先后调用了三次 <code>containsObject</code> 这个方法，其中第二次，它的内部实现被  <code>myContainsObject</code> 这个方法的内部实现替换掉了。</li>
+<li><code>myContainsObject</code> 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 <code>myContainsObject</code> 这个词在你的脑子里换成 <code>containsObject</code>（如果确定此时两个方法确实互换了实现）。</li>
+</ol>
+<hr>
+<p>###最后<br>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kyxu.tech/2016/04/09/hello-world/" data-id="cims0hjyl0000absat4t55ntl" class="article-share-link">Share</a>
+      <a data-url="http://kyxu.tech/2016/04/09/hello-world/" data-id="cimsicaai0000yysa2tp2pbc4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +208,7 @@ Quick">
       <ul>
         
           <li>
-            <a href="/2016/04/09/hello-world/">Hello World</a>
+            <a href="/2016/04/09/hello-world/">扯淡 Method Swizzling</a>
           </li>
         
       </ul>
