@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kyxu.tech/2016/04/09/hello-world/</loc>
+    <loc>http://kyxu.tech/2016/04/09/%E6%89%AF%E6%B7%A1MethodSwizzling/</loc>
     
-    <lastmod>2016-04-09T02:31:51.000Z</lastmod>
+    <lastmod>2016-04-09T03:04:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kyxu.tech/tags/index.html</loc>
+    
+    <lastmod>2016-04-09T02:58:10.000Z</lastmod>
     
   </url>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kyxu.tech/"/>
-  <updated>2016-04-09T02:31:51.000Z</updated>
+  <updated>2016-04-09T03:04:41.000Z</updated>
   <id>http://kyxu.tech/</id>
   
   <author>
@@ -16,83 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>扯淡 Method Swizzling</title>
-    <link href="http://kyxu.tech/2016/04/09/hello-world/"/>
-    <id>http://kyxu.tech/2016/04/09/hello-world/</id>
-    <published>2016-04-08T17:11:10.000Z</published>
-    <updated>2016-04-09T02:31:51.000Z</updated>
+    <title>扯淡MethodSwizzling</title>
+    <link href="http://kyxu.tech/2016/04/09/%E6%89%AF%E6%B7%A1MethodSwizzling/"/>
+    <id>http://kyxu.tech/2016/04/09/扯淡MethodSwizzling/</id>
+    <published>2016-04-09T03:04:41.000Z</published>
+    <updated>2016-04-09T03:04:41.000Z</updated>
     
-    <content type="html">&lt;p&gt;###写在前面&lt;br&gt;关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。&lt;br&gt;而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。&lt;br&gt;本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;###这是个啥&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;swizz 这个词在英语里面是“欺骗”的意思。&lt;br&gt;Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，&lt;strong&gt;是用来互换两个方法的实现的技巧。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;这东西并不常用，比如我们用方法 A 实现了 a 这件事，方法 B 实现了 b 这件事，现在你非要用 A 实现 b，B 实现 a，即便技术上是可行的，你图个啥？回头再换回来你还记得不？再换第三次呢？&lt;/li&gt;
-&lt;li&gt;那么什么时候可能需要用到这个东西呢？调试的时候。&lt;br&gt;如果方法 A、B 我都知道怎么实现的，那确实不用换。但是假如方法 A 的实现被隐藏了，那么我是不是可以用方法 B 调用方法 A，再顺便添加点别的功能，然后进行 A、B 实现 swizz。&lt;br&gt;这样再调用方法 A 的时候，就多了一点我们之前顺便添加的功能。&lt;br&gt;有人会说，你这有意思么，你直接调用方法 B 不就得了，为啥还要换？重点在于，方法 A 如何被调用可能不是我们可以决定的啊。或许这个方法已经在无数个地方被调用了无数次，那我想批量替换的话，当然就可以 swizz 了。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;###举栗子&lt;br&gt;比如说，在某个项目中，NSArray 实例的下面这个方法被调用了 N 多次&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;containsObject&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(anObject: AnyObject)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在我想调试一下，看看如果这个方法返回 true，即数组包含我们传入的元素的时候，这个元素在数据的什么位置（index）。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;indexOfObject&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(anObject: AnyObject)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然直接调用上面这个方法就可以知道 index，但是 &lt;code&gt;containsObject&lt;/code&gt; 被使用了太多次，Xcode 现在又不支持 Swift 重构，懒得改了。那就写个新方法，给原方法加个可以输出 index 的功能，再用 swizz 替换一下两个方法的实现吧。&lt;/p&gt;
-&lt;p&gt;这里我贴了完整的一个 demo 的代码，你可以直接粘到 Xcode 里面运行。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
-
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; arr = &lt;span class=&quot;type&quot;&gt;NSArray&lt;/span&gt;(array: [&lt;span class=&quot;string&quot;&gt;&quot;Swift&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;Method&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;Swizzling&quot;&lt;/span&gt;])
-
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;-----Swizzling 之前-----&quot;&lt;/span&gt;)
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(arr.containsObject(&lt;span class=&quot;string&quot;&gt;&quot;Swift&quot;&lt;/span&gt;)) &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;
-
-        &lt;span class=&quot;type&quot;&gt;NSArray&lt;/span&gt;.swizz() &lt;span class=&quot;comment&quot;&gt;// 方法互换&lt;/span&gt;
-
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;-----Swizzling 之后-----&quot;&lt;/span&gt;)
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(arr.containsObject(&lt;span class=&quot;string&quot;&gt;&quot;Swift&quot;&lt;/span&gt;)) &lt;span class=&quot;comment&quot;&gt;// 先输出 index，再 true&lt;/span&gt;
-
-        &lt;span class=&quot;type&quot;&gt;NSArray&lt;/span&gt;.swizz() &lt;span class=&quot;comment&quot;&gt;// 方法再换回来&lt;/span&gt;
-
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;-----Swizzling 两下-----&quot;&lt;/span&gt;)
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(arr.containsObject(&lt;span class=&quot;string&quot;&gt;&quot;Swift&quot;&lt;/span&gt;)) &lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;
-    }
-
-}
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NSArray&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;comment&quot;&gt;// 用来和默认方法进行替换的方法&lt;/span&gt;
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myContainsObject&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(anObject: AnyObject)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt; {
-        &lt;span class=&quot;comment&quot;&gt;// 输出元素的 index，这是默认的原方法不具有的功能&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myContainsObject(anObject) {
-            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;index：\\(self.indexOfObject(anObject))&quot;&lt;/span&gt;)
-        }
-        &lt;span class=&quot;comment&quot;&gt;// 不会产生死循环，因为运行期间，下面的方法已经被替换成了默认的 containsObject&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myContainsObject(anObject)
-    }
-
-    &lt;span class=&quot;comment&quot;&gt;// 用来给不同方法互相替换的方法&lt;/span&gt;
-    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;swizz&lt;/span&gt;() &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; originalMethod = class_getInstanceMethod(&lt;span class=&quot;type&quot;&gt;NSArray&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, #selector(containsObject(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt;:)))
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; swizzledMethod = class_getInstanceMethod(&lt;span class=&quot;type&quot;&gt;NSArray&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, #selector(myContainsObject(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt;:)))
-        method_exchangeImplementations(originalMethod, swizzledMethod)
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;console&quot;&gt;&lt;br&gt;【注意几点】&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;这里我先后调用了三次 &lt;code&gt;containsObject&lt;/code&gt; 这个方法，其中第二次，它的内部实现被  &lt;code&gt;myContainsObject&lt;/code&gt; 这个方法的内部实现替换掉了。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;myContainsObject&lt;/code&gt; 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 &lt;code&gt;myContainsObject&lt;/code&gt; 这个词在你的脑子里换成 &lt;code&gt;containsObject&lt;/code&gt;（如果确定此时两个方法确实互换了实现）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;###最后&lt;br&gt;如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。&lt;br&gt;如果你要在实际项目里用它……你要是真能用上也挺厉害。&lt;/p&gt;
-</content>
+    <content type="html"></content>
     
     <summary type="html">
-    
-      &lt;p&gt;###写在前面&lt;br&gt;关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。&lt;br&gt;而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。&lt;br&gt;本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使
     
     </summary>
     
