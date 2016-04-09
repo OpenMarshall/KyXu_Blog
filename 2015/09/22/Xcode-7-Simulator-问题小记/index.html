@@ -84,15 +84,15 @@
 <meta property="og:url" content="/2015/09/22/Xcode-7-Simulator-问题小记/index.html">
 <meta property="og:site_name" content="KyXu Tech">
 <meta property="og:description" content="问题1：Xcode -&amp;gt; Preferences -&amp;gt; Downloads 点击下载按钮弹出错误提示框这里我没有再重现当时 Xcode 弹出错误提示框的场景，大概是在你想要下载 iOS 8.x 的 Simulator 或者 iOS 9.0 Documentation 的时候，告诉你有个什么什么地址不安全，你是否仍然要下载模拟器，然后你跟 Xcode 说『是的，我仍然要下载』 的时候，就">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-829827fb9a433ede.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-066d1ca8f052ba61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-4a26964f798f426b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-38c46e509bd5a82c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:32:14.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/sim0.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/sim1.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/sim2.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/sim3.png">
+<meta property="og:updated_time" content="2016-04-09T16:23:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode 7 Simulator 问题小记">
 <meta name="twitter:description" content="问题1：Xcode -&amp;gt; Preferences -&amp;gt; Downloads 点击下载按钮弹出错误提示框这里我没有再重现当时 Xcode 弹出错误提示框的场景，大概是在你想要下载 iOS 8.x 的 Simulator 或者 iOS 9.0 Documentation 的时候，告诉你有个什么什么地址不安全，你是否仍然要下载模拟器，然后你跟 Xcode 说『是的，我仍然要下载』 的时候，就">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-829827fb9a433ede.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/sim0.png">
 
 
 
@@ -290,9 +290,9 @@
 
       
         <h1 id="问题1：Xcode_-&gt;_Preferences_-&gt;_Downloads_点击下载按钮弹出错误提示框">问题1：Xcode -&gt; Preferences -&gt; Downloads 点击下载按钮弹出错误提示框</h1><p><br>这里我没有再重现当时 Xcode 弹出错误提示框的场景，大概是在你想要下载 iOS 8.x 的 Simulator 或者 iOS 9.0 Documentation 的时候，告诉你有个什么什么地址不安全，你是否仍然要下载模拟器，然后你跟 Xcode 说『是的，我仍然要下载』 的时候，就没有然后了。</p>
-<p><strong>解决办法如下：<br>在终端输入如下内容，通过这个方式打开 Xcode:<br>/Applications/Xcode.app/Contents/MacOS/Xcode<br>或者进入 Finder：右键 Xcode.app -&gt; 显示包内容</strong><br><img src="http://upload-images.jianshu.io/upload_images/251884-829827fb9a433ede.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xcode.png"><br>在我这里，通过这个方法启动 Xcode 一次之后，之后不再打开这个 Unix可执行文件，而只是在我的 Dock 栏用正常方式点开 Xcode，也可以正常下载 Simulator 了，虽然速度还是慢的出奇，不过至少能下载了。<br><img src="http://upload-images.jianshu.io/upload_images/251884-066d1ca8f052ba61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xcode -&gt; Preferences.png"></p>
-<h1 id="问题2：模拟器可以启动_App，也可以进入后台，但是看不见主屏，主屏一直是纯黑色+白色状态栏">问题2：模拟器可以启动 App，也可以进入后台，但是看不见主屏，主屏一直是纯黑色+白色状态栏</h1><p><img src="http://upload-images.jianshu.io/upload_images/251884-4a26964f798f426b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Reset Content and Settings.png"><br>这个时候，像往常一样，点『Reset Content and Settings』是<strong>没用的</strong>。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-38c46e509bd5a82c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xcode-&gt;Window-&gt;Devices.png"><br>去上图的地方，Xcode-&gt;Window-&gt;Devices，右键左栏的模拟器，Delete掉，再点左下角的+号重新添加回来，就OK了 <strong>:</strong> )</p>
+<p><strong>解决办法如下：<br>在终端输入如下内容，通过这个方式打开 Xcode:<br>/Applications/Xcode.app/Contents/MacOS/Xcode<br>或者进入 Finder：右键 Xcode.app -&gt; 显示包内容</strong><br><img src="http://7xssu3.com2.z0.glb.clouddn.com/sim0.png" alt="Xcode.png"><br>在我这里，通过这个方法启动 Xcode 一次之后，之后不再打开这个 Unix可执行文件，而只是在我的 Dock 栏用正常方式点开 Xcode，也可以正常下载 Simulator 了，虽然速度还是慢的出奇，不过至少能下载了。<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/sim1.png" alt="Xcode -&gt; Preferences.png"></p>
+<h1 id="问题2：模拟器可以启动_App，也可以进入后台，但是看不见主屏，主屏一直是纯黑色+白色状态栏">问题2：模拟器可以启动 App，也可以进入后台，但是看不见主屏，主屏一直是纯黑色+白色状态栏</h1><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/sim2.png" alt="Reset Content and Settings.png"><br>这个时候，像往常一样，点『Reset Content and Settings』是<strong>没用的</strong>。</p>
+<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/sim3.png" alt="Xcode-&gt;Window-&gt;Devices.png"><br>去上图的地方，Xcode-&gt;Window-&gt;Devices，右键左栏的模拟器，Delete掉，再点左下角的+号重新添加回来，就OK了 <strong>:</strong> )</p>
 
       
     </div>

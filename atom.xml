@@ -915,16 +915,16 @@ self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&q
     <link href="/2015/11/26/%E5%B8%A6%E6%9C%89-Extension-Target-%E7%9A%84-App%EF%BC%8C%E5%A6%82%E4%BD%95%E7%AD%BE%E5%90%8D%E6%89%93%E5%8C%85/"/>
     <id>/2015/11/26/带有-Extension-Target-的-App，如何签名打包/</id>
     <published>2015-11-26T07:23:12.000Z</published>
-    <updated>2016-04-09T07:24:46.000Z</updated>
+    <updated>2016-04-09T16:15:24.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。&lt;br&gt;添加完了之后，你的项目看起来是这个样子的：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-e93e1fdf586dfbd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xcode ScreenShot&quot;&gt;&lt;br&gt;那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex0.png&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。&lt;br&gt;添加完了之后，你的项目看起来是这个样子的：&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex1.png&quot; alt=&quot;Xcode ScreenShot&quot;&gt;&lt;br&gt;那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。&lt;/p&gt;
 &lt;p&gt;1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的 Provisioning Profile 的时候，只要申请一份就可以了，即给和你的 App 同名的那个申请。&lt;br&gt;（假如你的App的名字是 wechat，主 Target 的 Bundle ID 写成 com.xky.wechat, Extension Target 的 Bundle ID 写成 com.xky.wechat.ex, 那么你的 Provisioning Profile 只要和 com.xky.wechat 捆绑； “com.xky.wechat.ex” 除了要写在相应的 Target 上，不需要再有与其相匹配的 Provisioning Profile）&lt;/p&gt;
-&lt;p&gt;2.两个 TARGET 的 Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 那里都选择 Automatic&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-4df57600487e444d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;3.真正自己设置  Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：&lt;br&gt;（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-815001fe681fc515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.两个 TARGET 的 Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 那里都选择 Automatic&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex2.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;3.真正自己设置  Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：&lt;br&gt;（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex3.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+      &lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex0.png&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。
     
     </summary>
     
@@ -938,16 +938,17 @@ self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&q
     <link href="/2015/11/24/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E8%A2%AB%E8%AF%AF%E8%AE%A4%E4%B8%BA%E6%98%AF-bug-%E7%9A%84%E4%B8%9C%E8%A5%BF/"/>
     <id>/2015/11/24/分享一个被误认为是-bug-的东西/</id>
     <published>2015-11-24T07:25:50.000Z</published>
-    <updated>2016-04-09T07:26:12.000Z</updated>
+    <updated>2016-04-09T16:14:32.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d20ab032c1c3aeb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;看着像bug的情况&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-fec073946702101e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;正常情况&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注意第一幅图，『收藏』Tab按钮和右上角的『垃圾桶』按钮，是灰色的（本应该是白色的）。&lt;br&gt;出现这种情况，没有任何代码的问题 （除非你故意把它设置成灰色）。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-61cec0a378b5d78b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;加深颜色&quot;&gt;&lt;br&gt;如上图，设置-&amp;gt;通用-&amp;gt;辅助功能-&amp;gt;加深颜色，这个设置项，如果你打开了（自己常用的真机，很可能是打开的），纯白色按钮就会变成灰色。&lt;br&gt;其他颜色没试过，但是提醒大家，做类似测试的时候，确保你已经把上面这个选项关掉了。&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bug0.png&quot; alt=&quot;看着像bug的情况&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bug1.png&quot; alt=&quot;正常情况&quot;&gt;&lt;/p&gt;
+&lt;p&gt;注意第一幅图，『收藏』Tab按钮和右上角的『垃圾桶』按钮，是灰色的（本应该是白色的）。&lt;br&gt;出现这种情况，没有任何代码的问题 （除非你故意把它设置成灰色）。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bug2.png&quot; alt=&quot;加深颜色&quot;&gt;&lt;br&gt;如上图，设置-&amp;gt;通用-&amp;gt;辅助功能-&amp;gt;加深颜色，这个设置项，如果你打开了（自己常用的真机，很可能是打开的），纯白色按钮就会变成灰色。&lt;br&gt;其他颜色没试过，但是提醒大家，做类似测试的时候，确保你已经把上面这个选项关掉了。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d20ab032c1c3aeb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+      &lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bug0.png&quot; alt=&quot;看着像bug的情况&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bug1.pn
     
     </summary>
     

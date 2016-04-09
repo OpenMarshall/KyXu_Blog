@@ -92,10 +92,10 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
 //创建高斯模糊效果的背景
 func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
     //处理原始NSData数">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:12:49.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/blur0.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/blur1.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/blur2.png">
+<meta property="og:updated_time" content="2016-04-09T16:22:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成高斯模糊效果背景">
 <meta name="twitter:description" content="做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
@@ -103,7 +103,7 @@ func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
 //创建高斯模糊效果的背景
 func createBlurBackground (image:UIImage,view:UIView,blurRadius:Float) {
     //处理原始NSData数">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/blur0.png">
 
 
 
@@ -325,12 +325,12 @@ func createBlurBackground (image:<span class="type">UIImage</span>,view:<span cl
 }
 </code></pre><p>三个参数分别为：image（原始清晰图片）、view（你需要将生成的模糊背景插入在这个view的下层当做背景）、blurRadius（高斯模糊处理的模糊半径）</p>
 <p>其中 let context = CIContext(options: nil)<br>这一句，在真机测试时，会引起控制台报错</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="控制台输出"></p>
+<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/blur0.png" alt="控制台输出"></p>
 <p>这是苹果的一个 Bug ，想要回避这个信息输出可以用下面这一句进行替换：<br>let context = CIContext(options:[kCIContextUseSoftwareRenderer : true])<br>这句可以使图片渲染工作在 CPU 而非 GPU 完成，从而绕过这个 Bug，但是会引起效率下降，耗时大大增加，不推荐使用。</p>
 <p>使用效果展示：</p>
 <pre><code><span class="keyword">self.createBlurBackground(img, </span>view: <span class="keyword">self.gifView, </span><span class="keyword">blurRadius: </span><span class="number">50</span>)
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用前"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="使用后"></p>
+</code></pre><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/blur1.png" alt="使用前"></p>
+<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/blur2.png" alt="使用后"></p>
 
       
     </div>

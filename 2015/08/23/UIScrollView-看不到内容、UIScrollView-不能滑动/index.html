@@ -90,15 +90,15 @@
 上下文关系:代码中的“tipView”是通过 Storyboard 拖线到代码中绑定的 IBOutlet，已经在 self.view 里面了。
 
 这里">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-28c040ed90e5b2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:34:26.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/scroll0.png">
+<meta property="og:updated_time" content="2016-04-09T16:25:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIScrollView 看不到内容、UIScrollView 不能滑动">
 <meta name="twitter:description" content="初学者第一次使用 UIScrollView 的时候，很可能会遇到 UIScrollView 滑动不了，或者明明添加了内容，却看不到的问题。这里展示最简洁、最常态化的一种在 UIScrollView 中添加可以滑动的 UIImageView 的案例。
 上下文关系:代码中的“tipView”是通过 Storyboard 拖线到代码中绑定的 IBOutlet，已经在 self.view 里面了。
 
 这里">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-28c040ed90e5b2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/scroll0.png">
 
 
 
@@ -297,7 +297,7 @@
       
         <p>初学者第一次使用 UIScrollView 的时候，很可能会遇到 UIScrollView 滑动不了，或者明明添加了内容，却看不到的问题。<br>这里展示最简洁、最常态化的一种在 UIScrollView 中添加可以滑动的 UIImageView 的案例。</p>
 <p>上下文关系:代码中的“tipView”是通过 Storyboard 拖线到代码中绑定的 IBOutlet，已经在 self.view 里面了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-28c040ed90e5b2ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置 UIScrollView"></p>
+<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/scroll0.png" alt="设置 UIScrollView"></p>
 <p>这里把 imageView 的 contentMode 设置为 AspectFill 来保证 image 可以填满 imageView ，并且长宽比不改变。<br>容易犯的错误是通过 frame 来初始化 imageView，这是不必要也是不应该的。应该设定好你的图片资源的大小，然后直接用图片资源的frame 去设定 imageView 的 frame，当然这一步也是自动的。<br>接下来要确定 UIScrollView 的 contentSize，即它的内容、可滑动范围。这也直接套用的图片资源的 frame。</p>
 <p>注意点1：必须保证 UIScrollView 的 contentSize 比它本身的 size要大，否则不可能滑动。</p>
 <p>注意点2：现在 imageView 是 UIScrollView 的 subView，所以它的 frame 也是相对 UIScrollView 的，你想要让它和 UIScrollView 刚好一样高，就要把它的 frame 的 y 值设定为0，这也是为什么我推荐你不管这个 y 值，让它自动置为0。假如 UIScrollView 的 y 值为10，你再设定 imageView 的 y 值为10，那么相对于屏幕来说，imageView 的 y 值是20。当它的 y 值大到一定程度，超出了 UIScrollView，你自然就看不到内容了。</p>

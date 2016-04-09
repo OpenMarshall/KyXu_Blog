@@ -84,12 +84,12 @@
 <meta property="og:url" content="/2015/09/12/禁用-WebView-放大镜及拷贝粘贴弹出框/index.html">
 <meta property="og:site_name" content="KyXu Tech">
 <meta property="og:description" content="背景：当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。然而当你做了一系列工作自定义">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:33:38.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/webview0.png">
+<meta property="og:updated_time" content="2016-04-09T16:24:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="禁用 WebView 放大镜及拷贝粘贴弹出框">
 <meta name="twitter:description" content="背景：当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。然而当你做了一系列工作自定义">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/webview0.png">
 
 
 
@@ -292,7 +292,7 @@
 webView.<span class="function"><span class="title">stringByEvaluatingJavaScriptFromString</span><span class="params">(<span class="string">"document.documentElement.style.webkitTouchCallout='none';"</span>)</span></span>
 </code></pre><p>将这两行代码加入到 webViewShouldLoadWithRequest 方法中，可以通过CSS来修改网页。</p>
 <p>【重点】</p>
-<p>然而这并不是对所有情况都有效，甚至今天在 Xcode 7 GM + iOS 9 环境下，彻底失效了。纠结很久之后，发现<br><img src="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UILongPressGestureRecognizer.png"></p>
+<p>然而这并不是对所有情况都有效，甚至今天在 Xcode 7 GM + iOS 9 环境下，彻底失效了。纠结很久之后，发现<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/webview0.png" alt="UILongPressGestureRecognizer.png"></p>
 <p>长按手势的默认属性中，有一个 minimumPressDuration 默认值是 0.5，也就是说，在长按了0.5秒时，我们自定义的长按手势执行方法和系统的冲突了，于是解决方法显而易见：把自定义长按手势的反应时间缩短到0.5s以内，这样就可以在系统方法执行之前完成操作，而事实上，你甚至可以简单粗暴地把它改为0.1s，依然不会和点按的 Tap 手势有冲突。</p>
 <pre><code>self<span class="class">.longPressPan</span><span class="class">.minimumPressDuration</span> = <span class="number">0.3</span>
 </code></pre><p>希望对大家有所帮助 ：）</p>

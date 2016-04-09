@@ -86,16 +86,16 @@
 <meta property="og:site_name" content="KyXu Tech">
 <meta property="og:description" content="如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。添加完了之后，你的项目看起来是这个样子的：那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。
 1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-e93e1fdf586dfbd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-4df57600487e444d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-815001fe681fc515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:24:46.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ex0.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ex1.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ex2.png">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ex3.png">
+<meta property="og:updated_time" content="2016-04-09T16:15:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="带有 Extension Target 的 App，如何签名打包">
 <meta name="twitter:description" content="如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。添加完了之后，你的项目看起来是这个样子的：那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。
 1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ex0.png">
 
 
 
@@ -292,9 +292,9 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Extension Target"><br>如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。<br>添加完了之后，你的项目看起来是这个样子的：<br><img src="http://upload-images.jianshu.io/upload_images/251884-e93e1fdf586dfbd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xcode ScreenShot"><br>那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。</p>
+        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/ex0.png" alt="Extension Target"><br>如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。<br>添加完了之后，你的项目看起来是这个样子的：<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/ex1.png" alt="Xcode ScreenShot"><br>那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。</p>
 <p>1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的 Provisioning Profile 的时候，只要申请一份就可以了，即给和你的 App 同名的那个申请。<br>（假如你的App的名字是 wechat，主 Target 的 Bundle ID 写成 com.xky.wechat, Extension Target 的 Bundle ID 写成 com.xky.wechat.ex, 那么你的 Provisioning Profile 只要和 com.xky.wechat 捆绑； “com.xky.wechat.ex” 除了要写在相应的 Target 上，不需要再有与其相匹配的 Provisioning Profile）</p>
-<p>2.两个 TARGET 的 Build Settings-&gt;Code Signing-&gt;Provisioning Profile 那里都选择 Automatic<br><img src="http://upload-images.jianshu.io/upload_images/251884-4df57600487e444d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>3.真正自己设置  Build Settings-&gt;Code Signing-&gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：<br>（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）<br><img src="http://upload-images.jianshu.io/upload_images/251884-815001fe681fc515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>2.两个 TARGET 的 Build Settings-&gt;Code Signing-&gt;Provisioning Profile 那里都选择 Automatic<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/ex2.png" alt="Paste_Image.png"><br>3.真正自己设置  Build Settings-&gt;Code Signing-&gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：<br>（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/ex3.png" alt="Paste_Image.png"></p>
 
       
     </div>
