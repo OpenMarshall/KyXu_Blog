@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-09T06:32:43.000Z</updated>
+  <updated>2016-04-09T07:09:35.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>腾讯 iOS 开发实习电话面试记录（一）</title>
+    <link href="/2016/04/09/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>/2016/04/09/腾讯-iOS-开发实习电话面试记录（一）/</id>
+    <published>2016-04-09T07:09:35.000Z</published>
+    <updated>2016-04-09T07:09:35.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用 protocol 与 extension 来限制函数作用域</title>
+    <link href="/2016/04/09/%E4%BD%BF%E7%94%A8-protocol-%E4%B8%8E-extension-%E6%9D%A5%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>/2016/04/09/使用-protocol-与-extension-来限制函数作用域/</id>
+    <published>2016-04-09T07:07:31.000Z</published>
+    <updated>2016-04-09T07:07:31.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在你的 App 中使用《一拳超人》背景色</title>
+    <link href="/2016/04/09/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
+    <id>/2016/04/09/在你的-App-中使用《一拳超人》背景色/</id>
+    <published>2016-04-09T07:05:32.000Z</published>
+    <updated>2016-04-09T07:05:33.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>腾讯 iOS 开发实习电话面试记录（二）</title>
+    <link href="/2016/04/09/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>/2016/04/09/腾讯-iOS-开发实习电话面试记录（二）/</id>
+    <published>2016-04-09T07:04:28.000Z</published>
+    <updated>2016-04-09T07:04:28.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Adobe Xd 简明教程 &lt;对比 Sketch&gt;</title>
+    <link href="/2016/04/09/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
+    <id>/2016/04/09/Adobe-Xd-简明教程-对比-Sketch/</id>
+    <published>2016-04-09T07:02:32.000Z</published>
+    <updated>2016-04-09T07:02:52.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。&lt;/p&gt;
+&lt;p&gt;如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative Cloud Desktop，我传了一份到&lt;a href=&quot;http://yun.baidu.com/share/link?shareid=3274616498&amp;amp;uk=2097307015&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度盘&lt;/a&gt;，戳链接下载吧。如果用不了的话，里面还有一份 Creative Cloud Installer，装上 Creative Cloud Desktop 之后，可以在线安装 Xd。Sketch 是收费软件，就不给地址了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这阵容！&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在那个没有 Sketch 的年代，Photoshop 作为图像处理软件之王，横行了很久。Sketch 出现之后呢，虽然 Photoshop 依然在横行，但是在 UI 这个领域，至少被 Sketch 冲击地不轻。而 Photoshop 有自己的产品定位，就是做综合功能最强大的 CG 软件（实际上它也确实做到了），不能为了 Sketch 而改掉自己。&lt;strong&gt;等了好久终于等到今天！Adobe 出了一款和 Sketch 定位一模一样的产品 —— Adobe Xd！&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;基础&quot;&gt;基础&lt;/h1&gt;&lt;p&gt;如果您已经会用 Sketch 的话，那是最好，如果是不会做 UI 的程序员的话……快去学一下噻（也只能凑合着看啦）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;正文&quot;&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-907915cdb210cd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch &amp;amp; Xd&quot;&gt;&lt;br&gt;如图，左边是 Sketch，右边是 Xd，我分别加入了一个初始的 iPhone 6 大小的 Artboard，别说两边界面基本一样，就连用词都没差。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-cc71589e434133e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Insert&quot;&gt;&lt;br&gt;Sketch 把插入新元素这个功能放到了 Insert 里面，平时使用基本都是用快捷键的，虽然 Xd 也支持用快捷键来调用这些工具，但是默认左边还有个边栏一直放在这，和 Photoshop 如出一辙，要知道 Xd 的工具比 Photoshop 少的不是一点半点啊，个人感觉这个栏有点鸡肋。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-84745362c36c3019.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd 左栏&quot;&gt;&lt;br&gt;而 Sketch 那个丰富的顶部工具栏，在 Xd 里面被分拆了。如 Union、Subtract 等布尔运算，被放到了右侧栏，Mask、Group 等功能，放到了软件的顶部菜单栏里面，这使得 Xd 看起来更简洁一些。不过无所谓，在两个软件里，这些功能都可以用快捷键使用。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-c2984ebd38dab1b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch 顶部工具栏&quot;&gt;&lt;br&gt;那么 Xd 的顶部放了什么呢&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-ae4cceed563422d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;通过这个入口，加入了做原型的功能！一看就明了，有木有！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a54c9d717608162a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;如果你是做 iOS 开发的，这些 Segue、Easing、Duration、TARGET 的用词，不能再熟悉了，对开发人员不能再友好。&lt;/p&gt;
+&lt;p&gt;回到 Xd 的 Design 这个地方，我发现缺少了 Sketch 左边那个图层管理的列表，还是有些别扭。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-6390d788d164d403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;一个较为复杂的 Sketch 项目&quot;&gt;&lt;/p&gt;
+&lt;p&gt;比如对于上面这个界面，如果没有左边这个管理界面的话，而如果这个东西又是别人做的，我必须要逐个点击才知道谁和谁是一组的，就很麻烦。而且在 Xd 里面，不导出，你是不知道某一个图层的名字的。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-76e65022be7f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;比如这么一个圆形，虽然导出的时候我可以更改它的命名，但是如果我有20个不同的圆，我可能会希望先全部命名好，再批量导出。&lt;/p&gt;
+&lt;p&gt;不过在导出的时候，除了文件命名这个事情之外，有一个地方 Xd 做的非常棒，那就是自动生成 1x、2x、3x 等不同尺寸。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-28f74ff40fd51eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;虽然在 Sketch 里面我们可以给每一个图层加一个 Slice，再给 Slice 设定导出的 1x、2x、3x，还是没有 Xd 的这个解决方案好。针对 Android，Xd 也给了相应的从 ldpi 到 xxxhdpi 的六种规格。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-f1227259089e931e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Sketch Slice&quot;&gt;&lt;br&gt;当然也不是说 Sketch 的 Slice 就一无是处，繁琐的东西它当然就自定义程度高一些。比如我们做了一个圆形，要导出一个左半圆和右半圆，那当然用 Slice 要方便的多。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;除此之外，Sketch 还有安装插件的功能，也凭借先发优势积累了大量的资源和论坛内容。不知道可以做原型的 Xd 和它的好爸爸 Adobe，能不能有机会一举杀入 Sketch 的阵地。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;&lt;p&gt;因为我个人平时不做原型，对这个要求不高，所以现在 Xd 做原型的功能对我来说，简单、够用。&lt;br&gt;假设原型工具占了产品界面设计过程的 20%，那么 Adobe 可能会希望把以前的 PS + Sketch = 80% 的情况，变成 PS + Xd = 100% 吧。&lt;br&gt;就目前工作来说，我会尝试开始用 Xd，遇到个别情况，Xd 不顺手的话，会打开 Sketch，两把刷子一起用，等时间长了，哪个更适合我就有概念了。相当长的一段时间内，我是不会删掉 Sketch 的，就凭那些优质的 Sketch 资源，我也不会删。&lt;br&gt;于个人喜好，虽然我忠爱 Adobe，但垄断总是不好的，Sketch 坚挺住啊！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望
+    
+    </summary>
+    
+    
+      <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>扯淡 Method Swizzling</title>
@@ -148,7 +251,7 @@
     <link href="/2016/03/27/Swift-Print-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
     <id>/2016/03/27/Swift-Print-高级用法/</id>
     <published>2016-03-27T06:59:00.000Z</published>
-    <updated>2016-04-09T07:01:51.000Z</updated>
+    <updated>2016-04-09T07:06:32.000Z</updated>
     
     <content type="html">&lt;p&gt;这个东西不是我写的，&lt;a href=&quot;http://stackoverflow.com/questions/30865233/print-without-newline-in-swift-2-0/30865283#30865283&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;出自 StackOverFlow&lt;/a&gt;，但我觉得实在是写得太好了，于是截取了该部分分享出来，感谢原作者。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-36ae85cb732a2b30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;StackOverFlow&quot;&gt;&lt;/p&gt;
 </content>
@@ -195,6 +298,210 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>伪造一个 SFSafariViewController</title>
+    <link href="/2016/03/13/%E4%BC%AA%E9%80%A0%E4%B8%80%E4%B8%AA-SFSafariViewController/"/>
+    <id>/2016/03/13/伪造一个-SFSafariViewController/</id>
+    <published>2016-03-13T07:06:54.000Z</published>
+    <updated>2016-04-09T07:07:18.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let safari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
+self.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;presentViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(safari, animated: true, completion: nil)&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我尝试给出一个简化版（仅仅展示网页，没有其他功能）的 SFSafariViewController，来方便地在 iOS 9 以下的系统中调用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; WebKit
+
+&lt;span class=&quot;comment&quot;&gt;// 如果用户使用 iOS 8，则没有 SFSafariViewController，用这个 VC 来加载一个网页&lt;/span&gt;
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;FakeSafariViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url:&lt;span class=&quot;type&quot;&gt;NSURL&lt;/span&gt;!
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; webview = &lt;span class=&quot;type&quot;&gt;WKWebView&lt;/span&gt;()
+
+
+    &lt;span class=&quot;comment&quot;&gt;// MARK: - Init&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;convenience&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt; (&lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;: &lt;span class=&quot;type&quot;&gt;NSURL&lt;/span&gt;) {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;()
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.url = &lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;
+    }
+
+
+
+    &lt;span class=&quot;comment&quot;&gt;// MARK: - Main&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
+
+        &lt;span class=&quot;comment&quot;&gt;// webview&lt;/span&gt;
+        webview.frame = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.frame
+        webview.loadRequest(&lt;span class=&quot;type&quot;&gt;NSURLRequest&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;: url))
+        view.addSubview(webview)
+
+        &lt;span class=&quot;comment&quot;&gt;// 屏幕旋转监听&lt;/span&gt;
+        &lt;span class=&quot;type&quot;&gt;NSNotificationCenter&lt;/span&gt;.defaultCenter().addObserver(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, selector: &lt;span class=&quot;string&quot;&gt;&quot;screenRotate:&quot;&lt;/span&gt;,
+            name: &lt;span class=&quot;type&quot;&gt;UIDeviceOrientationDidChangeNotification&lt;/span&gt;, object: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;)
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
+    }
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;screenRotate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(notification:NSNotification)&lt;/span&gt;&lt;/span&gt; {
+        webview.frame = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.frame
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;调用时，表现起来和 SFSafariViewController 是一样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let realSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
+let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;FakeSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然，如果如果你要在 iOS 8 以下的环境中使用的话，把 WKWebView 换成 UIWebView 就好了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;【Github】&lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/FakeSafariVC.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这段代码&lt;/a&gt;出现在了&lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; SwiftGG 项目&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let safari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我用 JS 抓了 SwiftGG，做了个客户端</title>
+    <link href="/2016/03/11/%E6%88%91%E7%94%A8-JS-%E6%8A%93%E4%BA%86-SwiftGG%EF%BC%8C%E5%81%9A%E4%BA%86%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    <id>/2016/03/11/我用-JS-抓了-SwiftGG，做了个客户端/</id>
+    <published>2016-03-11T07:08:48.000Z</published>
+    <updated>2016-04-09T07:09:29.000Z</updated>
+    
+    <content type="html">&lt;p&gt;我用 Javascript 抓取了 &lt;a href=&quot;http://swift.gg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftGG 网站&lt;/a&gt;，做了一个简易的客户端，方便大家查看上面的文章。&lt;/p&gt;
+&lt;p&gt;这是 &lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github 地址&lt;/a&gt;，欢迎大家随手 Star。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-ba85a13459b7781b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;ScreenShot1&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-144e8341d05a28a0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;ScreenShot2&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我用 Javascript 抓取了 &lt;a href=&quot;http://swift.gg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SwiftGG 网站&lt;/a&gt;，做了一个简易的客户端，方便大家查看上面的文章。&lt;/p&gt;
+&lt;p&gt;这是 &lt;a href=&quot;http
+    
+    </summary>
+    
+    
+      <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>两个函数搞定本地存储</title>
+    <link href="/2016/02/29/%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E6%90%9E%E5%AE%9A%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/"/>
+    <id>/2016/02/29/两个函数搞定本地存储/</id>
+    <published>2016-02-29T07:10:22.000Z</published>
+    <updated>2016-04-09T07:10:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// MARK: - Store&lt;/span&gt;
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;StoreType&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; userDefaults
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; plist
+}
+
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setContentToDevice&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(content:AnyObject, key:String, type:StoreType)&lt;/span&gt;&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .userDefaults {
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; defaults = &lt;span class=&quot;type&quot;&gt;NSUserDefaults&lt;/span&gt;.standardUserDefaults()
+        defaults.setObject(content, forKey: key)
+        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Set - UserDefaults&quot;&lt;/span&gt;)
+    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .plist {
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathPrefix = &lt;span class=&quot;type&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(
+            &lt;span class=&quot;type&quot;&gt;NSSearchPathDirectory&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;DocumentDirectory&lt;/span&gt;,
+            &lt;span class=&quot;type&quot;&gt;NSSearchPathDomainMask&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;AllDomainsMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;).first
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathSuffix = &lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt; + key + &lt;span class=&quot;string&quot;&gt;&quot;.plist&quot;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; path = pathPrefix?.stringByAppendingString(pathSuffix) {
+            &lt;span class=&quot;type&quot;&gt;NSKeyedArchiver&lt;/span&gt;.archiveRootObject(content, toFile: path)
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Set - Plist&quot;&lt;/span&gt;)
+        }
+    }
+}
+
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getContentFromDevice&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(key:String, type:StoreType)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;AnyObject&lt;/span&gt;? {
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; returnObject :&lt;span class=&quot;type&quot;&gt;AnyObject&lt;/span&gt;?
+
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .userDefaults {
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; defaults = &lt;span class=&quot;type&quot;&gt;NSUserDefaults&lt;/span&gt;.standardUserDefaults()
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; content = defaults.objectForKey(key)
+        returnObject = content
+        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Get - UserDefaults&quot;&lt;/span&gt;)
+    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .plist {
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathPrefix = &lt;span class=&quot;type&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(
+            &lt;span class=&quot;type&quot;&gt;NSSearchPathDirectory&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;DocumentDirectory&lt;/span&gt;,
+            &lt;span class=&quot;type&quot;&gt;NSSearchPathDomainMask&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;AllDomainsMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;).first
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathSuffix = &lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt; + key + &lt;span class=&quot;string&quot;&gt;&quot;.plist&quot;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; path = pathPrefix?.stringByAppendingString(pathSuffix) {
+            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; content = &lt;span class=&quot;type&quot;&gt;NSKeyedUnarchiver&lt;/span&gt;.unarchiveObjectWithFile(path) {
+                returnObject = content
+                &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Get - Plist&quot;&lt;/span&gt;)
+            }
+        }
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; returnObject
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;函数名和参数名都一看便知是什么意思，只要你存取数据都用的是同一个 Key，就可以操作同一份数据。&lt;/p&gt;
+&lt;p&gt;这里多提供了一个 type 选项来选择通过 NSUserDefaults 或者 Plist 来存储数据。&lt;strong&gt;但是要注意，在这里 NSUserDefaults 只支持存储 NSArray、NSString 等基本类型，如果你要存储自定义类型的实例，必须使用 StoreType.plist 进行存储。此外，这个类还必须进行微小的改动，这部分可以参考&lt;a href=&quot;http://www.jianshu.com/p/3a82f42de5fb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我之前写的一篇文章&lt;/a&gt;。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面给出使用这个函数的范例：（其中 Hero 是我自定义的类）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; arr = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]
+setContentToDevice(arr, key: &lt;span class=&quot;string&quot;&gt;&quot;testArr&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .userDefaults)
+
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; ironMan = &lt;span class=&quot;type&quot;&gt;Hero&lt;/span&gt;(name: &lt;span class=&quot;string&quot;&gt;&quot;Tony Stark&quot;&lt;/span&gt;)
+setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;testHero&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .plist)
+
+&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt; = getContentFromDevice(&lt;span class=&quot;string&quot;&gt;&quot;testArr&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .userDefaults) {
+    print(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;)
+}
+
+&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt; = getContentFromDevice(&lt;span class=&quot;string&quot;&gt;&quot;testHero&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .plist) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;Hero&lt;/span&gt; {
+    print(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;.name)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-b3b0e247c9704d3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;控制台输出&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;防止有人懒得看我之前写的那篇文章，把 Hero Class 这部分代码也贴出来&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Hero&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name:&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;
+
+    &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(name:&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;) {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.name = name
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;()
+    }
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;encodeWithCoder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(aCoder: NSCoder!)&lt;/span&gt;&lt;/span&gt; {
+        aCoder.encodeObject(name, forKey: &lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(coder aDecoder: &lt;span class=&quot;type&quot;&gt;NSCoder&lt;/span&gt;!) {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.name = aDecoder.decodeObjectForKey(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/OpenMarshall/StoreFunctions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是完整项目 Github 地址&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;commen
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

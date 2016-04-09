@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KyXu" />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,22 +78,25 @@
 
 
 
-<meta name="description" content="写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。
-第一轮打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。
-第二轮这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独">
+<meta name="description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
+let safari = SFSafariViewController(URL: url)
+self.presentViewController(safari, animated: true, completion: nil)
+这里我尝试给出一个简化版（仅仅展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里 iOS 开发实习电话面试记录（一）">
-<meta property="og:url" content="/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/index.html">
+<meta property="og:title" content="伪造一个 SFSafariViewController">
+<meta property="og:url" content="/2016/03/13/伪造一个-SFSafariViewController/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。
-第一轮打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。
-第二轮这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独">
-<meta property="og:updated_time" content="2016-04-09T07:00:49.000Z">
+<meta property="og:description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
+let safari = SFSafariViewController(URL: url)
+self.presentViewController(safari, animated: true, completion: nil)
+这里我尝试给出一个简化版（仅仅展">
+<meta property="og:updated_time" content="2016-04-09T07:07:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里 iOS 开发实习电话面试记录（一）">
-<meta name="twitter:description" content="写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。
-第一轮打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。
-第二轮这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独">
+<meta name="twitter:title" content="伪造一个 SFSafariViewController">
+<meta name="twitter:description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
+let safari = SFSafariViewController(URL: url)
+self.presentViewController(safari, animated: true, completion: nil)
+这里我尝试给出一个简化版（仅仅展">
 
 
 
@@ -111,7 +114,7 @@
   };
 </script>
 
-  <title> 阿里 iOS 开发实习电话面试记录（一） | KyXu Tech </title>
+  <title> 伪造一个 SFSafariViewController | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +254,7 @@
             
             
               
-                阿里 iOS 开发实习电话面试记录（一）
+                伪造一个 SFSafariViewController
               
             
           </h1>
@@ -263,8 +266,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-19T14:59:54+08:00" content="2016-03-19">
-              2016-03-19
+            <time itemprop="dateCreated" datetime="2016-03-13T15:06:54+08:00" content="2016-03-13">
+              2016-03-13
             </time>
           </span>
 
@@ -290,21 +293,56 @@
       
 
       
-        <p>写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。</p>
-<h2 id="第一轮">第一轮</h2><p>打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。</p>
-<h2 id="第二轮">第二轮</h2><p>这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独立做了几个 App，然后他让我自我介绍之后，问我是不是整个产品全部是独立做的，我说是，他就只问这个层面的东西了。</p>
-<ol>
-<li>怎么想到要做这些东西的，idea 的来源？</li>
-<li>身边的人都在用吗？</li>
-<li>App 更新情况怎么样，通过什么来更新，怎么了解自己做的东西的缺陷？</li>
-<li>知不知道平时自己的东西活跃度怎么样，每天有多少人用？</li>
-<li>怎么推广自己的东西，推广渠道？除了你已经采用的这些渠道，再想点别的？</li>
-<li>你看淘宝客户端一般都是全五星评论，你怎么来让你的 App 在 AppStore 呈现好的评分？</li>
-<li>（之前谈到有些 App 因为产品思路不对的问题，做失败了）这些放弃了的 App 是哪里有问题？</li>
-<li>如果一定要拯救一下这些 App，你该怎么更新？</li>
-</ol>
-<p>基本就是这些问题，最后说我可以问他一个问题，我就问了一下招聘流程，然后他说每年都有小的变动，目前我也只能保证电话畅通了……</p>
-<p>目测后面的人要猛问技术问题了，Not Afraid。</p>
+        <p>iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：</p>
+<pre><code>let safari = <span class="function"><span class="title">SFSafariViewController</span><span class="params">(URL: url)</span></span>
+self.<span class="function"><span class="title">presentViewController</span><span class="params">(safari, animated: true, completion: nil)</span></span>
+</code></pre><p>这里我尝试给出一个简化版（仅仅展示网页，没有其他功能）的 SFSafariViewController，来方便地在 iOS 9 以下的系统中调用。</p>
+<pre><code><span class="keyword">import</span> UIKit
+<span class="keyword">import</span> WebKit
+
+<span class="comment">// 如果用户使用 iOS 8，则没有 SFSafariViewController，用这个 VC 来加载一个网页</span>
+<span class="class"><span class="keyword">class</span> <span class="title">FakeSafariViewController</span>: <span class="title">UIViewController</span> </span>{
+
+    <span class="keyword">var</span> url:<span class="type">NSURL</span>!
+    <span class="keyword">let</span> webview = <span class="type">WKWebView</span>()
+
+
+    <span class="comment">// MARK: - Init</span>
+    <span class="keyword">convenience</span> <span class="keyword">init</span> (<span class="type">URL</span>: <span class="type">NSURL</span>) {
+        <span class="keyword">self</span>.<span class="keyword">init</span>()
+        <span class="keyword">self</span>.url = <span class="type">URL</span>
+    }
+
+
+
+    <span class="comment">// MARK: - Main</span>
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.viewDidLoad()
+
+        <span class="comment">// webview</span>
+        webview.frame = <span class="keyword">self</span>.view.frame
+        webview.loadRequest(<span class="type">NSURLRequest</span>(<span class="type">URL</span>: url))
+        view.addSubview(webview)
+
+        <span class="comment">// 屏幕旋转监听</span>
+        <span class="type">NSNotificationCenter</span>.defaultCenter().addObserver(<span class="keyword">self</span>, selector: <span class="string">"screenRotate:"</span>,
+            name: <span class="type">UIDeviceOrientationDidChangeNotification</span>, object: <span class="literal">nil</span>)
+    }
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.didReceiveMemoryWarning()
+    }
+
+    <span class="func"><span class="keyword">func</span> <span class="title">screenRotate</span><span class="params">(notification:NSNotification)</span></span> {
+        webview.frame = <span class="keyword">self</span>.view.frame
+    }
+}
+</code></pre><p>调用时，表现起来和 SFSafariViewController 是一样的：</p>
+<pre><code>let realSafari = <span class="function"><span class="title">SFSafariViewController</span><span class="params">(URL: url)</span></span>
+let fakeSafari = <span class="function"><span class="title">FakeSafariViewController</span><span class="params">(URL: url)</span></span>
+</code></pre><p>当然，如果如果你要在 iOS 8 以下的环境中使用的话，把 WKWebView 换成 UIWebView 就好了。</p>
+<hr>
+<p>【Github】<a href="https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/FakeSafariVC.swift" target="_blank" rel="external">这段代码</a>出现在了<a href="https://github.com/OpenMarshall/SwiftGG" target="_blank" rel="external"> SwiftGG 项目</a></p>
 
       
     </div>
@@ -323,21 +361,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/13/伪造一个-SFSafariViewController/" rel="next" title="伪造一个 SFSafariViewController">
-                <i class="fa fa-chevron-left"></i> 伪造一个 SFSafariViewController
+              <a href="/2016/03/11/我用-JS-抓了-SwiftGG，做了个客户端/" rel="next" title="我用 JS 抓了 SwiftGG，做了个客户端">
+                <i class="fa fa-chevron-left"></i> 我用 JS 抓了 SwiftGG，做了个客户端
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/27/Swift-Print-高级用法/" rel="prev" title="Swift Print 高级用法">
-                Swift Print 高级用法 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/" rel="prev" title="阿里 iOS 开发实习电话面试记录（一）">
+                阿里 iOS 开发实习电话面试记录（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -447,7 +491,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一轮"><span class="nav-number">1.</span> <span class="nav-text">第一轮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二轮"><span class="nav-number">2.</span> <span class="nav-text">第二轮</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

@@ -1,0 +1,597 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="设计," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="写在前面本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。
+如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adobe Xd 简明教程 <对比 Sketch>">
+<meta property="og:url" content="/2016/04/09/Adobe-Xd-简明教程-对比-Sketch/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="写在前面本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。
+如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative C">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-907915cdb210cd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-cc71589e434133e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-84745362c36c3019.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-c2984ebd38dab1b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-ae4cceed563422d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-a54c9d717608162a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-6390d788d164d403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-76e65022be7f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-28f74ff40fd51eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-f1227259089e931e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:02:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Adobe Xd 简明教程 <对比 Sketch>">
+<meta name="twitter:description" content="写在前面本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。
+如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative C">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Adobe Xd 简明教程 <对比 Sketch> | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Adobe Xd 简明教程 <对比 Sketch>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-09T15:02:32+08:00" content="2016-04-09">
+              2016-04-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面">写在前面</h1><p>本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。</p>
+<p>如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative Cloud Desktop，我传了一份到<a href="http://yun.baidu.com/share/link?shareid=3274616498&amp;uk=2097307015" target="_blank" rel="external">百度盘</a>，戳链接下载吧。如果用不了的话，里面还有一份 Creative Cloud Installer，装上 Creative Cloud Desktop 之后，可以在线安装 Xd。Sketch 是收费软件，就不给地址了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-e6dbe297c846ad7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这阵容！"></p>
+<p>在那个没有 Sketch 的年代，Photoshop 作为图像处理软件之王，横行了很久。Sketch 出现之后呢，虽然 Photoshop 依然在横行，但是在 UI 这个领域，至少被 Sketch 冲击地不轻。而 Photoshop 有自己的产品定位，就是做综合功能最强大的 CG 软件（实际上它也确实做到了），不能为了 Sketch 而改掉自己。<strong>等了好久终于等到今天！Adobe 出了一款和 Sketch 定位一模一样的产品 —— Adobe Xd！</strong></p>
+<hr>
+<h1 id="基础">基础</h1><p>如果您已经会用 Sketch 的话，那是最好，如果是不会做 UI 的程序员的话……快去学一下噻（也只能凑合着看啦）</p>
+<hr>
+<h1 id="正文">正文</h1><p><img src="http://upload-images.jianshu.io/upload_images/251884-907915cdb210cd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Sketch &amp; Xd"><br>如图，左边是 Sketch，右边是 Xd，我分别加入了一个初始的 iPhone 6 大小的 Artboard，别说两边界面基本一样，就连用词都没差。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-cc71589e434133e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Sketch Insert"><br>Sketch 把插入新元素这个功能放到了 Insert 里面，平时使用基本都是用快捷键的，虽然 Xd 也支持用快捷键来调用这些工具，但是默认左边还有个边栏一直放在这，和 Photoshop 如出一辙，要知道 Xd 的工具比 Photoshop 少的不是一点半点啊，个人感觉这个栏有点鸡肋。<br><img src="http://upload-images.jianshu.io/upload_images/251884-84745362c36c3019.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xd 左栏"><br>而 Sketch 那个丰富的顶部工具栏，在 Xd 里面被分拆了。如 Union、Subtract 等布尔运算，被放到了右侧栏，Mask、Group 等功能，放到了软件的顶部菜单栏里面，这使得 Xd 看起来更简洁一些。不过无所谓，在两个软件里，这些功能都可以用快捷键使用。<br><img src="http://upload-images.jianshu.io/upload_images/251884-c2984ebd38dab1b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Sketch 顶部工具栏"><br>那么 Xd 的顶部放了什么呢<br><img src="http://upload-images.jianshu.io/upload_images/251884-ae4cceed563422d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xd Prototype"><br>通过这个入口，加入了做原型的功能！一看就明了，有木有！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-a54c9d717608162a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xd Prototype"><br>如果你是做 iOS 开发的，这些 Segue、Easing、Duration、TARGET 的用词，不能再熟悉了，对开发人员不能再友好。</p>
+<p>回到 Xd 的 Design 这个地方，我发现缺少了 Sketch 左边那个图层管理的列表，还是有些别扭。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-6390d788d164d403.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个较为复杂的 Sketch 项目"></p>
+<p>比如对于上面这个界面，如果没有左边这个管理界面的话，而如果这个东西又是别人做的，我必须要逐个点击才知道谁和谁是一组的，就很麻烦。而且在 Xd 里面，不导出，你是不知道某一个图层的名字的。<br><img src="http://upload-images.jianshu.io/upload_images/251884-76e65022be7f405a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xd Export"><br>比如这么一个圆形，虽然导出的时候我可以更改它的命名，但是如果我有20个不同的圆，我可能会希望先全部命名好，再批量导出。</p>
+<p>不过在导出的时候，除了文件命名这个事情之外，有一个地方 Xd 做的非常棒，那就是自动生成 1x、2x、3x 等不同尺寸。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-28f74ff40fd51eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Xd Export"><br>虽然在 Sketch 里面我们可以给每一个图层加一个 Slice，再给 Slice 设定导出的 1x、2x、3x，还是没有 Xd 的这个解决方案好。针对 Android，Xd 也给了相应的从 ldpi 到 xxxhdpi 的六种规格。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-f1227259089e931e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Sketch Slice"><br>当然也不是说 Sketch 的 Slice 就一无是处，繁琐的东西它当然就自定义程度高一些。比如我们做了一个圆形，要导出一个左半圆和右半圆，那当然用 Slice 要方便的多。</p>
+<p><strong>除此之外，Sketch 还有安装插件的功能，也凭借先发优势积累了大量的资源和论坛内容。不知道可以做原型的 Xd 和它的好爸爸 Adobe，能不能有机会一举杀入 Sketch 的阵地。</strong></p>
+<hr>
+<h1 id="总结">总结</h1><p>因为我个人平时不做原型，对这个要求不高，所以现在 Xd 做原型的功能对我来说，简单、够用。<br>假设原型工具占了产品界面设计过程的 20%，那么 Adobe 可能会希望把以前的 PS + Sketch = 80% 的情况，变成 PS + Xd = 100% 吧。<br>就目前工作来说，我会尝试开始用 Xd，遇到个别情况，Xd 不顺手的话，会打开 Sketch，两把刷子一起用，等时间长了，哪个更适合我就有概念了。相当长的一段时间内，我是不会删掉 Sketch 的，就凭那些优质的 Sketch 资源，我也不会删。<br>于个人喜好，虽然我忠爱 Adobe，但垄断总是不好的，Sketch 坚挺住啊！</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计/" rel="tag">#设计</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/06/扯淡-Method-Swizzling/" rel="next" title="扯淡 Method Swizzling">
+                <i class="fa fa-chevron-left"></i> 扯淡 Method Swizzling
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/09/腾讯-iOS-开发实习电话面试记录（二）/" rel="prev" title="腾讯 iOS 开发实习电话面试记录（二）">
+                腾讯 iOS 开发实习电话面试记录（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
