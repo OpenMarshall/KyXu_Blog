@@ -90,15 +90,15 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
 
 这是个啥
 swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，是用来互">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:12:48.000Z">
+<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/251884-7f3a68b6ef76a5af.png">
+<meta property="og:updated_time" content="2016-04-09T15:56:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扯淡 Method Swizzling">
 <meta name="twitter:description" content="写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
 
 这是个啥
 swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，是用来互">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/251884-7f3a68b6ef76a5af.png">
 
 
 
@@ -353,7 +353,7 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         method_exchangeImplementations(originalMethod, swizzledMethod)
     }
 }
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="console"><br>【注意几点】</p>
+</code></pre><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/251884-7f3a68b6ef76a5af.png" alt="console"><br>【注意几点】</p>
 <ol>
 <li>这里我先后调用了三次 <code>containsObject</code> 这个方法，其中第二次，它的内部实现被  <code>myContainsObject</code> 这个方法的内部实现替换掉了。</li>
 <li><code>myContainsObject</code> 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 <code>myContainsObject</code> 这个词在你的脑子里换成 <code>containsObject</code>（如果确定此时两个方法确实互换了实现）。</li>
