@@ -1,0 +1,600 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="引言①本文章适合有 UIWebView 基础的人看，如果实在没用过的话，至少你要知道 UIWebView 是个什么东西。
+② UIWebView 和 WKWebView 的区别WKWebView 更快（占用内存可能只有 UIWebView 的1/3~1/4），没有缓存，更为细致地拆分了 UIWebViewDelegate 中的方法。想要了解更多关于 WKWebView 的特性的，可以自行 Goog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 UIWebView 到 WKWebView">
+<meta property="og:url" content="/2015/10/06/从-UIWebView-到-WKWebView/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="引言①本文章适合有 UIWebView 基础的人看，如果实在没用过的话，至少你要知道 UIWebView 是个什么东西。
+② UIWebView 和 WKWebView 的区别WKWebView 更快（占用内存可能只有 UIWebView 的1/3~1/4），没有缓存，更为细致地拆分了 UIWebViewDelegate 中的方法。想要了解更多关于 WKWebView 的特性的，可以自行 Goog">
+<meta property="og:updated_time" content="2016-04-09T07:31:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从 UIWebView 到 WKWebView">
+<meta name="twitter:description" content="引言①本文章适合有 UIWebView 基础的人看，如果实在没用过的话，至少你要知道 UIWebView 是个什么东西。
+② UIWebView 和 WKWebView 的区别WKWebView 更快（占用内存可能只有 UIWebView 的1/3~1/4），没有缓存，更为细致地拆分了 UIWebViewDelegate 中的方法。想要了解更多关于 WKWebView 的特性的，可以自行 Goog">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 从 UIWebView 到 WKWebView | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从 UIWebView 到 WKWebView
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-06T15:27:43+08:00" content="2015-10-06">
+              2015-10-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引言">引言</h1><p><br><strong>①本文章适合有 UIWebView 基础的人看，如果实在没用过的话，至少你要知道 UIWebView 是个什么东西。</strong></p>
+<p><strong>② UIWebView 和 WKWebView 的区别</strong><br>WKWebView <strong>更快（占用内存可能只有 UIWebView 的1/3~1/4），没有缓存</strong>，更为细致地拆分了 UIWebViewDelegate 中的方法。<br>想要了解更多关于 WKWebView 的特性的，可以自行 Google，这里你可以简单地把它当做是轻量级的 UIWebView。</p>
+<p><strong>③为什么现在是时候从 UIWebView 迁移到 WKWebView 了:</strong><br>截止到我写这篇文章的时候，据 mixpanel 的数据，iOS 9 占有率已达 58.55%，iOS 8 占有率达到了 34.78%，iOS 7 及更早版本是 6.66%，而那 6.66% 应该大部分都是对手机使用极度不频繁的人。所以从现在开始，再开发 App 只兼容 iOS 8 和 iOS 9 两个版本就可以了（如果你的产品对覆盖率要求不是很苛刻的话）。WKWebView 是 iOS 8 之后才有的 WebKit 中的内容，所以之前我们要同时兼容 iOS 7 和 iOS 8 的时候，可以推辞说 UIWebView 和 WKWebView 一起做太麻烦了，现在可没有理由拒绝新东西了。</p>
+<h1 id="正文">正文</h1><h4 id="常用代理方法"><br>常用代理方法</h4><p>在 WKWebView 中，UIWebViewDelegate 与 UIWebView 被重构成了14类与3个协议，下面给出一些在 UIWebView 中常用的方法的 WKWebView 版本。<br><br></p>
+<p><pre>//准备加载页面<br><code>UIWebViewDelegate - webView:shouldStartLoadWithRequest:navigationType</code><br><code>WKNavigationDelegate - webView:didStartProvisionalNavigation:</code></pre></p>
+<p><pre>//已开始加载页面，可以在这一步向view中添加一个过渡动画<br><code>UIWebViewDelegate - webViewDidStartLoad:</code><br><code>WKNavigationDelegate - webView:didCommitNavigation:</code></pre></p>
+<p><pre>//页面已全部加载，可以在这一步把过渡动画去掉<br><code>UIWebViewDelegate - webViewDidFinishLoad:</code><br><code>WKNavigationDelegate - webView:didFinishNavigation:</code></pre></p>
+<p><pre>//加载页面失败<br><code>UIWebViewDelegate - webView:didFailLoadWithError:</code><br><code>WKNavigationDelegate - webView:didFailNavigation:withError:</code><br><code>WKNavigationDelegate - webView:didFailProvisionalNavigation:withError:</code></pre></p>
+<p>以上方法分别存在于 UIWebViewDelegate 和 WKNavigationDelegate 中。<br>如果你之前只是用到了以上列出的 UIWebViewDelegate 中的几个方法，那么只是简单地换一个方法名，让你的 ViewController 继承 WKNavigationDelegate ，继续用就可以了。想要更多内容可以自己用 cmd键+鼠标左击『WKNavigationDelegate』通过 Xcode 查看。<br>要注意的是 <code>webview.delegate = self </code> 需要改写为 <code>webview.navigationDelegate = self</code>。</p>
+<p>####JS交互<br>在 UIWebView 中，一句简单的<code>webView.stringByEvaluatingJavaScriptFromString()</code> 就可以用 JS 脚本操纵 WebView，在 WKWebView 中，我们可能需要用到 <code>WKScriptMessageHandler </code> 这个协议中的 <code>func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)</code> 方法。</p>
+<p><strong>下面的示例代码用于从 WKWebView 中获取网页中的文本。</strong></p>
+<pre><code>let js = <span class="string">"window.webkit.messageHandlers.observe.postMessage(document.body.innerText);"</span> <span class="comment">// 注意这里的observe字段是自己写的，不是固定的写法，参考第6行</span>
+let script = <span class="function"><span class="title">WKUserScript</span><span class="params">(source: js, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)</span></span> <span class="comment">// 这里的 AtDocumentEnd 字段是指网页中的内容加载完毕后再插入 JS 脚本，你也可以选择 AtDocumentStart，在 document element 刚刚创建时就插入脚本，看具体需求</span>
+let config = <span class="function"><span class="title">WKWebViewConfiguration</span><span class="params">()</span></span>
+config<span class="class">.userContentController</span><span class="class">.addUserScript</span>(script)
+config<span class="class">.userContentController</span><span class="class">.addScriptMessageHandler</span>(self, name: <span class="string">"observe"</span>) <span class="comment">// 对应第一行 JS 脚本中的observe字段</span>
+<span class="comment">//初始化WKWebView</span>
+let webview = WKWebView(
+    frame: <span class="function"><span class="title">CGRectMake</span><span class="params">(<span class="number">0</span>, <span class="number">0</span>, self.view.frame.width, self.view.frame.height)</span></span>,
+    configuration: config)
+webview<span class="class">.navigationDelegate</span> = self
+self<span class="class">.view</span><span class="class">.addSubview</span>(webview)
+<span class="comment">//加载网页</span>
+webview.<span class="function"><span class="title">loadRequest</span><span class="params">(NSURLRequest(URL: NSURL(string: <span class="string">"http://www.jianshu.com"</span>)</span></span>!))
+</code></pre><p><br>可能你也注意到了，把 JS 脚本注入到 WebView 的途径是初始化一个 WebView，所以你需要在 WebView 初始化之前写好自己的脚本。当然如果你不需要 JS 交互，直接用一个 frame 来初始化 WebView，去掉 configuration 参数就好了。</p>
+<p>然而，我们如何拿到从 WKWebView 中抓取到的文本呢（通过 document.body.innerText 这一句）？<br>如上面所说，让你的 ViewController 在继承了 WKNavigationDelegate 之后再继承一下 WKScriptMessageHandler 。然后实现 WKScriptMessageHandler 中唯一的一个方法：</p>
+<pre><code><span class="func"><span class="keyword">func</span> <span class="title">userContentController</span><span class="params">(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)</span></span>{
+    <span class="keyword">let</span> str:<span class="type">NSString</span> = message.body <span class="keyword">as</span>! <span class="type">NSString</span> <span class="comment">// 因为我们抓取到的是文本，这里把 message.body 强制转换为 NSString，如果你通过 JS 拿到的是其他信息，按需转换</span>
+    <span class="built_in">print</span>(str)
+}
+</code></pre><p>乍一看这里可能会有疑惑：我们给 WKWebView 绑定了 WKNavigationDelegate，但是 WKScriptMessageHandler 并没有提供代理方法啊。其实与此相对应的过程出现在上一段代码中的第5行：<code>config.userContentController.addScriptMessageHandler</code> 这一句。</p>
+<h1 id="后记">后记</h1><p><br>我是一名大三学生，正在找工作，现在做独立开发，希望在这里记录自己学到的一些东西。<br>如果想和我联系，或者单纯加个微信的话，下面是我的联系方式：</p>
+<p>姓名：徐开源<br>邮箱：wm-ing@qq.com<br>微信号：balabala-ba</p>
+<p>欢迎交流 ：）<br><a href="https://itunes.apple.com/cn/developer/kaiyuan-xu/id988271193" target="_blank" rel="external">点击查看我发布在 AppStore 的作品</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/22/Xcode-7-Simulator-问题小记/" rel="next" title="Xcode 7 Simulator 问题小记">
+                <i class="fa fa-chevron-left"></i> Xcode 7 Simulator 问题小记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/11/强制修改-iOS-状态栏颜色/" rel="prev" title="强制修改 iOS 状态栏颜色">
+                强制修改 iOS 状态栏颜色 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用代理方法"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">常用代理方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

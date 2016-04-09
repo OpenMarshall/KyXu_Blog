@@ -1,0 +1,584 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全局设定 UINavigationBar 的 UI">
+<meta property="og:url" content="/2015/11/14/全局设定-UINavigationBar-的-UI/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-3e1cfdd725a95267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-ddfde4c539daa0e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:26:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全局设定 UINavigationBar 的 UI">
+<meta name="twitter:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-3e1cfdd725a95267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 全局设定 UINavigationBar 的 UI | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                全局设定 UINavigationBar 的 UI
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-14T15:26:25+08:00" content="2015-11-14">
+              2015-11-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/251884-3e1cfdd725a95267.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="App Screen Shot.png"><br>如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。<br>TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。<br>因为 TabBar 只有一个，直接在 UITabBarController 的代码里写下面这段就可以<br>（globalBarTintColor是我自定义的浅海蓝色，后面还会出现）</p>
+<pre><code>self<span class="class">.tabBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
+self<span class="class">.tabBar</span><span class="class">.barTintColor</span> = globalBarTintColor
+</code></pre><p>然而 NavigationBar 有三个，甚至还会更多，一个个分别去设定颜色显然耦合性不够低，改起来也很麻烦。<br>下面给出一种全局统一设定的方法，写在 AppDelegate 文件的 didFinishLaunchingWithOptions 方法里：</p>
+<pre><code>func application(application: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">NSObject</span>: AnyObject]?) -&gt; Bool {
+
+    <span class="comment">// NavigationBar 颜色，全局设定</span>
+    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.tintColor</span> = <span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()
+    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.titleTextAttributes</span> =
+        [<span class="built_in">NSForegroundColorAttributeName</span>:<span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()]
+    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.barTintColor</span> = globalBarTintColor
+
+    <span class="keyword">return</span> <span class="literal">true</span>
+}
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/251884-ddfde4c539daa0e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="App Screen Shot2.png"><br>这样做的另外一个好处是，可以直接改掉上图圈出来的 NavigationBar 自带按钮的颜色，如果你直接尝试在某个 ViewController 里写</p>
+<pre><code>self.navigationController!<span class="class">.navigationBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
+</code></pre><p>这个按钮的颜色貌似是改不掉的（据我刚刚尝试，是这样的）。</p>
+<p><strong>最后：<br>可以看出，上面的写法，直接是在设定 UINavigationBar 这个类的属性，所以依此类推，其他各种UI效果应该都可以这样全局设定。</strong></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/14/慢速-UIPickerView-动画实现/" rel="next" title="慢速 UIPickerView 动画实现">
+                <i class="fa fa-chevron-left"></i> 慢速 UIPickerView 动画实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/24/跳转到『设置App』的任意条目/" rel="prev" title="跳转到『设置App』的任意条目">
+                跳转到『设置App』的任意条目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

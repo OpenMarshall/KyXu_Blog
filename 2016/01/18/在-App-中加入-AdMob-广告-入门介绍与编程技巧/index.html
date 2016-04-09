@@ -1,0 +1,644 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）
+我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（https://apps.admob.com 访问需要搭梯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 App 中加入 AdMob 广告 - 入门介绍与编程技巧">
+<meta property="og:url" content="/2016/01/18/在-App-中加入-AdMob-广告-入门介绍与编程技巧/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="前言虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）
+我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（https://apps.admob.com 访问需要搭梯">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-004eaaf9fe473aa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-9c11c2c9dad6309e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-5d0560a958d5a0aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-89aa27ab2b20a117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:20:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 App 中加入 AdMob 广告 - 入门介绍与编程技巧">
+<meta name="twitter:description" content="前言虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）
+我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（https://apps.admob.com 访问需要搭梯">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-004eaaf9fe473aa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 在 App 中加入 AdMob 广告 - 入门介绍与编程技巧 | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在 App 中加入 AdMob 广告 - 入门介绍与编程技巧
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-18T15:19:57+08:00" content="2016-01-18">
+              2016-01-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><h3>前言</h3><br>虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）<p></p>
+<p>我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（<a href="https://apps.admob.com" target="_blank" rel="external">https://apps.admob.com</a> 访问需要搭梯子，梯子为SS的用户最好全局代理，自动代理的话访问起来会很卡）。</p>
+<p>就目前来看，我果还是不太擅长移动App广告这一块，所以不推荐大家用iAd（好像现在还是不支持中国大陆？听说前一阵子Apple解散了有一百来人的iAd部门？）国内的一些其他平台也是有所听说，但是没有尝试，如果大家知道有什么其他的好的可以在移动App上投放广告的平台，也欢迎评论，一起交流~</p>
+<hr>
+<p></p><h3>流程</h3><br>1.首先，你要有一个Google账号，登录<a href="https://apps.admob.com" target="_blank" rel="external">AdMob</a><br>2.进去之后，点网站右上角的设置按钮，把各种资料该填的都填了，什么电话、邮箱、地址之类的。<br><img src="http://upload-images.jianshu.io/upload_images/251884-004eaaf9fe473aa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AdMob网站截图"><br><strong>注意，地址要填真实地址，在Google给你汇款之前，他要给你邮寄一封实体信件，上面有一个PIN码，你要把这个PIN码输入到AdMob网站上的相应位置，Google才会开始你给你汇款。我现在已经验证过身份了，没办法截图，好在这个网站也不复杂，就那么几个页面。要做好收不到这个信件的准备（包括我在内的国内N多开发者都收不到这个信件，不知道是不是邮政的问题），如果1个月没有收到这个信件，可以再次申请让Google邮寄信件，总共有3次机会，3个月以后，还没收到信件，可以上传身份证照片（我就是这样），然后Google会以极速（我当时是几个小时）通过这个请求。不过毕竟等了三个月，如果你第一次就准确无误地填了地址，运气又很好的话，可以1个月内就让Google准备给你付款。付款规则是每个月进行一次统计，如果到了100美金，就汇款，否则计入下个月，直到攒够100美金，汇款时间是下个月的21号。比如你1月赚了30刀，2月就不会收到钱，2月赚了110刀，3月的21号Google会把你赚到的总共140刀都汇款给你。</strong><p></p>
+<p>3.接下来的过程就不赘述了，无非是去AdMob里面添加个应用，拿到一个类似 app-key 的识别码（AdMob里面叫ca-app-pub，每个广告对应一个识别码，一个App可以加入多个横幅式广告或插页式广告，一个App可以对应多个识别码），把 GoogleMobileAds.framework 下载下来，看一下人家的示例代码，就集成到App了。<a href="https://developers.google.com/admob/ios/quick-start" target="_blank" rel="external">这是地址</a></p>
+<hr>
+<p></p><h3>横幅式广告与插页式广告</h3><br>开发者在App中加入广告时，要极力避免让用户感到非常厌烦。如果你的App帮用户解决了问题，那用户看看广告也无所谓，人家解决了手头的问题才是正事，但是满屏的广告不停地弹，那也未免吃相不好，用户可能一怒之下把App删掉。<p></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-9c11c2c9dad6309e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="左边为横幅式广告  右边为插页式广告"><br>横幅式广告的好处在于，虽然占用了用户一部分屏幕空间，但是只要你不点击它，它不会影响用户的其他操作，只要你的广告条没有遮挡任何内容，那么这个横幅除了碍眼之外，对用户使用App基本没有影响。</p>
+<p>而插页式广告则是以弹窗的形式出现，用户需要去左上角或者右上角点击一下关闭按钮才行，应该说是比横幅式广告要更讨厌一些（反正我是这么觉得的），应该说这是略为严重的打扰了用户对App的使用的。但是好处在于，插页式广告是以全屏弹出的形式出现的，它不影响你设计的App界面的纯净度，让你有100%的空间来展示你需要布局在UI中的东西，比如你做了一个UI极简的应用，整个App都是纯黑+纯白的，这时候加一个颜色复杂的横幅广告，就很影响观感。</p>
+<p>还有一种情况是你希望你的用户付费来去除广告，可以是在App中加一个付费去广告的内购，也可以鼓励用户付费升级应用到高级版，这种情况下可以尝试横幅式广告和插页式广告都添加。一部分用户对你的App有需求，又不想频频被广告打扰，就可以选择付费。不过这种情况下，我们可以认为添加广告的目的之一就是为了去打扰用户，迫使用户付费，所以应该适可为止，不要过于频繁地弹出广告，这真的挺烦人的。</p>
+<hr>
+<p></p><h3>展示广告的代码技巧</h3><br><strong>1.在 UITableView 底部展示横幅广告</strong><p></p>
+<pre><code><span class="tag">var</span> admob = <span class="function"><span class="title">GADBannerView</span><span class="params">()</span></span>
+<span class="comment">// 设置GADBannerView的frame、设置广告ID、加载广告请求</span>
+self<span class="class">.tableView</span><span class="class">.contentInset</span> = <span class="function"><span class="title">UIEdgeInsetsMake</span><span class="params">( <span class="number">0</span>, <span class="number">0</span>, admob.frame.height, <span class="number">0</span>)</span></span>
+</code></pre><p>注释部分的代码可以<a href="https://developers.google.com/admob/ios/quick-start" target="_blank" rel="external">参考这里</a>，这段代码的意思是让 UITableView 的可滚动内容区域在底部收缩，收缩长度为banner广告条的高度。这样在用户一直向上拖拽 UITableView 直到尽头的时候，可以让它的可拖拽区域比之前大一些，就不至于让广告遮挡了 UITableView 的最后几行。</p>
+<p>如果你的 UITableView 是存在于 UITableViewController 中的，那么 UITableView 的 frame 是不可调节的，所以通过上面的代码，我们可以方便地避免广告遮挡原有的内容。而即便你的 UITableView 是存在于 UIViewController 中的，即这个 UITableView 是你自己添加进来的，你可以任意调节 frame，我依然建议你用上面这种方法，而不是直接把 UITableView 的 frame 调小，来给广告空出位置。因为你的广告并不一定能显示的出来，可能是用户把你的广告屏蔽了，也可能是网络状况不好，这时候反正你的广告也显示不出来，应该给用户更多的屏幕空间来显示 UITableView 的内容。</p>
+<p><strong>2.利用定时器轮询插页式广告加载状态</strong></p>
+<p>这里不太恰当的使用了“轮询”这个词，大家意会就好。<br>假如你要弹出一次插页式广告，那么Google给出的示例代码是下面这个样子</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-5d0560a958d5a0aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如何创建 GADInterstitial
+ 媒体资源、初始化该资源并随广告加载它"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-89aa27ab2b20a117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="展示插页式广告"><br>这里的展示逻辑是：不要打扰用户玩游戏的过程，在用户玩游戏的过程中默默地加载广告，等用户一次游戏结束了，如果这时候广告加载好了，就把广告弹出来。</p>
+<p>然而实际情况是，我们的应用可能不是游戏，并没有一个这么明显的类似<strong>完成了一局游戏</strong>这样的一个段落结束的地方。这时候你可能希望每30秒弹出一次插页式广告，然而这个广告可能是第40秒才加载好的，这就导致了：虽然你设置的是30秒显示一次广告，但是30s的时候广告没加载好，就没显示出来，60s的时候显示了40s时加载的广告。而更理想的情况是：30s时没能加载好广告，我们就开始轮询，直到广告加载好了，也就是40s时，把广告显示出来，然后设定第70s时展示下一次广告。</p>
+<p>下面给出一段示例代码，这里的广告展示逻辑是：每60秒展示一次广告，如果到了这个时刻，广告没加载好，就设置定时器每3秒查看一次广告资源是否就绪，直到广告加载好了，展示广告，然后设置60秒后出现下一次广告。</p>
+<pre><code><span class="keyword">import</span> UIKit
+
+<span class="class"><span class="keyword">class</span> <span class="title">ExampleViewController</span>: <span class="title">UIViewController</span> </span>{
+
+    <span class="comment">// AdMob 插页广告</span>
+    <span class="keyword">var</span> adInterstitial = <span class="type">GADInterstitial</span>(adUnitID: <span class="string">"ca-app-pub-xxxx/xxxx"</span>)
+    <span class="comment">// 定时器</span>
+    <span class="keyword">var</span> timer = <span class="type">NSTimer</span>()
+
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.viewDidLoad()
+
+        <span class="comment">// 初始化 AdMob 插页广告</span>
+        <span class="keyword">let</span> gadRequest1 = <span class="type">GADRequest</span>()
+        <span class="keyword">self</span>.adInterstitial.loadRequest(gadRequest1)
+        <span class="keyword">self</span>.addTimerToShowAd(<span class="number">3</span>) <span class="comment">// 3秒一次轮询直到第一次展示广告</span>
+    }
+
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.didReceiveMemoryWarning()
+    }
+
+
+    <span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">addTimerToShowAd</span><span class="params">( showAdTimeInterval:NSTimeInterval)</span></span>{
+        <span class="keyword">self</span>.timer = <span class="type">NSTimer</span>.scheduledTimerWithTimeInterval( showAdTimeInterval, target: <span class="keyword">self</span>,
+            selector: <span class="string">"showAd"</span>, userInfo: <span class="literal">nil</span>, repeats: <span class="literal">true</span>)
+        [<span class="type">NSRunLoop</span>.currentRunLoop().addTimer(<span class="keyword">self</span>.timer, forMode: <span class="type">NSRunLoopCommonModes</span>)]
+    }
+
+
+    <span class="preprocessor">@objc</span> <span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">showAd</span><span class="params">()</span></span> {
+        <span class="keyword">if</span> <span class="keyword">self</span>.adInterstitial.isReady {
+            <span class="comment">// 广告成功加载，显示广告，重置定时器</span>
+            <span class="keyword">self</span>.adInterstitial.presentFromRootViewController(<span class="keyword">self</span>)
+            <span class="keyword">self</span>.timer.invalidate()
+            <span class="keyword">self</span>.addTimerToShowAd(<span class="number">60</span>)
+        }<span class="keyword">else</span> {
+            <span class="comment">// 广告没有成功加载，开始3秒一次的快速轮询</span>
+            <span class="keyword">self</span>.timer.invalidate()
+            <span class="keyword">self</span>.addTimerToShowAd(<span class="number">3</span>)
+        }
+    }
+}
+</code></pre><p>上面的代码中的关于定时器方面的内容，就不在这篇文章中写了，如果看着费劲的话，欢迎在下面评论，我也可以再写一篇关于定时器的文章。关于 private 和 @objc 关键字部分可以参考<a href="http://www.jianshu.com/p/41676664aac6" target="_blank" rel="external">我之前的一篇文章</a>。</p>
+<hr>
+<p>本人现在还是学生，兼做 iOS 独立开发者积累<a href="https://itunes.apple.com/developer/id988271193" target="_blank" rel="external">作品</a>，也顺便赚点银子，欢迎有兴趣的加微信交流技术问题，微信号：balabala-ba。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/15/objc-private-class-func-与-Selector/" rel="next" title="@objc private class func 与 Selector">
+                <i class="fa fa-chevron-left"></i> @objc private class func 与 Selector
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/26/修改-present-出来的-ViewController-状态栏颜色/" rel="prev" title="修改 present 出来的 ViewController 状态栏颜色">
+                修改 present 出来的 ViewController 状态栏颜色 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">横幅式广告与插页式广告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">展示广告的代码技巧</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

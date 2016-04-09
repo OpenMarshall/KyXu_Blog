@@ -1,0 +1,616 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。
+self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self,
+        selector: &quot;moveText&quot;, userInfo: nil, repeats: true)
+
+NSNot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="@objc private class func 与 Selector">
+<meta property="og:url" content="/2015/12/15/objc-private-class-func-与-Selector/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。
+self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self,
+        selector: &quot;moveText&quot;, userInfo: nil, repeats: true)
+
+NSNot">
+<meta property="og:updated_time" content="2016-04-09T07:22:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="@objc private class func 与 Selector">
+<meta name="twitter:description" content="本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。
+self.timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self,
+        selector: &quot;moveText&quot;, userInfo: nil, repeats: true)
+
+NSNot">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> @objc private class func 与 Selector | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                @objc private class func 与 Selector
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-15T15:21:35+08:00" content="2015-12-15">
+              2015-12-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。</p>
+<pre><code><span class="keyword">self</span><span class="variable">.timer</span> = <span class="built_in">NSTimer</span><span class="variable">.scheduledTimerWithTimeInterval</span>(timeInterval, target: <span class="keyword">self</span>,
+        selector: <span class="string">"moveText"</span>, userInfo: <span class="literal">nil</span>, repeats: <span class="literal">true</span>)
+
+<span class="built_in">NSNotificationCenter</span><span class="variable">.defaultCenter</span>()<span class="variable">.addObserver</span>(<span class="keyword">self</span>,
+        selector: <span class="string">"appEnterForeground"</span>, name: <span class="literal">nil</span>, object: <span class="literal">nil</span>)
+</code></pre><p>第一个是第一个定时器（NSTimer），第二个是一个页面的监听事件。即，让程序不断地观察现在的『某个状态』，当这个状态符合某个条件时，就去执行 Selector 中的代码。比如，我们的界面中有一个让用户输入年龄的 UITextField，然后我们可以观察（监听），当发现用户在这里输入『0』时，我们就给一个提示：『年龄至少为1』。</p>
+<p>简单介绍完毕，下面说注意事项。</p>
+<hr>
+<p></p><h3>1.  private 关键字</h3><br>最简单的使用 Selector 的情况，就是如上面所列出的，在 NSTimer 中写 selector 为 “moveText”，然后我们在同一个文件中，再相应地写一个<p></p>
+<pre><code><span class="func"><span class="keyword">func</span> <span class="title">moveText</span><span class="params">()</span></span>{ 
+    <span class="comment">// Your Code</span>
+}
+</code></pre><p>就可以了。<br>然而如果你想把它声明为一个 private func，即不希望其他文件调用这个函数，就会出现问题，通俗地讲：private 使得这个函数不能被『外部』调用，而 Selector 对它的调用，实际上就是一种『外部调用』。</p>
+<p><strong>【解决方案】</strong><br>KVO 是基于 KVC 和<strong>动态派发技术（Dynamic Dispatch）</strong>的，Swift 为了效率禁用了 Objective-C 中有的动态派发。那么你把这个动态特性再加回来就可以了~</p>
+<p>1.通过 @objc 关键字来使用动态特性</p>
+<pre><code><span class="preprocessor">@objc</span> <span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">moveText</span><span class="params">()</span></span>{ 
+    <span class="comment">// Your Code</span>
+}
+</code></pre><p>2.通过 dynamic 关键字来让这个函数拥有与 OC 中动态调用时相同的运行时特性（@objc 足矣，这个一般用不上）</p>
+<pre><code><span class="keyword">dynamic</span> <span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">moveText</span><span class="params">()</span></span>{ 
+    <span class="comment">// Your Code</span>
+}
+</code></pre><p>更多关于 dynamic 关键字的内容可以参考：<a href="http://swifter.tips/kvo/" target="_blank" rel="external">http://swifter.tips/kvo/</a></p>
+<hr>
+<p></p><h3>2.  class 关键字</h3><br>如果你想把这个函数声明为 class func<p></p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">moveText</span>()</span>{ 
+    <span class="comment">// Your Code</span>
+}
+</code></pre><p>则本文最开始的代码中的 target 应该由 self 换为 MyClass.self （假设这段代码写在名为 MyClass 的类中）</p>
+<pre><code><span class="keyword">self</span>.timer = <span class="constant">NSTimer.</span>scheduledTimerWithTimeInterval(timeInterval, <span class="symbol">target:</span> <span class="constant">MyClass.</span><span class="keyword">self</span>,
+        <span class="symbol">selector:</span> <span class="string">"moveText"</span>, <span class="symbol">userInfo:</span> <span class="keyword">nil</span>, <span class="symbol">repeats:</span> <span class="keyword">true</span>)
+</code></pre><hr>
+<p>最后， 以上关键字是可以叠加使用的，如果你愿意，可以写成下面这样：</p>
+<pre><code><span class="annotation">@objc</span> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">moveText</span>(){</span> 
+    <span class="comment">// Your Code</span>
+}
+</code></pre><p>我在 StackOverFlow 中的回答，及其它相关：</p>
+<p><a href="http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667" target="_blank" rel="external">http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667</a></p>
+<p><a href="http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift" target="_blank" rel="external">http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift</a></p>
+<p>如有谬误，欢迎在评论中指出。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/26/带有-Extension-Target-的-App，如何签名打包/" rel="next" title="带有 Extension Target 的 App，如何签名打包">
+                <i class="fa fa-chevron-left"></i> 带有 Extension Target 的 App，如何签名打包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/18/在-App-中加入-AdMob-广告-入门介绍与编程技巧/" rel="prev" title="在 App 中加入 AdMob 广告 - 入门介绍与编程技巧">
+                在 App 中加入 AdMob 广告 - 入门介绍与编程技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1.  private 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2.  class 关键字</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

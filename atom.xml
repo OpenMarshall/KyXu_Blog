@@ -478,7 +478,7 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     <link href="/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>/2016/03/08/腾讯-iOS-开发实习电话面试记录（一）/</id>
     <published>2016-03-08T07:09:35.000Z</published>
-    <updated>2016-04-09T07:12:42.000Z</updated>
+    <updated>2016-04-09T07:16:12.000Z</updated>
     
     <content type="html">&lt;p&gt;目前大三，准备暑假去腾讯做 iOS 开发实习，昨天接到了电话面试，（应该是那个部门的 iOS 开发组组长打来的，我也不确定），来分享一下他问的那些题目。&lt;/p&gt;
 &lt;p&gt;感觉他提问是按照我写的简历来问的，而且考虑到我是准备去做实习生，也可能问的相对简单，我根据回忆写一下，大家就凑合着看吧。&lt;/p&gt;
@@ -634,51 +634,362 @@ setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;test
   </entry>
   
   <entry>
-    <title>生成高斯模糊效果背景</title>
-    <link href="/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
-    <id>/2015/08/07/生成高斯模糊效果背景/</id>
-    <published>2015-08-07T03:44:36.000Z</published>
-    <updated>2016-04-09T07:12:49.000Z</updated>
+    <title>发布 Widget App 注意事项</title>
+    <link href="/2016/02/18/%E5%8F%91%E5%B8%83-Widget-App-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>/2016/02/18/发布-Widget-App-注意事项/</id>
+    <published>2016-02-18T07:16:49.000Z</published>
+    <updated>2016-04-09T07:19:25.000Z</updated>
     
-    <content type="html">&lt;p&gt;做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。&lt;/p&gt;
-&lt;p&gt;我把这个处理过程用 Swift 封装成了一个函数，供大家参考。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;//创建高斯模糊效果的背景
-func createBlurBackground (image:&lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;,view:&lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;,blurRadius:&lt;span class=&quot;type&quot;&gt;Float&lt;/span&gt;) {
-    //处理原始&lt;span class=&quot;type&quot;&gt;NSData&lt;/span&gt;数据
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; originImage = &lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt;: image.&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt; )
-    //创建高斯模糊滤镜
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; filter = &lt;span class=&quot;type&quot;&gt;CIFilter&lt;/span&gt;(name: &lt;span class=&quot;string&quot;&gt;&quot;CIGaussianBlur&quot;&lt;/span&gt;)
-    filter.setValue(originImage, forKey: kCIInputImageKey)
-    filter.setValue(&lt;span class=&quot;type&quot;&gt;NSNumber&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;float&lt;/span&gt;: blurRadius), forKey: &lt;span class=&quot;string&quot;&gt;&quot;inputRadius&quot;&lt;/span&gt;)
-    //生成模糊图片
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; context = &lt;span class=&quot;type&quot;&gt;CIContext&lt;/span&gt;(options: &lt;span class=&quot;keyword&quot;&gt;nil&lt;/span&gt;)
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;:&lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt; = filter.valueForKey(kCIOutputImageKey) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;CIImage&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; blurImage = &lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;CGImage&lt;/span&gt;: context.createCGImage(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;, fromRect: &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;.extent()))
-    //将模糊图片加入背景
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; w = self.view.frame.width
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; h = self.view.frame.height
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; blurImageView = &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt;(frame: &lt;span class=&quot;type&quot;&gt;CGRectMake&lt;/span&gt;(-w/&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, -h/&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*w, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*h)) //模糊背景是界面的&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;倍大小
-    blurImageView.contentMode = &lt;span class=&quot;type&quot;&gt;UIViewContentMode&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;ScaleAspectFill&lt;/span&gt; //使图片充满&lt;span class=&quot;type&quot;&gt;ImageView&lt;/span&gt;
-    blurImageView.autoresizingMask = &lt;span class=&quot;type&quot;&gt;UIViewAutoresizing&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FlexibleWidth&lt;/span&gt; | &lt;span class=&quot;type&quot;&gt;UIViewAutoresizing&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FlexibleHeight&lt;/span&gt; //保持原图长宽比
-    blurImageView.image = blurImage
-    self.view.insertSubview(blurImageView, belowSubview: view) //保证模糊背景在原图片&lt;span class=&quot;type&quot;&gt;View&lt;/span&gt;的下层
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三个参数分别为：image（原始清晰图片）、view（你需要将生成的模糊背景插入在这个view的下层当做背景）、blurRadius（高斯模糊处理的模糊半径）&lt;/p&gt;
-&lt;p&gt;其中 let context = CIContext(options: nil)&lt;br&gt;这一句，在真机测试时，会引起控制台报错&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-26c975e53fe90564.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;控制台输出&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这是苹果的一个 Bug ，想要回避这个信息输出可以用下面这一句进行替换：&lt;br&gt;let context = CIContext(options:[kCIContextUseSoftwareRenderer : true])&lt;br&gt;这句可以使图片渲染工作在 CPU 而非 GPU 完成，从而绕过这个 Bug，但是会引起效率下降，耗时大大增加，不推荐使用。&lt;/p&gt;
-&lt;p&gt;使用效果展示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self.createBlurBackground(img, &lt;/span&gt;view: &lt;span class=&quot;keyword&quot;&gt;self.gifView, &lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;blurRadius: &lt;/span&gt;&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7a542aabd1a18eb3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;使用前&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-7acd3455f1bcf402.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240&quot; alt=&quot;使用后&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;在被 App Store Review 拒绝了一次之后，我的一款 Today Widget App 上线了，把过程中遇到的坑分享出来。&lt;/p&gt;
+&lt;h3 id=&quot;1-_主_App_中要有内容&quot;&gt;1. 主 App 中要有内容&lt;/h3&gt;&lt;p&gt;第一次提交 App 时，只是在 Widget 中添加了内容，主 App 中仅有教用户如何添加插件的几张图片做教程，被拒绝上架了。&lt;br&gt;提醒大家，上架这类 App 时，就算主 App 中真的不需要添加其他内容，也要装模作样地加点功能性的摆设。&lt;br&gt;我现在正在用的一款插件 App 叫 N Stats，也是在主 App 中添加了奇怪的没什么用的功能，可以参考一下。&lt;/p&gt;
+&lt;h3 id=&quot;2-_Widget_本身不适合承载复杂任务&quot;&gt;2. Widget 本身不适合承载复杂任务&lt;/h3&gt;&lt;p&gt;如果想要用 Widget App 来盈利，基本上只能是付费 App 了，没办法插广告，那就要求 App 本身比较稳定。&lt;br&gt;首先，最好不要让这里面出现交互（比如点一下按钮，这里面的内容会出现变化），而是仅仅让它承担【展示】的工作，比如呈现信息，或提供一个快捷操作的按钮。&lt;br&gt;其次，加载的图片资源要尽可能小。之前尝试让它一次加载了大概几百K的图片资源，就常常出现空白，或者显示“无法载入”。压缩了图片资源之后，一直很稳定。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。&lt;/p&gt;
-&lt;p&gt;我把这个处理过程用 Swift 封装成了一个函数，供大家参考。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;//创建高斯模糊效果的背景
-func 
+      &lt;p&gt;在被 App Store Review 拒绝了一次之后，我的一款 Today Widget App 上线了，把过程中遇到的坑分享出来。&lt;/p&gt;
+&lt;h3 id=&quot;1-_主_App_中要有内容&quot;&gt;1. 主 App 中要有内容&lt;/h3&gt;&lt;p&gt;第一次提交 App 时，只是在 Wid
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>App 上架相关事宜、解决技巧</title>
+    <link href="/2016/02/13/App-%E4%B8%8A%E6%9E%B6%E7%9B%B8%E5%85%B3%E4%BA%8B%E5%AE%9C%E3%80%81%E8%A7%A3%E5%86%B3%E6%8A%80%E5%B7%A7/"/>
+    <id>/2016/02/13/App-上架相关事宜、解决技巧/</id>
+    <published>2016-02-13T07:18:45.000Z</published>
+    <updated>2016-04-09T07:19:18.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。&lt;/p&gt;
+&lt;h3 id=&quot;App_审核委员会&quot;&gt;App 审核委员会&lt;/h3&gt;&lt;p&gt;这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 &lt;a href=&quot;https://developer.apple.com/app-store/review/guidelines/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;App Store Review Guidelines&lt;/a&gt; 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实到这个审核团队的执行人员的个人考量上。这个团队的审核过程是完全黑箱操作的，不过在接触这个团队的过程中，还是有一些值得参考的信息可以被提炼出来。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;据不可靠消息，审核中国区 App 的这个团队的成员是身处在美国的华人，所以很可能他们是懂中文的。但为了保险起见，在 iTunes Connect 中提交 App 时如果需要写备注，或者是你想申请加急审核 App，又或者因为其他原因要和这个团队沟通，最好是用中英文两种语言都描述一遍，一起发过去。&lt;/li&gt;
+&lt;li&gt;据我个人提交 App 被拒绝的经验，他们给出的回应信息是这种形式的：（1）陈列 &lt;a href=&quot;https://developer.apple.com/app-store/review/guidelines/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;App Store Review Guidelines&lt;/a&gt; 中的哪条或者哪几条，你没有遵守 （2）你的哪种具体做法违法了以上条例（3）接下来你该如何修改你的 App 才能过审。你可以选择向这个团队上诉，即表示他们的判断可能并不公正，同样是用双语去说，他们可能会在第二天给你个回复。但是注意，你上诉的方向一定要围绕着条例来说，因为对他们来说，苹果的规定就是铁律，违反规定是一定不能上架的，比如他们误认为你使用了 NBA 官方的 logo 侵犯了 NBA 的权益，你可以说这是误会，你使用的图片只是和 NBA logo 长得像而已。和他们动之以情是不会有结果的。&lt;/li&gt;
+&lt;li&gt;iTunes Connect （简称 ITC）中，你的 App 的状态是要经历以下几个步骤的：（1）【准备提交】你在 ITC 中新建了一个 App（2）【正在准备审核】你提交了 App 之后，这个状态会保持一周左右，我最快一次是5天，最多一次差不多是15天（3）【正在审核】如果一切顺利，这个状态大约会只持续2小时，因为中美时差嘛，我遇到过很多次大概是1点左右正在审核，然后3点左右就上架了。还有几次这个状态持续了整整三天，如果你发现你的 App 已经处于正在审核状态好几个小时了，那就可以去干别的了，两天以内应该不会有什么动静。（4）【正在销售】处于这个状态之后，再过大约1小时，你的 App 就可以在 AppStore 被搜索到了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;App_更改售价、下架&quot;&gt;App 更改售价、下架&lt;/h3&gt;&lt;p&gt;默认情况下 App 是在全世界的 AppStore 销售的，你随时可以去 ITC 更改 App 的售价，一般要花大概2小时，才能看见在 AppStore 上有变化。如果要下架 App，直接去 ITC 把销售地区全部反选就可以了，而不是说把这个 App 永久删除，下架是暂时性的，你可以理解为：销售 App，但销售地区个数为0。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;App_加急审核&quot;&gt;App 加急审核&lt;/h3&gt;&lt;p&gt;关于如何加急审核，教程有很多，只强调：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不要滥用加急审核，平时乱用，等到真正需要的时候，可能人家不鸟你了&lt;/li&gt;
+&lt;li&gt;苹果很在意用户体验，你申请 App 更新加急审核的时候，要跟人家说，到底是什么严重影响了用户体验，要让人家可以重现这个 bug，那估计就会很顺利。但是建议不要故意留一个隐蔽的 bug，等下次更新的时候，更新了别的东西，然后说有这个 bug，申请加急，欺骗这个团队，万一被发现，后果可能很严重。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;不要欺骗_App_审核委员会&quot;&gt;不要欺骗 App 审核委员会&lt;/h3&gt;&lt;p&gt;以下行为最好都不要尝试：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上淘宝刷评论&lt;/li&gt;
+&lt;li&gt;用 web 控制 App 的一部分行为，比如他们审核的时候，你后台用的是不侵权的图片资源，等过审了，再把图片换回来&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Application_Loader_网络问题&quot;&gt;Application Loader 网络问题&lt;/h3&gt;&lt;p&gt;可能是因为 GFW 的原因，Application Loader 会出现因为网络状况而无法上传 ipa 文件的情况，现在我这也没有截图，据经验，只要是等了5-10分钟，Application Loader 还没开始上传文件（就是出现类似迅雷那样的显示当前速度和 ipa 包体积的进度条），一直卡在什么“验证资源”之类的状态，那就不用再尝试这个网络环境了。&lt;br&gt;目前我在家里和学校用的都是电信的网络，都没发上传，不知道是否具有普适性。解决方案是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;连星巴克的 WiFi 上传，每次都成功了（麦当劳和肯德基估计也可以，还没试过） &lt;/li&gt;
+&lt;li&gt;用手机开热点（我是中国移动的卡，电信行不行不知道）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上传成功后，大约过20分钟，就可以在 ITC 的“构建版本”看到之前上传的文件。&lt;br&gt;上传过程不能中断，如果你中途暂停了某一个 ipa 文件的上传，再传这同一个文件，是传不上去的，去下面这个地方&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-db436dc8cf164074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Paste_Image.png&quot;&gt;把构建版本号改一下（数字只能更大，不能更小），然后导出 ipa，再上传。这个数字可以随意写，这个版本号是你的 ipa 的版本号，和你的 App  显示在 AppStore 的版本号没有关系。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;文件命名问题&quot;&gt;文件命名问题&lt;/h3&gt;&lt;p&gt;不管往苹果的服务器上传什么文件，PNG 也好 JPG 也好 IPA 也好，文件名称都尽量不要出现中文，上传之前改一下。&lt;br&gt;尤其是 ITC 的 App 页面中的那张 1024*1024 的图片，以中文命名，10次上传有8次要失败。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;暂时就写这么多，想到再更新。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。&lt;/p&gt;
+&lt;h3 id=&quot;App_审核委员会&quot;&gt;App 审核委员会&lt;/h3&gt;&lt;p&gt;这个团队的工作，是审核一款 App 是否可以在 AppStore 
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>修改 present 出来的 ViewController 状态栏颜色</title>
+    <link href="/2016/01/26/%E4%BF%AE%E6%94%B9-present-%E5%87%BA%E6%9D%A5%E7%9A%84-ViewController-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2/"/>
+    <id>/2016/01/26/修改-present-出来的-ViewController-状态栏颜色/</id>
+    <published>2016-01-26T07:20:55.000Z</published>
+    <updated>2016-04-09T07:21:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在开发的过程中，如果我们需要给用户提供一个浏览器功能的支持、又或者需要让用户来从系统相册挑选图片，那么利用 UIKit 给我们提供的现成的 SFSafariViewController 和 UIImagePickerController 将是非常方便的事情，但是&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let pc = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImagePickerController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+let sf = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: NSURL(string:&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;像这样用一行代码来创建 ViewController，使我们丧失了进入这个 ViewController 的内部去调节一些东西的机会。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;比如说我们整个App都是采用的白色状态栏，而 SFSafariViewController 和 UIImagePickerController 都是默认背景为白色的（即需要一个黑色状态栏，否则用户看不清内容），这时候我们需要一个默认自身的状态栏永远为黑色的 SFSafariViewController 或 UIImagePickerController&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面以 UIImagePickerController 为例给出一种解决方案。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CustomImagePC&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIImagePickerController&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
+        &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.sharedApplication().setStatusBarStyle(&lt;span class=&quot;type&quot;&gt;UIStatusBarStyle&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;Default&lt;/span&gt;, animated: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewWillDisappear&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(animated: Bool)&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.sharedApplication().setStatusBarStyle(&lt;span class=&quot;type&quot;&gt;UIStatusBarStyle&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LightContent&lt;/span&gt;, animated: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如上所示，创建了一个自定义的 UIImagePickerController ，代码里面设定了：这个页面被加载之后，状态栏设置为黑色，页面即将消失时，状态栏再转为白色。调用的时候，直接&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let pc = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;CustomImagePC&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;SFSafariViewController 同理，当然你也可以在这些代码里插入其他内容，如果你想更高程序地定制一个 UIImagePickerController 的话。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开发的过程中，如果我们需要给用户提供一个浏览器功能的支持、又或者需要让用户来从系统相册挑选图片，那么利用 UIKit 给我们提供的现成的 SFSafariViewController 和 UIImagePickerController 将是非常方便的事情，但是&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 App 中加入 AdMob 广告 - 入门介绍与编程技巧</title>
+    <link href="/2016/01/18/%E5%9C%A8-App-%E4%B8%AD%E5%8A%A0%E5%85%A5-AdMob-%E5%B9%BF%E5%91%8A-%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/"/>
+    <id>/2016/01/18/在-App-中加入-AdMob-广告-入门介绍与编程技巧/</id>
+    <published>2016-01-18T07:19:57.000Z</published>
+    <updated>2016-04-09T07:20:35.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;/p&gt;&lt;h3&gt;前言&lt;/h3&gt;&lt;br&gt;虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（&lt;a href=&quot;https://apps.admob.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://apps.admob.com&lt;/a&gt; 访问需要搭梯子，梯子为SS的用户最好全局代理，自动代理的话访问起来会很卡）。&lt;/p&gt;
+&lt;p&gt;就目前来看，我果还是不太擅长移动App广告这一块，所以不推荐大家用iAd（好像现在还是不支持中国大陆？听说前一阵子Apple解散了有一百来人的iAd部门？）国内的一些其他平台也是有所听说，但是没有尝试，如果大家知道有什么其他的好的可以在移动App上投放广告的平台，也欢迎评论，一起交流~&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;流程&lt;/h3&gt;&lt;br&gt;1.首先，你要有一个Google账号，登录&lt;a href=&quot;https://apps.admob.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AdMob&lt;/a&gt;&lt;br&gt;2.进去之后，点网站右上角的设置按钮，把各种资料该填的都填了，什么电话、邮箱、地址之类的。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-004eaaf9fe473aa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;AdMob网站截图&quot;&gt;&lt;br&gt;&lt;strong&gt;注意，地址要填真实地址，在Google给你汇款之前，他要给你邮寄一封实体信件，上面有一个PIN码，你要把这个PIN码输入到AdMob网站上的相应位置，Google才会开始你给你汇款。我现在已经验证过身份了，没办法截图，好在这个网站也不复杂，就那么几个页面。要做好收不到这个信件的准备（包括我在内的国内N多开发者都收不到这个信件，不知道是不是邮政的问题），如果1个月没有收到这个信件，可以再次申请让Google邮寄信件，总共有3次机会，3个月以后，还没收到信件，可以上传身份证照片（我就是这样），然后Google会以极速（我当时是几个小时）通过这个请求。不过毕竟等了三个月，如果你第一次就准确无误地填了地址，运气又很好的话，可以1个月内就让Google准备给你付款。付款规则是每个月进行一次统计，如果到了100美金，就汇款，否则计入下个月，直到攒够100美金，汇款时间是下个月的21号。比如你1月赚了30刀，2月就不会收到钱，2月赚了110刀，3月的21号Google会把你赚到的总共140刀都汇款给你。&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;3.接下来的过程就不赘述了，无非是去AdMob里面添加个应用，拿到一个类似 app-key 的识别码（AdMob里面叫ca-app-pub，每个广告对应一个识别码，一个App可以加入多个横幅式广告或插页式广告，一个App可以对应多个识别码），把 GoogleMobileAds.framework 下载下来，看一下人家的示例代码，就集成到App了。&lt;a href=&quot;https://developers.google.com/admob/ios/quick-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是地址&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;横幅式广告与插页式广告&lt;/h3&gt;&lt;br&gt;开发者在App中加入广告时，要极力避免让用户感到非常厌烦。如果你的App帮用户解决了问题，那用户看看广告也无所谓，人家解决了手头的问题才是正事，但是满屏的广告不停地弹，那也未免吃相不好，用户可能一怒之下把App删掉。&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-9c11c2c9dad6309e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;左边为横幅式广告  右边为插页式广告&quot;&gt;&lt;br&gt;横幅式广告的好处在于，虽然占用了用户一部分屏幕空间，但是只要你不点击它，它不会影响用户的其他操作，只要你的广告条没有遮挡任何内容，那么这个横幅除了碍眼之外，对用户使用App基本没有影响。&lt;/p&gt;
+&lt;p&gt;而插页式广告则是以弹窗的形式出现，用户需要去左上角或者右上角点击一下关闭按钮才行，应该说是比横幅式广告要更讨厌一些（反正我是这么觉得的），应该说这是略为严重的打扰了用户对App的使用的。但是好处在于，插页式广告是以全屏弹出的形式出现的，它不影响你设计的App界面的纯净度，让你有100%的空间来展示你需要布局在UI中的东西，比如你做了一个UI极简的应用，整个App都是纯黑+纯白的，这时候加一个颜色复杂的横幅广告，就很影响观感。&lt;/p&gt;
+&lt;p&gt;还有一种情况是你希望你的用户付费来去除广告，可以是在App中加一个付费去广告的内购，也可以鼓励用户付费升级应用到高级版，这种情况下可以尝试横幅式广告和插页式广告都添加。一部分用户对你的App有需求，又不想频频被广告打扰，就可以选择付费。不过这种情况下，我们可以认为添加广告的目的之一就是为了去打扰用户，迫使用户付费，所以应该适可为止，不要过于频繁地弹出广告，这真的挺烦人的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;展示广告的代码技巧&lt;/h3&gt;&lt;br&gt;&lt;strong&gt;1.在 UITableView 底部展示横幅广告&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;var&lt;/span&gt; admob = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;GADBannerView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;// 设置GADBannerView的frame、设置广告ID、加载广告请求&lt;/span&gt;
+self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.contentInset&lt;/span&gt; = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIEdgeInsetsMake&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;( &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, admob.frame.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注释部分的代码可以&lt;a href=&quot;https://developers.google.com/admob/ios/quick-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考这里&lt;/a&gt;，这段代码的意思是让 UITableView 的可滚动内容区域在底部收缩，收缩长度为banner广告条的高度。这样在用户一直向上拖拽 UITableView 直到尽头的时候，可以让它的可拖拽区域比之前大一些，就不至于让广告遮挡了 UITableView 的最后几行。&lt;/p&gt;
+&lt;p&gt;如果你的 UITableView 是存在于 UITableViewController 中的，那么 UITableView 的 frame 是不可调节的，所以通过上面的代码，我们可以方便地避免广告遮挡原有的内容。而即便你的 UITableView 是存在于 UIViewController 中的，即这个 UITableView 是你自己添加进来的，你可以任意调节 frame，我依然建议你用上面这种方法，而不是直接把 UITableView 的 frame 调小，来给广告空出位置。因为你的广告并不一定能显示的出来，可能是用户把你的广告屏蔽了，也可能是网络状况不好，这时候反正你的广告也显示不出来，应该给用户更多的屏幕空间来显示 UITableView 的内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.利用定时器轮询插页式广告加载状态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里不太恰当的使用了“轮询”这个词，大家意会就好。&lt;br&gt;假如你要弹出一次插页式广告，那么Google给出的示例代码是下面这个样子&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-5d0560a958d5a0aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;如何创建 GADInterstitial
+ 媒体资源、初始化该资源并随广告加载它&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-89aa27ab2b20a117.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;展示插页式广告&quot;&gt;&lt;br&gt;这里的展示逻辑是：不要打扰用户玩游戏的过程，在用户玩游戏的过程中默默地加载广告，等用户一次游戏结束了，如果这时候广告加载好了，就把广告弹出来。&lt;/p&gt;
+&lt;p&gt;然而实际情况是，我们的应用可能不是游戏，并没有一个这么明显的类似&lt;strong&gt;完成了一局游戏&lt;/strong&gt;这样的一个段落结束的地方。这时候你可能希望每30秒弹出一次插页式广告，然而这个广告可能是第40秒才加载好的，这就导致了：虽然你设置的是30秒显示一次广告，但是30s的时候广告没加载好，就没显示出来，60s的时候显示了40s时加载的广告。而更理想的情况是：30s时没能加载好广告，我们就开始轮询，直到广告加载好了，也就是40s时，把广告显示出来，然后设定第70s时展示下一次广告。&lt;/p&gt;
+&lt;p&gt;下面给出一段示例代码，这里的广告展示逻辑是：每60秒展示一次广告，如果到了这个时刻，广告没加载好，就设置定时器每3秒查看一次广告资源是否就绪，直到广告加载好了，展示广告，然后设置60秒后出现下一次广告。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;comment&quot;&gt;// AdMob 插页广告&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; adInterstitial = &lt;span class=&quot;type&quot;&gt;GADInterstitial&lt;/span&gt;(adUnitID: &lt;span class=&quot;string&quot;&gt;&quot;ca-app-pub-xxxx/xxxx&quot;&lt;/span&gt;)
+    &lt;span class=&quot;comment&quot;&gt;// 定时器&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; timer = &lt;span class=&quot;type&quot;&gt;NSTimer&lt;/span&gt;()
+
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
+
+        &lt;span class=&quot;comment&quot;&gt;// 初始化 AdMob 插页广告&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; gadRequest1 = &lt;span class=&quot;type&quot;&gt;GADRequest&lt;/span&gt;()
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.loadRequest(gadRequest1)
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 3秒一次轮询直到第一次展示广告&lt;/span&gt;
+    }
+
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
+    }
+
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;addTimerToShowAd&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;( showAdTimeInterval:NSTimeInterval)&lt;/span&gt;&lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer = &lt;span class=&quot;type&quot;&gt;NSTimer&lt;/span&gt;.scheduledTimerWithTimeInterval( showAdTimeInterval, target: &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
+            selector: &lt;span class=&quot;string&quot;&gt;&quot;showAd&quot;&lt;/span&gt;, userInfo: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, repeats: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
+        [&lt;span class=&quot;type&quot;&gt;NSRunLoop&lt;/span&gt;.currentRunLoop().addTimer(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer, forMode: &lt;span class=&quot;type&quot;&gt;NSRunLoopCommonModes&lt;/span&gt;)]
+    }
+
+
+    &lt;span class=&quot;preprocessor&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showAd&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.isReady {
+            &lt;span class=&quot;comment&quot;&gt;// 广告成功加载，显示广告，重置定时器&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.presentFromRootViewController(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer.invalidate()
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;)
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+            &lt;span class=&quot;comment&quot;&gt;// 广告没有成功加载，开始3秒一次的快速轮询&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer.invalidate()
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面的代码中的关于定时器方面的内容，就不在这篇文章中写了，如果看着费劲的话，欢迎在下面评论，我也可以再写一篇关于定时器的文章。关于 private 和 @objc 关键字部分可以参考&lt;a href=&quot;http://www.jianshu.com/p/41676664aac6&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我之前的一篇文章&lt;/a&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本人现在还是学生，兼做 iOS 独立开发者积累&lt;a href=&quot;https://itunes.apple.com/developer/id988271193&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;作品&lt;/a&gt;，也顺便赚点银子，欢迎有兴趣的加微信交流技术问题，微信号：balabala-ba。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h3&gt;前言&lt;/h3&gt;&lt;br&gt;虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>@objc private class func 与 Selector</title>
+    <link href="/2015/12/15/objc-private-class-func-%E4%B8%8E-Selector/"/>
+    <id>/2015/12/15/objc-private-class-func-与-Selector/</id>
+    <published>2015-12-15T07:21:35.000Z</published>
+    <updated>2016-04-09T07:22:11.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.timer&lt;/span&gt; = &lt;span class=&quot;built_in&quot;&gt;NSTimer&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.scheduledTimerWithTimeInterval&lt;/span&gt;(timeInterval, target: &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
+        selector: &lt;span class=&quot;string&quot;&gt;&quot;moveText&quot;&lt;/span&gt;, userInfo: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, repeats: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
+
+&lt;span class=&quot;built_in&quot;&gt;NSNotificationCenter&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.defaultCenter&lt;/span&gt;()&lt;span class=&quot;variable&quot;&gt;.addObserver&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
+        selector: &lt;span class=&quot;string&quot;&gt;&quot;appEnterForeground&quot;&lt;/span&gt;, name: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, object: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第一个是第一个定时器（NSTimer），第二个是一个页面的监听事件。即，让程序不断地观察现在的『某个状态』，当这个状态符合某个条件时，就去执行 Selector 中的代码。比如，我们的界面中有一个让用户输入年龄的 UITextField，然后我们可以观察（监听），当发现用户在这里输入『0』时，我们就给一个提示：『年龄至少为1』。&lt;/p&gt;
+&lt;p&gt;简单介绍完毕，下面说注意事项。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;1.  private 关键字&lt;/h3&gt;&lt;br&gt;最简单的使用 Selector 的情况，就是如上面所列出的，在 NSTimer 中写 selector 为 “moveText”，然后我们在同一个文件中，再相应地写一个&lt;p&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
+    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就可以了。&lt;br&gt;然而如果你想把它声明为一个 private func，即不希望其他文件调用这个函数，就会出现问题，通俗地讲：private 使得这个函数不能被『外部』调用，而 Selector 对它的调用，实际上就是一种『外部调用』。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;【解决方案】&lt;/strong&gt;&lt;br&gt;KVO 是基于 KVC 和&lt;strong&gt;动态派发技术（Dynamic Dispatch）&lt;/strong&gt;的，Swift 为了效率禁用了 Objective-C 中有的动态派发。那么你把这个动态特性再加回来就可以了~&lt;/p&gt;
+&lt;p&gt;1.通过 @objc 关键字来使用动态特性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
+    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.通过 dynamic 关键字来让这个函数拥有与 OC 中动态调用时相同的运行时特性（@objc 足矣，这个一般用不上）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
+    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;更多关于 dynamic 关键字的内容可以参考：&lt;a href=&quot;http://swifter.tips/kvo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://swifter.tips/kvo/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;2.  class 关键字&lt;/h3&gt;&lt;br&gt;如果你想把这个函数声明为 class func&lt;p&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;()&lt;/span&gt;{ 
+    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则本文最开始的代码中的 target 应该由 self 换为 MyClass.self （假设这段代码写在名为 MyClass 的类中）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer = &lt;span class=&quot;constant&quot;&gt;NSTimer.&lt;/span&gt;scheduledTimerWithTimeInterval(timeInterval, &lt;span class=&quot;symbol&quot;&gt;target:&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;MyClass.&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
+        &lt;span class=&quot;symbol&quot;&gt;selector:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;moveText&quot;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;userInfo:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;nil&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;repeats:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;最后， 以上关键字是可以叠加使用的，如果你愿意，可以写成下面这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;annotation&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;(){&lt;/span&gt; 
+    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我在 StackOverFlow 中的回答，及其它相关：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如有谬误，欢迎在评论中指出。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.timer&lt;/span
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>带有 Extension Target 的 App，如何签名打包</title>
+    <link href="/2015/11/26/%E5%B8%A6%E6%9C%89-Extension-Target-%E7%9A%84-App%EF%BC%8C%E5%A6%82%E4%BD%95%E7%AD%BE%E5%90%8D%E6%89%93%E5%8C%85/"/>
+    <id>/2015/11/26/带有-Extension-Target-的-App，如何签名打包/</id>
+    <published>2015-11-26T07:23:12.000Z</published>
+    <updated>2016-04-09T07:24:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。&lt;br&gt;添加完了之后，你的项目看起来是这个样子的：&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-e93e1fdf586dfbd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Xcode ScreenShot&quot;&gt;&lt;br&gt;那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。&lt;/p&gt;
+&lt;p&gt;1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的 Provisioning Profile 的时候，只要申请一份就可以了，即给和你的 App 同名的那个申请。&lt;br&gt;（假如你的App的名字是 wechat，主 Target 的 Bundle ID 写成 com.xky.wechat, Extension Target 的 Bundle ID 写成 com.xky.wechat.ex, 那么你的 Provisioning Profile 只要和 com.xky.wechat 捆绑； “com.xky.wechat.ex” 除了要写在相应的 Target 上，不需要再有与其相匹配的 Provisioning Profile）&lt;/p&gt;
+&lt;p&gt;2.两个 TARGET 的 Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 那里都选择 Automatic&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-4df57600487e444d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;3.真正自己设置  Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：&lt;br&gt;（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-815001fe681fc515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-a1ae52fba58b7a65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分享一个被误认为是 bug 的东西</title>
+    <link href="/2015/11/24/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E8%A2%AB%E8%AF%AF%E8%AE%A4%E4%B8%BA%E6%98%AF-bug-%E7%9A%84%E4%B8%9C%E8%A5%BF/"/>
+    <id>/2015/11/24/分享一个被误认为是-bug-的东西/</id>
+    <published>2015-11-24T07:25:50.000Z</published>
+    <updated>2016-04-09T07:26:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d20ab032c1c3aeb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;看着像bug的情况&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-fec073946702101e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;正常情况&quot;&gt;&lt;/p&gt;
+&lt;p&gt;注意第一幅图，『收藏』Tab按钮和右上角的『垃圾桶』按钮，是灰色的（本应该是白色的）。&lt;br&gt;出现这种情况，没有任何代码的问题 （除非你故意把它设置成灰色）。&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-61cec0a378b5d78b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;加深颜色&quot;&gt;&lt;br&gt;如上图，设置-&amp;gt;通用-&amp;gt;辅助功能-&amp;gt;加深颜色，这个设置项，如果你打开了（自己常用的真机，很可能是打开的），纯白色按钮就会变成灰色。&lt;br&gt;其他颜色没试过，但是提醒大家，做类似测试的时候，确保你已经把上面这个选项关掉了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-d20ab032c1c3aeb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; a
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跳转到『设置App』的任意条目</title>
+    <link href="/2015/11/24/%E8%B7%B3%E8%BD%AC%E5%88%B0%E3%80%8E%E8%AE%BE%E7%BD%AEApp%E3%80%8F%E7%9A%84%E4%BB%BB%E6%84%8F%E6%9D%A1%E7%9B%AE/"/>
+    <id>/2015/11/24/跳转到『设置App』的任意条目/</id>
+    <published>2015-11-24T07:24:58.000Z</published>
+    <updated>2016-04-09T07:25:35.000Z</updated>
+    
+    <content type="html">&lt;p&gt;有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&amp;gt;通用，或 设置-&amp;gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UIApplication.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;sharedApplication&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;openURL&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(NSURL(string: UIApplicationOpenSettingsURLString)&lt;/span&gt;&lt;/span&gt;!)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;(这条语句可以跳转到 设置App)&lt;br&gt;但是如果我们需要跳转到 设置-&amp;gt;Safari 这个地方，就要写下面这样的语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;#&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; arch(i386) || arch(x86_64)&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;// Simulator&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; url = NSURL(&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;prefs:root=Safari&quot;&lt;/span&gt;)!
+&lt;span class=&quot;preprocessor&quot;&gt;#&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;// Device&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; url = NSURL(&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;prefs:root=SAFARI&quot;&lt;/span&gt;)!
+&lt;span class=&quot;preprocessor&quot;&gt;#&lt;span class=&quot;keyword&quot;&gt;endif&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; UIApplication.sharedApplication().canOpenURL(url) {
+    UIApplication.sharedApplication().openURL(url)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种形式直接被写出来的话，在 iOS 5.1 及更高版本中，不会起作用，所以需要做的额外一个步骤是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/251884-93ec4dea25720def.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;URL Schemes: prefs&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在 YourAppTarget-&amp;gt;Info-&amp;gt;URL Types 这个地方，如上图，写上 prefs 字段；这样在 iOS 8 及 iOS 9 中都亲测有效。&lt;br&gt;下面给出一个较为完整的列表，可以让你随意跳转到 设置App 里的任意一个地方 ：）&lt;/p&gt;
+&lt;p&gt;【List of currently known URLs in the Settings app】&lt;br&gt;prefs:root=General&amp;amp;path=About&lt;br&gt;prefs:root=General&amp;amp;path=ACCESSIBILITY&lt;br&gt;prefs:root=AIRPLANE_MODE&lt;br&gt;prefs:root=General&amp;amp;path=AUTOLOCK&lt;br&gt;prefs:root=General&amp;amp;path=USAGE/CELLULAR_USAGE&lt;br&gt;prefs:root=Brightness&lt;br&gt;prefs:root=General&amp;amp;path=Bluetooth&lt;br&gt;prefs:root=General&amp;amp;path=DATE_AND_TIME&lt;br&gt;prefs:root=FACETIME&lt;br&gt;prefs:root=General&lt;br&gt;prefs:root=General&amp;amp;path=Keyboard&lt;br&gt;prefs:root=CASTLE&lt;br&gt;prefs:root=CASTLE&amp;amp;path=STORAGE_AND_BACKUP&lt;br&gt;prefs:root=General&amp;amp;path=INTERNATIONAL&lt;br&gt;prefs:root=LOCATION_SERVICES&lt;br&gt;prefs:root=ACCOUNT_SETTINGS&lt;br&gt;prefs:root=MUSIC&lt;br&gt;prefs:root=MUSIC&amp;amp;path=EQ&lt;br&gt;prefs:root=MUSIC&amp;amp;path=VolumeLimit&lt;br&gt;prefs:root=General&amp;amp;path=Network&lt;br&gt;prefs:root=NIKE_PLUS_IPOD&lt;br&gt;prefs:root=NOTES&lt;br&gt;prefs:root=NOTIFICATIONS_ID&lt;br&gt;prefs:root=Phone&lt;br&gt;prefs:root=Photos&lt;br&gt;prefs:root=General&amp;amp;path=ManagedConfigurationList&lt;br&gt;prefs:root=General&amp;amp;path=Reset&lt;br&gt;prefs:root=Sounds&amp;amp;path=Ringtone&lt;br&gt;prefs:root=Safari&lt;br&gt;prefs:root=General&amp;amp;path=Assistant&lt;br&gt;prefs:root=Sounds&lt;br&gt;prefs:root=General&amp;amp;path=SOFTWARE_UPDATE_LINK&lt;br&gt;prefs:root=STORE&lt;br&gt;prefs:root=TWITTER&lt;br&gt;prefs:root=General&amp;amp;path=USAGE&lt;br&gt;prefs:root=VIDEO&lt;br&gt;prefs:root=General&amp;amp;path=Network/VPN&lt;br&gt;prefs:root=Wallpaper&lt;br&gt;prefs:root=WIFI&lt;br&gt;prefs:root=INTERNET_TETHERING&lt;/p&gt;
+&lt;p&gt;引用内容来源：&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/9092142/ios-uialertview-button-to-go-to-setting-app&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/9092142/ios-uialertview-button-to-go-to-setting-app&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/33896318#33896318&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/33896318#33896318&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;提醒：&lt;br&gt;这是私有 API，在 AppStore 上架 App 中，请小心谨慎使用。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&amp;gt;通用，或 设置-&amp;gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UIApplication.&lt;
     
     </summary>
     

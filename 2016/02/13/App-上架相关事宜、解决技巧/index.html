@@ -1,0 +1,600 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。
+App 审核委员会这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 App Store Review Guidelines 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App 上架相关事宜、解决技巧">
+<meta property="og:url" content="/2016/02/13/App-上架相关事宜、解决技巧/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。
+App 审核委员会这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 App Store Review Guidelines 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-db436dc8cf164074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:19:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App 上架相关事宜、解决技巧">
+<meta name="twitter:description" content="在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。
+App 审核委员会这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 App Store Review Guidelines 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-db436dc8cf164074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> App 上架相关事宜、解决技巧 | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                App 上架相关事宜、解决技巧
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-13T15:18:45+08:00" content="2016-02-13">
+              2016-02-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。</p>
+<h3 id="App_审核委员会">App 审核委员会</h3><p>这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 <a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="external">App Store Review Guidelines</a> 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实到这个审核团队的执行人员的个人考量上。这个团队的审核过程是完全黑箱操作的，不过在接触这个团队的过程中，还是有一些值得参考的信息可以被提炼出来。</p>
+<ol>
+<li>据不可靠消息，审核中国区 App 的这个团队的成员是身处在美国的华人，所以很可能他们是懂中文的。但为了保险起见，在 iTunes Connect 中提交 App 时如果需要写备注，或者是你想申请加急审核 App，又或者因为其他原因要和这个团队沟通，最好是用中英文两种语言都描述一遍，一起发过去。</li>
+<li>据我个人提交 App 被拒绝的经验，他们给出的回应信息是这种形式的：（1）陈列 <a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="external">App Store Review Guidelines</a> 中的哪条或者哪几条，你没有遵守 （2）你的哪种具体做法违法了以上条例（3）接下来你该如何修改你的 App 才能过审。你可以选择向这个团队上诉，即表示他们的判断可能并不公正，同样是用双语去说，他们可能会在第二天给你个回复。但是注意，你上诉的方向一定要围绕着条例来说，因为对他们来说，苹果的规定就是铁律，违反规定是一定不能上架的，比如他们误认为你使用了 NBA 官方的 logo 侵犯了 NBA 的权益，你可以说这是误会，你使用的图片只是和 NBA logo 长得像而已。和他们动之以情是不会有结果的。</li>
+<li>iTunes Connect （简称 ITC）中，你的 App 的状态是要经历以下几个步骤的：（1）【准备提交】你在 ITC 中新建了一个 App（2）【正在准备审核】你提交了 App 之后，这个状态会保持一周左右，我最快一次是5天，最多一次差不多是15天（3）【正在审核】如果一切顺利，这个状态大约会只持续2小时，因为中美时差嘛，我遇到过很多次大概是1点左右正在审核，然后3点左右就上架了。还有几次这个状态持续了整整三天，如果你发现你的 App 已经处于正在审核状态好几个小时了，那就可以去干别的了，两天以内应该不会有什么动静。（4）【正在销售】处于这个状态之后，再过大约1小时，你的 App 就可以在 AppStore 被搜索到了。</li>
+</ol>
+<hr>
+<h3 id="App_更改售价、下架">App 更改售价、下架</h3><p>默认情况下 App 是在全世界的 AppStore 销售的，你随时可以去 ITC 更改 App 的售价，一般要花大概2小时，才能看见在 AppStore 上有变化。如果要下架 App，直接去 ITC 把销售地区全部反选就可以了，而不是说把这个 App 永久删除，下架是暂时性的，你可以理解为：销售 App，但销售地区个数为0。</p>
+<hr>
+<h3 id="App_加急审核">App 加急审核</h3><p>关于如何加急审核，教程有很多，只强调：</p>
+<ol>
+<li>不要滥用加急审核，平时乱用，等到真正需要的时候，可能人家不鸟你了</li>
+<li>苹果很在意用户体验，你申请 App 更新加急审核的时候，要跟人家说，到底是什么严重影响了用户体验，要让人家可以重现这个 bug，那估计就会很顺利。但是建议不要故意留一个隐蔽的 bug，等下次更新的时候，更新了别的东西，然后说有这个 bug，申请加急，欺骗这个团队，万一被发现，后果可能很严重。</li>
+</ol>
+<hr>
+<h3 id="不要欺骗_App_审核委员会">不要欺骗 App 审核委员会</h3><p>以下行为最好都不要尝试：</p>
+<ol>
+<li>上淘宝刷评论</li>
+<li>用 web 控制 App 的一部分行为，比如他们审核的时候，你后台用的是不侵权的图片资源，等过审了，再把图片换回来</li>
+</ol>
+<hr>
+<h3 id="Application_Loader_网络问题">Application Loader 网络问题</h3><p>可能是因为 GFW 的原因，Application Loader 会出现因为网络状况而无法上传 ipa 文件的情况，现在我这也没有截图，据经验，只要是等了5-10分钟，Application Loader 还没开始上传文件（就是出现类似迅雷那样的显示当前速度和 ipa 包体积的进度条），一直卡在什么“验证资源”之类的状态，那就不用再尝试这个网络环境了。<br>目前我在家里和学校用的都是电信的网络，都没发上传，不知道是否具有普适性。解决方案是：</p>
+<ol>
+<li>连星巴克的 WiFi 上传，每次都成功了（麦当劳和肯德基估计也可以，还没试过） </li>
+<li>用手机开热点（我是中国移动的卡，电信行不行不知道）</li>
+</ol>
+<p>上传成功后，大约过20分钟，就可以在 ITC 的“构建版本”看到之前上传的文件。<br>上传过程不能中断，如果你中途暂停了某一个 ipa 文件的上传，再传这同一个文件，是传不上去的，去下面这个地方<br><img src="http://upload-images.jianshu.io/upload_images/251884-db436dc8cf164074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png">把构建版本号改一下（数字只能更大，不能更小），然后导出 ipa，再上传。这个数字可以随意写，这个版本号是你的 ipa 的版本号，和你的 App  显示在 AppStore 的版本号没有关系。</p>
+<hr>
+<h3 id="文件命名问题">文件命名问题</h3><p>不管往苹果的服务器上传什么文件，PNG 也好 JPG 也好 IPA 也好，文件名称都尽量不要出现中文，上传之前改一下。<br>尤其是 ITC 的 App 页面中的那张 1024*1024 的图片，以中文命名，10次上传有8次要失败。</p>
+<hr>
+<p>暂时就写这么多，想到再更新。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/26/修改-present-出来的-ViewController-状态栏颜色/" rel="next" title="修改 present 出来的 ViewController 状态栏颜色">
+                <i class="fa fa-chevron-left"></i> 修改 present 出来的 ViewController 状态栏颜色
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/18/发布-Widget-App-注意事项/" rel="prev" title="发布 Widget App 注意事项">
+                发布 Widget App 注意事项 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#App_审核委员会"><span class="nav-number">1.</span> <span class="nav-text">App 审核委员会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App_更改售价、下架"><span class="nav-number">2.</span> <span class="nav-text">App 更改售价、下架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App_加急审核"><span class="nav-number">3.</span> <span class="nav-text">App 加急审核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不要欺骗_App_审核委员会"><span class="nav-number">4.</span> <span class="nav-text">不要欺骗 App 审核委员会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application_Loader_网络问题"><span class="nav-number">5.</span> <span class="nav-text">Application Loader 网络问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件命名问题"><span class="nav-number">6.</span> <span class="nav-text">文件命名问题</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

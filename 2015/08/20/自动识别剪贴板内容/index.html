@@ -1,0 +1,605 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~
+//识别剪贴板中的内容
+if let paste = UIPasteboard.generalPasteboard().string where
+    (paste.hasPrefix(&quot;http://&quot;) || past">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动识别剪贴板内容">
+<meta property="og:url" content="/2015/08/20/自动识别剪贴板内容/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~
+//识别剪贴板中的内容
+if let paste = UIPasteboard.generalPasteboard().string where
+    (paste.hasPrefix(&quot;http://&quot;) || past">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:35:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自动识别剪贴板内容">
+<meta name="twitter:description" content="之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~
+//识别剪贴板中的内容
+if let paste = UIPasteboard.generalPasteboard().string where
+    (paste.hasPrefix(&quot;http://&quot;) || past">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 自动识别剪贴板内容 | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                自动识别剪贴板内容
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-20T15:34:39+08:00" content="2015-08-20">
+              2015-08-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~</p>
+<pre><code><span class="comment">//识别剪贴板中的内容</span>
+<span class="keyword">if</span> let paste = <span class="built_in">UIPasteboard</span><span class="variable">.generalPasteboard</span>()<span class="variable">.string</span> where
+    (paste<span class="variable">.hasPrefix</span>(<span class="string">"http://"</span>) || paste<span class="variable">.hasPrefix</span>(<span class="string">"https://"</span>)) { 
+    <span class="comment">//如果剪贴板中的内容是链接</span>
+    let alert = <span class="built_in">UIAlertController</span>(title: <span class="string">"要打开剪贴板中的链接吗？"</span>,
+        message: <span class="literal">nil</span>,
+        preferredStyle: <span class="built_in">UIAlertControllerStyle</span><span class="variable">.Alert</span>)
+    alert<span class="variable">.addAction</span>(<span class="built_in">UIAlertAction</span>(title: <span class="string">"打开"</span>,
+        style: <span class="built_in">UIAlertActionStyle</span><span class="variable">.Default</span>,
+        handler: { Void <span class="keyword">in</span>
+            <span class="comment">// your implementation</span>
+            print(paste)
+    }))
+    alert<span class="variable">.addAction</span>(<span class="built_in">UIAlertAction</span>(title: <span class="string">"忽略"</span>,
+        style: <span class="built_in">UIAlertActionStyle</span><span class="variable">.Cancel</span>,
+        handler: <span class="literal">nil</span>))
+    <span class="comment">//弹出Alert</span>
+    let storyboard = <span class="built_in">UIStoryboard</span>(name: <span class="string">"Main"</span>, bundle: <span class="literal">nil</span>)
+    <span class="keyword">if</span> let vc = storyboard<span class="variable">.instantiateViewControllerWithIdentifier</span>(<span class="string">"navi"</span>) as? <span class="built_in">UINavigationController</span> {
+        <span class="keyword">self</span><span class="variable">.window</span>?<span class="variable">.rootViewController</span> = vc
+        vc<span class="variable">.presentViewController</span>(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)
+    }
+}
+</code></pre><p>获取设备的剪贴板很简单，第一行代码就搞定了，if 语句中判断了一下剪贴板中的内容是不是链接，注意http和https都要写上，这点很容易被忽略（在浏览器地址栏中复制以www.开头的文本会自动在剪贴板中转为http或https开头的链接）。</p>
+<p>更值得注意的是，因为你需要让 App 在每次从后台进入前台的时候都检测一下剪贴板中有没有链接，所以以上方法要放在 AppDelegate 文件的 applicationWillEnterForeground 方法中。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/251884-91cc90cfce77a310.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="AppDelegate.swift"></p>
+<p>而这个方法中是不能通过 self 来调用 ViewController 的，所以要曲线救国的话，你需要手动获取 Storyboard、ViewController，再设置window的rootViewController 才能去掉所有报错和警告。</p>
+<p>（这里我只是把剪贴板中的链接输出到控制台了，想要自己用 UIWebView 打开链接的话，在// your implementation 这句注释这里写自己的方法吧）</p>
+<p><br>【150928 更新】</p>
+<p>对比 <strong>applicationWillEnterForeground</strong><br>和 <strong>applicationDidBecomeActive</strong><br>这两个方法，前者是指 <strong>App从后台进入前台</strong>，后者是指 <strong>App处于活跃状态</strong>，所以前者相对于后者，缺少的部分是，当 App 刚刚启动，而不是从后台取出的时候，它无法识别剪贴板。<br>因为你不能要求每次都让用户先把 App 打开，再往剪贴板里面填东西，再跳转回来，所以个人建议把上面的代码放在 <strong>applicationDidBecomeActive</strong> 方法中，而不是 <strong>applicationWillEnterForeground</strong> 。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/08/快速生成高斯模糊效果背景/" rel="next" title="快速生成高斯模糊效果背景">
+                <i class="fa fa-chevron-left"></i> 快速生成高斯模糊效果背景
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/23/UIScrollView-看不到内容、UIScrollView-不能滑动/" rel="prev" title="UIScrollView 看不到内容、UIScrollView 不能滑动">
+                UIScrollView 看不到内容、UIScrollView 不能滑动 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

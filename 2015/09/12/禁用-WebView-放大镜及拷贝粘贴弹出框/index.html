@@ -1,0 +1,576 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS 开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="背景：当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。然而当你做了一系列工作自定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="禁用 WebView 放大镜及拷贝粘贴弹出框">
+<meta property="og:url" content="/2015/09/12/禁用-WebView-放大镜及拷贝粘贴弹出框/index.html">
+<meta property="og:site_name" content="KyXu Tech">
+<meta property="og:description" content="背景：当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。然而当你做了一系列工作自定义">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-04-09T07:33:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="禁用 WebView 放大镜及拷贝粘贴弹出框">
+<meta name="twitter:description" content="背景：当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。然而当你做了一系列工作自定义">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 禁用 WebView 放大镜及拷贝粘贴弹出框 | KyXu Tech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">KyXu Tech</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-作品">
+          <a href="https://itunes.apple.com/developer/id988271193" rel="section">
+            
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简书">
+          <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
+            
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
+            简书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-开源">
+          <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            开源
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                禁用 WebView 放大镜及拷贝粘贴弹出框
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-12T15:28:22+08:00" content="2015-09-12">
+              2015-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>背景：<br>当你的App中有 WebView 或者有 Text 文本的时候，毫无疑问，系统默认地会在你进行长按的时候，弹出一个框，来让你拷贝、粘贴、剪切文本等，亦或是弹出一个放大镜。<br>而当你进行开发的时候，往往很明确的知道自己的 WebView 希望展示的是什么东西，这个时候，你可能会希望自定义长按手势（LongPressGesture）的功能，而不是任由系统“智能”地帮助你。<br>然而当你做了一系列工作自定义了长按手势之后，却发现它的优先级是低于系统默认的弹出框的。</p>
+<p>在 StackOverFlow 上面查找一番之后，发现一个可能对某些人有效的方法是：</p>
+<pre><code>webView.<span class="function"><span class="title">stringByEvaluatingJavaScriptFromString</span><span class="params">(<span class="string">"document.documentElement.style.webkitUserSelect='none';"</span>)</span></span>
+webView.<span class="function"><span class="title">stringByEvaluatingJavaScriptFromString</span><span class="params">(<span class="string">"document.documentElement.style.webkitTouchCallout='none';"</span>)</span></span>
+</code></pre><p>将这两行代码加入到 webViewShouldLoadWithRequest 方法中，可以通过CSS来修改网页。</p>
+<p>【重点】</p>
+<p>然而这并不是对所有情况都有效，甚至今天在 Xcode 7 GM + iOS 9 环境下，彻底失效了。纠结很久之后，发现<br><img src="http://upload-images.jianshu.io/upload_images/251884-7a1cdb7b5b20bebd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UILongPressGestureRecognizer.png"></p>
+<p>长按手势的默认属性中，有一个 minimumPressDuration 默认值是 0.5，也就是说，在长按了0.5秒时，我们自定义的长按手势执行方法和系统的冲突了，于是解决方法显而易见：把自定义长按手势的反应时间缩短到0.5s以内，这样就可以在系统方法执行之前完成操作，而事实上，你甚至可以简单粗暴地把它改为0.1s，依然不会和点按的 Tap 手势有冲突。</p>
+<pre><code>self<span class="class">.longPressPan</span><span class="class">.minimumPressDuration</span> = <span class="number">0.3</span>
+</code></pre><p>希望对大家有所帮助 ：）</p>
+<p>更新：在 StoryBoard 中拖动手势控件到 ViewController 的时候，不要拖动到 ViewController 的顶端，而要拖动到 ViewController 的 View 的部分，让它自动设置好手势的控制区域，否则无论怎么设置，手势都不会起作用。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/23/UIScrollView-看不到内容、UIScrollView-不能滑动/" rel="next" title="UIScrollView 看不到内容、UIScrollView 不能滑动">
+                <i class="fa fa-chevron-left"></i> UIScrollView 看不到内容、UIScrollView 不能滑动
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/22/Xcode-7-Simulator-问题小记/" rel="prev" title="Xcode 7 Simulator 问题小记">
+                Xcode 7 Simulator 问题小记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="KyXu" />
+          <p class="site-author-name" itemprop="name">KyXu</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KyXu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
