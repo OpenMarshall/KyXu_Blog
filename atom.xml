@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://kyxu.tech/"/>
-  <updated>2016-04-09T03:41:43.000Z</updated>
-  <id>http://kyxu.tech/</id>
+  <link href="/"/>
+  <updated>2016-04-09T06:32:43.000Z</updated>
+  <id>/</id>
   
   <author>
     <name>KyXu</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>扯淡 Method Swizzling</title>
-    <link href="http://kyxu.tech/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
-    <id>http://kyxu.tech/2016/04/06/扯淡-Method-Swizzling/</id>
+    <link href="/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
+    <id>/2016/04/06/扯淡-Method-Swizzling/</id>
     <published>2016-04-06T03:11:29.000Z</published>
-    <updated>2016-04-09T03:41:43.000Z</updated>
+    <updated>2016-04-09T06:32:43.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;&lt;p&gt;关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。&lt;br&gt;而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。&lt;br&gt;本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。&lt;/p&gt;
 &lt;hr&gt;
@@ -86,7 +86,7 @@
 &lt;li&gt;&lt;code&gt;myContainsObject&lt;/code&gt; 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 &lt;code&gt;myContainsObject&lt;/code&gt; 这个词在你的脑子里换成 &lt;code&gt;containsObject&lt;/code&gt;（如果确定此时两个方法确实互换了实现）。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;p&gt;###最后&lt;br&gt;如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。&lt;br&gt;如果你要在实际项目里用它……你要是真能用上也挺厉害。&lt;/p&gt;
+&lt;h3 id=&quot;最后&quot;&gt;最后&lt;/h3&gt;&lt;p&gt;如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。&lt;br&gt;如果你要在实际项目里用它……你要是真能用上也挺厉害。&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -100,8 +100,8 @@
   
   <entry>
     <title>生成高斯模糊效果背景</title>
-    <link href="http://kyxu.tech/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
-    <id>http://kyxu.tech/2015/08/07/生成高斯模糊效果背景/</id>
+    <link href="/2015/08/07/%E7%94%9F%E6%88%90%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E8%83%8C%E6%99%AF/"/>
+    <id>/2015/08/07/生成高斯模糊效果背景/</id>
     <published>2015-08-07T03:44:36.000Z</published>
     <updated>2016-04-09T03:45:04.000Z</updated>
     

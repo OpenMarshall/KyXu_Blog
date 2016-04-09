@@ -80,15 +80,15 @@
 
 
 
-<meta name="description" content="iOS 开发记录">
+<meta name="description" content="大三学生 / 独立开发">
 <meta property="og:type" content="website">
 <meta property="og:title" content="KyXu Tech">
-<meta property="og:url" content="http://kyxu.tech/index.html">
+<meta property="og:url" content="/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="iOS 开发记录">
+<meta property="og:description" content="大三学生 / 独立开发">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KyXu Tech">
-<meta name="twitter:description" content="iOS 开发记录">
+<meta name="twitter:description" content="大三学生 / 独立开发">
 
 
 
@@ -164,6 +164,8 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
             首页
           </a>
         </li>
@@ -171,6 +173,8 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
           </a>
@@ -180,6 +184,8 @@
         <li class="menu-item menu-item-作品">
           <a href="https://itunes.apple.com/developer/id988271193" rel="section">
             
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
             作品
           </a>
         </li>
@@ -188,6 +194,8 @@
         <li class="menu-item menu-item-简书">
           <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
             
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
             简书
           </a>
         </li>
@@ -195,6 +203,8 @@
         
         <li class="menu-item menu-item-开源">
           <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github-square fa-fw"></i> <br />
             
             开源
           </a>
@@ -346,7 +356,7 @@
 <li><code>myContainsObject</code> 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 <code>myContainsObject</code> 这个词在你的脑子里换成 <code>containsObject</code>（如果确定此时两个方法确实互换了实现）。</li>
 </ol>
 <hr>
-<p>###最后<br>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
+<h3 id="最后">最后</h3><p>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
 
           
         
@@ -534,7 +544,7 @@ func createBlurBackground (image:<span class="type">UIImage</span>,view:<span cl
                src="/images/default_avatar.jpg"
                alt="KyXu" />
           <p class="site-author-name" itemprop="name">KyXu</p>
-          <p class="site-description motion-element" itemprop="description">iOS 开发记录</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">

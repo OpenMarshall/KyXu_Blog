@@ -86,14 +86,14 @@
 swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，是用来互">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扯淡 Method Swizzling">
-<meta property="og:url" content="http://kyxu.tech/2016/04/06/扯淡-Method-Swizzling/index.html">
+<meta property="og:url" content="/2016/04/06/扯淡-Method-Swizzling/index.html">
 <meta property="og:site_name" content="KyXu Tech">
 <meta property="og:description" content="写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
 
 这是个啥
 swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫做“方法调配”、“方法混合”、“方法调和”，是用来互">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-7f3a68b6ef76a5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T03:41:43.000Z">
+<meta property="og:updated_time" content="2016-04-09T06:32:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扯淡 Method Swizzling">
 <meta name="twitter:description" content="写在前面关于 Method Swizzling 这个东西，已经有很多高人写了详细的文章来介绍，我就不再班门弄斧，往深了说了。而且不作延伸的话，这项技术本身也没有复杂到要长文论述的地步。本文旨在帮助不熟悉这项技术的人，开始在实际开发过程中，尝试使用它。
@@ -174,6 +174,8 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
             首页
           </a>
         </li>
@@ -181,6 +183,8 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
           </a>
@@ -190,6 +194,8 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         <li class="menu-item menu-item-作品">
           <a href="https://itunes.apple.com/developer/id988271193" rel="section">
             
+              <i class="menu-item-icon fa fa-apple fa-fw"></i> <br />
+            
             作品
           </a>
         </li>
@@ -198,6 +204,8 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         <li class="menu-item menu-item-简书">
           <a href="http://www.jianshu.com/users/4bb8c9a72ee9/latest_articles" rel="section">
             
+              <i class="menu-item-icon fa fa-book fa-fw"></i> <br />
+            
             简书
           </a>
         </li>
@@ -205,6 +213,8 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
         
         <li class="menu-item menu-item-开源">
           <a href="https://github.com/OpenMarshall" rel="section">
+            
+              <i class="menu-item-icon fa fa-github-square fa-fw"></i> <br />
             
             开源
           </a>
@@ -351,7 +361,7 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
 <li><code>myContainsObject</code> 这个方法乍一看是死循环，如果你直接调用它的话，它也确实是死循环。但现在我们是在 RunTime 期间，动态地决定这个方法的内部实现的，在我们调用这个方法，进入它的函数体的时候，它的实现就已经被换掉了，所以在它的内部，你应该把 <code>myContainsObject</code> 这个词在你的脑子里换成 <code>containsObject</code>（如果确定此时两个方法确实互换了实现）。</li>
 </ol>
 <hr>
-<p>###最后<br>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
+<h3 id="最后">最后</h3><p>如果我写的这点东西可以帮助你以后的 debug 工作，那么最好。<br>如果你要在实际项目里用它……你要是真能用上也挺厉害。</p>
 
       
     </div>
@@ -444,7 +454,7 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
                src="/images/default_avatar.jpg"
                alt="KyXu" />
           <p class="site-author-name" itemprop="name">KyXu</p>
-          <p class="site-description motion-element" itemprop="description">iOS 开发记录</p>
+          <p class="site-description motion-element" itemprop="description">大三学生 / 独立开发</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -483,7 +493,7 @@ swizz 这个词在英语里面是“欺骗”的意思。Method Swizzling 也叫
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这是个啥"><span class="nav-number">2.</span> <span class="nav-text">这是个啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举栗子"><span class="nav-number">3.</span> <span class="nav-text">举栗子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这是个啥"><span class="nav-number">2.</span> <span class="nav-text">这是个啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举栗子"><span class="nav-number">3.</span> <span class="nav-text">举栗子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
         </section>
