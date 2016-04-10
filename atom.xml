@@ -529,7 +529,7 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     <link href="/2016/02/29/%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E6%90%9E%E5%AE%9A%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/"/>
     <id>/2016/02/29/两个函数搞定本地存储/</id>
     <published>2016-02-29T07:10:22.000Z</published>
-    <updated>2016-04-09T16:06:42.000Z</updated>
+    <updated>2016-04-10T06:08:04.000Z</updated>
     
     <content type="html">&lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// MARK: - Store&lt;/span&gt;
