@@ -62,10 +62,12 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS 开发," />
+  <meta name="keywords" content="KyXu" />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="KyXu Tech" type="application/atom+xml" />
@@ -80,33 +82,31 @@
 
 
 
-<meta name="description" content="做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App 再打开的话，上次写入的文件还在。
-常用的方法是这个
-func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
-然而 writeToFile 这个函数却只属于 NSArray
-假如我自定义了一个Person类">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何将 Array 存储在本地">
-<meta property="og:url" content="/2015/07/22/如何将-Array-存储在本地/index.html">
+<meta name="description" content="我叫徐开源，目前在重庆大学上大三。对编程、设计和产品有着浓厚的兴趣。
+上学之外，兼做 iOS 独立开发，也习惯在博客记录一些东西。
+学过点平面设计，盲目崇拜 Adobe，现在常用 Sketch。
+你可以在微博、知乎上面找到我。
+想联系我的话，也可以加我微信：balabala-ba，或者 MailTo：wm-ing@qq.com。
+（找实习ing，如果您能帮我内推，或者可以直接电面我，我会非常感谢的">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="/about/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App 再打开的话，上次写入的文件还在。
-常用的方法是这个
-func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
-然而 writeToFile 这个函数却只属于 NSArray
-假如我自定义了一个Person类">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/array0.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/array1.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/array2.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/array3.png">
-<meta property="og:updated_time" content="2016-04-10T03:22:11.000Z">
+<meta property="og:description" content="我叫徐开源，目前在重庆大学上大三。对编程、设计和产品有着浓厚的兴趣。
+上学之外，兼做 iOS 独立开发，也习惯在博客记录一些东西。
+学过点平面设计，盲目崇拜 Adobe，现在常用 Sketch。
+你可以在微博、知乎上面找到我。
+想联系我的话，也可以加我微信：balabala-ba，或者 MailTo：wm-ing@qq.com。
+（找实习ing，如果您能帮我内推，或者可以直接电面我，我会非常感谢的">
+<meta property="og:updated_time" content="2016-04-10T05:32:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何将 Array 存储在本地">
-<meta name="twitter:description" content="做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App 再打开的话，上次写入的文件还在。
-常用的方法是这个
-func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
-然而 writeToFile 这个函数却只属于 NSArray
-假如我自定义了一个Person类">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/array0.png">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="我叫徐开源，目前在重庆大学上大三。对编程、设计和产品有着浓厚的兴趣。
+上学之外，兼做 iOS 独立开发，也习惯在博客记录一些东西。
+学过点平面设计，盲目崇拜 Adobe，现在常用 Sketch。
+你可以在微博、知乎上面找到我。
+想联系我的话，也可以加我微信：balabala-ba，或者 MailTo：wm-ing@qq.com。
+（找实习ing，如果您能帮我内推，或者可以直接电面我，我会非常感谢的">
 
 
 
@@ -124,7 +124,13 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
   };
 </script>
 
-  <title> 如何将 Array 存储在本地 | KyXu Tech </title>
+  <title>
+  
+
+  
+    about | KyXu Tech
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +151,7 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,134 +271,15 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
 
   <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    
+      <p><strong>我叫徐开源</strong>，目前在重庆大学上大三。对编程、设计和产品有着浓厚的兴趣。</p>
+<p>上学之外，兼做 iOS 独立开发，也习惯在博客记录一些东西。</p>
+<p>学过点平面设计，盲目崇拜 Adobe，现在常用 Sketch。</p>
+<p>你可以在<a href="http://weibo.com/kaiyuanxu" target="_blank" rel="external">微博</a>、<a href="https://www.zhihu.com/people/x_os" target="_blank" rel="external">知乎</a>上面找到我。</p>
+<p>想联系我的话，也可以加我微信：balabala-ba，或者 MailTo：wm-ing@qq.com。</p>
+<p>（找实习ing，如果您能帮我内推，或者可以直接电面我，我会非常感谢的~ <a href="https://github.com/OpenMarshall/MyResume/blob/master/%E7%AE%80%E5%8E%86_iOS%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0_%E5%BE%90%E5%BC%80%E6%BA%90.pdf" target="_blank" rel="external">简历在此</a>）</p>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                如何将 Array 存储在本地
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-22T11:18:55+08:00" content="2015-07-22">
-              2015-07-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App 再打开的话，上次写入的文件还在。</p>
-<p>常用的方法是这个</p>
-<p><code>func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&gt;Bool</code></p>
-<p>然而 writeToFile 这个函数却只属于 NSArray</p>
-<p>假如我自定义了一个Person类来写人，然后用数组来存储Person对象，那么我将把这个数组初始化为</p>
-<p><code>let personArray :[Person] = <a href="">Person</a></code></p>
-<p>这时，这个 personArray 就只能是 Array，而不是 NSArray。</p>
-<p>想要把它存储在本地plist文件中，需要用到 NSKeyedArchiver 和 NSKeyedUnarchiver</p>
-<p>但是在此之前，你需要把你的类改造一下。</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/array0.png" alt="起初的类"></p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/array1.png" alt="需要加入的内容"></p>
-<p>你需要在你的类中实现 encode function，实现起来也很简单，见上图。而一旦 encode 方法被实现，NSKeyedArchiver 和 NSKeyedUnarchiver 马上就被“解锁”并可以替代 writeToFile 方法啦！</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/array2.png" alt="将peopleArray存储到本地plist"></p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/array3.png" alt="将peopleArray从本地plist中取出"></p>
-<p>附上我在 <a href="http://stackoverflow.com/questions/25345076/ios-swift-saving-an-array-of-custom-classes/31554278#31554278" target="_blank" rel="external">StackOverFlow 上的相关讨论</a></p>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/07/21/failed-to-get-the-task-for-process/" rel="next" title="failed to get the task for process">
-                <i class="fa fa-chevron-left"></i> failed to get the task for process
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/23/whose-view-is-not-in-the-window-hierarchy/" rel="prev" title="whose view is not in the window hierarchy">
-                whose view is not in the window hierarchy <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -424,17 +311,8 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -486,17 +364,6 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -592,10 +459,6 @@ func  writeToFile(path:String, atomically useAuxiliaryFile:Bool) -&amp;gt;Bool
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
