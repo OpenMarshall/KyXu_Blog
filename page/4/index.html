@@ -68,8 +68,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="KyXu Tech" type="application/atom+xml" />
-
 
 
 
@@ -100,8 +98,8 @@
     fancybox: true,
     motion: false,
     duoshuo: {
-      userId: 0,
-      author: '博主'
+      userId: 13318219,
+      author: 'KyXu'
     }
   };
 </script>
@@ -116,6 +114,15 @@
 
 
 
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=55530083";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -211,22 +218,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-开源">
-          <a href="https://github.com/OpenMarshall" rel="section">
-            
-              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
-            
-            开源
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
             关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-公益404">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -328,7 +335,7 @@
       
         
           
-          初学者第一次使用 UIScrollView 的时候，很可能会遇到 UIScrollView 滑动不了
+          初学者第一次使用 UIScrollView 的时候，很可能会遇到 UIScrollView 滑动不了，或者明明添加了内容，却看不到的问题。这里展示最简洁、最常态化的一种在 UIScrollView 中
           ...
 
           <div class="post-more-link text-center">
@@ -442,7 +449,9 @@
       
         
           
-          之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝
+          之前用淘宝给微信好友分享链接的时候，发现在微信中复制了宝贝的链接，然后再从后台切换到淘宝客户端，淘宝就会弹出一个页面，询问是否要跳转到相关页面，今天试着实现了一下，分享出来~
+//识别剪贴板中的内容
+
           ...
 
           <div class="post-more-link text-center">
@@ -556,7 +565,9 @@
       
         
           
-          这篇文章是上一篇文章 http://www.jianshu.com/p/c9083a105921 的
+          这篇文章是上一篇文章 http://www.jianshu.com/p/c9083a105921 的拓展，不罗嗦了，直接上代码。
+//创建毛玻璃效果的背景
+func createFrostBackgr
           ...
 
           <div class="post-more-link text-center">
@@ -670,7 +681,7 @@
       
         
           
-          如果你是 iOS个人开发者的话，那么一定知道，可以在 https://developer.apple
+          如果你是 iOS个人开发者的话，那么一定知道，可以在 https://developer.apple.com/account/ios/device/deviceList.action 这个地方添加内测
           ...
 
           <div class="post-more-link text-center">
@@ -784,7 +795,9 @@
       
         
           
-          做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再
+          做开发时，总是使用系统默认的白色背景会显得有些生硬，所以当我们以展示图片为目的时，不妨将图片放大、再做高斯模糊处理以作为背景。
+我把这个处理过程用 Swift 封装成了一个函数，供大家参考。
+//创建
           ...
 
           <div class="post-more-link text-center">
@@ -898,7 +911,7 @@
       
         
           
-          现在 Github 上绝大多数的库都是用 Objective-C 语言写的，当我们使用 Swift 
+          现在 Github 上绝大多数的库都是用 Objective-C 语言写的，当我们使用 Swift 进行开发的时候呢，无论是用 CocoaPods 还是手动把库集成到自己的项目中，一开始都是不能直接使
           ...
 
           <div class="post-more-link text-center">
@@ -1012,7 +1025,10 @@
       
         
           
-          在iOS开发中，通过 UIImagePickerController 获取系统相册中的照片的 URL
+          在iOS开发中，通过 UIImagePickerController 获取系统相册中的照片的 URL 并不非常的直观。
+StackOverFlow 上面的相关问题基本都指向了下面这个方法：
+
+即，im
           ...
 
           <div class="post-more-link text-center">
@@ -1127,7 +1143,8 @@
         
           
           在做界面跳转的时候，我们经常会用到这两个函数
-func dismissViewControllerA
+func dismissViewControllerAnimated(flag:Bool, completion: (() -&gt;Void)?)
+fu
           ...
 
           <div class="post-more-link text-center">
@@ -1241,7 +1258,9 @@ func dismissViewControllerA
       
         
           
-          做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App
+          做开发的时候，我们经常需要将数据保存在plist文件中，用这种方式来将数据写入磁盘，这样退出 App 再打开的话，上次写入的文件还在。
+常用的方法是这个
+func  writeToFile(path:
           ...
 
           <div class="post-more-link text-center">
@@ -1355,7 +1374,7 @@ func dismissViewControllerA
       
         
           
-          个人开发者一般做了一个项目想要给别人用，做内测的时候，都要去 Apple Developer 生成一
+          个人开发者一般做了一个项目想要给别人用，做内测的时候，都要去 Apple Developer 生成一个 Provisioning Profile ，里面包含了你的开发者证书、你的内测设备的UDID等等
           ...
 
           <div class="post-more-link text-center">
@@ -1453,15 +1472,64 @@ func dismissViewControllerA
         </nav>
 
         
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/OpenMarshall" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://itunes.apple.com/developer/id988271193" target="_blank">
+                  
+                    <i class="fa fa-apple"></i>
+                  
+                  App Store
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/x_os" target="_blank">
+                  
+                    <i class="fa fa-user"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/kaiyuanxu" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/MarsXKY" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://cn.linkedin.com/in/kyxu0" target="_blank">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1598,6 +1666,10 @@ func dismissViewControllerA
   </script>
 
   
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
     
   
 
