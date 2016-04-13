@@ -308,7 +308,7 @@ hr {
 }
 blockquote {
   padding: 0 15px;
-  color: #666;
+  color: #dcadc8;
   border-left: 4px solid #ddd;
 }
 blockquote cite::before {
@@ -435,7 +435,7 @@ table>tbody>tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 table>tbody>tr:hover {
-  background-color: #f5f5f5;
+  background-color: #dcadc8;
 }
 caption,
 th,
@@ -564,7 +564,7 @@ pre code {
   float: right;
 }
 .highlight .gutter pre {
-  color: #666;
+  color: #dcadc8;
   text-align: right;
   padding-right: 20px;
 }
@@ -1164,7 +1164,7 @@ pre .javascript .function {
   transition-property: background;
 }
 .posts-collapse .post-header:hover {
-  border-bottom-color: #666;
+  border-bottom-color: #dcadc8;
 }
 .posts-collapse .post-header:hover::before {
   background: #222;
@@ -1189,7 +1189,7 @@ pre .javascript .function {
   opacity: 0.6;
 }
 .posts-collapse .post-title a {
-  color: #666;
+  color: #dcadc8;
   border-bottom: none;
 }
 .page-home .post-type-quote .post-header,
@@ -1447,7 +1447,7 @@ pre .javascript .function {
 }
 .site-author-name {
   margin: 5px 0 0;
-  color: #f5f5f5;
+  color: #dcadc8;
 }
 .site-description {
   margin-top: 5px;
@@ -1521,7 +1521,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a611ff;
+  background: #baff41;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1550,7 +1550,7 @@ pre .javascript .function {
   color: #555;
 }
 .sidebar-nav li:hover {
-  color: #f5f5f5;
+  color: #dcadc8;
 }
 .page-post-detail .sidebar-nav-toc {
   padding: 0 5px;
@@ -1573,7 +1573,7 @@ pre .javascript .function {
 }
 .post-toc-empty {
   font-size: 14px;
-  color: #666;
+  color: #dcadc8;
 }
 .post-toc-wrap {
   overflow: hidden;
@@ -2030,7 +2030,7 @@ a.search-result {
   margin-left: -2px;
   width: 4px;
   height: 100%;
-  background: #f5f5f5;
+  background: #dcadc8;
   z-index: -1;
 }
 .page-archive .posts-collapse .archive-move-on {
@@ -2106,7 +2106,7 @@ hr {
   margin-top: 80px;
 }
 .header {
-  background: #f5f5f5;
+  background: #dcadc8;
 }
 .header-inner {
   padding: 25px 0 20px;
@@ -2300,7 +2300,7 @@ hr {
 }
 .posts-expand .post-tags a {
   padding: 1px 5px;
-  background: #f5f5f5;
+  background: #dcadc8;
   border-bottom: none;
 }
 .posts-expand .post-tags a:hover {
@@ -2316,10 +2316,10 @@ hr {
 .post-more-link a {
   padding: 0;
   font-size: 14px;
-  color: #666;
+  color: #dcadc8;
   background: none;
   border: none;
-  border-bottom: 2px solid #666;
+  border-bottom: 2px solid #dcadc8;
   transition-property: border;
 }
 @media (max-width: 767px) {
@@ -2383,8 +2383,8 @@ hr {
 .footer {
   margin-top: 80px;
   padding: 10px 0;
-  background: #f5f5f5;
-  color: #666;
+  background: #dcadc8;
+  color: #dcadc8;
 }
 .footer-inner {
   margin: 0 auto;
