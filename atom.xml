@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-15T14:02:26.000Z</updated>
+  <updated>2016-04-16T04:42:34.000Z</updated>
   <id>/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="/2016/04/15/%E5%AE%9E%E4%B9%A0%E6%B1%82%E8%81%8C%E7%BB%88%E7%BB%93%E7%AF%87/"/>
     <id>/2016/04/15/实习求职终结篇/</id>
     <published>2016-04-15T14:01:39.000Z</published>
-    <updated>2016-04-15T14:02:26.000Z</updated>
+    <updated>2016-04-16T04:42:34.000Z</updated>
     
     <content type="html">&lt;p&gt;在和腾讯、阿里各通了4次电话之后，翘掉了腾讯的最后一面（因为是在隔壁的城市，而且是群面，心理上有点抗拒），拿到了阿里无线事业部的 offer，个人还是很满意，反过来记录一下整个过程，分享一下。&lt;/p&gt;
 &lt;h2 id=&quot;做简历&quot;&gt;做简历&lt;/h2&gt;&lt;p&gt;大概2月底的时候，感觉到各大公司都开始有招聘的苗头了，了解到腾讯是3月底截止内推，其他公司也差不多。然后迅速撰写草稿，用一晚上的时间完成了简历的制作，虽然后来也修改了简历，但是第一版已经确定了 80% 的内容。这里面有一点要提一下，关于如何做简历（制作，不是简历的内容）。&lt;/p&gt;
@@ -28,17 +28,18 @@
 &lt;ol&gt;
 &lt;li&gt;一个 txt 或者 rtf 用来放纯文本的信息，这是你的 PDF 版的简历的内容来源。因为无论用 pages 还是 word 还是其他工具来做简历，难免要有格式、图片等等其他元素，会影响到你撰写信息，所以需要有一个纯文本用来撰写信息，以此为数据源来更新你最终简历上的内容。&lt;/li&gt;
 &lt;li&gt;一个 pages（或 word 等）文档，这是随时用来修改并且导出 PDF 版简历的。&lt;/li&gt;
-&lt;li&gt;PDF 版简历，这个简历的命名要写好，可以写成【简历_iOS开发实习_姓名】，这样任何时候需要简历，都可以直接发过去，命名可以让人一眼看出这是什么文件。&lt;/li&gt;
+&lt;li&gt;PDF 版简历，这个简历的命名要写好，可以写成【简历\&lt;em&gt;iOS开发实习\&lt;/em&gt;姓名】，这样任何时候需要简历，都可以直接发过去，命名可以让人一眼看出这是什么文件。&lt;/li&gt;
 &lt;li&gt;一个 JPG 版本，虽然正式简历不该用图片，但是万一有机会在微信或者微博上发现有机会和别人私聊拿到工作机会，手机上是不能在微信和微博客户端发 PDF 的，所以这个也要准备好，而且要在清晰度高的同时保证文件不要太大，10M 的图片发出去都费劲。&lt;br&gt;（如果想参考的话，可以&lt;a href=&quot;https://github.com/OpenMarshall/MyResume/raw/master/%E7%AE%80%E5%8E%86_iOS%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0_%E5%BE%90%E5%BC%80%E6%BA%90.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击下载我的简历&lt;/a&gt;）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&quot;找内推&quot;&gt;找内推&lt;/h2&gt;&lt;p&gt;在各个公司的内推期间，我拿到了腾讯、阿里、网易、蘑菇街4家的内推（京东也可以拿的，但是他们竟然不招 iOS 开发），而最终给我 offer 的阿里，帮我内推的人我压根就不认识，或许当初没有间接找人内推阿里，我现在连个机会都没有。&lt;/p&gt;
 &lt;p&gt;所以想说，只要认真去联系一下，找一找中间人，其实联系上哪家公司的员工都不难。因为觉得自己不认识这家公司的人，就想不走内推流程或者干脆不去应聘，实在太可惜了。&lt;/p&gt;
 &lt;h2 id=&quot;电面&quot;&gt;电面&lt;/h2&gt;&lt;p&gt;非常感谢腾讯的师兄，因为他的帮忙，我同时接到了手机 QQ 和微云两个部门的电面，所以按说只有两轮的电面，我接到了4次，涨了不少经验。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;腾讯 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;阿里这边是手机淘宝部门，一路都很顺利，一面打了7分钟电话，都是简单问题（运气好重要），二面没聊技术（和我个人简历有关），三面是正规的技术面，四面HR是很普通的聊天。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里可以给的一点建议是：不要遇到答不出来的问题就一个字都不说，猜也好、临时分析也好，至少展现一点主动分析问题的状态。&lt;/p&gt;
 &lt;h2 id=&quot;笔试&quot;&gt;笔试&lt;/h2&gt;&lt;p&gt;这里还是想吐槽一下，这些大公司都有些偷懒，笔试页面一看就是外包项目，感觉是建了一个题库，考试的时候直接从题库随机抽题目。&lt;/p&gt;
 &lt;p&gt;笔试非常考验 CS 基础，数据库、操作系统、计算机网络、算法、C++ 的东西会的越多越好（实际上也确实是会的越多越好）。但是给客户端开发实习生同一套题目我实在是不服，有些 Android 题目给我做真是题都没看懂……&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;无论怎样，结果还是挺满意，感谢一个多月来帮助了我的人们，还有爸妈。&lt;/p&gt;
+&lt;p&gt;不过趟基础也不是三两天可以搞定的，只能推荐个我个人觉得还不错的&lt;a href=&quot;http://www.nowcoder.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;刷题网站&lt;/a&gt;。还有就是，虽然在线笔试的网站监测作弊的手段并不强，还是劝想作弊的人不要这么干，抛开道德准则不说，万一出事，后果太严重了。&lt;/p&gt;
+&lt;h2 id=&quot;寻求更多机会&quot;&gt;寻求更多机会&lt;/h2&gt;&lt;p&gt;虽然我给十多家小公司发了邮件没有收到任何回复，但是认为广投简历、对这些信息敏感一点总是好的。&lt;br&gt;在阿里四面之前，我就直接或间接地通过微博拿到了一家小公司（不便透露名称）的 offer 还有去饿了么做 React Native 的机会。&lt;br&gt;所以，主动一点吧～&lt;/p&gt;
 </content>
     
     <summary type="html">
