@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="开源," />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,21 +78,22 @@
 
 
 
-<meta name="description" content="【Github】https://github.com/OpenMarshall/SlowPickerView
-如上面的 GIF 所示，如果你要开发一款有统计功能的App（比如带计步器功能的），比如用户今天走了 7000 步，那么你可能需要一个数字增长动画来让数字从 0 慢慢滚动到 7000。选择 UIPickerView 是一种极为便捷的实现方法，但是实际上你没有办法在不使用私有API的情况下，改">
+<meta name="description" content="前言最近在重构一个以前写的老项目，在尝试给之前的 ViewController 减负，尽量抽离代码到其他文件。想记录一些东西，看看以后返回来再看能不能有更好的想法；而现在，可以作为一个检验当前代码是否需要优化的一个标准。
+
+整合常量以前喜欢在 ViewController 的顶部（class 外面）写一些全局变量，这样虽然可以写一次创建的代码，就可以在整个项目的任意地方使用。但是，基本上你不可能只">
 <meta property="og:type" content="article">
-<meta property="og:title" content="慢速 UIPickerView 动画实现">
-<meta property="og:url" content="/2015/10/14/慢速-UIPickerView-动画实现/index.html">
+<meta property="og:title" content="ViewController 减负记录">
+<meta property="og:url" content="/2016/04/16/ViewController-减负记录/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="【Github】https://github.com/OpenMarshall/SlowPickerView
-如上面的 GIF 所示，如果你要开发一款有统计功能的App（比如带计步器功能的），比如用户今天走了 7000 步，那么你可能需要一个数字增长动画来让数字从 0 慢慢滚动到 7000。选择 UIPickerView 是一种极为便捷的实现方法，但是实际上你没有办法在不使用私有API的情况下，改">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/picker0.gif">
-<meta property="og:updated_time" content="2016-04-09T16:15:58.000Z">
+<meta property="og:description" content="前言最近在重构一个以前写的老项目，在尝试给之前的 ViewController 减负，尽量抽离代码到其他文件。想记录一些东西，看看以后返回来再看能不能有更好的想法；而现在，可以作为一个检验当前代码是否需要优化的一个标准。
+
+整合常量以前喜欢在 ViewController 的顶部（class 外面）写一些全局变量，这样虽然可以写一次创建的代码，就可以在整个项目的任意地方使用。但是，基本上你不可能只">
+<meta property="og:updated_time" content="2016-04-16T13:04:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="慢速 UIPickerView 动画实现">
-<meta name="twitter:description" content="【Github】https://github.com/OpenMarshall/SlowPickerView
-如上面的 GIF 所示，如果你要开发一款有统计功能的App（比如带计步器功能的），比如用户今天走了 7000 步，那么你可能需要一个数字增长动画来让数字从 0 慢慢滚动到 7000。选择 UIPickerView 是一种极为便捷的实现方法，但是实际上你没有办法在不使用私有API的情况下，改">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/picker0.gif">
+<meta name="twitter:title" content="ViewController 减负记录">
+<meta name="twitter:description" content="前言最近在重构一个以前写的老项目，在尝试给之前的 ViewController 减负，尽量抽离代码到其他文件。想记录一些东西，看看以后返回来再看能不能有更好的想法；而现在，可以作为一个检验当前代码是否需要优化的一个标准。
+
+整合常量以前喜欢在 ViewController 的顶部（class 外面）写一些全局变量，这样虽然可以写一次创建的代码，就可以在整个项目的任意地方使用。但是，基本上你不可能只">
 
 
 
@@ -110,7 +111,7 @@
   };
 </script>
 
-  <title> 慢速 UIPickerView 动画实现 | KyXu Tech </title>
+  <title> ViewController 减负记录 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +271,7 @@
             
             
               
-                慢速 UIPickerView 动画实现
+                ViewController 减负记录
               
             
           </h1>
@@ -282,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-14T15:27:09+08:00" content="2015-10-14">
-              2015-10-14
+            <time itemprop="dateCreated" datetime="2016-04-16T20:58:18+08:00" content="2016-04-16">
+              2016-04-16
             </time>
           </span>
 
@@ -293,8 +294,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/14/慢速-UIPickerView-动画实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/14/慢速-UIPickerView-动画实现/" itemprop="commentsCount"></span>
+                <a href="/2016/04/16/ViewController-减负记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/ViewController-减负记录/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -304,7 +305,7 @@
 
           
           
-             <span id="/2015/10/14/慢速-UIPickerView-动画实现/" class="leancloud_visitors" data-flag-title="慢速 UIPickerView 动画实现">
+             <span id="/2016/04/16/ViewController-减负记录/" class="leancloud_visitors" data-flag-title="ViewController 减负记录">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -325,10 +326,46 @@
       
 
       
-        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/picker0.gif" alt="SlowPickerView"><br>【Github】<a href="https://github.com/OpenMarshall/SlowPickerView" target="_blank" rel="external">https://github.com/OpenMarshall/SlowPickerView</a></p>
-<p>如上面的 GIF 所示，如果你要开发一款有统计功能的App（比如带计步器功能的），比如用户今天走了 7000 步，那么你可能需要一个数字增长动画来让数字从 0 慢慢滚动到 7000。选择 UIPickerView 是一种极为便捷的实现方法，但是<strong>实际上你没有办法在不使用私有API的情况下，改变 UIPickerView 的数字滚动速度，而它的默认速度极快。</strong></p>
-<p>在这个项目里我使用了一个有些 hack（你也可以说是鸡贼） 的方法，做出来 5 个 UIPickerView，前四个不显示，第五个显示。让第 n 个 UIPickerView 以第 n-1 个 UIPickerView 滚动到的数字为目标进行滚动，这就好比你要坐电梯上10楼，你先设定一个5楼，然后到4楼的时候改主意了，取消5楼，设为8楼，然后到了7楼又改成10楼……这当然要更耗时，所以5个（只要内存够大，你搞几个都一样）UIPickerView 一个比一个滚动地慢（这是数学问题，不是因为 UIPickerView 多了把手机搞卡了）。</p>
-<p>项目使用 Xcode 7 + Swift 2 构建，总共 100 来行代码，有兴趣的去 Github 里面看吧 ：）</p>
+        <h3 id="前言">前言</h3><p>最近在重构一个以前写的老项目，在尝试给之前的 ViewController 减负，尽量抽离代码到其他文件。<br>想记录一些东西，看看以后返回来再看能不能有更好的想法；而现在，可以作为一个检验当前代码是否需要优化的一个标准。</p>
+<hr>
+<h3 id="整合常量">整合常量</h3><p>以前喜欢在 ViewController 的顶部（class 外面）写一些全局变量，这样虽然可以写一次创建的代码，就可以在整个项目的任意地方使用。但是，基本上你不可能只有一个 ViewController，有了这种习惯之后，会让全局变量没有逻辑地分散在不同的代码文件里，不易于管理（甚至可能会出现同一个东西以不同的名字被创建了多次的情况），而且代码可读性会严重降低（因为你看见这个变量的时候，你可能并不知道它是全局的）。</p>
+<p>解决起来其实很简单，我当前这个项目的缩写是 GM，于是我建了一个叫 GMConstants 的 Class，把所有之前的全局变量都放到这里，写成 <code>static let</code> 的形式。（除非你真的知道这样没问题，否则不建议写 <code>static var</code>，或创建 GMVariables Class，这样会导致你使用这些量的时候，依然不知道具体这些是什么，因为它们可能被更改过）</p>
+<p>比如之前我设定了我这个 App 中使用的所有的灰色都应该是一样的，我写了一个 gmGreyColor 的常量，使用的时候，你可能并不记得这么一个东西是全局的，并且担心除了灰色，还有什么颜色，是不是还有个 gmBlackColor？甚至你可能写了一个意义相同的 gmGrayColor，仅仅是因为 grey 和 gray 同义。而现在，你的使用方式应该是 <code>GMConstants.greyColor</code>——一看便知是什么意思，而且按住 cmd 键，鼠标左击 GMConstants 关键词，你还可以看见你到底创建了几个类似这样的颜色。</p>
+<p>当你想写全局变量，或者发现某个局部变量，在不同的地方被多次使用的时候，就该考虑这个问题了。</p>
+<hr>
+<h3 id="布尔标记">布尔标记</h3><p>刚刚提到不建议以整合常量的方式来整合变量，不过后续又发现之前会用这样一种方式来处理逻辑：先写一个值为 <code>false</code> 的布尔变量，以此作为一种标记，后续根据情况来不断地修改该值为  <code>true</code> 或者 <code>false</code> ，来判断某些语句是否应该执行。</p>
+<p>虽然目前认为这种方式并不是优雅的写法，因为这样一个布尔标记的作用范围太大了，虽然写代码的时候知道，某种情况 <code>true</code>，另一种情况 <code>false</code>，但以后修改的时候，就要求程序员有全局观才能尝试修改或移除这个标记。</p>
+<p>暂时没有想到很好的修改方法，但是认为这种情况下，可以像之前整理 <code>static let</code> 一样来以 <code>static var</code> 的形式来整理这些布尔类型的标记，可能取 class 名为 GMMarks。</p>
+<p>另外还可以自定义这些标记的 setter，比如</p>
+<pre><code><span class="keyword">static</span> <span class="keyword">var</span> imageSelected:<span class="keyword">Bool</span> = <span class="keyword">false</span>
+</code></pre><p>我们可以这样自定义 setter：</p>
+<pre><code>class <span class="function"><span class="keyword">func</span> <span class="title">selectImage</span><span class="params">()</span> {</span>
+    GMMarks.imageSelected = <span class="literal">true</span>
+}
+class <span class="function"><span class="keyword">func</span> <span class="title">deselectImage</span><span class="params">()</span> {</span>
+    GMMarks.imageSelected = <span class="literal">false</span>
+}
+</code></pre><p>语义更清晰易懂</p>
+<hr>
+<h3 id="UIView_耦合">UIView 耦合</h3><pre><code>self<span class="class">.view</span><span class="class">.addSubview</span>(view1)
+self<span class="class">.view</span><span class="class">.addSubview</span>(view2)
+self<span class="class">.view</span><span class="class">.addSubview</span>(view3)
+</code></pre><p>假如说在 ViewController 里面看到上面这样的代码，同时发现 view1、view2、view3 之间就是简单的一层一层叠加而已，那么我们或许可以向之前一样建一个叫做 GMViews 的 class，然后把这三个 view 的创建都放在</p>
+<pre><code>class <span class="function"><span class="keyword">func</span> <span class="title">xxView</span> <span class="params">(frame frame:CGRect)</span> -&gt; <span class="title">UIView</span></span>
+</code></pre><p>这样一个方法里面，使用时也很简单</p>
+<pre><code>let xxView = GMViews.<span class="function"><span class="title">xxView</span><span class="params">(frame: xx)</span></span>
+self<span class="class">.view</span><span class="class">.addSubView</span>(xxView)
+</code></pre><p>这个时候一定要注意，之前三个 view 在 ViewController 里面创建时，frame 是根据 self.view 这个 view 来写的，frame.origin 是一个 CGPoint，它表示的是相对于父级 view 的相对位置，而不是相对于你的 App 界面的绝对位置，所以抽离这部分代码的时候，确保你的各个 view 的 frame 写对（在支持横屏的时候，是不是还涉及其他问题）。</p>
+<hr>
+<h2 id="抽离方法命名问题">抽离方法命名问题</h2><p>MVC 令人诟病的一点是，以前写在 Controller 里面的业务逻辑很臃肿，现在加个 <code>func</code> 关键字就抽离到 Model 里面，导致 Controller 不臃肿了，Model 反倒臃肿了。</p>
+<p>所以如果想要从之前臃肿的 ViewController 里面抽离到代码到新的类，一定要注意 Model 的命名问题。  </p>
+<p>比如说我现在要清理缓存，清理缓存这种事情应该说和当前的 ViewController 是没什么耦合性可言的，完全可以把这部分代码剥离出来，那么如果这时候我根据清理的具体内容不同，抽象出了三个函数：</p>
+<pre><code><span class="function"><span class="keyword">func</span> <span class="title">clear1</span><span class="params">()</span> {}</span>
+<span class="function"><span class="keyword">func</span> <span class="title">clear2</span><span class="params">()</span> {}</span>
+<span class="function"><span class="keyword">func</span> <span class="title">clear3</span><span class="params">()</span> {}</span>
+</code></pre><p>如果直接粗暴地把这三个方法填到一个叫做 GMTools 的类里面，把这些方法都加上  <code>class</code> 关键字，那么以后这个类会越来越杂乱，这和之前没什么分别。</p>
+<p>较好的做法应该是把这个类叫做 GMClear，而且尽量调用方法的时候，让方法体内部的逻辑和现在的这个 App 本身没太大关系，把和现在的 App 有直接关系的部分作为参数，让使用者传参调用。</p>
+<p>这样下来，或许你可以在这个项目结束的时候，拥有几个可能叫 GMClear、GMSave、GMShare 的类，而且这些类里面的方法和你现在这个 App 没有太多直接联系，那么下一个项目用到这些东西，直接把代码文件复制过去就可以了。</p>
 
       
     </div>
@@ -370,7 +407,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开源/" rel="tag">#开源</a>
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
           
         </div>
       
@@ -379,17 +416,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/11/iOS-9-GUI-资源分享/" rel="next" title="iOS 9 GUI 资源分享">
-                <i class="fa fa-chevron-left"></i> iOS 9 GUI 资源分享
+              <a href="/2016/04/15/实习求职终结篇/" rel="next" title="实习求职终结篇">
+                <i class="fa fa-chevron-left"></i> 实习求职终结篇
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/14/全局设定-UINavigationBar-的-UI/" rel="prev" title="全局设定 UINavigationBar 的 UI">
-                全局设定 UINavigationBar 的 UI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,8 +448,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/14/慢速-UIPickerView-动画实现/"
-           data-title="慢速 UIPickerView 动画实现" data-url="/2015/10/14/慢速-UIPickerView-动画实现/">
+      <div class="ds-thread" data-thread-key="2016/04/16/ViewController-减负记录/"
+           data-title="ViewController 减负记录" data-url="/2016/04/16/ViewController-减负记录/">
       </div>
     
   </div>
@@ -558,7 +591,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合常量"><span class="nav-number">2.</span> <span class="nav-text">整合常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔标记"><span class="nav-number">3.</span> <span class="nav-text">布尔标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIView_耦合"><span class="nav-number">4.</span> <span class="nav-text">UIView 耦合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽离方法命名问题"><span class="nav-number"></span> <span class="nav-text">抽离方法命名问题</span></a></div>
             
           </div>
         </section>
