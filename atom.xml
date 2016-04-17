@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-16T13:04:30.000Z</updated>
+  <updated>2016-04-17T04:52:29.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在这个行当，不做程序员也得懂技术</title>
+    <link href="/2016/04/17/%E5%9C%A8%E8%BF%99%E4%B8%AA%E8%A1%8C%E5%BD%93%EF%BC%8C%E4%B8%8D%E5%81%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%9F%E5%BE%97%E6%87%82%E6%8A%80%E6%9C%AF/"/>
+    <id>/2016/04/17/在这个行当，不做程序员也得懂技术/</id>
+    <published>2016-04-17T04:51:45.000Z</published>
+    <updated>2016-04-17T04:52:29.000Z</updated>
+    
+    <content type="html">&lt;p&gt;先来捋一捋思路，关于各个岗位合作打造（移动端）产品的一点想法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为什么只有程序员是不够的&lt;/li&gt;
+&lt;li&gt;如何做一个好的非程序员&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;声明：&lt;br&gt;本人是程序员，截止到目前，我用的设计都是自己设计的，我用的产品策略都是自己的思考。&lt;br&gt;本人并非专业设计师或 PM，如果勘误，欢迎指正。&lt;br&gt;本文并非对设计师和 PM 的吐槽，但如果您觉得您作为设计师或 PM 或其他职业者被冒犯了，我只能说我并无此意，请您立刻关闭此页面。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;为什么只有程序员是不够的&quot;&gt;为什么只有程序员是不够的&lt;/h2&gt;&lt;p&gt;&lt;br&gt;首先要消除一下歧义，我们见过无数的一人独挑大梁完爆数十人团队的例子，所以事实证明，只有一个程序员，某些时候是足够的。不够背后隐含的是，这个程序员做了很多非程序员岗位的事情，这种情况下其实相当于是一个 Product Creater 在做东西，他（她）不仅仅是程序员这么简单。&lt;/p&gt;
+&lt;p&gt;即便是在移动端出现之前，大家在 PC 上用软件，也是需要有人来做设计，有人来思考产品的。&lt;/p&gt;
+&lt;p&gt;用户完成一个操作，需要做几次操作，需要做什么样的操作，PC 上是鼠标左击、右击、滑动还是其他，移动端是滑动、点按、长按亦或重按。这个产品解决了什么样的问题，用什么方式解决的，其他产品解决了这个问题吗，它们是怎么解决的，你和它们相比有什么不同……这款产品有自己的设计风格吗，如果是依照平台的风格，那么有什么地方没遵循平台的规范吗，能不能先破再立，开创一个新的形态……&lt;/p&gt;
+&lt;p&gt;类似的问题太多太多，于是有了【程序员+设计师+PM】的模型。&lt;/p&gt;
+&lt;p&gt;最近想明白了一件事情：为什么身边好多人我明确地知道他们代码写的比我好，但是做不出好东西？&lt;/p&gt;
+&lt;p&gt;去年 8 月份我做了自己的第一款在 App Store 上架的 App，花了 12 天，2000 行 Swift。这个项目如果是现在做的话，从 0 到打包 ipa，两天以内，最多 800 行代码就可以搞定。然而就是这份臃肿不看、风格丑陋的代码，带领这个 App 杀进了 App Store 中国区付费榜 Top 50。&lt;/p&gt;
+&lt;p&gt;还有就是现在的编码能力相比从前有了十足的进步，面向协议编程、函数式编程也都有了了解，对可以重构的项目大刀阔斧地更改，改代码的时候心潮那叫一个澎湃啊，觉得自己写出了多么多么厉害的代码。等写完了，冷静一看，原来不过如此。代码是变了，App 表现起来和原来并没有什么区别，这种努力用户是看不见的。&lt;/p&gt;
+&lt;p&gt;所以逐渐开始认识到，代码和产品是多么割裂开的事情。当然好的程序员可以把这些事情想办法联系起来，融会贯通，知道什么样的 App 导航模式可能对应背后什么样的设计模式（举了个不好的例子）。但说到底这是完全不同的两件事。&lt;/p&gt;
+&lt;h2 id=&quot;如何做一个好的非程序员&quot;&gt;如何做一个好的非程序员&lt;/h2&gt;&lt;p&gt;&lt;br&gt;做外包的经常觉得甲方很蠢、各种难沟通，所谓隔行如隔山，甲方或许会说出 “这个设计看着不大气啊” 或者 “我想做一个淘宝那样的网站，得多少钱” 这样的话，然后乙方就在内心嘲笑人家，但是身体上还要表现的无所谓，最终把钱搞到手。&lt;/p&gt;
+&lt;p&gt;但其实真的没必要这样，因为对方是来提出需求的，假如让我进入一个完全没有概念的领域，比如说挑选木材，我也只能说我想要像什么什么一样的木材，我叫不上名字的。所以甲方这样无可厚非。但同时我们也知道，一个好的甲方，我们可能希望他懂技术、懂设计、懂产品，和我们交流起来纵享丝滑。&lt;/p&gt;
+&lt;p&gt;程序员、设计师、PM 三方对接的时候，其实就是这么个甲乙方的关系，而理想状况下，这三方中的任何一方充当甲方的时候，都应该是一个可以进行无障碍对接的甲方。&lt;/p&gt;
+&lt;p&gt;比如说颜色，设计师眼里的颜色是这样的：&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%9F%E5%BE%97%E6%87%82%E6%8A%80%E6%9C%AF0.png&quot; alt=&quot;KUWAZOME&quot;&gt;&lt;br&gt;同样的东西在程序员眼里是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let kuwazomeColor = UIColor(red: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;255&lt;/span&gt;, green: &lt;span class=&quot;number&quot;&gt;54&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;255&lt;/span&gt;, blue: &lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;/&lt;span class=&quot;number&quot;&gt;255&lt;/span&gt;, alpha: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;那么好的设计师应该是以这样的方式把这个颜色传递给程序员的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;# 颜色&lt;/span&gt;
+KUWAZOME: R &lt;span class=&quot;number&quot;&gt;0.39&lt;/span&gt; - G &lt;span class=&quot;number&quot;&gt;0.21&lt;/span&gt; - B &lt;span class=&quot;number&quot;&gt;0.23&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而不是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;KUWAZOME: &lt;span class=&quot;hexcolor&quot;&gt;#6B4449&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;作为设计师，你可以不会写代码，你可以不知道什么是 UIColor 什么是 CGColor 什么是 NSColor，但是你要知道用你的东西的人此时此刻是以 RGB 或 HSB 的方式用的，而不是 CSS HEX，这是非常基本的要求。再甚者你还应该知道你的程序员使用的 IDE 可能不会帮他补全 &lt;code&gt;/255&lt;/code&gt; 这一内容，所以为了让他不再打出无数个 &lt;code&gt;/255&lt;/code&gt; ，你给他的值应该是 &lt;code&gt;R: 0.39&lt;/code&gt;  而不是 &lt;code&gt;R: 100&lt;/code&gt;  。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;那么作为程序员，你应该能看得懂 &lt;code&gt;#6B4449&lt;/code&gt; 是什么意思，并具有把它转换成 RGB 或 HSB 数值的能力，这样可以保证你在遇到了相对糟糕的设计师的时候，也能完成任务。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;好的设计师应该把程序员培养成设计领域的废人，程序员指定图片名，设计师这边把相应图片导出，名称、尺寸分毫不差，并附带 1x、2x、3x 给 iOS，各种 dpi 给 Android。而程序员这边即便只拿到了 .psd 或 .sketch 文件也能把项目做完。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;另外，无论是程序员、设计师还是 PM，都应该了解大家共同面对的这个平台，依然拿 iOS 举例。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%9F%E5%BE%97%E6%87%82%E6%8A%80%E6%9C%AF1.png&quot; alt=&quot;UIAlertController&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上面这个是 iOS 系统提供的控件 - UIAlertController，这个东西在程序员眼里表现起来是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let alert = &lt;span class=&quot;built_in&quot;&gt;UIAlertController&lt;/span&gt;(
+    title: &lt;span class=&quot;string&quot;&gt;&quot;A Short Title Is Best&quot;&lt;/span&gt;,
+    message: &lt;span class=&quot;string&quot;&gt;&quot;A message should be a short, complete sentence.&quot;&lt;/span&gt;,
+    preferredStyle: &lt;span class=&quot;built_in&quot;&gt;UIAlertControllerStyle&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.ActionSheet&lt;/span&gt;)
+
+alert&lt;span class=&quot;variable&quot;&gt;.addAction&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;UIAlertAction&lt;/span&gt;(title: &lt;span class=&quot;string&quot;&gt;&quot;Cancel&quot;&lt;/span&gt;,
+    style: &lt;span class=&quot;built_in&quot;&gt;UIAlertActionStyle&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.Cancel&lt;/span&gt;,
+    handler: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;))
+alert&lt;span class=&quot;variable&quot;&gt;.addAction&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;UIAlertAction&lt;/span&gt;(title: &lt;span class=&quot;string&quot;&gt;&quot;Choice One&quot;&lt;/span&gt;,
+    style: &lt;span class=&quot;built_in&quot;&gt;UIAlertActionStyle&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.Default&lt;/span&gt;,
+    handler: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;))
+alert&lt;span class=&quot;variable&quot;&gt;.addAction&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;UIAlertAction&lt;/span&gt;(title: &lt;span class=&quot;string&quot;&gt;&quot;Choice Two&quot;&lt;/span&gt;,
+    style: &lt;span class=&quot;built_in&quot;&gt;UIAlertActionStyle&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.Default&lt;/span&gt;,
+    handler: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以程序员此时需要的信息是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;# UIAlertController&lt;/span&gt;
+&lt;span class=&quot;label&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;A Short Title Is Best&quot;&lt;/span&gt;
+&lt;span class=&quot;label&quot;&gt;message:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;A message should be a short, complete sentence.&quot;&lt;/span&gt;
+&lt;span class=&quot;label&quot;&gt;Action:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Cancel&quot;&lt;/span&gt; - Cancel
+&lt;span class=&quot;label&quot;&gt;Action:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Choice One&quot;&lt;/span&gt; - Default
+&lt;span class=&quot;label&quot;&gt;Action:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Choice Two&quot;&lt;/span&gt; - Default
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就足够了。当然你可以把上面那张图也做出来给程序员预览，防止出错，但是你要明白这个东西是 iOS 系统提供的，UIAlertController 是现成可调用的 API，你要做的是只是提供调用这个 API 需要的参数，而不是做一个一模一样的 UIAlertController，还把图片裁成 1x、2x、3x 以为这个东西是程序员手动做的。如果这个东西真的是程序员手动做的，那么显然你应该把 Cancel、Choice One、Choice Two 这三个东西分开提供图片资源，否则怎么可能会有三个可点击的地方？!&lt;/p&gt;
+&lt;p&gt;又或者说某个可点击控件被点击之后的效果，iOS 有自己的 Human Interface Guidelines，Android 有 Google 提供的 Material Design，你只要给 Button 提供里面的 Image 资源就可以了，告诉客户端开发的程序员阴影模糊几像素、向右偏移几像素、向下偏移几像素是极其不专业的行为。&lt;strong&gt;同样的，作为设计师，你可以不懂 UIButton 怎么创建，但是你要搞清楚 “iOS 里面的 Button” 或者 “Android 里面的 Button” 到底是什么，了解你的设计应该以怎么样的形式被融入到程序员的工作中，这才是设计，否则只是美工，更何况连图片资源都不能正常提供，连美工都算不上。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;类似的例子太多太多了……&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;或许这篇文章的标题还可以改成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在这个行当，不做设计师也得懂设计&lt;/li&gt;
+&lt;li&gt;在这个行当，不做产品经理也得懂产品&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不想吐槽，只想分享一点自己的看法，我觉得真正的专业，不仅是把自己份内的事做好这么简单，因为常常和你合作的人并不能把他份内的事做好。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先来捋一捋思路，关于各个岗位合作打造（移动端）产品的一点想法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为什么只有程序员是不够的&lt;/li&gt;
+&lt;li&gt;如何做一个好的非程序员&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;声明：&lt;br&gt;本人是程序员，截止到目前，我用的设计都是自己设计的，我用的
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>ViewController 减负记录</title>
@@ -1002,29 +1088,6 @@ self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&q
     
       &lt;p&gt;本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.timer&lt;/span
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>带有 Extension Target 的 App，如何签名打包</title>
-    <link href="/2015/11/26/%E5%B8%A6%E6%9C%89-Extension-Target-%E7%9A%84-App%EF%BC%8C%E5%A6%82%E4%BD%95%E7%AD%BE%E5%90%8D%E6%89%93%E5%8C%85/"/>
-    <id>/2015/11/26/带有-Extension-Target-的-App，如何签名打包/</id>
-    <published>2015-11-26T07:23:12.000Z</published>
-    <updated>2016-04-09T16:15:24.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex0.png&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。&lt;br&gt;添加完了之后，你的项目看起来是这个样子的：&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex1.png&quot; alt=&quot;Xcode ScreenShot&quot;&gt;&lt;br&gt;那么就会有两个 Target，这个时候，怎么进行 CodeSign，折磨了我一段时间，分享出来。&lt;/p&gt;
-&lt;p&gt;1.把你的两个 TARGET 的 Bundle Identifier 写成【开头一样的】。在 Member Center 申请发布到 AppStore 的 Provisioning Profile 的时候，只要申请一份就可以了，即给和你的 App 同名的那个申请。&lt;br&gt;（假如你的App的名字是 wechat，主 Target 的 Bundle ID 写成 com.xky.wechat, Extension Target 的 Bundle ID 写成 com.xky.wechat.ex, 那么你的 Provisioning Profile 只要和 com.xky.wechat 捆绑； “com.xky.wechat.ex” 除了要写在相应的 Target 上，不需要再有与其相匹配的 Provisioning Profile）&lt;/p&gt;
-&lt;p&gt;2.两个 TARGET 的 Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 那里都选择 Automatic&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex2.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;3.真正自己设置  Build Settings-&amp;gt;Code Signing-&amp;gt;Provisioning Profile 是要进行 Develop（测试）还是 Distribution（打包），在 PROJECT 那里设置：&lt;br&gt;（让 TARGET 的设置自动化，否则你每次改动设置都要同时改3个）&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex3.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/ex0.png&quot; alt=&quot;Extension Target&quot;&gt;&lt;br&gt;如果我们要开发一款类似 AdBlock 的应用，就需要添加一个 Extension Target，如上图。
     
     </summary>
     
