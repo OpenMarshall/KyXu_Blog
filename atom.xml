@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-17T04:52:29.000Z</updated>
+  <updated>2016-04-27T08:03:43.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从 setNeedsLayout 说起</title>
+    <link href="/2016/04/27/%E4%BB%8E-setNeedsLayout-%E8%AF%B4%E8%B5%B7/"/>
+    <id>/2016/04/27/从-setNeedsLayout-说起/</id>
+    <published>2016-04-27T08:01:39.000Z</published>
+    <updated>2016-04-27T08:03:43.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本文从 &lt;code&gt;setNeedsLayout&lt;/code&gt; 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。&lt;/p&gt;
+&lt;p&gt;UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setNeedsLayout&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;layoutSubviews&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;layoutIfNeeded&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setNeedsDisplay&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setNeedsDisplayInRect&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(rect: CGRect)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;drawRect&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(rect: CGRect)&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&quot;运行时视图交互模型&quot;&gt;运行时视图交互模型&lt;/h2&gt;&lt;p&gt;无论是用户交互触发还是代码自动触发，下图展示的事件序列都同样适用，这里用到了 &lt;code&gt;setNeedsLayout&lt;/code&gt; 方法：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/UIKit%20interactions%20with%20your%20view%20objects.png&quot; alt=&quot;UIKit interactions with your view objects&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上图对应的事件序列如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用户触摸屏幕&lt;/li&gt;
+&lt;li&gt;硬件报告触摸事件给 UIKit 框架 &lt;/li&gt;
+&lt;li&gt;UIKit 框架将触摸事件打包成 UIEvent 对象，然后分发给合适的视图&lt;/li&gt;
+&lt;li&gt;事件处理代码会对相应事件作出响应，代码可以是这样的：&lt;br&gt;-更改  &lt;code&gt;frame&lt;/code&gt;、&lt;code&gt;bounds&lt;/code&gt;、&lt;code&gt;alpha&lt;/code&gt; 等属性&lt;br&gt;-调用 &lt;code&gt;setNeedsLayout&lt;/code&gt; 方法以标记该视图（或者它的子视图）为需要进行布局更新&lt;br&gt;-调用 &lt;code&gt;setNeedsDisplay&lt;/code&gt; 或者 &lt;code&gt;setNeedsDisplayInRect: &lt;/code&gt; 方法以标记该视图（或者它的子视图）需要进行重画&lt;br&gt;-通知 Controller 有数据变化&lt;/li&gt;
+&lt;li&gt;如果一个视图的几何结构改变了，UIKit 会更新它的子视图&lt;/li&gt;
+&lt;li&gt;如果任何视图的任何部分被标记为需要重画，UIKit 会要求视图重画自身&lt;/li&gt;
+&lt;li&gt;任何已经更新的视图会与应用余下的可视内容组合在一起，同时被发送到图形硬件去显示&lt;/li&gt;
+&lt;li&gt;图形硬件将已解释内容转化到屏幕上&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;方法调用逻辑&quot;&gt;方法调用逻辑&lt;/h2&gt;&lt;p&gt;在上面的过程中，我们可以接触到文章开头提到的方法，他们的调用逻辑是这样的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;setNeedsLayout&lt;/code&gt; 会给当前 UIView 立一个 flag，以表示后续应该调用 &lt;code&gt;layoutSubviews&lt;/code&gt; 方法，以调整当前视图及其子视图的布局。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setNeedsDisplayInRect: &lt;/code&gt; 会给当前 UIView 立一个 flag，以表示后续应该调用 &lt;code&gt;drawRect:&lt;/code&gt; 方法，以进行视图重绘。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;View_Drawing_Cycle&quot;&gt;View Drawing Cycle&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/cl/UIView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Apple 官方文档&lt;/a&gt;已经明确说明，开发者不应该直接调用 &lt;code&gt;layoutSubviews&lt;/code&gt; 与  &lt;code&gt;drawRect:&lt;/code&gt; ，而应该&lt;strong&gt;在你认为系统默认的布局和重绘不能带给你想要的效果时，在子类中重写这些方法，然后分别通过 &lt;code&gt;setNeedsLayout&lt;/code&gt; 和 &lt;code&gt;setNeedsDisplayInRect: &lt;/code&gt; 来进行调用。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当然你可以给多个 UIView 设置 &lt;code&gt;setNeedsLayout&lt;/code&gt;，然后当下一个 View Drawing Cycle 到来时，多个 UIView 的视图会一同更改布局。&lt;/p&gt;
+&lt;p&gt;那么这个 View Drawing Cycle 到底是什么呢，官方是这样解释的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The system waits until the end of the current run loop before initiating any drawing operations. This delay gives you a chance to invalidate multiple views, add or remove views from your hierarchy, hide views, resize views, and reposition views all at once. All of the changes you make are then reflected at the same time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;显然这样用 RunLoop 把多次修改聚集在一个 Cycle 一并进行渲染是更加高效的行为。&lt;/p&gt;
+&lt;p&gt;（我个人对 View Drawing Cycle 的理解是这样的：UIKit 需要处理非常多的事件，这些事件组合起来变成了一个非常复杂的事件序列，在这个序列中有些特定的点是 UIKit 专门提供给 UIView 来进行视图更改的。如上所述，在当前 run loop 结束之前，我们有机会做各种视图更改，并且这些更改会在下一个 run loop 体现出来，所以&lt;strong&gt; View Drawing Cycle 就是一次次 run loop 中我们通过 UIKit 得到的 UIView 重布局、重绘机会所组成的循环&lt;/strong&gt;。有理解不对的地方，欢迎评论指正。）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;如何善用_View_Drawing_Cycle&quot;&gt;如何善用 View Drawing Cycle&lt;/h2&gt;&lt;p&gt;一个很常见的例子是，一个 iPad App，横屏和竖屏时界面布局不一样，那么你可以监听设备旋转，在设备旋转时执行 &lt;code&gt;setNeedsLayout&lt;/code&gt; 方法，然后在 &lt;code&gt;layoutSubviews&lt;/code&gt; 里面通过判断接下来是横屏还是竖屏来进行不一样的布局设置。基本上你不可能只在这个方法里只进行了单个 UIView 的布局修改，而是多项修改，那么 App 会在下一个 View Drawing Cycle 到来时，把这些修改一起执行，这是最正常的情况。&lt;/p&gt;
+&lt;p&gt;那么假如我不按 Apple 规定的来，直接调用 &lt;code&gt;layoutSubviews&lt;/code&gt;  呢？我们可以猜想一下：因为这个方法里面提供了我们需要的布局方式，所以 UIView 会按我们想要的方式来布局，但是因为各种视图修改的请求时机是零碎的，所以这样效率会低一些。所以重要的其实是了解何时会触发 &lt;code&gt;layoutSubviews&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;init 初始化不会触发 layoutSubviews&lt;/li&gt;
+&lt;li&gt;addSubview 会触发 layoutSubviews&lt;/li&gt;
+&lt;li&gt;设置 view 的 frame 会触发 layoutSubviews，当然前提是 frame 的值设置前后发生了变化&lt;/li&gt;
+&lt;li&gt;滚动一个 UIScrollView 会触发 layoutSubviews&lt;/li&gt;
+&lt;li&gt;旋转 Screen 会触发父 UIView 上的 layoutSubviews 事件&lt;/li&gt;
+&lt;li&gt;改变一个 UIView 大小的时候也会触发父 UIView 上的 layoutSubviews 事件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后按 Apple 要求的方式来做就好了（分别通过 &lt;code&gt;setNeedsLayout&lt;/code&gt; 和 &lt;code&gt;setNeedsDisplayInRect: &lt;/code&gt; 来调用 &lt;code&gt;layoutSubviews&lt;/code&gt; 和  &lt;code&gt;drawRect:&lt;/code&gt;）&lt;/p&gt;
+&lt;p&gt;但有些情况比较特殊：你打开 iOS 的时钟应用，去看里面的秒表页面，这个页面里面的两个按钮是没有 UIButton 默认的动画的，点击之后，按钮会瞬间改变自身的状态（颜色、内部 Label 的内容），这种情况我们需要跳出 View Drawing Cycle，来实现一个瞬间改变的效果。实现方法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIButton&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;quickButtonAction&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;.performWithoutAnimation({
+            &lt;span class=&quot;comment&quot;&gt;// do something&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.layoutIfNeeded()
+        })
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看出 &lt;code&gt;layoutIfNeeded&lt;/code&gt; 作为一个辅助选项给了 &lt;code&gt;setNeedsLayout&lt;/code&gt; 一个可以瞬时执行的特点。当然默认这个“选项”是关闭的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;setNeedsDisplay_补充&quot;&gt;setNeedsDisplay 补充&lt;/h2&gt;&lt;p&gt;&lt;code&gt;setNeedsLayout&lt;/code&gt; 的使用场景之前已经提过了（iPad App），下面举个栗子说一下 &lt;code&gt;setNeedsDisplayInRect: &lt;/code&gt;的使用场景。&lt;/p&gt;
+&lt;p&gt;假如我需要在两点之间绘制一条直线，有两个 &lt;code&gt;dotView&lt;/code&gt;，需要绘制一个 &lt;code&gt;lineView&lt;/code&gt;。我在 &lt;code&gt;drawRect:&lt;/code&gt; 方法里实现了 &lt;code&gt;lineView&lt;/code&gt; 的具体绘制方法（根据两个点来绘制）。那么如果我想要这个直线一直根据两个点同步变化的话，就需要在 &lt;code&gt;dotView&lt;/code&gt; 的位置发生改变时，执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lineView.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;setNeedsDisplay&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 重绘 lineView&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;至于 &lt;code&gt;drawRect:&lt;/code&gt; 方法什么时候会被触发：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/From%20StackOverFlow.png&quot; alt=&quot;From StackOverFlow&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;一个很好的参考链接：&lt;a href=&quot;http://stackoverflow.com/questions/2807137/what-is-the-relationship-between-uiviews-setneedslayout-layoutifneeded-and-lay&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;What is the relationship between UIView’s setNeedsLayout, layoutIfNeeded and layoutSubviews?&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文从 &lt;code&gt;setNeedsLayout&lt;/code&gt; 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。&lt;/p&gt;
+&lt;p&gt;UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>在这个行当，不做程序员也得懂技术</title>
@@ -1026,68 +1116,6 @@ self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&q
     <summary type="html">
     
       &lt;p&gt;&lt;/p&gt;&lt;h3&gt;前言&lt;/h3&gt;&lt;br&gt;虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>@objc private class func 与 Selector</title>
-    <link href="/2015/12/15/objc-private-class-func-%E4%B8%8E-Selector/"/>
-    <id>/2015/12/15/objc-private-class-func-与-Selector/</id>
-    <published>2015-12-15T07:21:35.000Z</published>
-    <updated>2016-04-09T07:22:11.000Z</updated>
-    
-    <content type="html">&lt;p&gt;本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.timer&lt;/span&gt; = &lt;span class=&quot;built_in&quot;&gt;NSTimer&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.scheduledTimerWithTimeInterval&lt;/span&gt;(timeInterval, target: &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
-        selector: &lt;span class=&quot;string&quot;&gt;&quot;moveText&quot;&lt;/span&gt;, userInfo: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, repeats: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
-
-&lt;span class=&quot;built_in&quot;&gt;NSNotificationCenter&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.defaultCenter&lt;/span&gt;()&lt;span class=&quot;variable&quot;&gt;.addObserver&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
-        selector: &lt;span class=&quot;string&quot;&gt;&quot;appEnterForeground&quot;&lt;/span&gt;, name: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, object: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第一个是第一个定时器（NSTimer），第二个是一个页面的监听事件。即，让程序不断地观察现在的『某个状态』，当这个状态符合某个条件时，就去执行 Selector 中的代码。比如，我们的界面中有一个让用户输入年龄的 UITextField，然后我们可以观察（监听），当发现用户在这里输入『0』时，我们就给一个提示：『年龄至少为1』。&lt;/p&gt;
-&lt;p&gt;简单介绍完毕，下面说注意事项。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;1.  private 关键字&lt;/h3&gt;&lt;br&gt;最简单的使用 Selector 的情况，就是如上面所列出的，在 NSTimer 中写 selector 为 “moveText”，然后我们在同一个文件中，再相应地写一个&lt;p&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
-    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就可以了。&lt;br&gt;然而如果你想把它声明为一个 private func，即不希望其他文件调用这个函数，就会出现问题，通俗地讲：private 使得这个函数不能被『外部』调用，而 Selector 对它的调用，实际上就是一种『外部调用』。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;【解决方案】&lt;/strong&gt;&lt;br&gt;KVO 是基于 KVC 和&lt;strong&gt;动态派发技术（Dynamic Dispatch）&lt;/strong&gt;的，Swift 为了效率禁用了 Objective-C 中有的动态派发。那么你把这个动态特性再加回来就可以了~&lt;/p&gt;
-&lt;p&gt;1.通过 @objc 关键字来使用动态特性&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
-    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.通过 dynamic 关键字来让这个函数拥有与 OC 中动态调用时相同的运行时特性（@objc 足矣，这个一般用不上）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{ 
-    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;更多关于 dynamic 关键字的内容可以参考：&lt;a href=&quot;http://swifter.tips/kvo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://swifter.tips/kvo/&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;2.  class 关键字&lt;/h3&gt;&lt;br&gt;如果你想把这个函数声明为 class func&lt;p&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;()&lt;/span&gt;{ 
-    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;则本文最开始的代码中的 target 应该由 self 换为 MyClass.self （假设这段代码写在名为 MyClass 的类中）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer = &lt;span class=&quot;constant&quot;&gt;NSTimer.&lt;/span&gt;scheduledTimerWithTimeInterval(timeInterval, &lt;span class=&quot;symbol&quot;&gt;target:&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;MyClass.&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
-        &lt;span class=&quot;symbol&quot;&gt;selector:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;moveText&quot;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;userInfo:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;nil&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;repeats:&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;最后， 以上关键字是可以叠加使用的，如果你愿意，可以写成下面这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;annotation&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;moveText&lt;/span&gt;(){&lt;/span&gt; 
-    &lt;span class=&quot;comment&quot;&gt;// Your Code&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我在 StackOverFlow 中的回答，及其它相关：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/30027322/how-to-call-private-class-function-from-selector-in-swift/34291667#34291667&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/28184350/4-questions-about-selectors-in-swift&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;如有谬误，欢迎在评论中指出。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文介绍在 Swift 中 使用 KVO 时，一些需要注意的事项，下面截取了两段我自己在项目中使用的代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.timer&lt;/span
     
     </summary>
     
