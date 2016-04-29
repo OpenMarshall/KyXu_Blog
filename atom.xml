@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-27T08:03:43.000Z</updated>
+  <updated>2016-04-29T09:20:40.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识函数式 Swift 实用</title>
+    <link href="/2016/04/29/%E5%88%9D%E8%AF%86%E5%87%BD%E6%95%B0%E5%BC%8F-Swift-%E5%AE%9E%E7%94%A8/"/>
+    <id>/2016/04/29/初识函数式-Swift-实用/</id>
+    <published>2016-04-29T09:20:15.000Z</published>
+    <updated>2016-04-29T09:20:40.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Swift 的语言特性使得它非常适合被用于以函数式编程思想，如果你还没开始用函数式的方式来使用它，那么可以从现在开始，尝试着利用函数式的便利性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let indicateView = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImageView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(frame: view.frame)&lt;/span&gt;&lt;/span&gt;
+indicateView&lt;span class=&quot;class&quot;&gt;.image&lt;/span&gt; = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImage&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(named: &lt;span class=&quot;string&quot;&gt;&quot;how2use&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;
+self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.addSubview&lt;/span&gt;(indicateView)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我刚刚写了上面这段代码，来让我的当前页面显示名为 “how2use” 的这张图片。看起来好像是我做了三件事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据 frame 创建 UIImageView&lt;/li&gt;
+&lt;li&gt;根据图片名称配置 UIImageView&lt;/li&gt;
+&lt;li&gt;将 UIImageView 作为 subview 传给其他 view&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是实际上，我只需要 frame、imageName 这两个东西就可以把这三行代码配置好，或者说我能不能用这两个参数来把上面的三行代码缩减为一行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIImageView&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;frameSelf&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(rect:CGRect)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.frame = rect
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;imageSelf&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(imageName:String)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.image = &lt;span class=&quot;type&quot;&gt;UIImage&lt;/span&gt;(named: imageName)
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;placeSelf&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(view:UIView)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt; {
+        view.addSubview(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;写了上面这些方法之后，代码修改成这个样子了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let indicateView = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImageView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+        .&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;frameSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(view.frame)&lt;/span&gt;&lt;/span&gt;
+        .&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;imageSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;how2use&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;
+        .&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;placeSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self.view)&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为了代码可读性，这里我写了四行，但显然这是一行代码。&lt;br&gt;继而我发现 indicateView 这个名字没有存在的必要，于是我废弃掉 placeSelf 这个方法，改成这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.addSubview&lt;/span&gt;(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImageView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+    .&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;frameSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(view.frame)&lt;/span&gt;&lt;/span&gt;
+    .&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;imageSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;how2use&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一行代码，不引入多余的变量。&lt;br&gt;如果你愿意的话，这个模式还可以继续写下去。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIImageView&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tagSelf&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(tag:Int)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.tag = tag
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;modeSelf&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(contentMode:UIViewContentMode)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIImageView&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.contentMode = contentMode
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最后代码会变成这种形式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;func1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;func2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;func3&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;......
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&quot;思考&quot;&gt;思考&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;上面这些代码的优势在于：类似 indicateView 这种东西，用一次就不要了，没必要引入新的名称，不便于理解和记忆，我们就可以函数式地把它解决掉，代码更精简易读。&lt;/li&gt;
+&lt;li&gt;上面我用了 xxxxSelf 这种方式来表明，这种方法不是用一下就完了，它会返回这个对象本身，所以你还可以继续做别的事情。但是这种命名方式我个人看来不够好，唯一好的地方可能只是在于：本来我想设置 imageView.tag = 100，结果敲出 tag 这三个字母，Xcode 就提示我有 tagSelf 这个方法可以用，这可以让我方便地自动补全这个方法，不需要记忆方法名。&lt;/li&gt;
+&lt;li&gt;这种编程方式的优点之一在于不同方法之间的组合性，如果你想把上面这些方法整合到一个函数里，然后通过传一大堆的参数来进行调用，是画蛇添足。&lt;/li&gt;
+&lt;li&gt;显然这种方式有其弊端，不宜滥用，而且修改代码的时候要注意：假如你要改动 func2，注意它和 func1、func3 之间是不是存在什么先后关系。特别是你用这种方式来给图片做滤镜处理的时候，一张图片先高斯模糊再打马赛克，先打马赛克再高斯模糊是完全不同的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;userImage.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;mosaic&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 马赛克本身是清晰的&lt;/span&gt;
+userImage.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;mosaic&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// 马赛克本身是模糊的&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Swift 的语言特性使得它非常适合被用于以函数式编程思想，如果你还没开始用函数式的方式来使用它，那么可以从现在开始，尝试着利用函数式的便利性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let indicateView = &lt;span class=&quot;function&quot;&gt;&lt;span c
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>从 setNeedsLayout 说起</title>
@@ -1023,99 +1105,6 @@ let sf = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;
     
       &lt;p&gt;在开发的过程中，如果我们需要给用户提供一个浏览器功能的支持、又或者需要让用户来从系统相册挑选图片，那么利用 UIKit 给我们提供的现成的 SFSafariViewController 和 UIImagePickerController 将是非常方便的事情，但是&lt;/p&gt;
 &lt;
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 App 中加入 AdMob 广告 - 入门介绍与编程技巧</title>
-    <link href="/2016/01/18/%E5%9C%A8-App-%E4%B8%AD%E5%8A%A0%E5%85%A5-AdMob-%E5%B9%BF%E5%91%8A-%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/"/>
-    <id>/2016/01/18/在-App-中加入-AdMob-广告-入门介绍与编程技巧/</id>
-    <published>2016-01-18T07:19:57.000Z</published>
-    <updated>2016-04-09T16:10:16.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;/p&gt;&lt;h3&gt;前言&lt;/h3&gt;&lt;br&gt;虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了回报：）&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;我个人出于对金钱的考虑和对Google的信任，选择了AdMob这个平台来在App中投放广告（&lt;a href=&quot;https://apps.admob.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://apps.admob.com&lt;/a&gt; 访问需要搭梯子，梯子为SS的用户最好全局代理，自动代理的话访问起来会很卡）。&lt;/p&gt;
-&lt;p&gt;就目前来看，我果还是不太擅长移动App广告这一块，所以不推荐大家用iAd（好像现在还是不支持中国大陆？听说前一阵子Apple解散了有一百来人的iAd部门？）国内的一些其他平台也是有所听说，但是没有尝试，如果大家知道有什么其他的好的可以在移动App上投放广告的平台，也欢迎评论，一起交流~&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;流程&lt;/h3&gt;&lt;br&gt;1.首先，你要有一个Google账号，登录&lt;a href=&quot;https://apps.admob.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AdMob&lt;/a&gt;&lt;br&gt;2.进去之后，点网站右上角的设置按钮，把各种资料该填的都填了，什么电话、邮箱、地址之类的。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/mob0.png&quot; alt=&quot;AdMob网站截图&quot;&gt;&lt;br&gt;&lt;strong&gt;注意，地址要填真实地址，在Google给你汇款之前，他要给你邮寄一封实体信件，上面有一个PIN码，你要把这个PIN码输入到AdMob网站上的相应位置，Google才会开始你给你汇款。我现在已经验证过身份了，没办法截图，好在这个网站也不复杂，就那么几个页面。要做好收不到这个信件的准备（包括我在内的国内N多开发者都收不到这个信件，不知道是不是邮政的问题），如果1个月没有收到这个信件，可以再次申请让Google邮寄信件，总共有3次机会，3个月以后，还没收到信件，可以上传身份证照片（我就是这样），然后Google会以极速（我当时是几个小时）通过这个请求。不过毕竟等了三个月，如果你第一次就准确无误地填了地址，运气又很好的话，可以1个月内就让Google准备给你付款。付款规则是每个月进行一次统计，如果到了100美金，就汇款，否则计入下个月，直到攒够100美金，汇款时间是下个月的21号。比如你1月赚了30刀，2月就不会收到钱，2月赚了110刀，3月的21号Google会把你赚到的总共140刀都汇款给你。&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;3.接下来的过程就不赘述了，无非是去AdMob里面添加个应用，拿到一个类似 app-key 的识别码（AdMob里面叫ca-app-pub，每个广告对应一个识别码，一个App可以加入多个横幅式广告或插页式广告，一个App可以对应多个识别码），把 GoogleMobileAds.framework 下载下来，看一下人家的示例代码，就集成到App了。&lt;a href=&quot;https://developers.google.com/admob/ios/quick-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是地址&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;横幅式广告与插页式广告&lt;/h3&gt;&lt;br&gt;开发者在App中加入广告时，要极力避免让用户感到非常厌烦。如果你的App帮用户解决了问题，那用户看看广告也无所谓，人家解决了手头的问题才是正事，但是满屏的广告不停地弹，那也未免吃相不好，用户可能一怒之下把App删掉。&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/mob1.png&quot; alt=&quot;左边为横幅式广告  右边为插页式广告&quot;&gt;&lt;br&gt;横幅式广告的好处在于，虽然占用了用户一部分屏幕空间，但是只要你不点击它，它不会影响用户的其他操作，只要你的广告条没有遮挡任何内容，那么这个横幅除了碍眼之外，对用户使用App基本没有影响。&lt;/p&gt;
-&lt;p&gt;而插页式广告则是以弹窗的形式出现，用户需要去左上角或者右上角点击一下关闭按钮才行，应该说是比横幅式广告要更讨厌一些（反正我是这么觉得的），应该说这是略为严重的打扰了用户对App的使用的。但是好处在于，插页式广告是以全屏弹出的形式出现的，它不影响你设计的App界面的纯净度，让你有100%的空间来展示你需要布局在UI中的东西，比如你做了一个UI极简的应用，整个App都是纯黑+纯白的，这时候加一个颜色复杂的横幅广告，就很影响观感。&lt;/p&gt;
-&lt;p&gt;还有一种情况是你希望你的用户付费来去除广告，可以是在App中加一个付费去广告的内购，也可以鼓励用户付费升级应用到高级版，这种情况下可以尝试横幅式广告和插页式广告都添加。一部分用户对你的App有需求，又不想频频被广告打扰，就可以选择付费。不过这种情况下，我们可以认为添加广告的目的之一就是为了去打扰用户，迫使用户付费，所以应该适可为止，不要过于频繁地弹出广告，这真的挺烦人的。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;/p&gt;&lt;h3&gt;展示广告的代码技巧&lt;/h3&gt;&lt;br&gt;&lt;strong&gt;1.在 UITableView 底部展示横幅广告&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;var&lt;/span&gt; admob = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;GADBannerView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;// 设置GADBannerView的frame、设置广告ID、加载广告请求&lt;/span&gt;
-self&lt;span class=&quot;class&quot;&gt;.tableView&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.contentInset&lt;/span&gt; = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIEdgeInsetsMake&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;( &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, admob.frame.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注释部分的代码可以&lt;a href=&quot;https://developers.google.com/admob/ios/quick-start&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考这里&lt;/a&gt;，这段代码的意思是让 UITableView 的可滚动内容区域在底部收缩，收缩长度为banner广告条的高度。这样在用户一直向上拖拽 UITableView 直到尽头的时候，可以让它的可拖拽区域比之前大一些，就不至于让广告遮挡了 UITableView 的最后几行。&lt;/p&gt;
-&lt;p&gt;如果你的 UITableView 是存在于 UITableViewController 中的，那么 UITableView 的 frame 是不可调节的，所以通过上面的代码，我们可以方便地避免广告遮挡原有的内容。而即便你的 UITableView 是存在于 UIViewController 中的，即这个 UITableView 是你自己添加进来的，你可以任意调节 frame，我依然建议你用上面这种方法，而不是直接把 UITableView 的 frame 调小，来给广告空出位置。因为你的广告并不一定能显示的出来，可能是用户把你的广告屏蔽了，也可能是网络状况不好，这时候反正你的广告也显示不出来，应该给用户更多的屏幕空间来显示 UITableView 的内容。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2.利用定时器轮询插页式广告加载状态&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这里不太恰当的使用了“轮询”这个词，大家意会就好。&lt;br&gt;假如你要弹出一次插页式广告，那么Google给出的示例代码是下面这个样子&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/mob2.png&quot; alt=&quot;如何创建 GADInterstitial
- 媒体资源、初始化该资源并随广告加载它&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/mob3.png&quot; alt=&quot;展示插页式广告&quot;&gt;&lt;br&gt;这里的展示逻辑是：不要打扰用户玩游戏的过程，在用户玩游戏的过程中默默地加载广告，等用户一次游戏结束了，如果这时候广告加载好了，就把广告弹出来。&lt;/p&gt;
-&lt;p&gt;然而实际情况是，我们的应用可能不是游戏，并没有一个这么明显的类似&lt;strong&gt;完成了一局游戏&lt;/strong&gt;这样的一个段落结束的地方。这时候你可能希望每30秒弹出一次插页式广告，然而这个广告可能是第40秒才加载好的，这就导致了：虽然你设置的是30秒显示一次广告，但是30s的时候广告没加载好，就没显示出来，60s的时候显示了40s时加载的广告。而更理想的情况是：30s时没能加载好广告，我们就开始轮询，直到广告加载好了，也就是40s时，把广告显示出来，然后设定第70s时展示下一次广告。&lt;/p&gt;
-&lt;p&gt;下面给出一段示例代码，这里的广告展示逻辑是：每60秒展示一次广告，如果到了这个时刻，广告没加载好，就设置定时器每3秒查看一次广告资源是否就绪，直到广告加载好了，展示广告，然后设置60秒后出现下一次广告。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;comment&quot;&gt;// AdMob 插页广告&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; adInterstitial = &lt;span class=&quot;type&quot;&gt;GADInterstitial&lt;/span&gt;(adUnitID: &lt;span class=&quot;string&quot;&gt;&quot;ca-app-pub-xxxx/xxxx&quot;&lt;/span&gt;)
-    &lt;span class=&quot;comment&quot;&gt;// 定时器&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; timer = &lt;span class=&quot;type&quot;&gt;NSTimer&lt;/span&gt;()
-
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
-
-        &lt;span class=&quot;comment&quot;&gt;// 初始化 AdMob 插页广告&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; gadRequest1 = &lt;span class=&quot;type&quot;&gt;GADRequest&lt;/span&gt;()
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.loadRequest(gadRequest1)
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;// 3秒一次轮询直到第一次展示广告&lt;/span&gt;
-    }
-
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
-    }
-
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;addTimerToShowAd&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;( showAdTimeInterval:NSTimeInterval)&lt;/span&gt;&lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer = &lt;span class=&quot;type&quot;&gt;NSTimer&lt;/span&gt;.scheduledTimerWithTimeInterval( showAdTimeInterval, target: &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;,
-            selector: &lt;span class=&quot;string&quot;&gt;&quot;showAd&quot;&lt;/span&gt;, userInfo: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;, repeats: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
-        [&lt;span class=&quot;type&quot;&gt;NSRunLoop&lt;/span&gt;.currentRunLoop().addTimer(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer, forMode: &lt;span class=&quot;type&quot;&gt;NSRunLoopCommonModes&lt;/span&gt;)]
-    }
-
-
-    &lt;span class=&quot;preprocessor&quot;&gt;@objc&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showAd&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.isReady {
-            &lt;span class=&quot;comment&quot;&gt;// 广告成功加载，显示广告，重置定时器&lt;/span&gt;
-            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.adInterstitial.presentFromRootViewController(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)
-            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer.invalidate()
-            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;60&lt;/span&gt;)
-        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
-            &lt;span class=&quot;comment&quot;&gt;// 广告没有成功加载，开始3秒一次的快速轮询&lt;/span&gt;
-            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.timer.invalidate()
-            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.addTimerToShowAd(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面的代码中的关于定时器方面的内容，就不在这篇文章中写了，如果看着费劲的话，欢迎在下面评论，我也可以再写一篇关于定时器的文章。关于 private 和 @objc 关键字部分可以参考&lt;a href=&quot;http://www.jianshu.com/p/41676664aac6&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我之前的一篇文章&lt;/a&gt;。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;本人现在还是学生，兼做 iOS 独立开发者积累&lt;a href=&quot;https://itunes.apple.com/developer/id988271193&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;作品&lt;/a&gt;，也顺便赚点银子，欢迎有兴趣的加微信交流技术问题，微信号：balabala-ba。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;/p&gt;&lt;h3&gt;前言&lt;/h3&gt;&lt;br&gt;虽然在App中加入广告来盈利是比较低级的商业化方式，但对于个人开发者或者小团队开发者来说，做出一个简单易用的免费小工具（举个栗子），在里面加入一些广告，如果用的人多，也是可以带来一些可观的收入的。用户没有掏钱，得到了方便，开发者也得到了
     
     </summary>
     
