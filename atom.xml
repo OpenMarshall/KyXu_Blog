@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-04-29T09:20:40.000Z</updated>
+  <updated>2016-05-06T09:36:55.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UITableView 结合 UISearchBar 问题解决</title>
+    <link href="/2016/05/06/UITableView-%E7%BB%93%E5%90%88-UISearchBar-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    <id>/2016/05/06/UITableView-结合-UISearchBar-问题解决/</id>
+    <published>2016-05-06T09:36:26.000Z</published>
+    <updated>2016-05-06T09:36:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;之前看了 &lt;a href=&quot;https://www.raywenderlich.com/113772/uisearchcontroller-tutorial&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ray Wenderlich 的一篇文章&lt;/a&gt; 学习了一下怎么把 UISearchBar 放在 UITableView 的头部，来进行列表搜索，然后发现了两个问题，用了好久才解决：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;UISearchBar 有个 1 像素宽的黑色边框，去不掉&lt;/li&gt;
+&lt;li&gt;把 UISearchBar 放在 UITableView 头部的代码在 iOS 8 不起作用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;tableView&lt;span class=&quot;class&quot;&gt;.tableHeaderView&lt;/span&gt; = searchController&lt;span class=&quot;class&quot;&gt;.searchBar&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;// now working&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解决问题_1&quot;&gt;解决问题 1&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;searchController&lt;span class=&quot;class&quot;&gt;.searchBar&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.layer&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.borderWidth&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;
+searchController&lt;span class=&quot;class&quot;&gt;.searchBar&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.layer&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.borderColor&lt;/span&gt; = &lt;span class=&quot;comment&quot;&gt;// your background color&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解决问题_2&quot;&gt;解决问题 2&lt;/h3&gt;&lt;p&gt;我发现 tableHeaderView 是可以被其他 view 有效填充的，不知道为什么 searchBar 就是放不进去，所以直接找个大小一样的 UIView 作为容器放在 searchBar 下面就好了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;let containerView = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(frame: CGRectMake(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;, view.frame.width, &lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;)
+containerView&lt;span class=&quot;class&quot;&gt;.backgroundColor&lt;/span&gt; = &lt;span class=&quot;comment&quot;&gt;// your background color&lt;/span&gt;
+searchController&lt;span class=&quot;class&quot;&gt;.searchBar&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.frame&lt;/span&gt; = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;CGRectMake&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, view.frame.width, &lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;
+containerView.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;addSubview&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(searchController.searchBar)&lt;/span&gt;&lt;/span&gt;
+tableView&lt;span class=&quot;class&quot;&gt;.tableHeaderView&lt;/span&gt; = containerView
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前看了 &lt;a href=&quot;https://www.raywenderlich.com/113772/uisearchcontroller-tutorial&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ray Wenderlich 的一篇文章&lt;/a&gt; 学
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>初识函数式 Swift 实用</title>
@@ -1059,52 +1093,6 @@ setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;test
     
       &lt;p&gt;在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。&lt;/p&gt;
 &lt;h3 id=&quot;App_审核委员会&quot;&gt;App 审核委员会&lt;/h3&gt;&lt;p&gt;这个团队的工作，是审核一款 App 是否可以在 AppStore 
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>修改 present 出来的 ViewController 状态栏颜色</title>
-    <link href="/2016/01/26/%E4%BF%AE%E6%94%B9-present-%E5%87%BA%E6%9D%A5%E7%9A%84-ViewController-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2/"/>
-    <id>/2016/01/26/修改-present-出来的-ViewController-状态栏颜色/</id>
-    <published>2016-01-26T07:20:55.000Z</published>
-    <updated>2016-04-09T07:21:21.000Z</updated>
-    
-    <content type="html">&lt;p&gt;在开发的过程中，如果我们需要给用户提供一个浏览器功能的支持、又或者需要让用户来从系统相册挑选图片，那么利用 UIKit 给我们提供的现成的 SFSafariViewController 和 UIImagePickerController 将是非常方便的事情，但是&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let pc = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;UIImagePickerController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-let sf = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: NSURL(string:&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;像这样用一行代码来创建 ViewController，使我们丧失了进入这个 ViewController 的内部去调节一些东西的机会。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;比如说我们整个App都是采用的白色状态栏，而 SFSafariViewController 和 UIImagePickerController 都是默认背景为白色的（即需要一个黑色状态栏，否则用户看不清内容），这时候我们需要一个默认自身的状态栏永远为黑色的 SFSafariViewController 或 UIImagePickerController&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;下面以 UIImagePickerController 为例给出一种解决方案。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CustomImagePC&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIImagePickerController&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
-        &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.sharedApplication().setStatusBarStyle(&lt;span class=&quot;type&quot;&gt;UIStatusBarStyle&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;Default&lt;/span&gt;, animated: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewWillDisappear&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(animated: Bool)&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.sharedApplication().setStatusBarStyle(&lt;span class=&quot;type&quot;&gt;UIStatusBarStyle&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LightContent&lt;/span&gt;, animated: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如上所示，创建了一个自定义的 UIImagePickerController ，代码里面设定了：这个页面被加载之后，状态栏设置为黑色，页面即将消失时，状态栏再转为白色。调用的时候，直接&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let pc = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;CustomImagePC&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;SFSafariViewController 同理，当然你也可以在这些代码里插入其他内容，如果你想更高程序地定制一个 UIImagePickerController 的话。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在开发的过程中，如果我们需要给用户提供一个浏览器功能的支持、又或者需要让用户来从系统相册挑选图片，那么利用 UIKit 给我们提供的现成的 SFSafariViewController 和 UIImagePickerController 将是非常方便的事情，但是&lt;/p&gt;
-&lt;
     
     </summary>
     

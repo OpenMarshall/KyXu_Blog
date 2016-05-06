@@ -78,19 +78,31 @@
 
 
 
-<meta name="description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
+<meta name="description" content="之前看了 Ray Wenderlich 的一篇文章 学习了一下怎么把 UISearchBar 放在 UITableView 的头部，来进行列表搜索，然后发现了两个问题，用了好久才解决：
+
+UISearchBar 有个 1 像素宽的黑色边框，去不掉
+把 UISearchBar 放在 UITableView 头部的代码在 iOS 8 不起作用
+
+tableView.tableHeaderView =">
 <meta property="og:type" content="article">
-<meta property="og:title" content="全局设定 UINavigationBar 的 UI">
-<meta property="og:url" content="/2015/11/14/全局设定-UINavigationBar-的-UI/index.html">
+<meta property="og:title" content="UITableView 结合 UISearchBar 问题解决">
+<meta property="og:url" content="/2016/05/06/UITableView-结合-UISearchBar-问题解决/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui1.png">
-<meta property="og:updated_time" content="2016-04-09T16:15:45.000Z">
+<meta property="og:description" content="之前看了 Ray Wenderlich 的一篇文章 学习了一下怎么把 UISearchBar 放在 UITableView 的头部，来进行列表搜索，然后发现了两个问题，用了好久才解决：
+
+UISearchBar 有个 1 像素宽的黑色边框，去不掉
+把 UISearchBar 放在 UITableView 头部的代码在 iOS 8 不起作用
+
+tableView.tableHeaderView =">
+<meta property="og:updated_time" content="2016-05-06T09:36:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="全局设定 UINavigationBar 的 UI">
-<meta name="twitter:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png">
+<meta name="twitter:title" content="UITableView 结合 UISearchBar 问题解决">
+<meta name="twitter:description" content="之前看了 Ray Wenderlich 的一篇文章 学习了一下怎么把 UISearchBar 放在 UITableView 的头部，来进行列表搜索，然后发现了两个问题，用了好久才解决：
+
+UISearchBar 有个 1 像素宽的黑色边框，去不掉
+把 UISearchBar 放在 UITableView 头部的代码在 iOS 8 不起作用
+
+tableView.tableHeaderView =">
 
 
 
@@ -108,7 +120,7 @@
   };
 </script>
 
-  <title> 全局设定 UINavigationBar 的 UI | KyXu Tech </title>
+  <title> UITableView 结合 UISearchBar 问题解决 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +280,7 @@
             
             
               
-                全局设定 UINavigationBar 的 UI
+                UITableView 结合 UISearchBar 问题解决
               
             
           </h1>
@@ -280,8 +292,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-14T15:26:25+08:00" content="2015-11-14">
-              2015-11-14
+            <time itemprop="dateCreated" datetime="2016-05-06T17:36:26+08:00" content="2016-05-06">
+              2016-05-06
             </time>
           </span>
 
@@ -291,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/14/全局设定-UINavigationBar-的-UI/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/14/全局设定-UINavigationBar-的-UI/" itemprop="commentsCount"></span>
+                <a href="/2016/05/06/UITableView-结合-UISearchBar-问题解决/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/UITableView-结合-UISearchBar-问题解决/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,7 +314,7 @@
 
           
           
-             <span id="/2015/11/14/全局设定-UINavigationBar-的-UI/" class="leancloud_visitors" data-flag-title="全局设定 UINavigationBar 的 UI">
+             <span id="/2016/05/06/UITableView-结合-UISearchBar-问题解决/" class="leancloud_visitors" data-flag-title="UITableView 结合 UISearchBar 问题解决">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -323,25 +335,21 @@
       
 
       
-        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png" alt="App Screen Shot.png"><br>如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。<br>TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。<br>因为 TabBar 只有一个，直接在 UITabBarController 的代码里写下面这段就可以<br>（globalBarTintColor是我自定义的浅海蓝色，后面还会出现）</p>
-<pre><code>self<span class="class">.tabBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
-self<span class="class">.tabBar</span><span class="class">.barTintColor</span> = globalBarTintColor
-</code></pre><p>然而 NavigationBar 有三个，甚至还会更多，一个个分别去设定颜色显然耦合性不够低，改起来也很麻烦。<br>下面给出一种全局统一设定的方法，写在 AppDelegate 文件的 didFinishLaunchingWithOptions 方法里：</p>
-<pre><code>func application(application: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">NSObject</span>: AnyObject]?) -&gt; Bool {
-
-    <span class="comment">// NavigationBar 颜色，全局设定</span>
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.tintColor</span> = <span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.titleTextAttributes</span> =
-        [<span class="built_in">NSForegroundColorAttributeName</span>:<span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()]
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.barTintColor</span> = globalBarTintColor
-
-    <span class="keyword">return</span> <span class="literal">true</span>
-}
-</code></pre><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/ui1.png" alt="App Screen Shot2.png"><br>这样做的另外一个好处是，可以直接改掉上图圈出来的 NavigationBar 自带按钮的颜色，如果你直接尝试在某个 ViewController 里写</p>
-<pre><code>self.navigationController!<span class="class">.navigationBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
-</code></pre><p>这个按钮的颜色貌似是改不掉的（据我刚刚尝试，是这样的）。</p>
-<p><strong>最后：<br>可以看出，上面的写法，直接是在设定 UINavigationBar 这个类的属性，所以依此类推，其他各种UI效果应该都可以这样全局设定。</strong></p>
-
+        <p>之前看了 <a href="https://www.raywenderlich.com/113772/uisearchcontroller-tutorial" target="_blank" rel="external">Ray Wenderlich 的一篇文章</a> 学习了一下怎么把 UISearchBar 放在 UITableView 的头部，来进行列表搜索，然后发现了两个问题，用了好久才解决：</p>
+<ol>
+<li>UISearchBar 有个 1 像素宽的黑色边框，去不掉</li>
+<li>把 UISearchBar 放在 UITableView 头部的代码在 iOS 8 不起作用</li>
+</ol>
+<pre><code>tableView<span class="class">.tableHeaderView</span> = searchController<span class="class">.searchBar</span> <span class="comment">// now working</span>
+</code></pre><h3 id="解决问题_1">解决问题 1</h3><pre><code>searchController<span class="class">.searchBar</span><span class="class">.layer</span><span class="class">.borderWidth</span> = <span class="number">1</span>
+searchController<span class="class">.searchBar</span><span class="class">.layer</span><span class="class">.borderColor</span> = <span class="comment">// your background color</span>
+</code></pre><h3 id="解决问题_2">解决问题 2</h3><p>我发现 tableHeaderView 是可以被其他 view 有效填充的，不知道为什么 searchBar 就是放不进去，所以直接找个大小一样的 UIView 作为容器放在 searchBar 下面就好了。</p>
+<pre><code>let containerView = <span class="function"><span class="title">UIView</span><span class="params">(frame: CGRectMake(<span class="number">0</span>, <span class="number">64</span>, view.frame.width, <span class="number">44</span>)</span></span>)
+containerView<span class="class">.backgroundColor</span> = <span class="comment">// your background color</span>
+searchController<span class="class">.searchBar</span><span class="class">.frame</span> = <span class="function"><span class="title">CGRectMake</span><span class="params">(<span class="number">0</span>, <span class="number">0</span>, view.frame.width, <span class="number">44</span>)</span></span>
+containerView.<span class="function"><span class="title">addSubview</span><span class="params">(searchController.searchBar)</span></span>
+tableView<span class="class">.tableHeaderView</span> = containerView
+</code></pre>
       
     </div>
     
@@ -391,17 +399,13 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/14/慢速-UIPickerView-动画实现/" rel="next" title="慢速 UIPickerView 动画实现">
-                <i class="fa fa-chevron-left"></i> 慢速 UIPickerView 动画实现
+              <a href="/2016/04/29/初识函数式-Swift-实用/" rel="next" title="初识函数式 Swift 实用">
+                <i class="fa fa-chevron-left"></i> 初识函数式 Swift 实用
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/24/跳转到『设置App』的任意条目/" rel="prev" title="跳转到『设置App』的任意条目">
-                跳转到『设置App』的任意条目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -427,8 +431,8 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/14/全局设定-UINavigationBar-的-UI/"
-           data-title="全局设定 UINavigationBar 的 UI" data-url="/2015/11/14/全局设定-UINavigationBar-的-UI/">
+      <div class="ds-thread" data-thread-key="2016/05/06/UITableView-结合-UISearchBar-问题解决/"
+           data-title="UITableView 结合 UISearchBar 问题解决" data-url="/2016/05/06/UITableView-结合-UISearchBar-问题解决/">
       </div>
     
   </div>
@@ -587,7 +591,7 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题_1"><span class="nav-number">1.</span> <span class="nav-text">解决问题 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题_2"><span class="nav-number">2.</span> <span class="nav-text">解决问题 2</span></a></li></ol></div>
             
           </div>
         </section>
