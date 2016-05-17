@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试," />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,31 +78,18 @@
 
 
 
-<meta name="description" content="继上一篇文章【面试】腾讯 iOS 开发实习电话面试记录（一）后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。
-（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）
-
-说一下 C/C++ 里面变量定义和声明的区别
-
-OC 里面的 property 有没有像 Swift 里面一">
+<meta name="description" content="控制器之间经常需要互相传递值，第一个控制器（简称 MasterVC）在通过 NavigationController Push 第二个控制器（简称 DetailVC）的时候，可以捕获到 DetailVC，所以可以设定后者的变量。而 DetailVC 在给 MasterVC 传递值的时候，比如设定 MasterVC 的 Title，却不能用同样的方式传值（试一下就知道了），而且因为我们要通过 Nav">
 <meta property="og:type" content="article">
-<meta property="og:title" content="腾讯 iOS 开发实习电话面试记录（二）">
-<meta property="og:url" content="/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/index.html">
+<meta property="og:title" content="Controller 之间使用代理传值">
+<meta property="og:url" content="/2016/05/18/Controller-之间使用代理传值/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="继上一篇文章【面试】腾讯 iOS 开发实习电话面试记录（一）后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。
-（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）
-
-说一下 C/C++ 里面变量定义和声明的区别
-
-OC 里面的 property 有没有像 Swift 里面一">
-<meta property="og:updated_time" content="2016-04-09T07:12:51.000Z">
+<meta property="og:description" content="控制器之间经常需要互相传递值，第一个控制器（简称 MasterVC）在通过 NavigationController Push 第二个控制器（简称 DetailVC）的时候，可以捕获到 DetailVC，所以可以设定后者的变量。而 DetailVC 在给 MasterVC 传递值的时候，比如设定 MasterVC 的 Title，却不能用同样的方式传值（试一下就知道了），而且因为我们要通过 Nav">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/delegatePassData.gif">
+<meta property="og:updated_time" content="2016-05-17T16:54:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="腾讯 iOS 开发实习电话面试记录（二）">
-<meta name="twitter:description" content="继上一篇文章【面试】腾讯 iOS 开发实习电话面试记录（一）后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。
-（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）
-
-说一下 C/C++ 里面变量定义和声明的区别
-
-OC 里面的 property 有没有像 Swift 里面一">
+<meta name="twitter:title" content="Controller 之间使用代理传值">
+<meta name="twitter:description" content="控制器之间经常需要互相传递值，第一个控制器（简称 MasterVC）在通过 NavigationController Push 第二个控制器（简称 DetailVC）的时候，可以捕获到 DetailVC，所以可以设定后者的变量。而 DetailVC 在给 MasterVC 传递值的时候，比如设定 MasterVC 的 Title，却不能用同样的方式传值（试一下就知道了），而且因为我们要通过 Nav">
+<meta name="twitter:image" content="http://7xssu3.com1.z0.glb.clouddn.com/delegatePassData.gif">
 
 
 
@@ -120,7 +107,7 @@ OC 里面的 property 有没有像 Swift 里面一">
   };
 </script>
 
-  <title> 腾讯 iOS 开发实习电话面试记录（二） | KyXu Tech </title>
+  <title> Controller 之间使用代理传值 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +267,7 @@ OC 里面的 property 有没有像 Swift 里面一">
             
             
               
-                腾讯 iOS 开发实习电话面试记录（二）
+                Controller 之间使用代理传值
               
             
           </h1>
@@ -292,8 +279,8 @@ OC 里面的 property 有没有像 Swift 里面一">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-16T15:04:28+08:00" content="2016-03-16">
-              2016-03-16
+            <time itemprop="dateCreated" datetime="2016-05-18T00:53:52+08:00" content="2016-05-18">
+              2016-05-18
             </time>
           </span>
 
@@ -303,8 +290,8 @@ OC 里面的 property 有没有像 Swift 里面一">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/" itemprop="commentsCount"></span>
+                <a href="/2016/05/18/Controller-之间使用代理传值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/Controller-之间使用代理传值/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,7 +301,7 @@ OC 里面的 property 有没有像 Swift 里面一">
 
           
           
-             <span id="/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/" class="leancloud_visitors" data-flag-title="腾讯 iOS 开发实习电话面试记录（二）">
+             <span id="/2016/05/18/Controller-之间使用代理传值/" class="leancloud_visitors" data-flag-title="Controller 之间使用代理传值">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -335,38 +322,92 @@ OC 里面的 property 有没有像 Swift 里面一">
       
 
       
-        <p>继上一篇文章<a href="http://www.jianshu.com/p/8e8871a9677a" target="_blank" rel="external">【面试】腾讯 iOS 开发实习电话面试记录（一）</a>后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。</p>
-<p>（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）</p>
+        <p><img src="http://7xssu3.com1.z0.glb.clouddn.com/delegatePassData.gif" alt="Controller 传值"><br>控制器之间经常需要互相传递值，第一个控制器（简称 MasterVC）在通过 NavigationController Push 第二个控制器（简称 DetailVC）的时候，可以捕获到 DetailVC，所以可以设定后者的变量。而 DetailVC 在给 MasterVC 传递值的时候，比如设定 MasterVC 的 Title，却不能用同样的方式传值（试一下就知道了），而且因为我们要通过 NavigationController 返回原来的界面而不是 push 一个新的界面，所以也不能通过 segue 传值，解决方法我尝试了两种：</p>
 <ol>
-<li><p>说一下 C/C++ 里面变量定义和声明的区别</p>
-</li>
-<li><p>OC 里面的 property 有没有像 Swift 里面一样的 public 和 private 之分</p>
-</li>
-<li><p>我看你简历里面说你写过超过5万行 Swift，你怎么知道你写过 5 万行？<br>（我说可以通过 Terminal 来统计我的项目文件夹里面任意后缀文件的行数）</p>
-</li>
-<li><p>你这个5万行，包括第三方 API 吗？<br>（我说不包括，不过只要他问 Swift 少问 OC，我还是有信心）</p>
-</li>
-<li><p>你说一下你对 Swift 这门语言的理解，有什么和 C、C++ 或 OC 不同的地方？<br>（我说了关于 protocol 和 extension 相关的东西，还有关于 OC 里面的 NSString 浅复制，现在 Swift 对 String 类型是深复制，以及 Swift 对这个值拷贝的优化的问题……会的东西还是要多说）</p>
-</li>
-<li><p>平时你对你上架的这些产品是怎么监测崩溃情况的</p>
-</li>
-<li><p>平时怎么检测内存泄露，有什么解决方案</p>
-</li>
-<li><p>TableView 滑动卡顿有什么优化方案<br>（这个因为刚好在面试之前还准备了一下，噼里啪啦说了好多，可能还说了点面试官不知道的东西。然后他说你怎么知道这些东西的，平时都在用吗，我说都是在网上看的，因为平时没有做过非常复杂的 Cell，所以实际应用起来了的优化手段并不多）</p>
-</li>
-<li><p>说一下 HTTP 协议<br>（我说不会，就简单说了下 http 和 https 的区别，和 iOS 9 开始引导访问 https 的问题，大家可以背一下这一段：<strong>【为了强制增强数据访问安全， iOS9 默认会把所有从<code>NSURLConnection</code> 、 <code>CFURL</code> 、 <code>NSURLSession</code>发出的 HTTP 请求，都改为 HTTPS 请求：iOS9.x-SDK编译时，默认会让所有从<code>NSURLConnection</code> 、 <code>CFURL</code> 、 <code>NSURLSession</code>发出的 HTTP 请求统一采用 TLS 1.2（SSL 3.1） 协议。】</strong>）</p>
-</li>
-<li><p>说一下你最复杂的一个项目的技术内容</p>
-</li>
-<li><p>你所有项目都是你独立开发完成的吗，包括切图、UI<br>（我说是，不过他也没问我 Photoshop，就此作罢）</p>
-</li>
-<li><p>说一下不同版本 iPhone 的分辨率<br>（我说我没背下来那个 320*568 什么的分辨率，但我知道硬件屏幕上 dot 的数量和软件屏幕 pixel 数量的关系，而且很特殊的一点是，虽然 iPhone 3GS 对应的是 1x，iPhone 4S 开始对应 2x，但是 iPhone 6+ 对应的所谓 3x 实际上是 1：2.6几，Apple 帮我们做了把 3x 的图做成 2.6x 的这个工作）</p>
-</li>
-<li><p>你平时是怎么做技术积累的</p>
-</li>
+<li>使用 static var</li>
+<li>使用代理传值</li>
 </ol>
-<hr>
-<p>好像电话面试就此结束了，下次面试是面试官来本地走校招流程，然后之前打过电话、简历评级够好的，现场面试的时候会比较容易给 offer。</p>
+<h2 id="使用_static_var">使用 static var</h2><pre><code><span class="class"><span class="keyword">class</span> <span class="title">MasterVC</span>: <span class="title">UIViewController</span> </span>{
+    <span class="keyword">static</span> <span class="keyword">var</span> text:<span class="type">String</span>! = <span class="string">""</span>
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(animated: Bool)</span></span> {
+        title = <span class="type">MasterVC</span>.text
+    }
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">DetailVC</span>: <span class="title">UIViewController</span> </span>{
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(animated: Bool)</span></span> {
+        <span class="type">MasterVC</span>.text = <span class="string">"xxx"</span>
+    }
+}
+</code></pre><p>这样虽然行得通，但是代码丑陋：类似 viewWillAppear 这样的方法，让人难以读懂，为什么这样的事情要在这个地方做，没有明显的道理；在 MasterVC 内部，仍然需要以 <code>MasterVC.text</code> 这样蹩脚的方式调用。</p>
+<h2 id="使用代理传值">使用代理传值</h2><p>说白了我们只是希望 MasterVC 有一个 <code>setControllerTitle(text:String)</code> 这样的方法，然后在 DetailVC 里面适时地调用这个方法就好了。于是解决方案是：将 MasterVC 设为 DetailVC 的代理，DetailVC 以代理作为桥梁，来调用 MasterVC 里面的 <code>setControllerTitle(text:String)</code> 方法，而 MasterVC 只需要遵守一个相应的传值协议，协议里面要求必须实现的方法，就是 <code>setControllerTitle(text:String)</code> 这个方法。</p>
+<pre><code><span class="comment">//  PassDataDelegate.swift</span>
+
+<span class="keyword">import</span> Foundation
+
+<span class="class"><span class="keyword">protocol</span> <span class="title">PassDataDelegate</span> </span>{
+    <span class="func"><span class="keyword">func</span> <span class="title">setControllerTitle</span><span class="params">(text:String)</span></span>
+}
+
+
+<span class="comment">//  MasterVC.swift</span>
+
+<span class="keyword">import</span> UIKit
+
+<span class="class"><span class="keyword">class</span> <span class="title">MasterVC</span>: <span class="title">UIViewController</span>, <span class="title">PassDataDelegate</span> </span>{
+
+    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> textField: <span class="type">UITextField</span>!
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.viewDidLoad()
+    }
+
+
+    <span class="comment">// MARK: - Pass Data</span>
+    <span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">goNextController</span><span class="params">(sender: AnyObject)</span></span> {
+        <span class="keyword">guard</span> <span class="keyword">let</span> vc = storyboard?.instantiateViewControllerWithIdentifier(<span class="string">"DetailVC"</span>)
+            <span class="keyword">as</span>? <span class="type">DetailVC</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+        <span class="keyword">guard</span> <span class="keyword">let</span> txt = textField.text <span class="keyword">else</span> { <span class="keyword">return</span> }
+        vc.title = txt <span class="comment">// pass data</span>
+        vc.delegate = <span class="keyword">self</span> <span class="comment">// get data by set delegate</span>
+        navigationController?.pushViewController(vc, animated: <span class="literal">true</span>)
+    }
+
+
+    <span class="comment">// MARK: - PassDataDelegate Method</span>
+    <span class="func"><span class="keyword">func</span> <span class="title">setControllerTitle</span><span class="params">(text:String)</span></span> {
+        title = text
+    }
+
+}
+
+
+<span class="comment">//  DetailVC.swift</span>
+
+<span class="keyword">import</span> UIKit
+
+<span class="class"><span class="keyword">class</span> <span class="title">DetailVC</span>: <span class="title">UIViewController</span> </span>{
+
+    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> textField: <span class="type">UITextField</span>!
+    <span class="keyword">var</span> delegate: <span class="type">PassDataDelegate</span>!
+
+    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
+        <span class="keyword">super</span>.viewDidLoad()
+    }
+
+
+    <span class="comment">// MARK: - Pass Data</span>
+    <span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">goBackLastController</span><span class="params">(sender: AnyObject)</span></span> {
+        <span class="keyword">if</span> delegate != <span class="literal">nil</span> {
+            <span class="keyword">guard</span> <span class="keyword">let</span> txt = textField.text <span class="keyword">else</span> { <span class="keyword">return</span> }
+            delegate.setControllerTitle(txt)
+        }
+        navigationController?.popViewControllerAnimated(<span class="literal">true</span>)
+    }
+
+}
+</code></pre><p>相比之前的方法，我们获得的额外的好处是：假如我们传递的不只是字符串，而是大量的信息，比如十个不同类型的值，使用代理传值依然只需要实现一个方法，而在之前的解决方案中，我们需要写十行 <code>static var</code>。</p>
+<p><a href="https://github.com/OpenMarshall/PassDataByDelegate" target="_blank" rel="external">完整项目</a></p>
 
       
     </div>
@@ -408,7 +449,7 @@ OC 里面的 property 有没有像 Swift 里面一">
       
         <div class="post-tags">
           
-            <a href="/tags/面试/" rel="tag">#面试</a>
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
           
         </div>
       
@@ -417,17 +458,13 @@ OC 里面的 property 有没有像 Swift 里面一">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/16/Adobe-Xd-简明教程-对比-Sketch/" rel="next" title="Adobe Xd 简明教程 <对比 Sketch>">
-                <i class="fa fa-chevron-left"></i> Adobe Xd 简明教程 <对比 Sketch>
+              <a href="/2016/05/06/UITableView-结合-UISearchBar-问题解决/" rel="next" title="UITableView 结合 UISearchBar 问题解决">
+                <i class="fa fa-chevron-left"></i> UITableView 结合 UISearchBar 问题解决
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/" rel="prev" title="阿里 iOS 开发实习电话面试记录（一）">
-                阿里 iOS 开发实习电话面试记录（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,8 +490,8 @@ OC 里面的 property 有没有像 Swift 里面一">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/"
-           data-title="腾讯 iOS 开发实习电话面试记录（二）" data-url="/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/">
+      <div class="ds-thread" data-thread-key="2016/05/18/Controller-之间使用代理传值/"
+           data-title="Controller 之间使用代理传值" data-url="/2016/05/18/Controller-之间使用代理传值/">
       </div>
     
   </div>
@@ -613,7 +650,7 @@ OC 里面的 property 有没有像 Swift 里面一">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用_static_var"><span class="nav-number">1.</span> <span class="nav-text">使用 static var</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用代理传值"><span class="nav-number">2.</span> <span class="nav-text">使用代理传值</span></a></li></ol></div>
             
           </div>
         </section>
