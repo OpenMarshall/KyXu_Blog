@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-05-17T16:54:31.000Z</updated>
+  <updated>2016-06-19T15:53:04.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成 Weex 注意事项</title>
+    <link href="/2016/06/19/%E9%9B%86%E6%88%90-Weex-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>/2016/06/19/集成-Weex-注意事项/</id>
+    <published>2016-06-19T15:52:32.000Z</published>
+    <updated>2016-06-19T15:53:04.000Z</updated>
+    
+    <content type="html">&lt;p&gt;撰写本文时，Weex 还没有完全开源，&lt;a href=&quot;https://open.taobao.com/doc2/detail?spm=a21l5.77726.340855.2&amp;amp;docType=1&amp;amp;articleId=104742&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是官方的文档中心&lt;/a&gt;，&lt;a href=&quot;https://github.com/weexteam/article/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是 Weex 团队放在 Github 上的一些文章&lt;/a&gt;，你可以上&lt;a href=&quot;http://alibaba.github.io/weex/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;申请访问 Weex 的 Github 页面。&lt;/p&gt;
+&lt;p&gt;这篇文章介绍一下如何快速集成 Weex 到你的 iOS Project 里面。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果你还没有 Weex 的 SDK，你可以下载一下这个官方给的 &lt;a href=&quot;http://gw.alicdn.com/bao/uploaded/LB1yfvtKpXXXXXbXXXXXXXXXXXX.zip?spm=a219a.7629140.0.0.ZqqSyg&amp;amp;file=LB1yfvtKpXXXXXbXXXXXXXXXXXX.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WeexSample&lt;/a&gt;，工程里面有 WeexSDK.framework 这个文件，这样如果你惯用 Objective-C 的话，参考&lt;a href=&quot;https://open.taobao.com/doc2/detail?spm=a219a.7629140.0.0.sf2ubW&amp;amp;&amp;amp;docType=1&amp;amp;articleId=104829&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这篇文章&lt;/a&gt;，你就可以清晰明了地知道这个 Sample 是怎么写出来的，但是这篇文章没有告诉你这些事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这里面有两个文件 SRWebSocket.h 和 SRWebSocket.m，这是 facebook 的开源项目 &lt;a href=&quot;https://github.com/facebook/SocketRocket&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SockerRocket&lt;/a&gt; ，运行这个项目必须有这个东西（至少暂时是这样，或许以后 Weex 团队会尝试自己搞个类似的东西出来？）&lt;/li&gt;
+&lt;li&gt;官方目前没有 Swift 版本的 Sample，这里有个来自第三方的&lt;a href=&quot;https://github.com/acton393/WeexSwiftSample&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;示例&lt;/a&gt;，可以参考一下，这个示例有一点点问题，代码风格不太 Swifty，问题我写在下面了，其他诸如 print 写成 NSLog 这种，无伤大雅，好歹是用 Swift 运行起来了&lt;/li&gt;
+&lt;li&gt;Weex 是用 OC 写的，Swift 项目集成它，里面需要桥接文件，如果你不知道这个是什么，可以参考我&lt;a href=&quot;http://www.jianshu.com/p/27b9ff63ab6f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;之前的一篇文章&lt;/a&gt;，这个文件里面只需要写这些（不需要 import SRWebSocket）：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;preprocessor&quot;&gt;#import &lt;span class=&quot;title&quot;&gt;&amp;lt;WeexSDK/WXSDKEngine.h&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;preprocessor&quot;&gt;#import &lt;span class=&quot;title&quot;&gt;&amp;lt;WeexSDK/WXSDKInstance.h&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;preprocessor&quot;&gt;#import &lt;span class=&quot;title&quot;&gt;&amp;lt;WeexSDK/WXLog.h&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;preprocessor&quot;&gt;#import &lt;span class=&quot;title&quot;&gt;&amp;lt;WeexSDK/WXAppConfiguration.h&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;官方展示的 OC 版本的这段代码：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;-&lt;/span&gt; (void)&lt;span class=&quot;tag&quot;&gt;dealloc&lt;/span&gt;
+{
+    &lt;span class=&quot;attr_selector&quot;&gt;[_instance destroyInstance]&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 Swift 里面的写法是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// Deprecated&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;//    override func finalize() {&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;//        instance.destroyInstance()&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;//    }&lt;/span&gt;
+
+deinit {
+    &lt;span class=&quot;keyword&quot;&gt;instance&lt;/span&gt;.destroyInstance()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;虽然官方在很多地方都提到这一点，为了防止还是有人忽略，再写一遍：请在 Build Settings 的 Other Link Flags 里面加入 &lt;strong&gt;-ObjC&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;官网开源的代码中，没有把 SDK 做成 .framework，而是直接一个文件夹，工程通过 Pod 来把这个 SDK 集成到项目中，顺便也通过 Pod 集成了其他内容，这是 Podfile 里的内容（可以看到 WeexSDK 是通过本地路径加进来的）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source &lt;span class=&quot;string&quot;&gt;&#39;https://github.com/CocoaPods/Specs.git&#39;&lt;/span&gt;
+platform &lt;span class=&quot;symbol&quot;&gt;:ios&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;7.0&#39;&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;#inhibit_all_warnings!&lt;/span&gt;
+
+target &lt;span class=&quot;string&quot;&gt;&#39;WeexDemo&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;
+  pod &lt;span class=&quot;string&quot;&gt;&#39;WeexSDK&#39;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:path=&amp;gt;&lt;span class=&quot;string&quot;&gt;&#39;../sdk/&#39;&lt;/span&gt;&lt;/span&gt;
+  pod &lt;span class=&quot;string&quot;&gt;&#39;SDWebImage&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;3.7.5&#39;&lt;/span&gt;
+  pod &lt;span class=&quot;string&quot;&gt;&#39;SocketRocket&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;0.4.2&#39;&lt;/span&gt;
+  pod &lt;span class=&quot;string&quot;&gt;&#39;ATSDK-Weex&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;0.0.1&#39;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;撰写本文时，Weex 还没有完全开源，&lt;a href=&quot;https://open.taobao.com/doc2/detail?spm=a21l5.77726.340855.2&amp;amp;docType=1&amp;amp;articleId=104742&quot; target=&quot;_bla
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Controller 之间使用代理传值</title>
@@ -1122,30 +1188,6 @@ setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;test
     
       &lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;commen
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>发布 Widget App 注意事项</title>
-    <link href="/2016/02/18/%E5%8F%91%E5%B8%83-Widget-App-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
-    <id>/2016/02/18/发布-Widget-App-注意事项/</id>
-    <published>2016-02-18T07:16:49.000Z</published>
-    <updated>2016-04-09T07:19:25.000Z</updated>
-    
-    <content type="html">&lt;p&gt;在被 App Store Review 拒绝了一次之后，我的一款 Today Widget App 上线了，把过程中遇到的坑分享出来。&lt;/p&gt;
-&lt;h3 id=&quot;1-_主_App_中要有内容&quot;&gt;1. 主 App 中要有内容&lt;/h3&gt;&lt;p&gt;第一次提交 App 时，只是在 Widget 中添加了内容，主 App 中仅有教用户如何添加插件的几张图片做教程，被拒绝上架了。&lt;br&gt;提醒大家，上架这类 App 时，就算主 App 中真的不需要添加其他内容，也要装模作样地加点功能性的摆设。&lt;br&gt;我现在正在用的一款插件 App 叫 N Stats，也是在主 App 中添加了奇怪的没什么用的功能，可以参考一下。&lt;/p&gt;
-&lt;h3 id=&quot;2-_Widget_本身不适合承载复杂任务&quot;&gt;2. Widget 本身不适合承载复杂任务&lt;/h3&gt;&lt;p&gt;如果想要用 Widget App 来盈利，基本上只能是付费 App 了，没办法插广告，那就要求 App 本身比较稳定。&lt;br&gt;首先，最好不要让这里面出现交互（比如点一下按钮，这里面的内容会出现变化），而是仅仅让它承担【展示】的工作，比如呈现信息，或提供一个快捷操作的按钮。&lt;br&gt;其次，加载的图片资源要尽可能小。之前尝试让它一次加载了大概几百K的图片资源，就常常出现空白，或者显示“无法载入”。压缩了图片资源之后，一直很稳定。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在被 App Store Review 拒绝了一次之后，我的一款 Today Widget App 上线了，把过程中遇到的坑分享出来。&lt;/p&gt;
-&lt;h3 id=&quot;1-_主_App_中要有内容&quot;&gt;1. 主 App 中要有内容&lt;/h3&gt;&lt;p&gt;第一次提交 App 时，只是在 Wid
     
     </summary>
     

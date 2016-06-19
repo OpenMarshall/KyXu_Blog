@@ -78,21 +78,25 @@
 
 
 
-<meta name="description" content="有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&amp;gt;通用，或 设置-&amp;gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：
-UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)">
+<meta name="description" content="撰写本文时，Weex 还没有完全开源，这是官方的文档中心，这是 Weex 团队放在 Github 上的一些文章，你可以上官网申请访问 Weex 的 Github 页面。
+这篇文章介绍一下如何快速集成 Weex 到你的 iOS Project 里面。
+
+如果你还没有 Weex 的 SDK，你可以下载一下这个官方给的 WeexSample，工程里面有 WeexSDK.framework 这个文件，这样">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跳转到『设置App』的任意条目">
-<meta property="og:url" content="/2015/11/24/跳转到『设置App』的任意条目/index.html">
+<meta property="og:title" content="集成 Weex 注意事项">
+<meta property="og:url" content="/2016/06/19/集成-Weex-注意事项/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&amp;gt;通用，或 设置-&amp;gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：
-UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/251884-93ec4dea25720def.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-04-09T07:25:35.000Z">
+<meta property="og:description" content="撰写本文时，Weex 还没有完全开源，这是官方的文档中心，这是 Weex 团队放在 Github 上的一些文章，你可以上官网申请访问 Weex 的 Github 页面。
+这篇文章介绍一下如何快速集成 Weex 到你的 iOS Project 里面。
+
+如果你还没有 Weex 的 SDK，你可以下载一下这个官方给的 WeexSample，工程里面有 WeexSDK.framework 这个文件，这样">
+<meta property="og:updated_time" content="2016-06-19T15:53:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跳转到『设置App』的任意条目">
-<meta name="twitter:description" content="有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&amp;gt;通用，或 设置-&amp;gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：
-UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/251884-93ec4dea25720def.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="集成 Weex 注意事项">
+<meta name="twitter:description" content="撰写本文时，Weex 还没有完全开源，这是官方的文档中心，这是 Weex 团队放在 Github 上的一些文章，你可以上官网申请访问 Weex 的 Github 页面。
+这篇文章介绍一下如何快速集成 Weex 到你的 iOS Project 里面。
+
+如果你还没有 Weex 的 SDK，你可以下载一下这个官方给的 WeexSample，工程里面有 WeexSDK.framework 这个文件，这样">
 
 
 
@@ -110,7 +114,7 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
   };
 </script>
 
-  <title> 跳转到『设置App』的任意条目 | KyXu Tech </title>
+  <title> 集成 Weex 注意事项 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +274,7 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
             
             
               
-                跳转到『设置App』的任意条目
+                集成 Weex 注意事项
               
             
           </h1>
@@ -282,8 +286,8 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-24T15:24:58+08:00" content="2015-11-24">
-              2015-11-24
+            <time itemprop="dateCreated" datetime="2016-06-19T23:52:32+08:00" content="2016-06-19">
+              2016-06-19
             </time>
           </span>
 
@@ -293,8 +297,8 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/24/跳转到『设置App』的任意条目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/跳转到『设置App』的任意条目/" itemprop="commentsCount"></span>
+                <a href="/2016/06/19/集成-Weex-注意事项/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/19/集成-Weex-注意事项/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -304,7 +308,7 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
 
           
           
-             <span id="/2015/11/24/跳转到『设置App』的任意条目/" class="leancloud_visitors" data-flag-title="跳转到『设置App』的任意条目">
+             <span id="/2016/06/19/集成-Weex-注意事项/" class="leancloud_visitors" data-flag-title="集成 Weex 注意事项">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -325,26 +329,52 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
       
 
       
-        <p>有时候，我们为了让用户方便地设置一些内容，希望可以让用户点击一个按钮，就可以跳转到 设置-&gt;通用，或 设置-&gt;Safari，等『设置App』中的详细条目，这样，下面这条常见的语句就不足以满足需求了：</p>
-<pre><code>UIApplication.<span class="function"><span class="title">sharedApplication</span><span class="params">()</span></span>.<span class="function"><span class="title">openURL</span><span class="params">(NSURL(string: UIApplicationOpenSettingsURLString)</span></span>!)
-</code></pre><p>(这条语句可以跳转到 设置App)<br>但是如果我们需要跳转到 设置-&gt;Safari 这个地方，就要写下面这样的语句：</p>
-<pre><code><span class="preprocessor">#<span class="keyword">if</span> arch(i386) || arch(x86_64)</span>
-    <span class="comment">// Simulator</span>
-    <span class="keyword">let</span> url = NSURL(<span class="keyword">string</span>: <span class="string">"prefs:root=Safari"</span>)!
-<span class="preprocessor">#<span class="keyword">else</span></span>
-    <span class="comment">// Device</span>
-    <span class="keyword">let</span> url = NSURL(<span class="keyword">string</span>: <span class="string">"prefs:root=SAFARI"</span>)!
-<span class="preprocessor">#<span class="keyword">endif</span></span>
-
-<span class="keyword">if</span> UIApplication.sharedApplication().canOpenURL(url) {
-    UIApplication.sharedApplication().openURL(url)
+        <p>撰写本文时，Weex 还没有完全开源，<a href="https://open.taobao.com/doc2/detail?spm=a21l5.77726.340855.2&amp;docType=1&amp;articleId=104742" target="_blank" rel="external">这是官方的文档中心</a>，<a href="https://github.com/weexteam/article/issues" target="_blank" rel="external">这是 Weex 团队放在 Github 上的一些文章</a>，你可以上<a href="http://alibaba.github.io/weex/" target="_blank" rel="external">官网</a>申请访问 Weex 的 Github 页面。</p>
+<p>这篇文章介绍一下如何快速集成 Weex 到你的 iOS Project 里面。</p>
+<hr>
+<p>如果你还没有 Weex 的 SDK，你可以下载一下这个官方给的 <a href="http://gw.alicdn.com/bao/uploaded/LB1yfvtKpXXXXXbXXXXXXXXXXXX.zip?spm=a219a.7629140.0.0.ZqqSyg&amp;file=LB1yfvtKpXXXXXbXXXXXXXXXXXX.zip" target="_blank" rel="external">WeexSample</a>，工程里面有 WeexSDK.framework 这个文件，这样如果你惯用 Objective-C 的话，参考<a href="https://open.taobao.com/doc2/detail?spm=a219a.7629140.0.0.sf2ubW&amp;&amp;docType=1&amp;articleId=104829" target="_blank" rel="external">这篇文章</a>，你就可以清晰明了地知道这个 Sample 是怎么写出来的，但是这篇文章没有告诉你这些事：</p>
+<ul>
+<li>这里面有两个文件 SRWebSocket.h 和 SRWebSocket.m，这是 facebook 的开源项目 <a href="https://github.com/facebook/SocketRocket" target="_blank" rel="external">SockerRocket</a> ，运行这个项目必须有这个东西（至少暂时是这样，或许以后 Weex 团队会尝试自己搞个类似的东西出来？）</li>
+<li>官方目前没有 Swift 版本的 Sample，这里有个来自第三方的<a href="https://github.com/acton393/WeexSwiftSample" target="_blank" rel="external">示例</a>，可以参考一下，这个示例有一点点问题，代码风格不太 Swifty，问题我写在下面了，其他诸如 print 写成 NSLog 这种，无伤大雅，好歹是用 Swift 运行起来了</li>
+<li>Weex 是用 OC 写的，Swift 项目集成它，里面需要桥接文件，如果你不知道这个是什么，可以参考我<a href="http://www.jianshu.com/p/27b9ff63ab6f" target="_blank" rel="external">之前的一篇文章</a>，这个文件里面只需要写这些（不需要 import SRWebSocket）：</li>
+</ul>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;WeexSDK/WXSDKEngine.h&gt;</span></span>
+<span class="preprocessor">#import <span class="title">&lt;WeexSDK/WXSDKInstance.h&gt;</span></span>
+<span class="preprocessor">#import <span class="title">&lt;WeexSDK/WXLog.h&gt;</span></span>
+<span class="preprocessor">#import <span class="title">&lt;WeexSDK/WXAppConfiguration.h&gt;</span></span>
+</code></pre><ul>
+<li>官方展示的 OC 版本的这段代码：</li>
+</ul>
+<pre><code><span class="tag">-</span> (void)<span class="tag">dealloc</span>
+{
+    <span class="attr_selector">[_instance destroyInstance]</span>;
 }
-</code></pre><p>这种形式直接被写出来的话，在 iOS 5.1 及更高版本中，不会起作用，所以需要做的额外一个步骤是：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/251884-93ec4dea25720def.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="URL Schemes: prefs"></p>
-<p>在 YourAppTarget-&gt;Info-&gt;URL Types 这个地方，如上图，写上 prefs 字段；这样在 iOS 8 及 iOS 9 中都亲测有效。<br>下面给出一个较为完整的列表，可以让你随意跳转到 设置App 里的任意一个地方 ：）</p>
-<p>【List of currently known URLs in the Settings app】<br>prefs:root=General&amp;path=About<br>prefs:root=General&amp;path=ACCESSIBILITY<br>prefs:root=AIRPLANE_MODE<br>prefs:root=General&amp;path=AUTOLOCK<br>prefs:root=General&amp;path=USAGE/CELLULAR_USAGE<br>prefs:root=Brightness<br>prefs:root=General&amp;path=Bluetooth<br>prefs:root=General&amp;path=DATE_AND_TIME<br>prefs:root=FACETIME<br>prefs:root=General<br>prefs:root=General&amp;path=Keyboard<br>prefs:root=CASTLE<br>prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP<br>prefs:root=General&amp;path=INTERNATIONAL<br>prefs:root=LOCATION_SERVICES<br>prefs:root=ACCOUNT_SETTINGS<br>prefs:root=MUSIC<br>prefs:root=MUSIC&amp;path=EQ<br>prefs:root=MUSIC&amp;path=VolumeLimit<br>prefs:root=General&amp;path=Network<br>prefs:root=NIKE_PLUS_IPOD<br>prefs:root=NOTES<br>prefs:root=NOTIFICATIONS_ID<br>prefs:root=Phone<br>prefs:root=Photos<br>prefs:root=General&amp;path=ManagedConfigurationList<br>prefs:root=General&amp;path=Reset<br>prefs:root=Sounds&amp;path=Ringtone<br>prefs:root=Safari<br>prefs:root=General&amp;path=Assistant<br>prefs:root=Sounds<br>prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK<br>prefs:root=STORE<br>prefs:root=TWITTER<br>prefs:root=General&amp;path=USAGE<br>prefs:root=VIDEO<br>prefs:root=General&amp;path=Network/VPN<br>prefs:root=Wallpaper<br>prefs:root=WIFI<br>prefs:root=INTERNET_TETHERING</p>
-<p>引用内容来源：<br><a href="http://stackoverflow.com/questions/9092142/ios-uialertview-button-to-go-to-setting-app" target="_blank" rel="external">http://stackoverflow.com/questions/9092142/ios-uialertview-button-to-go-to-setting-app</a><br><a href="http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/33896318#33896318" target="_blank" rel="external">http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/33896318#33896318</a></p>
-<p>提醒：<br>这是私有 API，在 AppStore 上架 App 中，请小心谨慎使用。</p>
+</code></pre><p>在 Swift 里面的写法是：</p>
+<pre><code><span class="comment">// Deprecated</span>
+<span class="comment">//    override func finalize() {</span>
+<span class="comment">//        instance.destroyInstance()</span>
+<span class="comment">//    }</span>
+
+deinit {
+    <span class="keyword">instance</span>.destroyInstance()
+}
+</code></pre><hr>
+<ul>
+<li><p>虽然官方在很多地方都提到这一点，为了防止还是有人忽略，再写一遍：请在 Build Settings 的 Other Link Flags 里面加入 <strong>-ObjC</strong></p>
+</li>
+<li><p>官网开源的代码中，没有把 SDK 做成 .framework，而是直接一个文件夹，工程通过 Pod 来把这个 SDK 集成到项目中，顺便也通过 Pod 集成了其他内容，这是 Podfile 里的内容（可以看到 WeexSDK 是通过本地路径加进来的）：</p>
+<pre><code>source <span class="string">'https://github.com/CocoaPods/Specs.git'</span>
+platform <span class="symbol">:ios</span>, <span class="string">'7.0'</span>
+<span class="comment">#inhibit_all_warnings!</span>
+
+target <span class="string">'WeexDemo'</span> <span class="keyword">do</span>
+  pod <span class="string">'WeexSDK'</span>, <span class="symbol">:path=&gt;<span class="string">'../sdk/'</span></span>
+  pod <span class="string">'SDWebImage'</span>, <span class="string">'3.7.5'</span>
+  pod <span class="string">'SocketRocket'</span>, <span class="string">'0.4.2'</span>
+  pod <span class="string">'ATSDK-Weex'</span>, <span class="string">'0.0.1'</span>
+<span class="keyword">end</span>
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -395,17 +425,13 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/14/全局设定-UINavigationBar-的-UI/" rel="next" title="全局设定 UINavigationBar 的 UI">
-                <i class="fa fa-chevron-left"></i> 全局设定 UINavigationBar 的 UI
+              <a href="/2016/05/18/Controller-之间使用代理传值/" rel="next" title="Controller 之间使用代理传值">
+                <i class="fa fa-chevron-left"></i> Controller 之间使用代理传值
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/24/分享一个被误认为是-bug-的东西/" rel="prev" title="分享一个被误认为是 bug 的东西">
-                分享一个被误认为是 bug 的东西 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +457,8 @@ UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSetting
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/24/跳转到『设置App』的任意条目/"
-           data-title="跳转到『设置App』的任意条目" data-url="/2015/11/24/跳转到『设置App』的任意条目/">
+      <div class="ds-thread" data-thread-key="2016/06/19/集成-Weex-注意事项/"
+           data-title="集成 Weex 注意事项" data-url="/2016/06/19/集成-Weex-注意事项/">
       </div>
     
   </div>
