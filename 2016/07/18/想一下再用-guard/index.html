@@ -78,39 +78,25 @@
 
 
 
-<meta name="description" content="平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。
-// MARK: - Store
-enum StoreType {
-    case userDefaults
-    case plist
-}
-
-func setContentToDevice">
+<meta name="description" content="自从知道了 guard let 这种写法之后，我就几乎换掉了所有 if let 写法。但今天要提醒一下，使用 guard let 之前，需要先思考一下，因为这并不总是万全的解放方案。
+// bad
+func createMan0(name: String?, country: String?, age: Int?) -&amp;gt; Man? {
+    if let name = name {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两个函数搞定本地存储">
-<meta property="og:url" content="/2016/02/29/两个函数搞定本地存储/index.html">
+<meta property="og:title" content="想一下再用 guard">
+<meta property="og:url" content="/2016/07/18/想一下再用-guard/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。
-// MARK: - Store
-enum StoreType {
-    case userDefaults
-    case plist
-}
-
-func setContentToDevice">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/bendicunchu.png">
-<meta property="og:updated_time" content="2016-04-10T06:08:04.000Z">
+<meta property="og:description" content="自从知道了 guard let 这种写法之后，我就几乎换掉了所有 if let 写法。但今天要提醒一下，使用 guard let 之前，需要先思考一下，因为这并不总是万全的解放方案。
+// bad
+func createMan0(name: String?, country: String?, age: Int?) -&amp;gt; Man? {
+    if let name = name {">
+<meta property="og:updated_time" content="2016-07-18T08:34:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两个函数搞定本地存储">
-<meta name="twitter:description" content="平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。
-// MARK: - Store
-enum StoreType {
-    case userDefaults
-    case plist
-}
-
-func setContentToDevice">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/bendicunchu.png">
+<meta name="twitter:title" content="想一下再用 guard">
+<meta name="twitter:description" content="自从知道了 guard let 这种写法之后，我就几乎换掉了所有 if let 写法。但今天要提醒一下，使用 guard let 之前，需要先思考一下，因为这并不总是万全的解放方案。
+// bad
+func createMan0(name: String?, country: String?, age: Int?) -&amp;gt; Man? {
+    if let name = name {">
 
 
 
@@ -128,7 +114,7 @@ func setContentToDevice">
   };
 </script>
 
-  <title> 两个函数搞定本地存储 | KyXu Tech </title>
+  <title> 想一下再用 guard | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +274,7 @@ func setContentToDevice">
             
             
               
-                两个函数搞定本地存储
+                想一下再用 guard
               
             
           </h1>
@@ -300,8 +286,8 @@ func setContentToDevice">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T15:10:22+08:00" content="2016-02-29">
-              2016-02-29
+            <time itemprop="dateCreated" datetime="2016-07-18T16:33:40+08:00" content="2016-07-18">
+              2016-07-18
             </time>
           </span>
 
@@ -311,8 +297,8 @@ func setContentToDevice">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/29/两个函数搞定本地存储/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/两个函数搞定本地存储/" itemprop="commentsCount"></span>
+                <a href="/2016/07/18/想一下再用-guard/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/想一下再用-guard/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,7 +308,7 @@ func setContentToDevice">
 
           
           
-             <span id="/2016/02/29/两个函数搞定本地存储/" class="leancloud_visitors" data-flag-title="两个函数搞定本地存储">
+             <span id="/2016/07/18/想一下再用-guard/" class="leancloud_visitors" data-flag-title="想一下再用 guard">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -343,93 +329,85 @@ func setContentToDevice">
       
 
       
-        <p>平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。</p>
-<pre><code><span class="comment">// MARK: - Store</span>
-<span class="class"><span class="keyword">enum</span> <span class="title">StoreType</span> </span>{
-    <span class="keyword">case</span> userDefaults
-    <span class="keyword">case</span> plist
-}
-
-<span class="func"><span class="keyword">func</span> <span class="title">setContentToDevice</span> <span class="params">(content:AnyObject, key:String, type:StoreType)</span></span> {
-    <span class="keyword">if</span> type == .userDefaults {
-        <span class="keyword">let</span> defaults = <span class="type">NSUserDefaults</span>.standardUserDefaults()
-        defaults.setObject(content, forKey: key)
-        <span class="built_in">print</span>(<span class="string">"Set - UserDefaults"</span>)
-    }<span class="keyword">else</span> <span class="keyword">if</span> type == .plist {
-        <span class="keyword">let</span> pathPrefix = <span class="type">NSSearchPathForDirectoriesInDomains</span>(
-            <span class="type">NSSearchPathDirectory</span>.<span class="type">DocumentDirectory</span>,
-            <span class="type">NSSearchPathDomainMask</span>.<span class="type">AllDomainsMask</span>, <span class="literal">true</span>).first
-        <span class="keyword">let</span> pathSuffix = <span class="string">"/"</span> + key + <span class="string">".plist"</span>
-        <span class="keyword">if</span> <span class="keyword">let</span> path = pathPrefix?.stringByAppendingString(pathSuffix) {
-            <span class="type">NSKeyedArchiver</span>.archiveRootObject(content, toFile: path)
-            <span class="built_in">print</span>(<span class="string">"Set - Plist"</span>)
-        }
-    }
-}
-
-<span class="func"><span class="keyword">func</span> <span class="title">getContentFromDevice</span> <span class="params">(key:String, type:StoreType)</span></span> -&gt; <span class="type">AnyObject</span>? {
-    <span class="keyword">var</span> returnObject :<span class="type">AnyObject</span>?
-
-    <span class="keyword">if</span> type == .userDefaults {
-        <span class="keyword">let</span> defaults = <span class="type">NSUserDefaults</span>.standardUserDefaults()
-        <span class="keyword">let</span> content = defaults.objectForKey(key)
-        returnObject = content
-        <span class="built_in">print</span>(<span class="string">"Get - UserDefaults"</span>)
-    }<span class="keyword">else</span> <span class="keyword">if</span> type == .plist {
-        <span class="keyword">let</span> pathPrefix = <span class="type">NSSearchPathForDirectoriesInDomains</span>(
-            <span class="type">NSSearchPathDirectory</span>.<span class="type">DocumentDirectory</span>,
-            <span class="type">NSSearchPathDomainMask</span>.<span class="type">AllDomainsMask</span>, <span class="literal">true</span>).first
-        <span class="keyword">let</span> pathSuffix = <span class="string">"/"</span> + key + <span class="string">".plist"</span>
-        <span class="keyword">if</span> <span class="keyword">let</span> path = pathPrefix?.stringByAppendingString(pathSuffix) {
-            <span class="keyword">if</span> <span class="keyword">let</span> content = <span class="type">NSKeyedUnarchiver</span>.unarchiveObjectWithFile(path) {
-                returnObject = content
-                <span class="built_in">print</span>(<span class="string">"Get - Plist"</span>)
+        <p>自从知道了 <code>guard let</code> 这种写法之后，我就几乎换掉了所有 <code>if let</code> 写法。但今天要提醒一下，使用 <code>guard let</code> 之前，需要先思考一下，因为这并不总是万全的解放方案。</p>
+<pre><code><span class="comment">// bad</span>
+<span class="func"><span class="keyword">func</span> <span class="title">createMan0</span><span class="params">(name: String?, country: String?, age: Int?)</span></span> -&gt; <span class="type">Man</span>? {
+    <span class="keyword">if</span> <span class="keyword">let</span> name = name {
+        <span class="keyword">if</span> <span class="keyword">let</span> country = country {
+            <span class="keyword">if</span> <span class="keyword">let</span> age = age {
+                <span class="keyword">return</span> <span class="type">Man</span>(name: name, country: country, age: age)
             }
         }
     }
-
-    <span class="keyword">return</span> returnObject
-}
-</code></pre><p>函数名和参数名都一看便知是什么意思，只要你存取数据都用的是同一个 Key，就可以操作同一份数据。</p>
-<p>这里多提供了一个 type 选项来选择通过 NSUserDefaults 或者 Plist 来存储数据。<strong>但是要注意，在这里 NSUserDefaults 只支持存储 NSArray、NSString 等基本类型，如果你要存储自定义类型的实例，必须使用 StoreType.plist 进行存储。此外，这个类还必须进行微小的改动，这部分可以参考<a href="http://www.jianshu.com/p/3a82f42de5fb" target="_blank" rel="external">我之前写的一篇文章</a>。</strong></p>
-<p>下面给出使用这个函数的范例：（其中 Hero 是我自定义的类）</p>
-<pre><code><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]
-setContentToDevice(arr, key: <span class="string">"testArr"</span>, <span class="keyword">type</span>: .userDefaults)
-
-<span class="keyword">let</span> ironMan = <span class="type">Hero</span>(name: <span class="string">"Tony Stark"</span>)
-setContentToDevice(ironMan, key: <span class="string">"testHero"</span>, <span class="keyword">type</span>: .plist)
-
-<span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = getContentFromDevice(<span class="string">"testArr"</span>, <span class="keyword">type</span>: .userDefaults) {
-    print(<span class="literal">result</span>)
+    <span class="keyword">return</span> <span class="literal">nil</span>
 }
 
-<span class="keyword">if</span> <span class="keyword">let</span> <span class="literal">result</span> = getContentFromDevice(<span class="string">"testHero"</span>, <span class="keyword">type</span>: .plist) <span class="keyword">as</span>? <span class="type">Hero</span> {
-    print(<span class="literal">result</span>.name)
+<span class="comment">// good</span>
+<span class="func"><span class="keyword">func</span> <span class="title">createMan1</span><span class="params">(name: String?, country: String?, age: Int?)</span></span> -&gt; <span class="type">Man</span>? {
+    <span class="keyword">guard</span> <span class="keyword">let</span> name = name <span class="keyword">else</span> { <span class="keyword">return</span> <span class="literal">nil</span> }
+    <span class="keyword">guard</span> <span class="keyword">let</span> country = country <span class="keyword">else</span> { <span class="keyword">return</span> <span class="literal">nil</span> }
+    <span class="keyword">guard</span> <span class="keyword">let</span> age = age <span class="keyword">else</span> { <span class="keyword">return</span> <span class="literal">nil</span> }
+    <span class="keyword">return</span> <span class="type">Man</span>(name: name, country: country, age: age)
 }
-</code></pre><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/bendicunchu.png" alt="控制台输出"></p>
+</code></pre><p>如上的代码是很常见的 <code>guard let</code> 使用场景，为了避免让我们写出 “Swift 鞭尸金字塔”。</p>
+<pre><code><span class="class"><span class="keyword">enum</span> <span class="title">NetworkState</span> </span>{
+    <span class="keyword">case</span> <span class="type">Cellular</span>
+    <span class="keyword">case</span> <span class="type">Wifi</span>
+}
+
+<span class="func"><span class="keyword">func</span> <span class="title">test</span><span class="params">(state:NetworkState)</span></span> {
+    <span class="keyword">switch</span> state {
+    <span class="keyword">case</span> .<span class="type">Cellular</span>:
+        <span class="keyword">guard</span> <span class="keyword">let</span> speed = networkSpeed <span class="keyword">else</span> {<span class="keyword">return</span>}
+        <span class="built_in">print</span>(<span class="string">"Cellular Speed: <span class="subst">\(speed)</span>"</span>)
+    <span class="keyword">case</span> .<span class="type">Wifi</span>:
+        <span class="keyword">guard</span> <span class="keyword">let</span> speed = networkSpeed <span class="keyword">else</span> {<span class="keyword">return</span>}
+        <span class="built_in">print</span>(<span class="string">"Wifi Speed: <span class="subst">\(speed)</span>"</span>)
+    }
+    <span class="comment">// 可能无法被执行</span>
+    doSomething()
+}
+
+test(.<span class="type">Cellular</span>)
+</code></pre><p>但这种情况下，如果我们一看到 <code>networkSpeed</code> 是可选型的，就决定使用 <code>guard … else {return}</code> 语法，那么会出现的结果就是一旦 <code>networkSpeed</code> 值为 <code>nil</code> ， <code>doSomething()</code> 将不会被执行。我们一开始可能仅仅是希望无法获取网速数值的时候，不在控制台打印相应信息，但现在整个 <code>test()</code> 都被提前退出了。解决这个问题很简单，把 <code>guard … else {return}</code> 改成  <code>guard … else {break}</code>，让 <code>switch - case</code> 里面的代码段提前退出就可以了。</p>
+<p>但是并不一定每种情况我们都要回避使用 <code>guard … else {return}</code> </p>
+<pre><code><span class="class"><span class="keyword">enum</span> <span class="title">File</span> </span>{
+    <span class="keyword">case</span> <span class="type">Pages</span>
+    <span class="keyword">case</span> <span class="type">Keynote</span>
+}
+
+<span class="func"><span class="keyword">func</span> <span class="title">saveInBackground</span><span class="params">( completion: File-&gt;Void )</span></span> {
+    completion(.<span class="type">Pages</span>)
+}
+
+<span class="func"><span class="keyword">func</span> <span class="title">closureTest</span><span class="params">()</span></span> {
+    saveInBackground( { file <span class="keyword">in</span>
+        <span class="keyword">switch</span> file {
+        <span class="keyword">case</span> .<span class="type">Pages</span>:
+            <span class="keyword">guard</span> <span class="keyword">let</span> name = fileName <span class="keyword">else</span> {<span class="keyword">return</span>}
+            <span class="built_in">print</span>(<span class="string">"Pages: <span class="subst">\(name)</span>"</span>)
+        <span class="keyword">case</span> .<span class="type">Keynote</span>:
+            <span class="keyword">guard</span> <span class="keyword">let</span> name = fileName <span class="keyword">else</span> {<span class="keyword">return</span>}
+            <span class="built_in">print</span>(<span class="string">"Keynote: <span class="subst">\(name)</span>"</span>)
+        }
+    })
+    <span class="comment">// 一定会被执行</span>
+    doSomething()
+}
+
+closureTest()
+</code></pre><p>这种情况下，<code>return</code> 所退出的方法是 <code>saveInBackground</code> 函数里面的闭包 <code>completion: File-&gt;Void</code>，<code>saveInBackground</code> 本身不受影响，如果 <code>saveInBackground</code> 里面还有其他参数是闭包，那么其他闭包自然也不受影响。</p>
+<pre><code><span class="func"><span class="keyword">func</span> <span class="title">configureButton</span><span class="params">(button:UIButton, buttonTitle:String?, buttonImage:UIImage?)</span></span> {
+    <span class="keyword">if</span> <span class="keyword">let</span> title = buttonTitle {
+        button.setTitle(title, forState: .<span class="type">Normal</span>)
+    }
+    <span class="keyword">if</span> <span class="keyword">let</span> image = buttonImage {
+        button.setImage(image, forState: .<span class="type">Normal</span>)
+    }
+}
+</code></pre><p>而在这种情况，<code>if let</code> 语法就很自然，有 title 我们就设置 title，有 image 我们就设置 image，没有就算了，总不能说没有 title 或 image 就直接放弃当前的方法，或许我们后面还要做很多其他事情。</p>
 <hr>
-<p>防止有人懒得看我之前写的那篇文章，把 Hero Class 这部分代码也贴出来</p>
-<pre><code><span class="keyword">import</span> UIKit
-
-<span class="class"><span class="keyword">class</span> <span class="title">Hero</span>: <span class="title">NSObject</span> </span>{
-
-    <span class="keyword">var</span> name:<span class="type">String</span>
-
-    <span class="keyword">init</span>(name:<span class="type">String</span>) {
-        <span class="keyword">self</span>.name = name
-        <span class="keyword">super</span>.<span class="keyword">init</span>()
-    }
-
-    <span class="func"><span class="keyword">func</span> <span class="title">encodeWithCoder</span><span class="params">(aCoder: NSCoder!)</span></span> {
-        aCoder.encodeObject(name, forKey: <span class="string">"name"</span>)
-    }
-
-    <span class="keyword">init</span>(coder aDecoder: <span class="type">NSCoder</span>!) {
-        <span class="keyword">self</span>.name = aDecoder.decodeObjectForKey(<span class="string">"name"</span>) <span class="keyword">as</span>! <span class="type">String</span>
-    }
-}
-</code></pre><hr>
-<p><a href="https://github.com/OpenMarshall/StoreFunctions" target="_blank" rel="external">这是完整项目 Github 地址</a></p>
+<h1 id="没东西了">没东西了</h1><p>希望大家在使用 <code>guard</code> 关键字的时候多思考一下，以免犯下低级错误。</p>
 
       
     </div>
@@ -480,17 +458,13 @@ setContentToDevice(ironMan, key: <span class="string">"testHero"</span>, <span c
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/18/发布-Widget-App-注意事项/" rel="next" title="发布 Widget App 注意事项">
-                <i class="fa fa-chevron-left"></i> 发布 Widget App 注意事项
+              <a href="/2016/06/19/集成-Weex-注意事项/" rel="next" title="集成 Weex 注意事项">
+                <i class="fa fa-chevron-left"></i> 集成 Weex 注意事项
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/08/腾讯-iOS-开发实习电话面试记录（一）/" rel="prev" title="腾讯 iOS 开发实习电话面试记录（一）">
-                腾讯 iOS 开发实习电话面试记录（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -516,8 +490,8 @@ setContentToDevice(ironMan, key: <span class="string">"testHero"</span>, <span c
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/29/两个函数搞定本地存储/"
-           data-title="两个函数搞定本地存储" data-url="/2016/02/29/两个函数搞定本地存储/">
+      <div class="ds-thread" data-thread-key="2016/07/18/想一下再用-guard/"
+           data-title="想一下再用 guard" data-url="/2016/07/18/想一下再用-guard/">
       </div>
     
   </div>
@@ -676,7 +650,7 @@ setContentToDevice(ironMan, key: <span class="string">"testHero"</span>, <span c
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#没东西了"><span class="nav-number">1.</span> <span class="nav-text">没东西了</span></a></li></ol></div>
             
           </div>
         </section>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-06-19T15:53:04.000Z</updated>
+  <updated>2016-07-18T08:34:09.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,106 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>想一下再用 guard</title>
+    <link href="/2016/07/18/%E6%83%B3%E4%B8%80%E4%B8%8B%E5%86%8D%E7%94%A8-guard/"/>
+    <id>/2016/07/18/想一下再用-guard/</id>
+    <published>2016-07-18T08:33:40.000Z</published>
+    <updated>2016-07-18T08:34:09.000Z</updated>
+    
+    <content type="html">&lt;p&gt;自从知道了 &lt;code&gt;guard let&lt;/code&gt; 这种写法之后，我就几乎换掉了所有 &lt;code&gt;if let&lt;/code&gt; 写法。但今天要提醒一下，使用 &lt;code&gt;guard let&lt;/code&gt; 之前，需要先思考一下，因为这并不总是万全的解放方案。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// bad&lt;/span&gt;
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createMan0&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(name: String?, country: String?, age: Int?)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Man&lt;/span&gt;? {
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = name {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; country = country {
+            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; age = age {
+                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Man&lt;/span&gt;(name: name, country: country, age: age)
+            }
+        }
+    }
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;
+}
+
+&lt;span class=&quot;comment&quot;&gt;// good&lt;/span&gt;
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createMan1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(name: String?, country: String?, age: Int?)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Man&lt;/span&gt;? {
+    &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = name &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; }
+    &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; country = country &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; }
+    &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; age = age &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; }
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Man&lt;/span&gt;(name: name, country: country, age: age)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如上的代码是很常见的 &lt;code&gt;guard let&lt;/code&gt; 使用场景，为了避免让我们写出 “Swift 鞭尸金字塔”。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NetworkState&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Cellular&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Wifi&lt;/span&gt;
+}
+
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(state:NetworkState)&lt;/span&gt;&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; state {
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .&lt;span class=&quot;type&quot;&gt;Cellular&lt;/span&gt;:
+        &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; speed = networkSpeed &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;}
+        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Cellular Speed: &lt;span class=&quot;subst&quot;&gt;\(speed)&lt;/span&gt;&quot;&lt;/span&gt;)
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .&lt;span class=&quot;type&quot;&gt;Wifi&lt;/span&gt;:
+        &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; speed = networkSpeed &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;}
+        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Wifi Speed: &lt;span class=&quot;subst&quot;&gt;\(speed)&lt;/span&gt;&quot;&lt;/span&gt;)
+    }
+    &lt;span class=&quot;comment&quot;&gt;// 可能无法被执行&lt;/span&gt;
+    doSomething()
+}
+
+test(.&lt;span class=&quot;type&quot;&gt;Cellular&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但这种情况下，如果我们一看到 &lt;code&gt;networkSpeed&lt;/code&gt; 是可选型的，就决定使用 &lt;code&gt;guard … else {return}&lt;/code&gt; 语法，那么会出现的结果就是一旦 &lt;code&gt;networkSpeed&lt;/code&gt; 值为 &lt;code&gt;nil&lt;/code&gt; ， &lt;code&gt;doSomething()&lt;/code&gt; 将不会被执行。我们一开始可能仅仅是希望无法获取网速数值的时候，不在控制台打印相应信息，但现在整个 &lt;code&gt;test()&lt;/code&gt; 都被提前退出了。解决这个问题很简单，把 &lt;code&gt;guard … else {return}&lt;/code&gt; 改成  &lt;code&gt;guard … else {break}&lt;/code&gt;，让 &lt;code&gt;switch - case&lt;/code&gt; 里面的代码段提前退出就可以了。&lt;/p&gt;
+&lt;p&gt;但是并不一定每种情况我们都要回避使用 &lt;code&gt;guard … else {return}&lt;/code&gt; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;File&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Pages&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Keynote&lt;/span&gt;
+}
+
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;saveInBackground&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;( completion: File-&amp;gt;Void )&lt;/span&gt;&lt;/span&gt; {
+    completion(.&lt;span class=&quot;type&quot;&gt;Pages&lt;/span&gt;)
+}
+
+&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;closureTest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+    saveInBackground( { file &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; file {
+        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .&lt;span class=&quot;type&quot;&gt;Pages&lt;/span&gt;:
+            &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = fileName &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;}
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Pages: &lt;span class=&quot;subst&quot;&gt;\(name)&lt;/span&gt;&quot;&lt;/span&gt;)
+        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .&lt;span class=&quot;type&quot;&gt;Keynote&lt;/span&gt;:
+            &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = fileName &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;}
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Keynote: &lt;span class=&quot;subst&quot;&gt;\(name)&lt;/span&gt;&quot;&lt;/span&gt;)
+        }
+    })
+    &lt;span class=&quot;comment&quot;&gt;// 一定会被执行&lt;/span&gt;
+    doSomething()
+}
+
+closureTest()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种情况下，&lt;code&gt;return&lt;/code&gt; 所退出的方法是 &lt;code&gt;saveInBackground&lt;/code&gt; 函数里面的闭包 &lt;code&gt;completion: File-&amp;gt;Void&lt;/code&gt;，&lt;code&gt;saveInBackground&lt;/code&gt; 本身不受影响，如果 &lt;code&gt;saveInBackground&lt;/code&gt; 里面还有其他参数是闭包，那么其他闭包自然也不受影响。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;configureButton&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(button:UIButton, buttonTitle:String?, buttonImage:UIImage?)&lt;/span&gt;&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; title = buttonTitle {
+        button.setTitle(title, forState: .&lt;span class=&quot;type&quot;&gt;Normal&lt;/span&gt;)
+    }
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; image = buttonImage {
+        button.setImage(image, forState: .&lt;span class=&quot;type&quot;&gt;Normal&lt;/span&gt;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而在这种情况，&lt;code&gt;if let&lt;/code&gt; 语法就很自然，有 title 我们就设置 title，有 image 我们就设置 image，没有就算了，总不能说没有 title 或 image 就直接放弃当前的方法，或许我们后面还要做很多其他事情。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;没东西了&quot;&gt;没东西了&lt;/h1&gt;&lt;p&gt;希望大家在使用 &lt;code&gt;guard&lt;/code&gt; 关键字的时候多思考一下，以免犯下低级错误。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自从知道了 &lt;code&gt;guard let&lt;/code&gt; 这种写法之后，我就几乎换掉了所有 &lt;code&gt;if let&lt;/code&gt; 写法。但今天要提醒一下，使用 &lt;code&gt;guard let&lt;/code&gt; 之前，需要先思考一下，因为这并不总是万全的解放方案。&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>集成 Weex 注意事项</title>
@@ -1085,114 +1185,6 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     
     
       <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>两个函数搞定本地存储</title>
-    <link href="/2016/02/29/%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E6%90%9E%E5%AE%9A%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/"/>
-    <id>/2016/02/29/两个函数搞定本地存储/</id>
-    <published>2016-02-29T07:10:22.000Z</published>
-    <updated>2016-04-10T06:08:04.000Z</updated>
-    
-    <content type="html">&lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// MARK: - Store&lt;/span&gt;
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;StoreType&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; userDefaults
-    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; plist
-}
-
-&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setContentToDevice&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(content:AnyObject, key:String, type:StoreType)&lt;/span&gt;&lt;/span&gt; {
-    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .userDefaults {
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; defaults = &lt;span class=&quot;type&quot;&gt;NSUserDefaults&lt;/span&gt;.standardUserDefaults()
-        defaults.setObject(content, forKey: key)
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Set - UserDefaults&quot;&lt;/span&gt;)
-    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .plist {
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathPrefix = &lt;span class=&quot;type&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(
-            &lt;span class=&quot;type&quot;&gt;NSSearchPathDirectory&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;DocumentDirectory&lt;/span&gt;,
-            &lt;span class=&quot;type&quot;&gt;NSSearchPathDomainMask&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;AllDomainsMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;).first
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathSuffix = &lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt; + key + &lt;span class=&quot;string&quot;&gt;&quot;.plist&quot;&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; path = pathPrefix?.stringByAppendingString(pathSuffix) {
-            &lt;span class=&quot;type&quot;&gt;NSKeyedArchiver&lt;/span&gt;.archiveRootObject(content, toFile: path)
-            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Set - Plist&quot;&lt;/span&gt;)
-        }
-    }
-}
-
-&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getContentFromDevice&lt;/span&gt; &lt;span class=&quot;params&quot;&gt;(key:String, type:StoreType)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;AnyObject&lt;/span&gt;? {
-    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; returnObject :&lt;span class=&quot;type&quot;&gt;AnyObject&lt;/span&gt;?
-
-    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .userDefaults {
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; defaults = &lt;span class=&quot;type&quot;&gt;NSUserDefaults&lt;/span&gt;.standardUserDefaults()
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; content = defaults.objectForKey(key)
-        returnObject = content
-        &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Get - UserDefaults&quot;&lt;/span&gt;)
-    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; type == .plist {
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathPrefix = &lt;span class=&quot;type&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(
-            &lt;span class=&quot;type&quot;&gt;NSSearchPathDirectory&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;DocumentDirectory&lt;/span&gt;,
-            &lt;span class=&quot;type&quot;&gt;NSSearchPathDomainMask&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;AllDomainsMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;).first
-        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; pathSuffix = &lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt; + key + &lt;span class=&quot;string&quot;&gt;&quot;.plist&quot;&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; path = pathPrefix?.stringByAppendingString(pathSuffix) {
-            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; content = &lt;span class=&quot;type&quot;&gt;NSKeyedUnarchiver&lt;/span&gt;.unarchiveObjectWithFile(path) {
-                returnObject = content
-                &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Get - Plist&quot;&lt;/span&gt;)
-            }
-        }
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; returnObject
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;函数名和参数名都一看便知是什么意思，只要你存取数据都用的是同一个 Key，就可以操作同一份数据。&lt;/p&gt;
-&lt;p&gt;这里多提供了一个 type 选项来选择通过 NSUserDefaults 或者 Plist 来存储数据。&lt;strong&gt;但是要注意，在这里 NSUserDefaults 只支持存储 NSArray、NSString 等基本类型，如果你要存储自定义类型的实例，必须使用 StoreType.plist 进行存储。此外，这个类还必须进行微小的改动，这部分可以参考&lt;a href=&quot;http://www.jianshu.com/p/3a82f42de5fb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我之前写的一篇文章&lt;/a&gt;。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;下面给出使用这个函数的范例：（其中 Hero 是我自定义的类）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; arr = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]
-setContentToDevice(arr, key: &lt;span class=&quot;string&quot;&gt;&quot;testArr&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .userDefaults)
-
-&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; ironMan = &lt;span class=&quot;type&quot;&gt;Hero&lt;/span&gt;(name: &lt;span class=&quot;string&quot;&gt;&quot;Tony Stark&quot;&lt;/span&gt;)
-setContentToDevice(ironMan, key: &lt;span class=&quot;string&quot;&gt;&quot;testHero&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .plist)
-
-&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt; = getContentFromDevice(&lt;span class=&quot;string&quot;&gt;&quot;testArr&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .userDefaults) {
-    print(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;)
-}
-
-&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt; = getContentFromDevice(&lt;span class=&quot;string&quot;&gt;&quot;testHero&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;: .plist) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;Hero&lt;/span&gt; {
-    print(&lt;span class=&quot;literal&quot;&gt;result&lt;/span&gt;.name)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/bendicunchu.png&quot; alt=&quot;控制台输出&quot;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;防止有人懒得看我之前写的那篇文章，把 Hero Class 这部分代码也贴出来&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Hero&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;NSObject&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; name:&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;
-
-    &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(name:&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;) {
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.name = name
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;()
-    }
-
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;encodeWithCoder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(aCoder: NSCoder!)&lt;/span&gt;&lt;/span&gt; {
-        aCoder.encodeObject(name, forKey: &lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;)
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(coder aDecoder: &lt;span class=&quot;type&quot;&gt;NSCoder&lt;/span&gt;!) {
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.name = aDecoder.decodeObjectForKey(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;! &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/OpenMarshall/StoreFunctions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是完整项目 Github 地址&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;平时我们经常会采用  NSUserDefaults 或者 Plist 来存储数据到设备，这样即使 App 被关闭，下次再打开的时候数据还在。这里我写了两个函数来供大家使用，一个用来存数据，一个用来读数据。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;commen
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
