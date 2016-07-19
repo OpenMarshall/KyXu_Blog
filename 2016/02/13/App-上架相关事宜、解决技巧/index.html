@@ -87,7 +87,7 @@ App 审核委员会这个团队的工作，是审核一款 App 是否可以在 A
 <meta property="og:description" content="在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。
 App 审核委员会这个团队的工作，是审核一款 App 是否可以在 AppStore 上架。他们会按照 App Store Review Guidelines 来认定你的 App 是否可以上架，然而几乎没有人把如此长的内容看完，里面很多内容也没有可以量化的标准，最终都是落实">
 <meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/shangjia.png">
-<meta property="og:updated_time" content="2016-04-09T16:08:56.000Z">
+<meta property="og:updated_time" content="2016-07-19T12:20:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="App 上架相关事宜、解决技巧">
 <meta name="twitter:description" content="在这篇文章中介绍一下，在 App 已经做完之后，到出现在 App Store 之前这段时间，可能需要了解的知识和会用到的技巧。
@@ -350,7 +350,7 @@ App 审核委员会这个团队的工作，是审核一款 App 是否可以在 A
 <h3 id="Application_Loader_网络问题">Application Loader 网络问题</h3><p>可能是因为 GFW 的原因，Application Loader 会出现因为网络状况而无法上传 ipa 文件的情况，现在我这也没有截图，据经验，只要是等了5-10分钟，Application Loader 还没开始上传文件（就是出现类似迅雷那样的显示当前速度和 ipa 包体积的进度条），一直卡在什么“验证资源”之类的状态，那就不用再尝试这个网络环境了。<br>目前我在家里和学校用的都是电信的网络，都没发上传，不知道是否具有普适性。解决方案是：</p>
 <ol>
 <li>连星巴克的 WiFi 上传，每次都成功了（麦当劳和肯德基估计也可以，还没试过） </li>
-<li>用手机开热点（我是中国移动的卡，电信行不行不知道）</li>
+<li>用手机开热点</li>
 </ol>
 <p>上传成功后，大约过20分钟，就可以在 ITC 的“构建版本”看到之前上传的文件。<br>上传过程不能中断，如果你中途暂停了某一个 ipa 文件的上传，再传这同一个文件，是传不上去的，去下面这个地方<br><img src="http://7xssu3.com2.z0.glb.clouddn.com/shangjia.png" alt="Paste_Image.png">把构建版本号改一下（数字只能更大，不能更小），然后导出 ipa，再上传。这个数字可以随意写，这个版本号是你的 ipa 的版本号，和你的 App  显示在 AppStore 的版本号没有关系。</p>
 <hr>
