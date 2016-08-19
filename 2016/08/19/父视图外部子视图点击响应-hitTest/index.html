@@ -78,27 +78,21 @@
 
 
 
-<meta name="description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
+<meta name="description" content="面试被问过两次了的一个问题，记录一下：假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 ChildView 被点击的时候，并不会触发 FatherView 的点击响应链（这是合情合理的，FatherView 所在的位置都没被点击，它不遍历">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题">
-<meta property="og:url" content="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/index.html">
+<meta property="og:title" content="父视图外部子视图点击响应 - hitTest">
+<meta property="og:url" content="/2016/08/19/父视图外部子视图点击响应-hitTest/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table0.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table1.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table2.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table3.png">
-<meta property="og:updated_time" content="2016-04-10T03:18:13.000Z">
+<meta property="og:description" content="面试被问过两次了的一个问题，记录一下：假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 ChildView 被点击的时候，并不会触发 FatherView 的点击响应链（这是合情合理的，FatherView 所在的位置都没被点击，它不遍历">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/Hit%20Testing%20a%20View.png">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/Screen%20Shot.png">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet.png">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet2.png">
+<meta property="og:updated_time" content="2016-08-19T03:38:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题">
-<meta name="twitter:description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table0.png">
+<meta name="twitter:title" content="父视图外部子视图点击响应 - hitTest">
+<meta name="twitter:description" content="面试被问过两次了的一个问题，记录一下：假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 ChildView 被点击的时候，并不会触发 FatherView 的点击响应链（这是合情合理的，FatherView 所在的位置都没被点击，它不遍历">
+<meta name="twitter:image" content="http://7xssu3.com1.z0.glb.clouddn.com/Hit%20Testing%20a%20View.png">
 
 
 
@@ -116,7 +110,7 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
   };
 </script>
 
-  <title> 解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题 | KyXu Tech </title>
+  <title> 父视图外部子视图点击响应 - hitTest | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +270,7 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
             
             
               
-                解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题
+                父视图外部子视图点击响应 - hitTest
               
             
           </h1>
@@ -288,8 +282,8 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-15T11:15:44+08:00" content="2015-07-15">
-              2015-07-15
+            <time itemprop="dateCreated" datetime="2016-08-19T11:36:55+08:00" content="2016-08-19">
+              2016-08-19
             </time>
           </span>
 
@@ -299,8 +293,8 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/" itemprop="commentsCount"></span>
+                <a href="/2016/08/19/父视图外部子视图点击响应-hitTest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/19/父视图外部子视图点击响应-hitTest/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,7 +304,7 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
 
           
           
-             <span id="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/" class="leancloud_visitors" data-flag-title="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题">
+             <span id="/2016/08/19/父视图外部子视图点击响应-hitTest/" class="leancloud_visitors" data-flag-title="父视图外部子视图点击响应 - hitTest">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -331,23 +325,20 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
       
 
       
-        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table0.png" alt="图片0"></p>
-<p>如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分</p>
-<p>let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)</p>
-<p>导致 UITableViewCell 的 UITableViewCellAccessoryType，在点选之后可以更改为 Checkmark状态，但是当页面滚动至不可见某个Cell，再滚动回来时，Cell 的 Checkmark状态消失了。</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table1.png" alt="图片1"></p>
-<p>如图，selectCell的状态可以即时更改，选中 或 取消选中，但是这只是改变了界面，并没有改变数据源。</p>
-<p>当页面滑动时，我们标记为Checkmark的Cell会被复用，从而丢失这个状态。</p>
-<p>所以我采用了NSMutableSet用来存储Cell的 indexPath，从而便于之后 cellForRowAtIndexPath 方法中按照NSMutableSet中的内容，来将之前选择过的 Cell 标记 Checkmark（打勾）</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table2.png" alt="图片2"></p>
-<p>需要注意的是，一开始我采用了Array（不是NSArray）来存储indexPath，用Array的removeAtIndex和append来移除、加入数据，</p>
-<p>但是莫名其妙地产生了一些不好的影响：</p>
-<pre><code>因为你总是需要遍历数组来在 cellForRowAtIndexPath 方法中，查看哪些cell是应该被选中过的，然后改成Checkmark状态；
-
-结果就可能会产生数组越界、<span class="keyword">App</span>崩溃，以及错误的indexPath被<span class="keyword">append</span>进数组的情况。
-</code></pre><p>而NSMutableSet的功能更适合这种情况：它有addObject、removeObject、containsObject三个方法。</p>
-<p>在 cellForRow 方法中，不需要for循环可以三行代码给cell加Checkmark标记。</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table3.png" alt="图片3"></p>
+        <p>面试被问过两次了的一个问题，记录一下：<strong>假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 ChildView 被点击的时候，并不会触发 FatherView 的点击响应链（这是合情合理的，FatherView 所在的位置都没被点击，它不遍历 subviews，不作回应是正常的），这时候怎样才能让这个 ChildView 相应点击事件？</strong></p>
+<p>其实思路是很简单的，监控屏幕上的所有点击事件的区域，如果这个区域和我们的 UIView 以及其 subview 的 CGRect 有重合，就作出反应。</p>
+<p>也很容易查到 UIKit 提供了一个现成的方法来做到这件事：<br><img src="http://7xssu3.com1.z0.glb.clouddn.com/Hit%20Testing%20a%20View.png" alt="Hit Testing in a View"></p>
+<p><img src="http://7xssu3.com1.z0.glb.clouddn.com/Screen%20Shot.png" alt="Screen Shot"></p>
+<p>代码是很简单的，现在让灰色的视图作为父视图，蓝色、红色的作为子视图，只要灰色视图实现了上述方法，就可以让蓝色视图像红色视图一样，可以相应点击事件。</p>
+<p><img src="http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet.png" alt="Code Snippet"></p>
+<p><img src="http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet2.png" alt="Code Snippet"></p>
+<p><a href="https://github.com/OpenMarshall/HitTest" target="_blank" rel="external">完整 Demo Github 地址</a></p>
+<p>至此都是很简单的内容，需要注意的如下：</p>
+<ul>
+<li>你会发现 FatherView 里面的这个 <code>HitTest</code> 会被频繁执行，你随便点击一个空白处，这个方法都会执行，这必然带来性能消耗，这也是 Apple 默认不使用这个方式的原因之一吧</li>
+<li><code>HitTest</code> 会使得我们的蓝色的 UIView 可以相应点击，但是它被点击的之后，执行的方法我们应该按常规的方式写（比如给它加一个 <code>UIGestureRecognizer</code> ，然后让这个 Gesture 有一个对应的 selector）。如果把需要执行的方法写在了 <code>HitTest</code> 里面，写在 <code>return result</code> 之前的话，我发现这些方法会多执行一次（在我当前写的这个简单 demo 里，我发现点击任意地方，<code>HitTest</code> 方法都会连续执行两次）</li>
+</ul>
+<p><a href="http://zhoon.github.io/ios/2015/04/12/ios-event.html" target="_blank" rel="external">延伸阅读 - 深入浅出 iOS 事件机制</a></p>
 
       
     </div>
@@ -398,13 +389,13 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/18/想一下再用-guard/" rel="next" title="想一下再用 guard">
+                <i class="fa fa-chevron-left"></i> 想一下再用 guard
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/21/failed-to-get-the-task-for-process/" rel="prev" title="failed to get the task for process">
-                failed to get the task for process <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -430,8 +421,8 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/"
-           data-title="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题" data-url="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/">
+      <div class="ds-thread" data-thread-key="2016/08/19/父视图外部子视图点击响应-hitTest/"
+           data-title="父视图外部子视图点击响应 - hitTest" data-url="/2016/08/19/父视图外部子视图点击响应-hitTest/">
       </div>
     
   </div>

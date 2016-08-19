@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS 开发," />
+  <meta name="keywords" content="KyXu" />
 
 
 
@@ -78,27 +78,15 @@
 
 
 
-<meta name="description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
-<meta property="og:type" content="article">
-<meta property="og:title" content="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题">
-<meta property="og:url" content="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/index.html">
+<meta name="description" content="大三学生 / 独立开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KyXu Tech">
+<meta property="og:url" content="/page/6/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table0.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table1.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table2.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table3.png">
-<meta property="og:updated_time" content="2016-04-10T03:18:13.000Z">
+<meta property="og:description" content="大三学生 / 独立开发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题">
-<meta name="twitter:description" content="如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
-let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)
-导致 UITableViewCell 的 UIT">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/table0.png">
+<meta name="twitter:title" content="KyXu Tech">
+<meta name="twitter:description" content="大三学生 / 独立开发">
 
 
 
@@ -116,7 +104,7 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
   };
 </script>
 
-  <title> 解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题 | KyXu Tech </title>
+  <title> KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +125,9 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +244,9 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -276,7 +266,10 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
             
             
               
-                解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题
+                
+                <a class="post-title-link" href="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/" itemprop="url">
+                  解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题
+                </a>
               
             
           </h1>
@@ -331,96 +324,51 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
       
 
       
-        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table0.png" alt="图片0"></p>
-<p>如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分</p>
-<p>let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:”发型cell”)</p>
-<p>导致 UITableViewCell 的 UITableViewCellAccessoryType，在点选之后可以更改为 Checkmark状态，但是当页面滚动至不可见某个Cell，再滚动回来时，Cell 的 Checkmark状态消失了。</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table1.png" alt="图片1"></p>
-<p>如图，selectCell的状态可以即时更改，选中 或 取消选中，但是这只是改变了界面，并没有改变数据源。</p>
-<p>当页面滑动时，我们标记为Checkmark的Cell会被复用，从而丢失这个状态。</p>
-<p>所以我采用了NSMutableSet用来存储Cell的 indexPath，从而便于之后 cellForRowAtIndexPath 方法中按照NSMutableSet中的内容，来将之前选择过的 Cell 标记 Checkmark（打勾）</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table2.png" alt="图片2"></p>
-<p>需要注意的是，一开始我采用了Array（不是NSArray）来存储indexPath，用Array的removeAtIndex和append来移除、加入数据，</p>
-<p>但是莫名其妙地产生了一些不好的影响：</p>
-<pre><code>因为你总是需要遍历数组来在 cellForRowAtIndexPath 方法中，查看哪些cell是应该被选中过的，然后改成Checkmark状态；
+        
+          
+          
+如图，是一个可以多项选择的 UITableview，但是因为 iOS 的 Cell 复用机制，即下面的 reuseIdentifier 部分
+let cell:UITableViewCell=UIT
+          ...
 
-结果就可能会产生数组越界、<span class="keyword">App</span>崩溃，以及错误的indexPath被<span class="keyword">append</span>进数组的情况。
-</code></pre><p>而NSMutableSet的功能更适合这种情况：它有addObject、removeObject、containsObject三个方法。</p>
-<p>在 cellForRow 方法中，不需要for循环可以三行代码给cell加Checkmark标记。</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/table3.png" alt="图片3"></p>
-
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
     
     <div>
       
-        
-      
     </div>
 
     <div>
-      
-        
-<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
-    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/wechatpay.png" alt="KyXu WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
-        <p>微信打赏</p>
-      </div>
-    
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/alipay.png" alt="KyXu Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
-        <p>支付宝打赏</p>
-      </div>
-    
-  </div>
-</div>
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/21/failed-to-get-the-task-for-process/" rel="prev" title="failed to get the task for process">
-                failed to get the task for process <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
 
 
           </div>
@@ -428,14 +376,6 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/"
-           data-title="解决 UITableview 中选中 Cell 后，Cell 复用导致选中状态消失、应用闪退的问题" data-url="/2015/07/15/解决-UITableview-中选中-Cell-后，Cell-复用导致选中状态消失、应用闪退的问题/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -455,17 +395,8 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -584,17 +515,6 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -689,10 +609,6 @@ let cell:UITableViewCell=UITableViewCell(style:UITableViewCellStyle.Subtitle, re
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

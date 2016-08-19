@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-07-18T08:34:09.000Z</updated>
+  <updated>2016-08-19T03:38:21.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>父视图外部子视图点击响应 - hitTest</title>
+    <link href="/2016/08/19/%E7%88%B6%E8%A7%86%E5%9B%BE%E5%A4%96%E9%83%A8%E5%AD%90%E8%A7%86%E5%9B%BE%E7%82%B9%E5%87%BB%E5%93%8D%E5%BA%94-hitTest/"/>
+    <id>/2016/08/19/父视图外部子视图点击响应-hitTest/</id>
+    <published>2016-08-19T03:36:55.000Z</published>
+    <updated>2016-08-19T03:38:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;面试被问过两次了的一个问题，记录一下：&lt;strong&gt;假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 ChildView 被点击的时候，并不会触发 FatherView 的点击响应链（这是合情合理的，FatherView 所在的位置都没被点击，它不遍历 subviews，不作回应是正常的），这时候怎样才能让这个 ChildView 相应点击事件？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;其实思路是很简单的，监控屏幕上的所有点击事件的区域，如果这个区域和我们的 UIView 以及其 subview 的 CGRect 有重合，就作出反应。&lt;/p&gt;
+&lt;p&gt;也很容易查到 UIKit 提供了一个现成的方法来做到这件事：&lt;br&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/Hit%20Testing%20a%20View.png&quot; alt=&quot;Hit Testing in a View&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/Screen%20Shot.png&quot; alt=&quot;Screen Shot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;代码是很简单的，现在让灰色的视图作为父视图，蓝色、红色的作为子视图，只要灰色视图实现了上述方法，就可以让蓝色视图像红色视图一样，可以相应点击事件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet.png&quot; alt=&quot;Code Snippet&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/Code%20Snippet2.png&quot; alt=&quot;Code Snippet&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/OpenMarshall/HitTest&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;完整 Demo Github 地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;至此都是很简单的内容，需要注意的如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你会发现 FatherView 里面的这个 &lt;code&gt;HitTest&lt;/code&gt; 会被频繁执行，你随便点击一个空白处，这个方法都会执行，这必然带来性能消耗，这也是 Apple 默认不使用这个方式的原因之一吧&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HitTest&lt;/code&gt; 会使得我们的蓝色的 UIView 可以相应点击，但是它被点击的之后，执行的方法我们应该按常规的方式写（比如给它加一个 &lt;code&gt;UIGestureRecognizer&lt;/code&gt; ，然后让这个 Gesture 有一个对应的 selector）。如果把需要执行的方法写在了 &lt;code&gt;HitTest&lt;/code&gt; 里面，写在 &lt;code&gt;return result&lt;/code&gt; 之前的话，我发现这些方法会多执行一次（在我当前写的这个简单 demo 里，我发现点击任意地方，&lt;code&gt;HitTest&lt;/code&gt; 方法都会连续执行两次）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://zhoon.github.io/ios/2015/04/12/ios-event.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;延伸阅读 - 深入浅出 iOS 事件机制&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;面试被问过两次了的一个问题，记录一下：&lt;strong&gt;假如一个 UIView（我们称作 FatherView），有一个 subview（我们称作 ChildView），这个 ChildView 在 FatherView 的 frame 外部，那么默认情况下，这个 Child
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>想一下再用 guard</title>
@@ -1133,58 +1167,6 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     
     
       <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯 iOS 开发实习电话面试记录（一）</title>
-    <link href="/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>/2016/03/08/腾讯-iOS-开发实习电话面试记录（一）/</id>
-    <published>2016-03-08T07:09:35.000Z</published>
-    <updated>2016-04-09T07:16:12.000Z</updated>
-    
-    <content type="html">&lt;p&gt;目前大三，准备暑假去腾讯做 iOS 开发实习，昨天接到了电话面试，（应该是那个部门的 iOS 开发组组长打来的，我也不确定），来分享一下他问的那些题目。&lt;/p&gt;
-&lt;p&gt;感觉他提问是按照我写的简历来问的，而且考虑到我是准备去做实习生，也可能问的相对简单，我根据回忆写一下，大家就凑合着看吧。&lt;/p&gt;
-&lt;p&gt;1.我看你也上线了几个项目，说一下你做过的这些东西，工程体量大概都是多大，代码有多少行？&lt;br&gt;（我说多的有五六千行，少的就一千行）&lt;/p&gt;
-&lt;p&gt;2.你那个五六千行的项目是干嘛的？&lt;br&gt;（一个招聘会信息聚合应用）&lt;/p&gt;
-&lt;p&gt;3.这个项目用户量有多少？&lt;br&gt;（我说这个项目没多少用户，我个人用户最多是项目是 &lt;a href=&quot;https://itunes.apple.com/app/id1028844347&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gif Master&lt;/a&gt;，然后提到了用户量）&lt;/p&gt;
-&lt;p&gt;4.你怎么知道你这个 App 有多少活跃用户的？用的友盟吗？&lt;br&gt;（我说我用 Flurry，通过 App 更新情况也能看出来）&lt;/p&gt;
-&lt;p&gt;5.那你跟我说说你这个 Gif Master 是干嘛的？&lt;br&gt;（……说了一堆，其中重点是提到了，可以把某一条微博作为网页提出来，然后抓取这个网页中的 Gif 图，再分享到微信）&lt;/p&gt;
-&lt;p&gt;6.你是怎么把这个 Gif 图从微博上抓下来的？&lt;br&gt;（因为是用的从 Github 上找到的一个现成的方法，所以我并不清楚具体的技术细节，就只说了是把整个图片作为 NSData 提取出来的）&lt;/p&gt;
-&lt;p&gt;7.你是怎么把图片分享到微信的？&lt;br&gt;（用的是 mob 的 SDK，不只是分享到微信，还能分享到 QQ 和微博。因为微信原生不支持 Gif，所以是做为表情分享过去的）&lt;/p&gt;
-&lt;p&gt;8.你统计过你这个 App 的 Crash 情况吗？&lt;br&gt;（我说我在用雅虎的 Flurry 平台，这里面有非常详细的数据。但是实话实话，我并没有详细地监测用户如何触发了 crash，而更多地是自己不断地试用，然后解决问题。）&lt;/p&gt;
-&lt;p&gt;9.你是如何监测这个 App 的内存情况的，以及如何处理内容泄露？&lt;/p&gt;
-&lt;p&gt;10.平时用过 WebView 吗，你在用的时候除了单纯地用它加载网页，还用过其他的吗？&lt;br&gt;（我说用过 JS 交互）&lt;/p&gt;
-&lt;p&gt;11.（这里忘了他问了啥了，但是我觉得总要说点东西，而且我确实经常用 WebView，就说了下 UIWebView 和 WKWebView 在 JS 交互上的区别）&lt;/p&gt;
-&lt;p&gt;12.说一下你自己理解的 RunTime&lt;/p&gt;
-&lt;p&gt;13.知道 RunLoop 吗？&lt;br&gt;（我只在 NSTimer 里面用过，所以知道这个东西，但不是很了解，就实话实说了，然后他继续问细节，我算是说出来了一半，就下一个问题了）&lt;/p&gt;
-&lt;p&gt;14.Objective-C 里面 property 写成 assign 和 weak 的区别？&lt;br&gt;（这里还说了一下 weak 解决循环引用的问题）&lt;/p&gt;
-&lt;p&gt;15.知道 STL 吗（问了 List 和 Vector）&lt;/p&gt;
-&lt;p&gt;16.用过 TableView 吗，平时怎么解决 TableView 滑动卡顿问题的？&lt;/p&gt;
-&lt;p&gt;17.懂网络方面的问题吗？TCP/IP 三次握手？&lt;br&gt;（我说不知道，就仅仅是平时与服务器交互用过 get post）&lt;/p&gt;
-&lt;p&gt;18.说一下 get post 的区别？&lt;br&gt;（我说出来了，这时候已经开始感觉到这个人什么都会，就算他问的问题你不知道，也要随便说点相关的自己知道的，因为他一定可以把这个问题无限延伸下去）&lt;/p&gt;
-&lt;p&gt;19.你写过这么多代码了，知道设计模式吗？&lt;br&gt;（我说知道 MVC 和 MVVM，然后他让我说一下单例模式 - 显然仅仅会用是不够的，这题我算答出来一半）&lt;/p&gt;
-&lt;p&gt;20.知道观察者吗？&lt;br&gt;（监听事件那个 observer 嘛，这个我还是非常熟悉）&lt;/p&gt;
-&lt;p&gt;21.知道本地存储吗？&lt;br&gt;（这个我也非常熟悉，巴拉巴拉说了一堆 NSUserDefaults、Plist，还有如何存储自定义类型的问题，然后他说你知道 NSUserDefaults 本质上也是用 Plist 存储的吗，我诚实地说不知道，他又说除此之外其实还有 keychain 存储的方法，我也诚实的说我知道这种方法，但我自己没用过）&lt;/p&gt;
-&lt;p&gt;22.你发布的那些 App 都是自己独立完成的吗？&lt;br&gt;（我说是，但是他可能怕我撒谎，还要继续问一下）&lt;/p&gt;
-&lt;p&gt;23.说一下你平时发布 App 的流程&lt;/p&gt;
-&lt;p&gt;24.是你自己买的开发者账号吗？有 iPhone 吗？&lt;br&gt;（of course~）&lt;/p&gt;
-&lt;p&gt;25.是怎么想到要做 iOS 或者 Android 开发这个行当的？&lt;br&gt;（我说了我的心路历程  = = ）&lt;/p&gt;
-&lt;p&gt;26.会用 C++ 吗？&lt;br&gt;（我说我学了，但是没在实际项目中用过）&lt;/p&gt;
-&lt;p&gt;27.C++ 里面传递一个引用和传递一个指针有什么区别？&lt;br&gt;（其实我是知道的，但是当时懵逼了，瞎说了一通，大概是说错了）&lt;/p&gt;
-&lt;p&gt;28.问了多线程、主线程阻塞、UI 更新、异步这一块的问题&lt;/p&gt;
-&lt;p&gt;29.全剧终，他说过两天还要再有人给我打电话，所以我感觉应该第一关是过了，据说下一面是总监面，如果顺利通过的话，再来写第二篇&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;目前大三，准备暑假去腾讯做 iOS 开发实习，昨天接到了电话面试，（应该是那个部门的 iOS 开发组组长打来的，我也不确定），来分享一下他问的那些题目。&lt;/p&gt;
-&lt;p&gt;感觉他提问是按照我写的简历来问的，而且考虑到我是准备去做实习生，也可能问的相对简单，我根据回忆写一下，大家
-    
-    </summary>
-    
-    
-      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
