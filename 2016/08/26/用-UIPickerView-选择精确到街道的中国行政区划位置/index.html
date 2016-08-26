@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS 开发," />
+  <meta name="keywords" content="开源," />
 
 
 
@@ -78,37 +78,21 @@
 
 
 
-<meta name="description" content="本文从 setNeedsLayout 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。
-UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：
-public func setNeedsLayout()
-public func layoutSubviews()
-public func layoutIfNeeded()
-
-public func setNeedsDis">
+<meta name="description" content="如图，做了一个四列的 UIPickerView，可以滑动选择精确到街道的中国行政区划信息，并返回地址，使用简单，直接像平时使用 UIPickerView 一样，设置好  frame，添加进父视图就好了。
+实现相应协议中的方法，可以在选择了地址之后，获取到相应地址信息的字符串，有兴趣欢迎戳进 项目 Github 地址，随手 ✨✨✨✨✨">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从 setNeedsLayout 说起">
-<meta property="og:url" content="/2016/04/27/从-setNeedsLayout-说起/index.html">
+<meta property="og:title" content="用 UIPickerView 选择精确到街道的中国行政区划位置">
+<meta property="og:url" content="/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="本文从 setNeedsLayout 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。
-UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：
-public func setNeedsLayout()
-public func layoutSubviews()
-public func layoutIfNeeded()
-
-public func setNeedsDis">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/UIKit%20interactions%20with%20your%20view%20objects.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/From%20StackOverFlow.png">
-<meta property="og:updated_time" content="2016-04-27T08:03:43.000Z">
+<meta property="og:description" content="如图，做了一个四列的 UIPickerView，可以滑动选择精确到街道的中国行政区划信息，并返回地址，使用简单，直接像平时使用 UIPickerView 一样，设置好  frame，添加进父视图就好了。
+实现相应协议中的方法，可以在选择了地址之后，获取到相应地址信息的字符串，有兴趣欢迎戳进 项目 Github 地址，随手 ✨✨✨✨✨">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/KYDivisionPickerViewScreenShot.png">
+<meta property="og:updated_time" content="2016-08-26T06:18:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从 setNeedsLayout 说起">
-<meta name="twitter:description" content="本文从 setNeedsLayout 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。
-UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：
-public func setNeedsLayout()
-public func layoutSubviews()
-public func layoutIfNeeded()
-
-public func setNeedsDis">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/UIKit%20interactions%20with%20your%20view%20objects.png">
+<meta name="twitter:title" content="用 UIPickerView 选择精确到街道的中国行政区划位置">
+<meta name="twitter:description" content="如图，做了一个四列的 UIPickerView，可以滑动选择精确到街道的中国行政区划信息，并返回地址，使用简单，直接像平时使用 UIPickerView 一样，设置好  frame，添加进父视图就好了。
+实现相应协议中的方法，可以在选择了地址之后，获取到相应地址信息的字符串，有兴趣欢迎戳进 项目 Github 地址，随手 ✨✨✨✨✨">
+<meta name="twitter:image" content="http://7xssu3.com1.z0.glb.clouddn.com/KYDivisionPickerViewScreenShot.png">
 
 
 
@@ -126,7 +110,7 @@ public func setNeedsDis">
   };
 </script>
 
-  <title> 从 setNeedsLayout 说起 | KyXu Tech </title>
+  <title> 用 UIPickerView 选择精确到街道的中国行政区划位置 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +270,7 @@ public func setNeedsDis">
             
             
               
-                从 setNeedsLayout 说起
+                用 UIPickerView 选择精确到街道的中国行政区划位置
               
             
           </h1>
@@ -298,8 +282,8 @@ public func setNeedsDis">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-27T16:01:39+08:00" content="2016-04-27">
-              2016-04-27
+            <time itemprop="dateCreated" datetime="2016-08-26T14:17:22+08:00" content="2016-08-26">
+              2016-08-26
             </time>
           </span>
 
@@ -309,8 +293,8 @@ public func setNeedsDis">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/27/从-setNeedsLayout-说起/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/27/从-setNeedsLayout-说起/" itemprop="commentsCount"></span>
+                <a href="/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,7 +304,7 @@ public func setNeedsDis">
 
           
           
-             <span id="/2016/04/27/从-setNeedsLayout-说起/" class="leancloud_visitors" data-flag-title="从 setNeedsLayout 说起">
+             <span id="/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/" class="leancloud_visitors" data-flag-title="用 UIPickerView 选择精确到街道的中国行政区划位置">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -341,74 +325,9 @@ public func setNeedsDis">
       
 
       
-        <p>本文从 <code>setNeedsLayout</code> 这个方法说起，分享与其相关的 UIKit 视图交互、使用场景等内容。</p>
-<p>UIKit 为 UIView 提供了这些方法来进行视图的更新与重绘：</p>
-<pre><code><span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">setNeedsLayout</span><span class="params">()</span></span>
-<span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span>
-<span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">layoutIfNeeded</span><span class="params">()</span></span>
-
-<span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">setNeedsDisplay</span><span class="params">()</span></span>
-<span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">setNeedsDisplayInRect</span><span class="params">(rect: CGRect)</span></span>
-<span class="keyword">public</span> <span class="func"><span class="keyword">func</span> <span class="title">drawRect</span><span class="params">(rect: CGRect)</span></span>
-</code></pre><hr>
-<h2 id="运行时视图交互模型">运行时视图交互模型</h2><p>无论是用户交互触发还是代码自动触发，下图展示的事件序列都同样适用，这里用到了 <code>setNeedsLayout</code> 方法：</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/UIKit%20interactions%20with%20your%20view%20objects.png" alt="UIKit interactions with your view objects"></p>
-<p>上图对应的事件序列如下：</p>
-<ol>
-<li>用户触摸屏幕</li>
-<li>硬件报告触摸事件给 UIKit 框架 </li>
-<li>UIKit 框架将触摸事件打包成 UIEvent 对象，然后分发给合适的视图</li>
-<li>事件处理代码会对相应事件作出响应，代码可以是这样的：<br>-更改  <code>frame</code>、<code>bounds</code>、<code>alpha</code> 等属性<br>-调用 <code>setNeedsLayout</code> 方法以标记该视图（或者它的子视图）为需要进行布局更新<br>-调用 <code>setNeedsDisplay</code> 或者 <code>setNeedsDisplayInRect: </code> 方法以标记该视图（或者它的子视图）需要进行重画<br>-通知 Controller 有数据变化</li>
-<li>如果一个视图的几何结构改变了，UIKit 会更新它的子视图</li>
-<li>如果任何视图的任何部分被标记为需要重画，UIKit 会要求视图重画自身</li>
-<li>任何已经更新的视图会与应用余下的可视内容组合在一起，同时被发送到图形硬件去显示</li>
-<li>图形硬件将已解释内容转化到屏幕上</li>
-</ol>
-<hr>
-<h2 id="方法调用逻辑">方法调用逻辑</h2><p>在上面的过程中，我们可以接触到文章开头提到的方法，他们的调用逻辑是这样的：</p>
-<ol>
-<li><code>setNeedsLayout</code> 会给当前 UIView 立一个 flag，以表示后续应该调用 <code>layoutSubviews</code> 方法，以调整当前视图及其子视图的布局。</li>
-<li><code>setNeedsDisplayInRect: </code> 会给当前 UIView 立一个 flag，以表示后续应该调用 <code>drawRect:</code> 方法，以进行视图重绘。</li>
-</ol>
-<hr>
-<h2 id="View_Drawing_Cycle">View Drawing Cycle</h2><p><a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/occ/cl/UIView" target="_blank" rel="external">Apple 官方文档</a>已经明确说明，开发者不应该直接调用 <code>layoutSubviews</code> 与  <code>drawRect:</code> ，而应该<strong>在你认为系统默认的布局和重绘不能带给你想要的效果时，在子类中重写这些方法，然后分别通过 <code>setNeedsLayout</code> 和 <code>setNeedsDisplayInRect: </code> 来进行调用。</strong></p>
-<p>当然你可以给多个 UIView 设置 <code>setNeedsLayout</code>，然后当下一个 View Drawing Cycle 到来时，多个 UIView 的视图会一同更改布局。</p>
-<p>那么这个 View Drawing Cycle 到底是什么呢，官方是这样解释的：</p>
-<blockquote>
-<p>The system waits until the end of the current run loop before initiating any drawing operations. This delay gives you a chance to invalidate multiple views, add or remove views from your hierarchy, hide views, resize views, and reposition views all at once. All of the changes you make are then reflected at the same time.</p>
-</blockquote>
-<p>显然这样用 RunLoop 把多次修改聚集在一个 Cycle 一并进行渲染是更加高效的行为。</p>
-<p>（我个人对 View Drawing Cycle 的理解是这样的：UIKit 需要处理非常多的事件，这些事件组合起来变成了一个非常复杂的事件序列，在这个序列中有些特定的点是 UIKit 专门提供给 UIView 来进行视图更改的。如上所述，在当前 run loop 结束之前，我们有机会做各种视图更改，并且这些更改会在下一个 run loop 体现出来，所以<strong> View Drawing Cycle 就是一次次 run loop 中我们通过 UIKit 得到的 UIView 重布局、重绘机会所组成的循环</strong>。有理解不对的地方，欢迎评论指正。）</p>
-<hr>
-<h2 id="如何善用_View_Drawing_Cycle">如何善用 View Drawing Cycle</h2><p>一个很常见的例子是，一个 iPad App，横屏和竖屏时界面布局不一样，那么你可以监听设备旋转，在设备旋转时执行 <code>setNeedsLayout</code> 方法，然后在 <code>layoutSubviews</code> 里面通过判断接下来是横屏还是竖屏来进行不一样的布局设置。基本上你不可能只在这个方法里只进行了单个 UIView 的布局修改，而是多项修改，那么 App 会在下一个 View Drawing Cycle 到来时，把这些修改一起执行，这是最正常的情况。</p>
-<p>那么假如我不按 Apple 规定的来，直接调用 <code>layoutSubviews</code>  呢？我们可以猜想一下：因为这个方法里面提供了我们需要的布局方式，所以 UIView 会按我们想要的方式来布局，但是因为各种视图修改的请求时机是零碎的，所以这样效率会低一些。所以重要的其实是了解何时会触发 <code>layoutSubviews</code>：</p>
-<ul>
-<li>init 初始化不会触发 layoutSubviews</li>
-<li>addSubview 会触发 layoutSubviews</li>
-<li>设置 view 的 frame 会触发 layoutSubviews，当然前提是 frame 的值设置前后发生了变化</li>
-<li>滚动一个 UIScrollView 会触发 layoutSubviews</li>
-<li>旋转 Screen 会触发父 UIView 上的 layoutSubviews 事件</li>
-<li>改变一个 UIView 大小的时候也会触发父 UIView 上的 layoutSubviews 事件</li>
-</ul>
-<p>然后按 Apple 要求的方式来做就好了（分别通过 <code>setNeedsLayout</code> 和 <code>setNeedsDisplayInRect: </code> 来调用 <code>layoutSubviews</code> 和  <code>drawRect:</code>）</p>
-<p>但有些情况比较特殊：你打开 iOS 的时钟应用，去看里面的秒表页面，这个页面里面的两个按钮是没有 UIButton 默认的动画的，点击之后，按钮会瞬间改变自身的状态（颜色、内部 Label 的内容），这种情况我们需要跳出 View Drawing Cycle，来实现一个瞬间改变的效果。实现方法如下：</p>
-<pre><code><span class="class"><span class="keyword">extension</span> <span class="title">UIButton</span> </span>{
-    <span class="func"><span class="keyword">func</span> <span class="title">quickButtonAction</span><span class="params">()</span></span> {
-        <span class="type">UIView</span>.performWithoutAnimation({
-            <span class="comment">// do something</span>
-            <span class="keyword">self</span>.layoutIfNeeded()
-        })
-    }
-}
-</code></pre><p>可以看出 <code>layoutIfNeeded</code> 作为一个辅助选项给了 <code>setNeedsLayout</code> 一个可以瞬时执行的特点。当然默认这个“选项”是关闭的。</p>
-<hr>
-<h2 id="setNeedsDisplay_补充">setNeedsDisplay 补充</h2><p><code>setNeedsLayout</code> 的使用场景之前已经提过了（iPad App），下面举个栗子说一下 <code>setNeedsDisplayInRect: </code>的使用场景。</p>
-<p>假如我需要在两点之间绘制一条直线，有两个 <code>dotView</code>，需要绘制一个 <code>lineView</code>。我在 <code>drawRect:</code> 方法里实现了 <code>lineView</code> 的具体绘制方法（根据两个点来绘制）。那么如果我想要这个直线一直根据两个点同步变化的话，就需要在 <code>dotView</code> 的位置发生改变时，执行：</p>
-<pre><code>lineView.<span class="function"><span class="title">setNeedsDisplay</span><span class="params">()</span></span> <span class="comment">// 重绘 lineView</span>
-</code></pre><p>至于 <code>drawRect:</code> 方法什么时候会被触发：</p>
-<p><img src="http://7xssu3.com2.z0.glb.clouddn.com/From%20StackOverFlow.png" alt="From StackOverFlow"></p>
-<hr>
-<p>一个很好的参考链接：<a href="http://stackoverflow.com/questions/2807137/what-is-the-relationship-between-uiviews-setneedslayout-layoutifneeded-and-lay" target="_blank" rel="external">What is the relationship between UIView’s setNeedsLayout, layoutIfNeeded and layoutSubviews?</a></p>
+        <p><img src="http://7xssu3.com1.z0.glb.clouddn.com/KYDivisionPickerViewScreenShot.png" alt="ScreenShot"></p>
+<p>如图，做了一个四列的 <code>UIPickerView</code>，可以滑动选择精确到街道的中国行政区划信息，并返回地址，使用简单，直接像平时使用 <code>UIPickerView</code> 一样，设置好  <code>frame</code>，添加进父视图就好了。</p>
+<p>实现相应协议中的方法，可以在选择了地址之后，获取到相应地址信息的字符串，有兴趣欢迎戳进 <a href="https://github.com/OpenMarshall/KYDivisionPickerView" target="_blank" rel="external">项目 Github 地址</a>，随手 ✨✨✨✨✨</p>
 
       
     </div>
@@ -450,7 +369,7 @@ public func setNeedsDis">
       
         <div class="post-tags">
           
-            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+            <a href="/tags/开源/" rel="tag">#开源</a>
           
         </div>
       
@@ -459,17 +378,13 @@ public func setNeedsDis">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/17/在这个行当，不做程序员也得懂技术/" rel="next" title="在这个行当，不做程序员也得懂技术">
-                <i class="fa fa-chevron-left"></i> 在这个行当，不做程序员也得懂技术
+              <a href="/2016/08/19/父视图外部子视图点击响应-hitTest/" rel="next" title="父视图外部子视图点击响应 - hitTest">
+                <i class="fa fa-chevron-left"></i> 父视图外部子视图点击响应 - hitTest
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/29/初识函数式-Swift-实用/" rel="prev" title="初识函数式 Swift 实用">
-                初识函数式 Swift 实用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,8 +410,8 @@ public func setNeedsDis">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/27/从-setNeedsLayout-说起/"
-           data-title="从 setNeedsLayout 说起" data-url="/2016/04/27/从-setNeedsLayout-说起/">
+      <div class="ds-thread" data-thread-key="2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/"
+           data-title="用 UIPickerView 选择精确到街道的中国行政区划位置" data-url="/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/">
       </div>
     
   </div>
@@ -659,7 +574,7 @@ public func setNeedsDis">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时视图交互模型"><span class="nav-number">1.</span> <span class="nav-text">运行时视图交互模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法调用逻辑"><span class="nav-number">2.</span> <span class="nav-text">方法调用逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View_Drawing_Cycle"><span class="nav-number">3.</span> <span class="nav-text">View Drawing Cycle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何善用_View_Drawing_Cycle"><span class="nav-number">4.</span> <span class="nav-text">如何善用 View Drawing Cycle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setNeedsDisplay_补充"><span class="nav-number">5.</span> <span class="nav-text">setNeedsDisplay 补充</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
