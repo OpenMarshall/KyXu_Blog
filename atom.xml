@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-08-26T06:18:19.000Z</updated>
+  <updated>2016-10-11T11:13:10.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tableView updates 对比 reloadData</title>
+    <link href="/2016/10/11/tableView-updates-%E5%AF%B9%E6%AF%94-reloadData/"/>
+    <id>/2016/10/11/tableView-updates-对比-reloadData/</id>
+    <published>2016-10-11T11:12:12.000Z</published>
+    <updated>2016-10-11T11:13:10.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/updatesCompareReload.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次 update 按钮，就动态地在下方加两行。那么简单粗暴的做法是  ，更改数据源，然后刷新一下列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// tableData = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]&lt;/span&gt;
+&lt;span class=&quot;preprocessor&quot;&gt;@IBAction&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; sender: AnyObject)&lt;/span&gt;&lt;/span&gt; {
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;subst&quot;&gt;\(tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;)&lt;/span&gt;&quot;&lt;/span&gt;)
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;subst&quot;&gt;\(tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;)&lt;/span&gt;&quot;&lt;/span&gt;)
+    tableView.reloadData()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用膝盖想也知道，这会使得前四行没有被改动的地方也被刷新一遍，带来了不必要的性能损耗。&lt;br&gt;好一点的做法是下面这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// tableData = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]&lt;/span&gt;
+&lt;span class=&quot;preprocessor&quot;&gt;@IBAction&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; sender: AnyObject)&lt;/span&gt;&lt;/span&gt; {
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;subst&quot;&gt;\(tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;)&lt;/span&gt;&quot;&lt;/span&gt;)
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;subst&quot;&gt;\(tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;)&lt;/span&gt;&quot;&lt;/span&gt;)
+    tableView.beginUpdates()
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; indexPaths = [&lt;span class=&quot;type&quot;&gt;IndexPath&lt;/span&gt;(row: tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, section: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;), &lt;span class=&quot;type&quot;&gt;IndexPath&lt;/span&gt;(row: tableData.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, section: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)]
+    tableView.insertRows(at: indexPaths, with: &lt;span class=&quot;type&quot;&gt;UITableViewRowAnimation&lt;/span&gt;.automatic)
+    tableView.endUpdates()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与上面相比，这样做使得 &lt;code&gt;func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&amp;gt; UITableViewCell&lt;/code&gt; 方法被少调用了四次。&lt;/p&gt;
+&lt;p&gt;这里 &lt;code&gt;beginUpdates&lt;/code&gt; 和 &lt;code&gt;endUpdates&lt;/code&gt; 方法的作用是，将这两条语句之间的对 tableView 的 insert/delete 操作聚合起来，然后同时更新 UI。鉴于我这里只进行了一次 insert 操作，把这两条语句去掉也没事，但是出于规范还是应该写上，因为假如习惯不写，下面这样的代码会运行时崩溃：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@IBAction func &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;update&lt;/span&gt;(_ sender: AnyObject) {
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;\(tableData.count)&quot;&lt;/span&gt;)
+    tableData.append(&lt;span class=&quot;string&quot;&gt;&quot;\(tableData.count)&quot;&lt;/span&gt;)
+    //        tableView.beginUpdates()
+    tableView.insertRows(&lt;span class=&quot;keyword&quot;&gt;at&lt;/span&gt;: [IndexPath(&lt;span class=&quot;keyword&quot;&gt;row&lt;/span&gt;: tableData.&lt;span class=&quot;keyword&quot;&gt;count&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;section&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)], &lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt;: UITableViewRowAnimation.&lt;span class=&quot;keyword&quot;&gt;automatic&lt;/span&gt;)
+    tableView.insertRows(&lt;span class=&quot;keyword&quot;&gt;at&lt;/span&gt;: [IndexPath(&lt;span class=&quot;keyword&quot;&gt;row&lt;/span&gt;: tableData.&lt;span class=&quot;keyword&quot;&gt;count&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;section&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)], &lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt;: UITableViewRowAnimation.&lt;span class=&quot;keyword&quot;&gt;automatic&lt;/span&gt;)
+    //        tableView.endUpdates()
+}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;因为第一次 insert 之后，当前 row 的总数量在 UI 上试图 4 变成 5，然而数据源是 6，它会检查使用者对 tableView 的 UI 操作，最后是不是和 numberOfRows 方法获取的值相对应。&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;numberOfRows 方法调用：&lt;/strong&gt; 都只调用一次 numberOfRows 方法&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cellForRow 方法调用次数：&lt;/strong&gt; reloadData 会为当前显示的所有cell调用这个方法，updates 只会为新增的cell调用这个方法&lt;br&gt;&lt;strong&gt;cellForRow 方法调用时间：&lt;/strong&gt; reloadData 会在 numberOfRows 方法调用后的某一时间异步调用 cellForRow 方法，updates 会在 numberOfRows 方法调用后马上调用 cellForRow 方法&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;reloadData 方法缺陷：&lt;/strong&gt; 带来额外的不必要开销，缺乏动画&lt;br&gt;&lt;strong&gt;updates 方法缺陷：&lt;/strong&gt;deleteRows 不会调用 cellForRow 方法，可能导致显示结果与数据源不一致；需要手动保证 insertRows、deleteRows 之后，row 的数量与 numberOfRows 的结果一致，否则会运行时崩溃&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;部分文章中没有写，总结提到了的部分放在完整 demo 里面了：&lt;a href=&quot;https://github.com/OpenMarshall/TableViewExplore&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;demo Github 地址&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://7xssu3.com1.z0.glb.clouddn.com/updatesCompareReload.png&quot; alt=&quot;Paste_Image.png&quot;&gt;&lt;br&gt;如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>用 UIPickerView 选择精确到街道的中国行政区划位置</title>
@@ -1111,56 +1164,6 @@ let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
     
       &lt;p&gt;iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;let safari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 protocol 与 extension 来限制函数作用域</title>
-    <link href="/2016/03/12/%E4%BD%BF%E7%94%A8-protocol-%E4%B8%8E-extension-%E6%9D%A5%E9%99%90%E5%88%B6%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>/2016/03/12/使用-protocol-与-extension-来限制函数作用域/</id>
-    <published>2016-03-12T07:07:31.000Z</published>
-    <updated>2016-04-09T07:12:44.000Z</updated>
-    
-    <content type="html">&lt;p&gt;今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。&lt;/p&gt;
-&lt;p&gt;就会有下面这行代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;webview&lt;span class=&quot;class&quot;&gt;.frame&lt;/span&gt; = UIScreen.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;mainScreen&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;.bounds
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;进一步地，我想把这个步骤封装为一个函数，因为比如这个页面屏幕旋转时，或者在其他页面，我都可能需要用到它。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;component&quot;&gt;func expandView(view:UIView) {
-    if view&lt;span class=&quot;string&quot;&gt;.isKindOfClass(UIWebView)&lt;/span&gt; || view&lt;span class=&quot;string&quot;&gt;.isKindOfClass(WKWebView)&lt;/span&gt; {
-        view&lt;span class=&quot;string&quot;&gt;.frame&lt;/span&gt; = UIScreen&lt;span class=&quot;string&quot;&gt;.mainScreen().bounds&lt;/span&gt;
-    }&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码是说，我们现在可以把 UIWebView 和 WKWebView 都扩展到最大了，其他 UIView 被传入的时候，不会有任何意义。但这不是我想要的，我希望其他 UIView 根本无法调用这个函数，以免产生误解。&lt;/p&gt;
-&lt;p&gt;于是我写了下面这段代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-}
-
-&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(view:UIView)&lt;/span&gt;&lt;/span&gt; {
-    view.frame = &lt;span class=&quot;type&quot;&gt;UIScreen&lt;/span&gt;.mainScreen().bounds
-}
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;WKWebView&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; { expand(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) }
-}
-
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIWebView&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;ExpandableView&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;expandToFullView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; { expand(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在，UIWebView 和 WKWebView 都可以通过 ExpandableView 这个协议，来使用我们定义好的（具有扩展一个 View 到整个界面大小这层意义的） expandToFullView 这个函数，而且因为这个函数的实现实际上是 expand 这个函数，所以他们表现起来是一样的。与此同时，expand 这个函数本身被声明为了 private，这使得这个函数不会在其他源文件以其他方式被调用。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;这段代码被应用在了 &lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个项目&lt;/a&gt; 的 &lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/WebviewExtension.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个文件&lt;/a&gt;。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天碰到这样一个场景，我需要一个仅仅用来展示网页的页面，那么在 iOS 9 中，我可以使用 SFSafariViewController，而在 iOS 8 及之前版本中，我会使用一个 WebView 来占据整个视图空间，来做这件事。&lt;/p&gt;
-&lt;p&gt;就会有下面这行代码&lt;/p&gt;
     
     </summary>
     

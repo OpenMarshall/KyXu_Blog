@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KyXu" />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,15 +78,27 @@
 
 
 
-<meta name="description" content="大三学生 / 独立开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KyXu Tech">
-<meta property="og:url" content="/archives/2015/11/index.html">
+<meta name="description" content="如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次 update 按钮，就动态地在下方加两行。那么简单粗暴的做法是  ，更改数据源，然后刷新一下列表：
+// tableData = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
+@IBAction func update(_ sender: AnyObject) {
+    tableData.append(&quot;\(tableDa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tableView updates 对比 reloadData">
+<meta property="og:url" content="/2016/10/11/tableView-updates-对比-reloadData/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="大三学生 / 独立开发">
+<meta property="og:description" content="如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次 update 按钮，就动态地在下方加两行。那么简单粗暴的做法是  ，更改数据源，然后刷新一下列表：
+// tableData = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
+@IBAction func update(_ sender: AnyObject) {
+    tableData.append(&quot;\(tableDa">
+<meta property="og:image" content="http://7xssu3.com1.z0.glb.clouddn.com/updatesCompareReload.png">
+<meta property="og:updated_time" content="2016-10-11T11:13:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KyXu Tech">
-<meta name="twitter:description" content="大三学生 / 独立开发">
+<meta name="twitter:title" content="tableView updates 对比 reloadData">
+<meta name="twitter:description" content="如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次 update 按钮，就动态地在下方加两行。那么简单粗暴的做法是  ，更改数据源，然后刷新一下列表：
+// tableData = [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
+@IBAction func update(_ sender: AnyObject) {
+    tableData.append(&quot;\(tableDa">
+<meta name="twitter:image" content="http://7xssu3.com1.z0.glb.clouddn.com/updatesCompareReload.png">
 
 
 
@@ -104,7 +116,7 @@
   };
 </script>
 
-  <title> 归档 | KyXu Tech </title>
+  <title> tableView updates 对比 reloadData | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -125,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,176 +255,188 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-        
-      好! 目前共计 53 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/26/带有-Extension-Target-的-App，如何签名打包/" itemprop="url">
-              
-                <span itemprop="name">带有 Extension Target 的 App，如何签名打包</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-26T15:23:12+08:00"
-              content="2015-11-26" >
-          11-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/24/分享一个被误认为是-bug-的东西/" itemprop="url">
-              
-                <span itemprop="name">分享一个被误认为是 bug 的东西</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-24T15:25:50+08:00"
-              content="2015-11-24" >
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/24/跳转到『设置App』的任意条目/" itemprop="url">
-              
-                <span itemprop="name">跳转到『设置App』的任意条目</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-24T15:24:58+08:00"
-              content="2015-11-24" >
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/14/全局设定-UINavigationBar-的-UI/" itemprop="url">
-              
-                <span itemprop="name">全局设定 UINavigationBar 的 UI</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-14T15:26:25+08:00"
-              content="2015-11-14" >
-          11-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                tableView updates 对比 reloadData
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-11T19:12:12+08:00" content="2016-10-11">
+              2016-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/11/tableView-updates-对比-reloadData/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/11/tableView-updates-对比-reloadData/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/11/tableView-updates-对比-reloadData/" class="leancloud_visitors" data-flag-title="tableView updates 对比 reloadData">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://7xssu3.com1.z0.glb.clouddn.com/updatesCompareReload.png" alt="Paste_Image.png"><br>如图有一个 TableView，每行显示这一行是第几行，现在我希望每按一次 update 按钮，就动态地在下方加两行。那么简单粗暴的做法是  ，更改数据源，然后刷新一下列表：</p>
+<pre><code><span class="comment">// tableData = ["0", "1", "2", "3"]</span>
+<span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">update</span><span class="params">(<span class="number">_</span> sender: AnyObject)</span></span> {
+    tableData.append(<span class="string">"<span class="subst">\(tableData.<span class="built_in">count</span>)</span>"</span>)
+    tableData.append(<span class="string">"<span class="subst">\(tableData.<span class="built_in">count</span>)</span>"</span>)
+    tableView.reloadData()
+}
+</code></pre><p>用膝盖想也知道，这会使得前四行没有被改动的地方也被刷新一遍，带来了不必要的性能损耗。<br>好一点的做法是下面这样的：</p>
+<pre><code><span class="comment">// tableData = ["0", "1", "2", "3"]</span>
+<span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">update</span><span class="params">(<span class="number">_</span> sender: AnyObject)</span></span> {
+    tableData.append(<span class="string">"<span class="subst">\(tableData.<span class="built_in">count</span>)</span>"</span>)
+    tableData.append(<span class="string">"<span class="subst">\(tableData.<span class="built_in">count</span>)</span>"</span>)
+    tableView.beginUpdates()
+    <span class="keyword">let</span> indexPaths = [<span class="type">IndexPath</span>(row: tableData.<span class="built_in">count</span>-<span class="number">2</span>, section: <span class="number">0</span>), <span class="type">IndexPath</span>(row: tableData.<span class="built_in">count</span>-<span class="number">1</span>, section: <span class="number">0</span>)]
+    tableView.insertRows(at: indexPaths, with: <span class="type">UITableViewRowAnimation</span>.automatic)
+    tableView.endUpdates()
+}
+</code></pre><p>与上面相比，这样做使得 <code>func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</code> 方法被少调用了四次。</p>
+<p>这里 <code>beginUpdates</code> 和 <code>endUpdates</code> 方法的作用是，将这两条语句之间的对 tableView 的 insert/delete 操作聚合起来，然后同时更新 UI。鉴于我这里只进行了一次 insert 操作，把这两条语句去掉也没事，但是出于规范还是应该写上，因为假如习惯不写，下面这样的代码会运行时崩溃：</p>
+<pre><code>@IBAction func <span class="operator"><span class="keyword">update</span>(_ sender: AnyObject) {
+    tableData.append(<span class="string">"\(tableData.count)"</span>)
+    tableData.append(<span class="string">"\(tableData.count)"</span>)
+    //        tableView.beginUpdates()
+    tableView.insertRows(<span class="keyword">at</span>: [IndexPath(<span class="keyword">row</span>: tableData.<span class="keyword">count</span>-<span class="number">2</span>, <span class="keyword">section</span>: <span class="number">0</span>)], <span class="keyword">with</span>: UITableViewRowAnimation.<span class="keyword">automatic</span>)
+    tableView.insertRows(<span class="keyword">at</span>: [IndexPath(<span class="keyword">row</span>: tableData.<span class="keyword">count</span>-<span class="number">1</span>, <span class="keyword">section</span>: <span class="number">0</span>)], <span class="keyword">with</span>: UITableViewRowAnimation.<span class="keyword">automatic</span>)
+    //        tableView.endUpdates()
+}</span>
+</code></pre><p>因为第一次 insert 之后，当前 row 的总数量在 UI 上试图 4 变成 5，然而数据源是 6，它会检查使用者对 tableView 的 UI 操作，最后是不是和 numberOfRows 方法获取的值相对应。</p>
+<h2 id="总结">总结</h2><p><strong>numberOfRows 方法调用：</strong> 都只调用一次 numberOfRows 方法</p>
+<p><strong>cellForRow 方法调用次数：</strong> reloadData 会为当前显示的所有cell调用这个方法，updates 只会为新增的cell调用这个方法<br><strong>cellForRow 方法调用时间：</strong> reloadData 会在 numberOfRows 方法调用后的某一时间异步调用 cellForRow 方法，updates 会在 numberOfRows 方法调用后马上调用 cellForRow 方法</p>
+<p><strong>reloadData 方法缺陷：</strong> 带来额外的不必要开销，缺乏动画<br><strong>updates 方法缺陷：</strong>deleteRows 不会调用 cellForRow 方法，可能导致显示结果与数据源不一致；需要手动保证 insertRows、deleteRows 之后，row 的数量与 numberOfRows 的结果一致，否则会运行时崩溃</p>
+<hr>
+<p>部分文章中没有写，总结提到了的部分放在完整 demo 里面了：<a href="https://github.com/OpenMarshall/TableViewExplore" target="_blank" rel="external">demo Github 地址</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/wechatpay.png" alt="KyXu WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/alipay.png" alt="KyXu Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/" rel="next" title="用 UIPickerView 选择精确到街道的中国行政区划位置">
+                <i class="fa fa-chevron-left"></i> 用 UIPickerView 选择精确到街道的中国行政区划位置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -420,6 +444,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/11/tableView-updates-对比-reloadData/"
+           data-title="tableView updates 对比 reloadData" data-url="/2016/10/11/tableView-updates-对比-reloadData/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -439,8 +471,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -563,6 +604,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -657,7 +709,9 @@
   
 
   
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
