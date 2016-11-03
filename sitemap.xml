@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kyxu.tech/about/index.html</loc>
+    
+    <lastmod>2016-11-03T08:40:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kyxu.tech/2016/11/03/%E7%94%A8%E6%B3%9B%E5%9E%8B%E7%AE%80%E5%8C%96-instantiateViewController/</loc>
     
     <lastmod>2016-11-03T08:37:28.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://kyxu.tech/2016/10/11/tableView-updates-%E5%AF%B9%E6%AF%94-reloadData/</loc>
     
     <lastmod>2016-10-11T11:13:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kyxu.tech/about/index.html</loc>
-    
-    <lastmod>2016-09-19T09:47:43.000Z</lastmod>
     
   </url>
   
