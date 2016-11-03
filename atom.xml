@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kyxu.tech/"/>
-  <updated>2016-10-11T11:13:10.000Z</updated>
+  <updated>2016-11-03T08:37:28.000Z</updated>
   <id>https://kyxu.tech/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用泛型简化 instantiateViewController</title>
+    <link href="https://kyxu.tech/2016/11/03/%E7%94%A8%E6%B3%9B%E5%9E%8B%E7%AE%80%E5%8C%96-instantiateViewController/"/>
+    <id>https://kyxu.tech/2016/11/03/用泛型简化-instantiateViewController/</id>
+    <published>2016-11-03T08:36:49.000Z</published>
+    <updated>2016-11-03T08:37:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;使用 storyboard 的时候，我们经常会写出下面这样的代码，用来跳转到其他页面&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.storyboard?.instantiateViewController(withIdentifier: &lt;span class=&quot;string&quot;&gt;&quot;EditVC&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? EditVC {
+    &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.navigationController?.pushViewController(editVC, animated: &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最多改成这样&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.storyboard?.instantiateViewController(withIdentifier: &lt;span class=&quot;string&quot;&gt;&quot;EditVC&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;实在是太冗长了，简化第一步，或许我们可以直接将 &lt;code&gt;EditVC&lt;/code&gt; 这个类型字符串化变成  &lt;code&gt;“EditVC”&lt;/code&gt;，代码变成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;guard &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.storyboard?.instantiateViewController(withIdentifier: &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;(describing: EditVC.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? EditVC &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;嗯，更长了，但是既然 &lt;code&gt;EditVC&lt;/code&gt; 使用了两次，这使得我们有机会把这个过程封装成一个函数，而 &lt;code&gt;EditVC&lt;/code&gt; 是唯一需要传递的参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;instantiateVC&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(vc:UIViewController)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;UIViewController&lt;/span&gt;? {
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; id = &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;(describing: vc.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; storyboard?.instantiateViewController(withIdentifier: id)
+}
+
+&lt;span class=&quot;comment&quot;&gt;// how to use&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = instantiateVC(vc: &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt;()) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;封装之后依然尴尬：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因为我们不能确定每次都需要函数返回 &lt;code&gt;EditVC&lt;/code&gt; ，所以只能用 &lt;code&gt;UIViewController&lt;/code&gt; 当做返回值，这使得我们还需要再加上 &lt;code&gt;as? EditVC&lt;/code&gt; 去做类型转换，相当于还是手动使用了两次 &lt;code&gt;EditVC&lt;/code&gt; ，而不是一次&lt;/li&gt;
+&lt;li&gt;传入的参数是 &lt;code&gt;EditVC()&lt;/code&gt;  而不是  &lt;code&gt;EditVC&lt;/code&gt; ，看起来丑陋&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一次解决两个问题的答案是：泛型！&lt;/p&gt;
+&lt;p&gt;我们在函数中限定泛型 &lt;code&gt;T&lt;/code&gt; 为 &lt;code&gt;UIViewController&lt;/code&gt; ，但 &lt;code&gt;T&lt;/code&gt; 具体是我们的 App 中的哪个子类我们不去管，通过函数的参数来指定 T 的具体类型，随后确定出我们函数的返回值为那个我们指定的 &lt;code&gt;T&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最终结果：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;instantiateVC&lt;/span&gt;&lt;span class=&quot;generics&quot;&gt;&amp;lt;T: UIViewController&amp;gt;&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(type: T.&lt;span class=&quot;keyword&quot;&gt;Type&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;T&lt;/span&gt;? {
+        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; id = &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;(describing: &lt;span class=&quot;type&quot;&gt;T&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;)
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; storyboard?.instantiateViewController(withIdentifier: id) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;T&lt;/span&gt;
+    }
+}
+
+&lt;span class=&quot;comment&quot;&gt;// how to use&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = instantiateVC(type: &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;前后对比：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// before&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = storyboard?.instantiateViewController(withIdentifier: &lt;span class=&quot;string&quot;&gt;&quot;EditVC&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt;? &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+
+&lt;span class=&quot;comment&quot;&gt;// after&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = instantiateVC(type: &lt;span class=&quot;type&quot;&gt;EditVC&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; { &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;提醒：&lt;/strong&gt;&lt;br&gt;这里我假装这个函数回避掉了直接使用字符串去传入 &lt;code&gt;Storyboard ID&lt;/code&gt; 的风险，但可以这么做的前提是，这里的 &lt;code&gt;EditVC&lt;/code&gt; 到 &lt;code&gt;“EditVC”&lt;/code&gt; 可以直接字符串化。&lt;/p&gt;
+&lt;p&gt;如果你也要这么做的话，至少要保证你的类名的字符串化的结果和你的 &lt;code&gt;Storyboard ID&lt;/code&gt; 是有固定关联的。比如 &lt;code&gt;EditVC&lt;/code&gt; 对应 &lt;code&gt;“editvc”&lt;/code&gt; 或 &lt;code&gt;“EDITVC”&lt;/code&gt; 或 &lt;code&gt;“editVC”&lt;/code&gt; （这样你只要修改字母大小写就可以了），而不是 &lt;code&gt;“abc123”&lt;/code&gt; 这种随便写的东西。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用 storyboard 的时候，我们经常会写出下面这样的代码，用来跳转到其他页面&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; editVC = &lt;span
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>tableView updates 对比 reloadData</title>
@@ -1098,77 +1160,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
     
       <category term="开源" scheme="https://kyxu.tech/tags/%E5%BC%80%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>伪造一个 SFSafariViewController</title>
-    <link href="https://kyxu.tech/2016/03/13/%E4%BC%AA%E9%80%A0%E4%B8%80%E4%B8%AA-SFSafariViewController/"/>
-    <id>https://kyxu.tech/2016/03/13/伪造一个-SFSafariViewController/</id>
-    <published>2016-03-13T07:06:54.000Z</published>
-    <updated>2016-04-09T07:07:18.000Z</updated>
-    
-    <content type="html">&lt;p&gt;iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let safari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
-self.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;presentViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(safari, animated: true, completion: nil)&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里我尝试给出一个简化版（仅仅展示网页，没有其他功能）的 SFSafariViewController，来方便地在 iOS 9 以下的系统中调用。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; WebKit
-
-&lt;span class=&quot;comment&quot;&gt;// 如果用户使用 iOS 8，则没有 SFSafariViewController，用这个 VC 来加载一个网页&lt;/span&gt;
-&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;FakeSafariViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
-
-    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url:&lt;span class=&quot;type&quot;&gt;NSURL&lt;/span&gt;!
-    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; webview = &lt;span class=&quot;type&quot;&gt;WKWebView&lt;/span&gt;()
-
-
-    &lt;span class=&quot;comment&quot;&gt;// MARK: - Init&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;convenience&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt; (&lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;: &lt;span class=&quot;type&quot;&gt;NSURL&lt;/span&gt;) {
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;()
-        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.url = &lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;
-    }
-
-
-
-    &lt;span class=&quot;comment&quot;&gt;// MARK: - Main&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
-
-        &lt;span class=&quot;comment&quot;&gt;// webview&lt;/span&gt;
-        webview.frame = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.frame
-        webview.loadRequest(&lt;span class=&quot;type&quot;&gt;NSURLRequest&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;: url))
-        view.addSubview(webview)
-
-        &lt;span class=&quot;comment&quot;&gt;// 屏幕旋转监听&lt;/span&gt;
-        &lt;span class=&quot;type&quot;&gt;NSNotificationCenter&lt;/span&gt;.defaultCenter().addObserver(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;, selector: &lt;span class=&quot;string&quot;&gt;&quot;screenRotate:&quot;&lt;/span&gt;,
-            name: &lt;span class=&quot;type&quot;&gt;UIDeviceOrientationDidChangeNotification&lt;/span&gt;, object: &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;)
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.didReceiveMemoryWarning()
-    }
-
-    &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;screenRotate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(notification:NSNotification)&lt;/span&gt;&lt;/span&gt; {
-        webview.frame = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.frame
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;调用时，表现起来和 SFSafariViewController 是一样的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let realSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;SFSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
-let fakeSafari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;FakeSafariViewController&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(URL: url)&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然，如果如果你要在 iOS 8 以下的环境中使用的话，把 WKWebView 换成 UIWebView 就好了。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;【Github】&lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/FakeSafariVC.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这段代码&lt;/a&gt;出现在了&lt;a href=&quot;https://github.com/OpenMarshall/SwiftGG&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; SwiftGG 项目&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;let safari = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;tit
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
