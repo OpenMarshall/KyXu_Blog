@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://kyxu.tech/"/>
+  <link href="/"/>
   <updated>2016-11-03T08:37:28.000Z</updated>
-  <id>https://kyxu.tech/</id>
+  <id>/</id>
   
   <author>
     <name>KyXu</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>用泛型简化 instantiateViewController</title>
-    <link href="https://kyxu.tech/2016/11/03/%E7%94%A8%E6%B3%9B%E5%9E%8B%E7%AE%80%E5%8C%96-instantiateViewController/"/>
-    <id>https://kyxu.tech/2016/11/03/用泛型简化-instantiateViewController/</id>
+    <link href="/2016/11/03/%E7%94%A8%E6%B3%9B%E5%9E%8B%E7%AE%80%E5%8C%96-instantiateViewController/"/>
+    <id>/2016/11/03/用泛型简化-instantiateViewController/</id>
     <published>2016-11-03T08:36:49.000Z</published>
     <updated>2016-11-03T08:37:28.000Z</updated>
     
@@ -73,14 +73,14 @@
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>tableView updates 对比 reloadData</title>
-    <link href="https://kyxu.tech/2016/10/11/tableView-updates-%E5%AF%B9%E6%AF%94-reloadData/"/>
-    <id>https://kyxu.tech/2016/10/11/tableView-updates-对比-reloadData/</id>
+    <link href="/2016/10/11/tableView-updates-%E5%AF%B9%E6%AF%94-reloadData/"/>
+    <id>/2016/10/11/tableView-updates-对比-reloadData/</id>
     <published>2016-10-11T11:12:12.000Z</published>
     <updated>2016-10-11T11:13:10.000Z</updated>
     
@@ -126,14 +126,14 @@
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>用 UIPickerView 选择精确到街道的中国行政区划位置</title>
-    <link href="https://kyxu.tech/2016/08/26/%E7%94%A8-UIPickerView-%E9%80%89%E6%8B%A9%E7%B2%BE%E7%A1%AE%E5%88%B0%E8%A1%97%E9%81%93%E7%9A%84%E4%B8%AD%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E4%BD%8D%E7%BD%AE/"/>
-    <id>https://kyxu.tech/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/</id>
+    <link href="/2016/08/26/%E7%94%A8-UIPickerView-%E9%80%89%E6%8B%A9%E7%B2%BE%E7%A1%AE%E5%88%B0%E8%A1%97%E9%81%93%E7%9A%84%E4%B8%AD%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92%E4%BD%8D%E7%BD%AE/"/>
+    <id>/2016/08/26/用-UIPickerView-选择精确到街道的中国行政区划位置/</id>
     <published>2016-08-26T06:17:22.000Z</published>
     <updated>2016-08-26T06:18:19.000Z</updated>
     
@@ -150,14 +150,14 @@
     </summary>
     
     
-      <category term="开源" scheme="https://kyxu.tech/tags/%E5%BC%80%E6%BA%90/"/>
+      <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
   <entry>
     <title>父视图外部子视图点击响应 - hitTest</title>
-    <link href="https://kyxu.tech/2016/08/19/%E7%88%B6%E8%A7%86%E5%9B%BE%E5%A4%96%E9%83%A8%E5%AD%90%E8%A7%86%E5%9B%BE%E7%82%B9%E5%87%BB%E5%93%8D%E5%BA%94-hitTest/"/>
-    <id>https://kyxu.tech/2016/08/19/父视图外部子视图点击响应-hitTest/</id>
+    <link href="/2016/08/19/%E7%88%B6%E8%A7%86%E5%9B%BE%E5%A4%96%E9%83%A8%E5%AD%90%E8%A7%86%E5%9B%BE%E7%82%B9%E5%87%BB%E5%93%8D%E5%BA%94-hitTest/"/>
+    <id>/2016/08/19/父视图外部子视图点击响应-hitTest/</id>
     <published>2016-08-19T03:36:55.000Z</published>
     <updated>2016-08-19T03:40:23.000Z</updated>
     
@@ -184,14 +184,14 @@
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>想一下再用 guard</title>
-    <link href="https://kyxu.tech/2016/07/18/%E6%83%B3%E4%B8%80%E4%B8%8B%E5%86%8D%E7%94%A8-guard/"/>
-    <id>https://kyxu.tech/2016/07/18/想一下再用-guard/</id>
+    <link href="/2016/07/18/%E6%83%B3%E4%B8%80%E4%B8%8B%E5%86%8D%E7%94%A8-guard/"/>
+    <id>/2016/07/18/想一下再用-guard/</id>
     <published>2016-07-18T08:33:40.000Z</published>
     <updated>2016-07-18T08:34:09.000Z</updated>
     
@@ -284,14 +284,14 @@ closureTest()
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>集成 Weex 注意事项</title>
-    <link href="https://kyxu.tech/2016/06/19/%E9%9B%86%E6%88%90-Weex-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
-    <id>https://kyxu.tech/2016/06/19/集成-Weex-注意事项/</id>
+    <link href="/2016/06/19/%E9%9B%86%E6%88%90-Weex-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>/2016/06/19/集成-Weex-注意事项/</id>
     <published>2016-06-19T15:52:32.000Z</published>
     <updated>2016-06-19T15:53:04.000Z</updated>
     
@@ -350,14 +350,14 @@ target &lt;span class=&quot;string&quot;&gt;&#39;WeexDemo&#39;&lt;/span&gt; &lt;
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>Controller 之间使用代理传值</title>
-    <link href="https://kyxu.tech/2016/05/18/Controller-%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E4%BC%A0%E5%80%BC/"/>
-    <id>https://kyxu.tech/2016/05/18/Controller-之间使用代理传值/</id>
+    <link href="/2016/05/18/Controller-%E4%B9%8B%E9%97%B4%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E4%BC%A0%E5%80%BC/"/>
+    <id>/2016/05/18/Controller-之间使用代理传值/</id>
     <published>2016-05-17T16:53:52.000Z</published>
     <updated>2016-05-17T16:54:31.000Z</updated>
     
@@ -456,14 +456,14 @@ target &lt;span class=&quot;string&quot;&gt;&#39;WeexDemo&#39;&lt;/span&gt; &lt;
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>UITableView 结合 UISearchBar 问题解决</title>
-    <link href="https://kyxu.tech/2016/05/06/UITableView-%E7%BB%93%E5%90%88-UISearchBar-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    <id>https://kyxu.tech/2016/05/06/UITableView-结合-UISearchBar-问题解决/</id>
+    <link href="/2016/05/06/UITableView-%E7%BB%93%E5%90%88-UISearchBar-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    <id>/2016/05/06/UITableView-结合-UISearchBar-问题解决/</id>
     <published>2016-05-06T09:36:26.000Z</published>
     <updated>2016-05-06T09:36:55.000Z</updated>
     
@@ -490,14 +490,14 @@ tableView&lt;span class=&quot;class&quot;&gt;.tableHeaderView&lt;/span&gt; = con
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>初识函数式 Swift 实用</title>
-    <link href="https://kyxu.tech/2016/04/29/%E5%88%9D%E8%AF%86%E5%87%BD%E6%95%B0%E5%BC%8F-Swift-%E5%AE%9E%E7%94%A8/"/>
-    <id>https://kyxu.tech/2016/04/29/初识函数式-Swift-实用/</id>
+    <link href="/2016/04/29/%E5%88%9D%E8%AF%86%E5%87%BD%E6%95%B0%E5%BC%8F-Swift-%E5%AE%9E%E7%94%A8/"/>
+    <id>/2016/04/29/初识函数式-Swift-实用/</id>
     <published>2016-04-29T09:20:15.000Z</published>
     <updated>2016-04-29T09:20:40.000Z</updated>
     
@@ -572,14 +572,14 @@ userImage.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>从 setNeedsLayout 说起</title>
-    <link href="https://kyxu.tech/2016/04/27/%E4%BB%8E-setNeedsLayout-%E8%AF%B4%E8%B5%B7/"/>
-    <id>https://kyxu.tech/2016/04/27/从-setNeedsLayout-说起/</id>
+    <link href="/2016/04/27/%E4%BB%8E-setNeedsLayout-%E8%AF%B4%E8%B5%B7/"/>
+    <id>/2016/04/27/从-setNeedsLayout-说起/</id>
     <published>2016-04-27T08:01:39.000Z</published>
     <updated>2016-04-27T08:03:43.000Z</updated>
     
@@ -662,14 +662,14 @@ userImage.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>在这个行当，不做程序员也得懂技术</title>
-    <link href="https://kyxu.tech/2016/04/17/%E5%9C%A8%E8%BF%99%E4%B8%AA%E8%A1%8C%E5%BD%93%EF%BC%8C%E4%B8%8D%E5%81%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%9F%E5%BE%97%E6%87%82%E6%8A%80%E6%9C%AF/"/>
-    <id>https://kyxu.tech/2016/04/17/在这个行当，不做程序员也得懂技术/</id>
+    <link href="/2016/04/17/%E5%9C%A8%E8%BF%99%E4%B8%AA%E8%A1%8C%E5%BD%93%EF%BC%8C%E4%B8%8D%E5%81%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%9F%E5%BE%97%E6%87%82%E6%8A%80%E6%9C%AF/"/>
+    <id>/2016/04/17/在这个行当，不做程序员也得懂技术/</id>
     <published>2016-04-17T04:51:45.000Z</published>
     <updated>2016-04-17T04:52:29.000Z</updated>
     
@@ -748,14 +748,14 @@ alert&lt;span class=&quot;variable&quot;&gt;.addAction&lt;/span&gt;(&lt;span cla
     </summary>
     
     
-      <category term="其他" scheme="https://kyxu.tech/tags/%E5%85%B6%E4%BB%96/"/>
+      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
   <entry>
     <title>ViewController 减负记录</title>
-    <link href="https://kyxu.tech/2016/04/16/ViewController-%E5%87%8F%E8%B4%9F%E8%AE%B0%E5%BD%95/"/>
-    <id>https://kyxu.tech/2016/04/16/ViewController-减负记录/</id>
+    <link href="/2016/04/16/ViewController-%E5%87%8F%E8%B4%9F%E8%AE%B0%E5%BD%95/"/>
+    <id>/2016/04/16/ViewController-减负记录/</id>
     <published>2016-04-16T12:58:18.000Z</published>
     <updated>2016-04-16T13:04:30.000Z</updated>
     
@@ -809,14 +809,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>实习求职终结篇</title>
-    <link href="https://kyxu.tech/2016/04/15/%E5%AE%9E%E4%B9%A0%E6%B1%82%E8%81%8C%E7%BB%88%E7%BB%93%E7%AF%87/"/>
-    <id>https://kyxu.tech/2016/04/15/实习求职终结篇/</id>
+    <link href="/2016/04/15/%E5%AE%9E%E4%B9%A0%E6%B1%82%E8%81%8C%E7%BB%88%E7%BB%93%E7%AF%87/"/>
+    <id>/2016/04/15/实习求职终结篇/</id>
     <published>2016-04-15T14:01:39.000Z</published>
     <updated>2016-08-23T01:27:28.000Z</updated>
     
@@ -831,8 +831,8 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
 &lt;/ol&gt;
 &lt;h2 id=&quot;找内推&quot;&gt;找内推&lt;/h2&gt;&lt;p&gt;在各个公司的内推期间，我拿到了腾讯、阿里、网易、蘑菇街4家的内推（京东也可以拿的，但是他们竟然不招 iOS 开发），而最终给我 offer 的阿里，帮我内推的人我压根就不认识，或许当初没有间接找人内推阿里，我现在连个机会都没有。&lt;/p&gt;
 &lt;p&gt;所以想说，只要认真去联系一下，找一找中间人，其实联系上哪家公司的员工都不难。因为觉得自己不认识这家公司的人，就想不走内推流程或者干脆不去应聘，实在太可惜了。&lt;/p&gt;
-&lt;h2 id=&quot;电面&quot;&gt;电面&lt;/h2&gt;&lt;p&gt;非常感谢腾讯的师兄，因为他的帮忙，我同时接到了手机 QQ 和微云两个部门的电面，所以按说只有两轮的电面，我接到了4次，涨了不少经验。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot;&gt;腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot;&gt;腾讯 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;阿里这边是手机淘宝部门，一路都很顺利，一面打了7分钟电话，都是简单问题（运气好重要），二面没聊技术（和我个人简历有关），三面是正规的技术面，四面HR是很普通的聊天。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot;&gt;阿里 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot;&gt;阿里 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;电面&quot;&gt;电面&lt;/h2&gt;&lt;p&gt;非常感谢腾讯的师兄，因为他的帮忙，我同时接到了手机 QQ 和微云两个部门的电面，所以按说只有两轮的电面，我接到了4次，涨了不少经验。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/08/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;腾讯 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;阿里这边是手机淘宝部门，一路都很顺利，一面打了7分钟电话，都是简单问题（运气好重要），二面没聊技术（和我个人简历有关），三面是正规的技术面，四面HR是很普通的聊天。之前的文章：&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里 iOS 开发实习电话面试记录（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kyxu.tech/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里 iOS 开发实习电话面试记录（二）&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这里可以给的一点建议是：不要遇到答不出来的问题就一个字都不说，猜也好、临时分析也好，至少展现一点主动分析问题的状态。&lt;/p&gt;
 &lt;h2 id=&quot;笔试&quot;&gt;笔试&lt;/h2&gt;&lt;p&gt;这里还是想吐槽一下，这些大公司都有些偷懒，笔试页面一看就是外包项目，感觉是建了一个题库，考试的时候直接从题库随机抽题目。&lt;/p&gt;
 &lt;p&gt;笔试非常考验 CS 基础，数据库、操作系统、计算机网络、算法、C++ 的东西会的越多越好（实际上也确实是会的越多越好）。但是给客户端开发实习生同一套题目我实在是不服，有些 Android 题目给我做真是题都没看懂……&lt;/p&gt;
@@ -848,14 +848,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="面试" scheme="https://kyxu.tech/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>扯淡 Method Swizzling</title>
-    <link href="https://kyxu.tech/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
-    <id>https://kyxu.tech/2016/04/06/扯淡-Method-Swizzling/</id>
+    <link href="/2016/04/06/%E6%89%AF%E6%B7%A1-Method-Swizzling/"/>
+    <id>/2016/04/06/扯淡-Method-Swizzling/</id>
     <published>2016-04-06T03:11:29.000Z</published>
     <updated>2016-04-09T15:56:44.000Z</updated>
     
@@ -933,14 +933,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>阿里 iOS 开发实习电话面试记录（二）</title>
-    <link href="https://kyxu.tech/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://kyxu.tech/2016/03/29/阿里-iOS-开发实习电话面试记录（二）/</id>
+    <link href="/2016/03/29/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>/2016/03/29/阿里-iOS-开发实习电话面试记录（二）/</id>
     <published>2016-03-29T06:58:00.000Z</published>
     <updated>2016-04-09T15:57:20.000Z</updated>
     
@@ -980,14 +980,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="面试" scheme="https://kyxu.tech/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Swift Print 高级用法</title>
-    <link href="https://kyxu.tech/2016/03/27/Swift-Print-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
-    <id>https://kyxu.tech/2016/03/27/Swift-Print-高级用法/</id>
+    <link href="/2016/03/27/Swift-Print-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
+    <id>/2016/03/27/Swift-Print-高级用法/</id>
     <published>2016-03-27T06:59:00.000Z</published>
     <updated>2016-04-09T15:57:44.000Z</updated>
     
@@ -1001,14 +1001,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="iOS 开发" scheme="https://kyxu.tech/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>阿里 iOS 开发实习电话面试记录（一）</title>
-    <link href="https://kyxu.tech/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://kyxu.tech/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/</id>
+    <link href="/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/</id>
     <published>2016-03-19T06:59:54.000Z</published>
     <updated>2016-04-09T07:12:13.000Z</updated>
     
@@ -1037,14 +1037,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="面试" scheme="https://kyxu.tech/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>腾讯 iOS 开发实习电话面试记录（二）</title>
-    <link href="https://kyxu.tech/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://kyxu.tech/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/</id>
+    <link href="/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/</id>
     <published>2016-03-16T07:04:28.000Z</published>
     <updated>2016-04-09T07:12:51.000Z</updated>
     
@@ -1089,14 +1089,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="面试" scheme="https://kyxu.tech/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Adobe Xd 简明教程 &lt;对比 Sketch&gt;</title>
-    <link href="https://kyxu.tech/2016/03/16/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
-    <id>https://kyxu.tech/2016/03/16/Adobe-Xd-简明教程-对比-Sketch/</id>
+    <link href="/2016/03/16/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
+    <id>/2016/03/16/Adobe-Xd-简明教程-对比-Sketch/</id>
     <published>2016-03-16T07:02:32.000Z</published>
     <updated>2016-04-09T16:04:59.000Z</updated>
     
@@ -1128,14 +1128,14 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="设计" scheme="https://kyxu.tech/tags/%E8%AE%BE%E8%AE%A1/"/>
+      <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>在你的 App 中使用《一拳超人》背景色</title>
-    <link href="https://kyxu.tech/2016/03/14/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
-    <id>https://kyxu.tech/2016/03/14/在你的-App-中使用《一拳超人》背景色/</id>
+    <link href="/2016/03/14/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
+    <id>/2016/03/14/在你的-App-中使用《一拳超人》背景色/</id>
     <published>2016-03-14T07:05:32.000Z</published>
     <updated>2016-04-09T16:07:12.000Z</updated>
     
@@ -1159,7 +1159,7 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     </summary>
     
     
-      <category term="开源" scheme="https://kyxu.tech/tags/%E5%BC%80%E6%BA%90/"/>
+      <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
