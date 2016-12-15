@@ -62,7 +62,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KyXu" />
+  <meta name="keywords" content="iOS 开发," />
 
 
 
@@ -78,15 +78,35 @@
 
 
 
-<meta name="description" content="大四学生 / 独立开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KyXu Tech">
-<meta property="og:url" content="/archives/2016/page/3/index.html">
+<meta name="description" content="鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 Bridging-Header.h 的东西来在 Swift 项目中使用 OC 实现的框架，当然前提是在这个项目里我们不能或者不想使用 Cocoapods 或 Carthage。
+在 iOS 8 之后，我们可以使用 framework 了，相比于麻烦地操作一遍一下步骤：
+
+创建一个 Bridging-Header.h 文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Carthage 摆脱 Bridging-Header.h">
+<meta property="og:url" content="/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="大四学生 / 独立开发">
+<meta property="og:description" content="鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 Bridging-Header.h 的东西来在 Swift 项目中使用 OC 实现的框架，当然前提是在这个项目里我们不能或者不想使用 Cocoapods 或 Carthage。
+在 iOS 8 之后，我们可以使用 framework 了，相比于麻烦地操作一遍一下步骤：
+
+创建一个 Bridging-Header.h 文">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/15/27c8704388d6f6137d4f672af6f9329e.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/15/da901c48d1dbf1d12c5626e9a250f22e.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/15/64013d4372bd5bd7e8999120be2d7063.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/15/547a33d675aed3289be830eee1a3626c.jpg">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2016/12/15/2f93c7519436e64527f9dd6246efe674.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1fariuwlecgj30mp06g3ze.jpg">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/a84e3c3788aa509b1ff9">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/4a9d2be042a49e5befba">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/7180d99521ed7d6e5e01">
+<meta property="og:updated_time" content="2016-12-15T07:54:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KyXu Tech">
-<meta name="twitter:description" content="大四学生 / 独立开发">
+<meta name="twitter:title" content="用 Carthage 摆脱 Bridging-Header.h">
+<meta name="twitter:description" content="鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 Bridging-Header.h 的东西来在 Swift 项目中使用 OC 实现的框架，当然前提是在这个项目里我们不能或者不想使用 Cocoapods 或 Carthage。
+在 iOS 8 之后，我们可以使用 framework 了，相比于麻烦地操作一遍一下步骤：
+
+创建一个 Bridging-Header.h 文">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2016/12/15/27c8704388d6f6137d4f672af6f9329e.jpg">
 
 
 
@@ -104,7 +124,7 @@
   };
 </script>
 
-  <title> 归档 | KyXu Tech </title>
+  <title> 用 Carthage 摆脱 Bridging-Header.h | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -125,7 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,402 +263,167 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-        
-      好! 目前共计 55 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/14/在你的-App-中使用《一拳超人》背景色/" itemprop="url">
-              
-                <span itemprop="name">在你的 App 中使用《一拳超人》背景色</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-14T15:05:32+08:00"
-              content="2016-03-14" >
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/13/伪造一个-SFSafariViewController/" itemprop="url">
-              
-                <span itemprop="name">伪造一个 SFSafariViewController</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-13T15:06:54+08:00"
-              content="2016-03-13" >
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/12/使用-protocol-与-extension-来限制函数作用域/" itemprop="url">
-              
-                <span itemprop="name">使用 protocol 与 extension 来限制函数作用域</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-12T15:07:31+08:00"
-              content="2016-03-12" >
-          03-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/11/我用-JS-抓了-SwiftGG，做了个客户端/" itemprop="url">
-              
-                <span itemprop="name">我用 JS 抓了 SwiftGG，做了个客户端</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-11T15:08:48+08:00"
-              content="2016-03-11" >
-          03-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/08/腾讯-iOS-开发实习电话面试记录（一）/" itemprop="url">
-              
-                <span itemprop="name">腾讯 iOS 开发实习电话面试记录（一）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-08T15:09:35+08:00"
-              content="2016-03-08" >
-          03-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/29/两个函数搞定本地存储/" itemprop="url">
-              
-                <span itemprop="name">两个函数搞定本地存储</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-29T15:10:22+08:00"
-              content="2016-02-29" >
-          02-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/18/发布-Widget-App-注意事项/" itemprop="url">
-              
-                <span itemprop="name">发布 Widget App 注意事项</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-18T15:16:49+08:00"
-              content="2016-02-18" >
-          02-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/13/App-上架相关事宜、解决技巧/" itemprop="url">
-              
-                <span itemprop="name">App 上架相关事宜、解决技巧</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-13T15:18:45+08:00"
-              content="2016-02-13" >
-          02-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/26/修改-present-出来的-ViewController-状态栏颜色/" itemprop="url">
-              
-                <span itemprop="name">修改 present 出来的 ViewController 状态栏颜色</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-26T15:20:55+08:00"
-              content="2016-01-26" >
-          01-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/18/在-App-中加入-AdMob-广告-入门介绍与编程技巧/" itemprop="url">
-              
-                <span itemprop="name">在 App 中加入 AdMob 广告 - 入门介绍与编程技巧</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-18T15:19:57+08:00"
-              content="2016-01-18" >
-          01-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2016/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2016/">1</a><a class="page-number" href="/archives/2016/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用 Carthage 摆脱 Bridging-Header.h
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-15T15:54:05+08:00" content="2016-12-15">
+              2016-12-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/用-Carthage-摆脱-Bridging-Header-h/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/" class="leancloud_visitors" data-flag-title="用 Carthage 摆脱 Bridging-Header.h">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
 
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 <a href="http://www.jianshu.com/p/27b9ff63ab6f" target="_blank" rel="external">Bridging-Header.h</a> 的东西来在 Swift 项目中使用 OC 实现的框架，<strong>当然前提是在这个项目里我们不能或者不想使用 Cocoapods 或 Carthage</strong>。</p>
+<p>在 iOS 8 之后，我们可以使用 <a href="https://skyline75489.github.io/post/2015-8-14_ios_static_dynamic_framework_learning.html" target="_blank" rel="external">framework</a> 了，相比于麻烦地操作一遍一下步骤：</p>
+<ol>
+<li>创建一个 Bridging-Header.h 文件</li>
+<li>在 target（还要注意不能是 project）的 Build Settings 找到 Objective-C Bridging Header 项</li>
+<li>然后在里面填上路径，还要注意一下 绝对/相对 路径</li>
+</ol>
+<p>我更愿意直接把 xxx.framework 放到项目里，然后使用的时候在顶部写上 <code>import XXX</code>。如果这个框架是 AFNetworking 的话，我们可以在它的 <a href="https://github.com/AFNetworking/AFNetworking/releases" target="_blank" rel="external">releases</a> 页面下载到 <strong>AFNetworking.framework.zip</strong>。<br><img src="https://user-gold-cdn.xitu.io/2016/12/15/27c8704388d6f6137d4f672af6f9329e.jpg" alt=""><br>但更多像 <a href="https://github.com/SVProgressHUD/SVProgressHUD" target="_blank" rel="external">SVProgressHUD</a> 这样的框架，你只能找到源码，并没有现成的 framework 文件给你用。<br><img src="https://user-gold-cdn.xitu.io/2016/12/15/da901c48d1dbf1d12c5626e9a250f22e.jpg" alt=""></p>
+<h2 id="利用_Carthage_打包_framework">利用 Carthage 打包 framework</h2><p><img src="https://user-gold-cdn.xitu.io/2016/12/15/64013d4372bd5bd7e8999120be2d7063.jpg" alt=""><br>好在它支持了 Carthage。创建了一个文件夹，里面初始只有一个 cartfile<br><img src="https://user-gold-cdn.xitu.io/2016/12/15/547a33d675aed3289be830eee1a3626c.jpg" alt=""><br>cartfile 里面随便写了俩常用框架<br><img src="https://user-gold-cdn.xitu.io/2016/12/15/2f93c7519436e64527f9dd6246efe674.jpg" alt=""><br>在终端执行 <code>carthage update</code> 之后<br><img src="http://ww1.sinaimg.cn/large/006y8lVagw1fariuwlecgj30mp06g3ze.jpg" alt=""><br>现在我们可以直接把打包好的 framework 文件复制到项目里使用了，以后想用什么框架都可以在这个 cartfile 里面添加，在这个文件夹里取用 framework。</p>
+<p>说白了就是一个利用 Carthage 找 framework 文件的方法。</p>
+<p>需要注意的是，如果你想通过自行编译源码，然后在 Products 文件夹里取用 framework，可能这个文件的架构会有问题。</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/a84e3c3788aa509b1ff9" alt=""><br><img src="https://dn-mhke0kuv.qbox.me/4a9d2be042a49e5befba" alt=""><br><img src="https://dn-mhke0kuv.qbox.me/7180d99521ed7d6e5e01" alt=""></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/wechatpay.png" alt="KyXu WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xssu3.com2.z0.glb.clouddn.com/alipay.png" alt="KyXu Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS-开发/" rel="tag">#iOS 开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/03/用泛型简化-instantiateViewController/" rel="next" title="用泛型简化 instantiateViewController">
+                <i class="fa fa-chevron-left"></i> 用泛型简化 instantiateViewController
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -646,6 +431,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/15/用-Carthage-摆脱-Bridging-Header-h/"
+           data-title="用 Carthage 摆脱 Bridging-Header.h" data-url="/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -665,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -789,6 +591,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用_Carthage_打包_framework"><span class="nav-number">1.</span> <span class="nav-text">利用 Carthage 打包 framework</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -883,7 +696,9 @@
   
 
   
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-11-03T08:37:28.000Z</updated>
+  <updated>2016-12-15T07:54:35.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用 Carthage 摆脱 Bridging-Header.h</title>
+    <link href="/2016/12/15/%E7%94%A8-Carthage-%E6%91%86%E8%84%B1-Bridging-Header-h/"/>
+    <id>/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/</id>
+    <published>2016-12-15T07:54:05.000Z</published>
+    <updated>2016-12-15T07:54:35.000Z</updated>
+    
+    <content type="html">&lt;p&gt;鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 &lt;a href=&quot;http://www.jianshu.com/p/27b9ff63ab6f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bridging-Header.h&lt;/a&gt; 的东西来在 Swift 项目中使用 OC 实现的框架，&lt;strong&gt;当然前提是在这个项目里我们不能或者不想使用 Cocoapods 或 Carthage&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在 iOS 8 之后，我们可以使用 &lt;a href=&quot;https://skyline75489.github.io/post/2015-8-14_ios_static_dynamic_framework_learning.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;framework&lt;/a&gt; 了，相比于麻烦地操作一遍一下步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建一个 Bridging-Header.h 文件&lt;/li&gt;
+&lt;li&gt;在 target（还要注意不能是 project）的 Build Settings 找到 Objective-C Bridging Header 项&lt;/li&gt;
+&lt;li&gt;然后在里面填上路径，还要注意一下 绝对/相对 路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我更愿意直接把 xxx.framework 放到项目里，然后使用的时候在顶部写上 &lt;code&gt;import XXX&lt;/code&gt;。如果这个框架是 AFNetworking 的话，我们可以在它的 &lt;a href=&quot;https://github.com/AFNetworking/AFNetworking/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;releases&lt;/a&gt; 页面下载到 &lt;strong&gt;AFNetworking.framework.zip&lt;/strong&gt;。&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2016/12/15/27c8704388d6f6137d4f672af6f9329e.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;但更多像 &lt;a href=&quot;https://github.com/SVProgressHUD/SVProgressHUD&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SVProgressHUD&lt;/a&gt; 这样的框架，你只能找到源码，并没有现成的 framework 文件给你用。&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2016/12/15/da901c48d1dbf1d12c5626e9a250f22e.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;利用_Carthage_打包_framework&quot;&gt;利用 Carthage 打包 framework&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2016/12/15/64013d4372bd5bd7e8999120be2d7063.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;好在它支持了 Carthage。创建了一个文件夹，里面初始只有一个 cartfile&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2016/12/15/547a33d675aed3289be830eee1a3626c.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;cartfile 里面随便写了俩常用框架&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2016/12/15/2f93c7519436e64527f9dd6246efe674.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;在终端执行 &lt;code&gt;carthage update&lt;/code&gt; 之后&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006y8lVagw1fariuwlecgj30mp06g3ze.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;现在我们可以直接把打包好的 framework 文件复制到项目里使用了，以后想用什么框架都可以在这个 cartfile 里面添加，在这个文件夹里取用 framework。&lt;/p&gt;
+&lt;p&gt;说白了就是一个利用 Carthage 找 framework 文件的方法。&lt;/p&gt;
+&lt;p&gt;需要注意的是，如果你想通过自行编译源码，然后在 Products 文件夹里取用 framework，可能这个文件的架构会有问题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://dn-mhke0kuv.qbox.me/a84e3c3788aa509b1ff9&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://dn-mhke0kuv.qbox.me/4a9d2be042a49e5befba&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://dn-mhke0kuv.qbox.me/7180d99521ed7d6e5e01&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;鉴于现在大部分 iOS 常用库都还是用 OC 实现的，我们常常需要用到一个叫做 &lt;a href=&quot;http://www.jianshu.com/p/27b9ff63ab6f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bridging-Header.h&lt;
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>用泛型简化 instantiateViewController</title>
@@ -1129,37 +1161,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
     
       <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在你的 App 中使用《一拳超人》背景色</title>
-    <link href="/2016/03/14/%E5%9C%A8%E4%BD%A0%E7%9A%84-App-%E4%B8%AD%E4%BD%BF%E7%94%A8%E3%80%8A%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA%E3%80%8B%E8%83%8C%E6%99%AF%E8%89%B2/"/>
-    <id>/2016/03/14/在你的-App-中使用《一拳超人》背景色/</id>
-    <published>2016-03-14T07:05:32.000Z</published>
-    <updated>2016-04-09T16:07:12.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/opc.gif&quot; alt=&quot;OnePunchColor.gif&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;这是_Github_项目地址&quot;&gt;&lt;a href=&quot;https://github.com/OpenMarshall/OnePunchColor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是 Github 项目地址&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;br&gt;我从《一拳超人》动画中吸取了22种和白色非常匹配的颜色，现在你可以通过 &lt;code&gt;UIColor&lt;/code&gt; 或者 &lt;code&gt;UIView&lt;/code&gt; 来通过一行代码调用这些颜色。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// quick version&lt;/span&gt;
-self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.punch&lt;/span&gt;()
-
-&lt;span class=&quot;comment&quot;&gt;// slow version&lt;/span&gt;
-self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.punchWithInterval&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)
-
-&lt;span class=&quot;comment&quot;&gt;// complete version&lt;/span&gt;
-self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.backgroundColor&lt;/span&gt; = UIColor.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;onePunchColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;AppStore_上的这个_App_应用了这段代码&quot;&gt;&lt;a href=&quot;https://itunes.apple.com/app/id1078241816&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AppStore 上的这个 App&lt;/a&gt; 应用了这段代码&lt;/h3&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/opc.gif&quot; alt=&quot;OnePunchColor.gif&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;这是_Github_项目地址&quot;&gt;&lt;a href=&quot;https://github.com
-    
-    </summary>
-    
-    
-      <category term="开源" scheme="/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
