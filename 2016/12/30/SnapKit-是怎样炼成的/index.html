@@ -78,19 +78,34 @@
 
 
 
-<meta name="description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
+<meta name="description" content="前言这是对 Swift 布局框架 SnapKit 的源码的一点分析，尝试搞清，一个好的布局框架，背后都做了些什么。
+介绍 SnapKit 中的一些类ConstraintView等同于 UIView
+ConstraintAttributes用于构造约束关系的各种元素（上下左右等）
+ConstraintDescription包含了包括 ConstraintAttributes 在内的各种与约束有关的元">
 <meta property="og:type" content="article">
-<meta property="og:title" content="全局设定 UINavigationBar 的 UI">
-<meta property="og:url" content="/2015/11/14/全局设定-UINavigationBar-的-UI/index.html">
+<meta property="og:title" content="SnapKit 是怎样炼成的">
+<meta property="og:url" content="/2016/12/30/SnapKit-是怎样炼成的/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png">
-<meta property="og:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui1.png">
-<meta property="og:updated_time" content="2016-04-09T16:15:45.000Z">
+<meta property="og:description" content="前言这是对 Swift 布局框架 SnapKit 的源码的一点分析，尝试搞清，一个好的布局框架，背后都做了些什么。
+介绍 SnapKit 中的一些类ConstraintView等同于 UIView
+ConstraintAttributes用于构造约束关系的各种元素（上下左右等）
+ConstraintDescription包含了包括 ConstraintAttributes 在内的各种与约束有关的元">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fb96s29xlwj30ga0953z6.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fb96sbpzsyj30hu0i6gnx.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fb96sl1i0tj30kp0amjtb.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006y8lVagw1fb96stfw47j30oy0dmdig.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fb96t47gtcj308209l3yv.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fb96taf2zpj30c1050q3i.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fb96u3rw6tj30dk0763zt.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fb96ubrh7vj30f8072js2.jpg">
+<meta property="og:updated_time" content="2016-12-30T14:42:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="全局设定 UINavigationBar 的 UI">
-<meta name="twitter:description" content="如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。因为 TabBar 只有一个，直接在 UITabBarController 的">
-<meta name="twitter:image" content="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png">
+<meta name="twitter:title" content="SnapKit 是怎样炼成的">
+<meta name="twitter:description" content="前言这是对 Swift 布局框架 SnapKit 的源码的一点分析，尝试搞清，一个好的布局框架，背后都做了些什么。
+介绍 SnapKit 中的一些类ConstraintView等同于 UIView
+ConstraintAttributes用于构造约束关系的各种元素（上下左右等）
+ConstraintDescription包含了包括 ConstraintAttributes 在内的各种与约束有关的元">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fb96s29xlwj30ga0953z6.jpg">
 
 
 
@@ -108,7 +123,7 @@
   };
 </script>
 
-  <title> 全局设定 UINavigationBar 的 UI | KyXu Tech </title>
+  <title> SnapKit 是怎样炼成的 | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +283,7 @@
             
             
               
-                全局设定 UINavigationBar 的 UI
+                SnapKit 是怎样炼成的
               
             
           </h1>
@@ -280,8 +295,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-14T15:26:25+08:00" content="2015-11-14">
-              2015-11-14
+            <time itemprop="dateCreated" datetime="2016-12-30T22:41:34+08:00" content="2016-12-30">
+              2016-12-30
             </time>
           </span>
 
@@ -291,8 +306,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/14/全局设定-UINavigationBar-的-UI/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/14/全局设定-UINavigationBar-的-UI/" itemprop="commentsCount"></span>
+                <a href="/2016/12/30/SnapKit-是怎样炼成的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/SnapKit-是怎样炼成的/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,7 +317,7 @@
 
           
           
-             <span id="/2015/11/14/全局设定-UINavigationBar-的-UI/" class="leancloud_visitors" data-flag-title="全局设定 UINavigationBar 的 UI">
+             <span id="/2016/12/30/SnapKit-是怎样炼成的/" class="leancloud_visitors" data-flag-title="SnapKit 是怎样炼成的">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -323,24 +338,93 @@
       
 
       
-        <p><img src="http://7xssu3.com2.z0.glb.clouddn.com/ui0.png" alt="App Screen Shot.png"><br>如图，是个很简明的 UITabBarController 分出3个 UINavigationController，每个 UINavigationController 再跟一个 UITableViewController 的结构。<br>TabBar 和 NavigationBar  都是以浅海蓝色为背景，文字和按钮为白色的设计。<br>因为 TabBar 只有一个，直接在 UITabBarController 的代码里写下面这段就可以<br>（globalBarTintColor是我自定义的浅海蓝色，后面还会出现）</p>
-<pre><code>self<span class="class">.tabBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
-self<span class="class">.tabBar</span><span class="class">.barTintColor</span> = globalBarTintColor
-</code></pre><p>然而 NavigationBar 有三个，甚至还会更多，一个个分别去设定颜色显然耦合性不够低，改起来也很麻烦。<br>下面给出一种全局统一设定的方法，写在 AppDelegate 文件的 didFinishLaunchingWithOptions 方法里：</p>
-<pre><code>func application(application: <span class="built_in">UIApplication</span>, didFinishLaunchingWithOptions launchOptions: [<span class="built_in">NSObject</span>: AnyObject]?) -&gt; Bool {
+        <h1 id="前言">前言</h1><p>这是对 Swift 布局框架 <a href="https://github.com/SnapKit/SnapKit" target="_blank" rel="external">SnapKit</a> 的源码的一点分析，尝试搞清，一个好的布局框架，背后都做了些什么。</p>
+<h1 id="介绍_SnapKit_中的一些类">介绍 SnapKit 中的一些类</h1><p><strong>ConstraintView</strong><br>等同于 UIView</p>
+<p><strong>ConstraintAttributes</strong><br>用于构造约束关系的各种元素（上下左右等）</p>
+<p><strong>ConstraintDescription</strong><br>包含了包括 ConstraintAttributes 在内的各种与约束有关的元素，一个 ConstraintDescription 实例，就可以提供与一种约束有关的所有内容。</p>
+<p><strong>ConstraintMaker</strong><br>构造约束关系的起点，提供了 <code>makeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -&gt; Void)</code> 方法来为程序员提供了描述约束的空间，也可以通过 left right top bottom centerX centerY 等属性，去生成一个 ConstraintMakerExtendable 实例（见下面）</p>
+<p><strong>ConstraintMakerExtendable（继承 ConstraintMakerRelatable）</strong><br>提供 left right top bottom leading trailing edges size margins 等内容，用以产生一个 ConstraintMakerRelatable 类型的实例</p>
+<p><strong>ConstraintMakerRelatable</strong><br>直接用于构造约束关系，也是常用方法 <code>equalTo(_ other: ConstraintRelatableTarget) -&gt; ConstraintMakerEditable</code> 与 <code>equalToSuperview</code> 的来源。核心方法是 <code>relatedTo(_ other: ConstraintRelatableTarget, relation: ConstraintRelation, file: String, line: UInt) -&gt; ConstraintMakerEditable</code>，返回 ConstraintMakerEditable 类型的实例</p>
+<p><strong>ConstraintMakerEditable（继承 ConstraintMakerPriortizable）</strong><br>在设定约束的宽度、高度以及偏移的时候，提供相应的加减乘除方法，返回 ConstraintMakerPriortizable 类型的实例</p>
+<p><strong>ConstraintMakerPriortizable（继承 ConstraintMakerFinalizable）</strong><br>提供方法来设置约束的 priority，返回 ConstraintMakerFinalizable 类型的实例</p>
+<p><strong>ConstraintMakerFinalizable</strong><br>一个只有一个类型为 ConstraintDescription 的属性的类，正如它的类名，有一个 ConstraintMakerFinalizable 实例，就得到了对于一个约束的完整描述。</p>
+<hr>
+<p>至此，我们已经知道 SnapKit 是靠什么来确定了三个东西：</p>
+<ol>
+<li>谁在做约束（ConstraintView）</li>
+<li>怎么做约束（ConstraintMaker）</li>
+<li>约束是什么（ConstraintDescription）</li>
+</ol>
+<pre><code><span class="keyword">let</span> aView = <span class="type">UIView</span><span class="literal">()</span>
+aView.snp.makeConstraints({ make <span class="keyword">in</span>
+    make.width.equalToSuperview<span class="literal">()</span>.dividedBy(<span class="number">2</span>).priority(<span class="number">100</span>)
+})
+</code></pre><p>当我们写下这样的语句时，先忽略掉 <code>snp</code> 是什么不管，里面设定 aView 的宽度为它的父视图的一半的这行约束语句，执行了这样的逻辑：</p>
+<ol>
+<li>ConstraintMaker 提供 <code>makeConstraints</code> 方法来让我们写约束的同时，开始维护了一个 ConstraintDescription 数组，叫 <code>descriptions</code></li>
+<li>make 本身是 ConstraintMaker 类型的</li>
+<li>在我们写下 <code>.width</code> 时，<code>descriptions</code> 数组第一次加入内容（<code>self.description</code>），同时我们用这个内容生成了一个 ConstraintMakerRelatable 实例</li>
+<li>在我们写下 <code>.equalToSuperview()</code> 时，上一步中的内容（<code>self.description</code>）继续添加信息，同时我们用它生成了一个 ConstraintMakerEditable 实例</li>
+<li>之后的 <code>.dividedBy(2).priority(100)</code> 使得之前的 ConstraintMakerEditable 实例变成了一个 ConstraintMakerFinalizable 实例，这个实例的 description 属性的类型是 ConstraintDescription，它包含了我们所描述的全部内容。但由于 ConstraintMakerEditable 本身就继承自 ConstraintMakerFinalizable，所以 <code>.dividedBy(2).priority(100)</code> 这一部分即便不写，这条语句在语法上也已经完成。<br><img src="https://ww2.sinaimg.cn/large/006y8lVagw1fb96s29xlwj30ga0953z6.jpg" alt=""></li>
+</ol>
+<p>做个总结：到这里我们发现 ConstraintMaker 以及和它相关的类，构造了一套 <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="external">DSL</a> 来让我们可以轻松地写出约束语句，而这些语句把信息都放到了一个 ConstraintDescription 实例（<code>self.description</code>）里面，但我们仍然不知道它是如何以 UIKit 里面的 NSLayoutConstraint 的形式作用的。</p>
+<h1 id="snp_是什么">snp 是什么</h1><p>SnapKit 里面存在这样一些东西：<br><code>public protocol ConstraintDSL {}</code><br><code>public protocol ConstraintBasicAttributesDSL : ConstraintDSL {}</code><br><code>public protocol ConstraintAttributesDSL : ConstraintBasicAttributesDSL {}</code><br><code>public struct ConstraintViewDSL: ConstraintAttributesDSL {}</code></p>
+<p>上面我们知道了 <code>aView</code> 作为一个 UIView，它同时也就是一个 ConstraintView，ConstraintView 有一个 snp 的属性，这给我们提供了入口来通过 SnapKit 给任意的 UIView 或 AppKit 里面的 NSView 通过  <code>.snp</code> 这样的语法来写约束。</p>
+<p><strong>这个 snp 属性的类型就是结构体 ConstraintViewDSL</strong></p>
+<p>一看就是面向协议的写法，通过一个个的 extension 来给 protocol 添加功能，最后用 struct 实现出来，就有了 snp 这个属性。</p>
+<pre><code><span class="keyword">let</span> topView = <span class="type">UIView</span><span class="literal">()</span>
+<span class="keyword">let</span> centerView = <span class="type">UIView</span><span class="literal">()</span>
+centerView.snp.makeConstraints({ make <span class="keyword">in</span>
+    make.top.equalTo(topView.snp.bottom).offset(<span class="number">16</span>)
+})
+</code></pre><p>这段代码展现了 snp 的两个作用：</p>
+<ol>
+<li>snp 有 left top right bottom edges size 等一大堆属性，这些属性的类型是 ConstraintItem，这是用于构造约束位置关系的<br><img src="https://ww3.sinaimg.cn/large/006y8lVagw1fb96sbpzsyj30hu0i6gnx.jpg" alt=""></li>
+<li>snp 作为 ConstraintViewDSL，有 <code>prepareConstraints</code> <code>makeConstraints</code> <code>remakeConstraints</code> <code>updateConstraints</code> <code>removeConstraints</code> 等函数，我们最常用的是 <code>makeConstraints</code> ，传入一个 closure，在里面写约束关系。这里要注意，我们使用的 <code>makeConstraints</code> 方法来源于 ConstraintViewDSL，但真正实现了构造约束的其实是我们上文里面写的 ConstraintMaker 里面的 <code>makeConstraints</code> 方法，见图：<br><img src="https://ww2.sinaimg.cn/large/006y8lVagw1fb96sl1i0tj30kp0amjtb.jpg" alt=""></li>
+</ol>
+<h1 id="约束是如何作用的">约束是如何作用的</h1><p>到现在我们还是没说，从 snp 到 ConstraintMaker，再到 ConstraintMakerFinalizable 的 description 属性，到底哪里创建了 <strong>NSLayoutConstraint</strong>，答案其实在之前提过多次的 ConstraintMaker 里面</p>
+<pre><code><span class="comment">// public class ConstraintMaker</span>
 
-    <span class="comment">// NavigationBar 颜色，全局设定</span>
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.tintColor</span> = <span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.titleTextAttributes</span> =
-        [<span class="built_in">NSForegroundColorAttributeName</span>:<span class="built_in">UIColor</span><span class="variable">.whiteColor</span>()]
-    <span class="built_in">UINavigationBar</span><span class="variable">.appearance</span>()<span class="variable">.barTintColor</span> = globalBarTintColor
-
-    <span class="keyword">return</span> <span class="literal">true</span>
+<span class="keyword">internal</span> <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">makeConstraints</span><span class="params">(item: LayoutConstraintItem, closure: <span class="params">(<span class="number">_</span> make: ConstraintMaker)</span></span></span> -&gt; <span class="type">Void</span>) {
+    <span class="keyword">let</span> maker = <span class="type">ConstraintMaker</span>(item: item)
+    closure(maker)
+    <span class="keyword">var</span> constraints: [<span class="type">Constraint</span>] = []
+    <span class="keyword">for</span> description <span class="keyword">in</span> maker.descriptions {
+        <span class="keyword">guard</span> <span class="keyword">let</span> constraint = description.constraint <span class="keyword">else</span> {
+            <span class="keyword">continue</span>
+        }
+        constraints.append(constraint)
+    }
+    <span class="keyword">for</span> constraint <span class="keyword">in</span> constraints {
+        constraint.activateIfNeeded(updatingExisting: <span class="literal">false</span>)
+    }
 }
-</code></pre><p><img src="http://7xssu3.com2.z0.glb.clouddn.com/ui1.png" alt="App Screen Shot2.png"><br>这样做的另外一个好处是，可以直接改掉上图圈出来的 NavigationBar 自带按钮的颜色，如果你直接尝试在某个 ViewController 里写</p>
-<pre><code>self.navigationController!<span class="class">.navigationBar</span><span class="class">.tintColor</span> = UIColor.<span class="function"><span class="title">whiteColor</span><span class="params">()</span></span>
-</code></pre><p>这个按钮的颜色貌似是改不掉的（据我刚刚尝试，是这样的）。</p>
-<p><strong>最后：<br>可以看出，上面的写法，直接是在设定 UINavigationBar 这个类的属性，所以依此类推，其他各种UI效果应该都可以这样全局设定。</strong></p>
+
+<span class="keyword">internal</span> <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">updateConstraints</span><span class="params">(item: LayoutConstraintItem, closure: <span class="params">(<span class="number">_</span> make: ConstraintMaker)</span></span></span> -&gt; <span class="type">Void</span>) {
+    <span class="keyword">guard</span> item.constraints.<span class="built_in">count</span> &gt; <span class="number">0</span> <span class="keyword">else</span> {
+        <span class="keyword">self</span>.makeConstraints(item: item, closure: closure)
+        <span class="keyword">return</span>
+    }
+
+    <span class="keyword">let</span> maker = <span class="type">ConstraintMaker</span>(item: item)
+    closure(maker)
+    <span class="keyword">var</span> constraints: [<span class="type">Constraint</span>] = []
+    <span class="keyword">for</span> description <span class="keyword">in</span> maker.descriptions {
+        <span class="keyword">guard</span> <span class="keyword">let</span> constraint = description.constraint <span class="keyword">else</span> {
+            <span class="keyword">continue</span>
+        }
+        constraints.append(constraint)
+    }
+    <span class="keyword">for</span> constraint <span class="keyword">in</span> constraints {
+        constraint.activateIfNeeded(updatingExisting: <span class="literal">true</span>)
+    }
+}
+</code></pre><p>我们传入一个闭包来写约束关系时，这个闭包给叫做 maker 的 ConstraintMaker 实例写入了信息，遍历 maker 的 descriptions 之后（我们之前说一条约束语句最终得到一个 self.description，但往往会有多条约束，所以 ConstraintMakerFinalizable 里面的 self.description，在 ConstraintMaker 里被一个数组维护），我们得到了 Constraint 数组。<br><img src="https://ww1.sinaimg.cn/large/006y8lVagw1fb96stfw47j30oy0dmdig.jpg" alt=""><br>Constraint 这个类还没有介绍过，不过上面这个核心方法加上以前的内容，已经可以让我们猜出来，约束是怎么写出来的了：<br><img src="https://ww2.sinaimg.cn/large/006y8lVagw1fb96t47gtcj308209l3yv.jpg" alt=""></p>
+<h1 id="其他内容补充_1">其他内容补充 1</h1><p><img src="https://ww3.sinaimg.cn/large/006y8lVagw1fb96taf2zpj30c1050q3i.jpg" alt=""><br>随便写了两句，展示一下各个方法传入的参数的类型，发现有各种 Target，貌似很复杂，不过点开之后发现是这种景象：<br><img src="https://ww3.sinaimg.cn/large/006y8lVagw1fb96u3rw6tj30dk0763zt.jpg" alt=""><br>说白了就是因为 <code>equalTo:</code> 这个方法里面能传的参数类型比较多，手动来一个一个限制一下，我们看到 ConstraintRelatableTarget 这里可以放一些原生的可以代表数字的类型，外加四个自定义的 Constraint 类型。其他的 Target 协议也差不多是这种情况。</p>
+<p>个人觉得这种做法还是挺值得学习的。</p>
+<h1 id="其他内容补充_2">其他内容补充 2</h1><p>SnapKit 里面用来表示位置主体的类其实不是 ConstraintView，而是 <strong>ConstraintItem</strong><br>我们管这个“主体”叫 target，一个 target，再加上一个 ConstraintAttributes 实例，就可以组成一个 ConstraintItem。<br><img src="https://ww3.sinaimg.cn/large/006y8lVagw1fb96ubrh7vj30f8072js2.jpg" alt=""><br>有 attributes 属性很好理解，因为比如我们去做对齐，可以是 aView 的 top 和 bView 的 bottom 对齐，而不能是 aView 和 bView 对齐。但是为什么 target 的类型是 AnyObject 而不是 ConstraintView，即 UIView 或 NSView 呢？</p>
+<p><strong>在 ConstraintViewDSL 里面，target 确实是 ConstraintView 类型，<br>但在 ConstraintLayoutSupportDSL 里面，target 是 ConstraintLayoutSupport 类型，<br>在 ConstraintLayoutGuideDSL 里面，target 是 ConstraintLayoutGuide 类型</strong></p>
+<p>这部分就不具体解释了，想一探究竟的去看 <a href="https://github.com/SnapKit/SnapKit/blob/develop/Source/LayoutConstraintItem.swift" target="_blank" rel="external">LayoutConstraintItem.swift</a> 这个文件吧。</p>
 
       
     </div>
@@ -391,17 +475,13 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/14/慢速-UIPickerView-动画实现/" rel="next" title="慢速 UIPickerView 动画实现">
-                <i class="fa fa-chevron-left"></i> 慢速 UIPickerView 动画实现
+              <a href="/2016/12/15/用-Carthage-摆脱-Bridging-Header-h/" rel="next" title="用 Carthage 摆脱 Bridging-Header.h">
+                <i class="fa fa-chevron-left"></i> 用 Carthage 摆脱 Bridging-Header.h
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/24/跳转到『设置App』的任意条目/" rel="prev" title="跳转到『设置App』的任意条目">
-                跳转到『设置App』的任意条目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -427,8 +507,8 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/14/全局设定-UINavigationBar-的-UI/"
-           data-title="全局设定 UINavigationBar 的 UI" data-url="/2015/11/14/全局设定-UINavigationBar-的-UI/">
+      <div class="ds-thread" data-thread-key="2016/12/30/SnapKit-是怎样炼成的/"
+           data-title="SnapKit 是怎样炼成的" data-url="/2016/12/30/SnapKit-是怎样炼成的/">
       </div>
     
   </div>
@@ -591,7 +671,7 @@ self<span class="class">.tabBar</span><span class="class">.barTintColor</span> =
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍_SnapKit_中的一些类"><span class="nav-number">2.</span> <span class="nav-text">介绍 SnapKit 中的一些类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#snp_是什么"><span class="nav-number">3.</span> <span class="nav-text">snp 是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#约束是如何作用的"><span class="nav-number">4.</span> <span class="nav-text">约束是如何作用的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他内容补充_1"><span class="nav-number">5.</span> <span class="nav-text">其他内容补充 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他内容补充_2"><span class="nav-number">6.</span> <span class="nav-text">其他内容补充 2</span></a></li></ol></div>
             
           </div>
         </section>

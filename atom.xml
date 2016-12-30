@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-12-15T07:54:35.000Z</updated>
+  <updated>2016-12-30T14:42:12.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,113 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SnapKit 是怎样炼成的</title>
+    <link href="/2016/12/30/SnapKit-%E6%98%AF%E6%80%8E%E6%A0%B7%E7%82%BC%E6%88%90%E7%9A%84/"/>
+    <id>/2016/12/30/SnapKit-是怎样炼成的/</id>
+    <published>2016-12-30T14:41:34.000Z</published>
+    <updated>2016-12-30T14:42:12.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这是对 Swift 布局框架 &lt;a href=&quot;https://github.com/SnapKit/SnapKit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SnapKit&lt;/a&gt; 的源码的一点分析，尝试搞清，一个好的布局框架，背后都做了些什么。&lt;/p&gt;
+&lt;h1 id=&quot;介绍_SnapKit_中的一些类&quot;&gt;介绍 SnapKit 中的一些类&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;ConstraintView&lt;/strong&gt;&lt;br&gt;等同于 UIView&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintAttributes&lt;/strong&gt;&lt;br&gt;用于构造约束关系的各种元素（上下左右等）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintDescription&lt;/strong&gt;&lt;br&gt;包含了包括 ConstraintAttributes 在内的各种与约束有关的元素，一个 ConstraintDescription 实例，就可以提供与一种约束有关的所有内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMaker&lt;/strong&gt;&lt;br&gt;构造约束关系的起点，提供了 &lt;code&gt;makeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -&amp;gt; Void)&lt;/code&gt; 方法来为程序员提供了描述约束的空间，也可以通过 left right top bottom centerX centerY 等属性，去生成一个 ConstraintMakerExtendable 实例（见下面）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMakerExtendable（继承 ConstraintMakerRelatable）&lt;/strong&gt;&lt;br&gt;提供 left right top bottom leading trailing edges size margins 等内容，用以产生一个 ConstraintMakerRelatable 类型的实例&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMakerRelatable&lt;/strong&gt;&lt;br&gt;直接用于构造约束关系，也是常用方法 &lt;code&gt;equalTo(_ other: ConstraintRelatableTarget) -&amp;gt; ConstraintMakerEditable&lt;/code&gt; 与 &lt;code&gt;equalToSuperview&lt;/code&gt; 的来源。核心方法是 &lt;code&gt;relatedTo(_ other: ConstraintRelatableTarget, relation: ConstraintRelation, file: String, line: UInt) -&amp;gt; ConstraintMakerEditable&lt;/code&gt;，返回 ConstraintMakerEditable 类型的实例&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMakerEditable（继承 ConstraintMakerPriortizable）&lt;/strong&gt;&lt;br&gt;在设定约束的宽度、高度以及偏移的时候，提供相应的加减乘除方法，返回 ConstraintMakerPriortizable 类型的实例&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMakerPriortizable（继承 ConstraintMakerFinalizable）&lt;/strong&gt;&lt;br&gt;提供方法来设置约束的 priority，返回 ConstraintMakerFinalizable 类型的实例&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ConstraintMakerFinalizable&lt;/strong&gt;&lt;br&gt;一个只有一个类型为 ConstraintDescription 的属性的类，正如它的类名，有一个 ConstraintMakerFinalizable 实例，就得到了对于一个约束的完整描述。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;至此，我们已经知道 SnapKit 是靠什么来确定了三个东西：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;谁在做约束（ConstraintView）&lt;/li&gt;
+&lt;li&gt;怎么做约束（ConstraintMaker）&lt;/li&gt;
+&lt;li&gt;约束是什么（ConstraintDescription）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; aView = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;
+aView.snp.makeConstraints({ make &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;
+    make.width.equalToSuperview&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.dividedBy(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;).priority(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;)
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我们写下这样的语句时，先忽略掉 &lt;code&gt;snp&lt;/code&gt; 是什么不管，里面设定 aView 的宽度为它的父视图的一半的这行约束语句，执行了这样的逻辑：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ConstraintMaker 提供 &lt;code&gt;makeConstraints&lt;/code&gt; 方法来让我们写约束的同时，开始维护了一个 ConstraintDescription 数组，叫 &lt;code&gt;descriptions&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;make 本身是 ConstraintMaker 类型的&lt;/li&gt;
+&lt;li&gt;在我们写下 &lt;code&gt;.width&lt;/code&gt; 时，&lt;code&gt;descriptions&lt;/code&gt; 数组第一次加入内容（&lt;code&gt;self.description&lt;/code&gt;），同时我们用这个内容生成了一个 ConstraintMakerRelatable 实例&lt;/li&gt;
+&lt;li&gt;在我们写下 &lt;code&gt;.equalToSuperview()&lt;/code&gt; 时，上一步中的内容（&lt;code&gt;self.description&lt;/code&gt;）继续添加信息，同时我们用它生成了一个 ConstraintMakerEditable 实例&lt;/li&gt;
+&lt;li&gt;之后的 &lt;code&gt;.dividedBy(2).priority(100)&lt;/code&gt; 使得之前的 ConstraintMakerEditable 实例变成了一个 ConstraintMakerFinalizable 实例，这个实例的 description 属性的类型是 ConstraintDescription，它包含了我们所描述的全部内容。但由于 ConstraintMakerEditable 本身就继承自 ConstraintMakerFinalizable，所以 &lt;code&gt;.dividedBy(2).priority(100)&lt;/code&gt; 这一部分即便不写，这条语句在语法上也已经完成。&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006y8lVagw1fb96s29xlwj30ga0953z6.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;做个总结：到这里我们发现 ConstraintMaker 以及和它相关的类，构造了一套 &lt;a href=&quot;https://en.wikipedia.org/wiki/Domain-specific_language&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DSL&lt;/a&gt; 来让我们可以轻松地写出约束语句，而这些语句把信息都放到了一个 ConstraintDescription 实例（&lt;code&gt;self.description&lt;/code&gt;）里面，但我们仍然不知道它是如何以 UIKit 里面的 NSLayoutConstraint 的形式作用的。&lt;/p&gt;
+&lt;h1 id=&quot;snp_是什么&quot;&gt;snp 是什么&lt;/h1&gt;&lt;p&gt;SnapKit 里面存在这样一些东西：&lt;br&gt;&lt;code&gt;public protocol ConstraintDSL {}&lt;/code&gt;&lt;br&gt;&lt;code&gt;public protocol ConstraintBasicAttributesDSL : ConstraintDSL {}&lt;/code&gt;&lt;br&gt;&lt;code&gt;public protocol ConstraintAttributesDSL : ConstraintBasicAttributesDSL {}&lt;/code&gt;&lt;br&gt;&lt;code&gt;public struct ConstraintViewDSL: ConstraintAttributesDSL {}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;上面我们知道了 &lt;code&gt;aView&lt;/code&gt; 作为一个 UIView，它同时也就是一个 ConstraintView，ConstraintView 有一个 snp 的属性，这给我们提供了入口来通过 SnapKit 给任意的 UIView 或 AppKit 里面的 NSView 通过  &lt;code&gt;.snp&lt;/code&gt; 这样的语法来写约束。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这个 snp 属性的类型就是结构体 ConstraintViewDSL&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一看就是面向协议的写法，通过一个个的 extension 来给 protocol 添加功能，最后用 struct 实现出来，就有了 snp 这个属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; topView = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; centerView = &lt;span class=&quot;type&quot;&gt;UIView&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;
+centerView.snp.makeConstraints({ make &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;
+    make.top.equalTo(topView.snp.bottom).offset(&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;)
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这段代码展现了 snp 的两个作用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;snp 有 left top right bottom edges size 等一大堆属性，这些属性的类型是 ConstraintItem，这是用于构造约束位置关系的&lt;br&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006y8lVagw1fb96sbpzsyj30hu0i6gnx.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;snp 作为 ConstraintViewDSL，有 &lt;code&gt;prepareConstraints&lt;/code&gt; &lt;code&gt;makeConstraints&lt;/code&gt; &lt;code&gt;remakeConstraints&lt;/code&gt; &lt;code&gt;updateConstraints&lt;/code&gt; &lt;code&gt;removeConstraints&lt;/code&gt; 等函数，我们最常用的是 &lt;code&gt;makeConstraints&lt;/code&gt; ，传入一个 closure，在里面写约束关系。这里要注意，我们使用的 &lt;code&gt;makeConstraints&lt;/code&gt; 方法来源于 ConstraintViewDSL，但真正实现了构造约束的其实是我们上文里面写的 ConstraintMaker 里面的 &lt;code&gt;makeConstraints&lt;/code&gt; 方法，见图：&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006y8lVagw1fb96sl1i0tj30kp0amjtb.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;约束是如何作用的&quot;&gt;约束是如何作用的&lt;/h1&gt;&lt;p&gt;到现在我们还是没说，从 snp 到 ConstraintMaker，再到 ConstraintMakerFinalizable 的 description 属性，到底哪里创建了 &lt;strong&gt;NSLayoutConstraint&lt;/strong&gt;，答案其实在之前提过多次的 ConstraintMaker 里面&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;// public class ConstraintMaker&lt;/span&gt;
+
+&lt;span class=&quot;keyword&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;makeConstraints&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(item: LayoutConstraintItem, closure: &lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; make: ConstraintMaker)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Void&lt;/span&gt;) {
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; maker = &lt;span class=&quot;type&quot;&gt;ConstraintMaker&lt;/span&gt;(item: item)
+    closure(maker)
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; constraints: [&lt;span class=&quot;type&quot;&gt;Constraint&lt;/span&gt;] = []
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; description &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; maker.descriptions {
+        &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; constraint = description.constraint &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+            &lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;
+        }
+        constraints.append(constraint)
+    }
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; constraint &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; constraints {
+        constraint.activateIfNeeded(updatingExisting: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;)
+    }
+}
+
+&lt;span class=&quot;keyword&quot;&gt;internal&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;updateConstraints&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(item: LayoutConstraintItem, closure: &lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; make: ConstraintMaker)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Void&lt;/span&gt;) {
+    &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; item.constraints.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt; &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.makeConstraints(item: item, closure: closure)
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; maker = &lt;span class=&quot;type&quot;&gt;ConstraintMaker&lt;/span&gt;(item: item)
+    closure(maker)
+    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; constraints: [&lt;span class=&quot;type&quot;&gt;Constraint&lt;/span&gt;] = []
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; description &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; maker.descriptions {
+        &lt;span class=&quot;keyword&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; constraint = description.constraint &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+            &lt;span class=&quot;keyword&quot;&gt;continue&lt;/span&gt;
+        }
+        constraints.append(constraint)
+    }
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; constraint &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; constraints {
+        constraint.activateIfNeeded(updatingExisting: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们传入一个闭包来写约束关系时，这个闭包给叫做 maker 的 ConstraintMaker 实例写入了信息，遍历 maker 的 descriptions 之后（我们之前说一条约束语句最终得到一个 self.description，但往往会有多条约束，所以 ConstraintMakerFinalizable 里面的 self.description，在 ConstraintMaker 里被一个数组维护），我们得到了 Constraint 数组。&lt;br&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006y8lVagw1fb96stfw47j30oy0dmdig.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Constraint 这个类还没有介绍过，不过上面这个核心方法加上以前的内容，已经可以让我们猜出来，约束是怎么写出来的了：&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006y8lVagw1fb96t47gtcj308209l3yv.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;其他内容补充_1&quot;&gt;其他内容补充 1&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006y8lVagw1fb96taf2zpj30c1050q3i.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;随便写了两句，展示一下各个方法传入的参数的类型，发现有各种 Target，貌似很复杂，不过点开之后发现是这种景象：&lt;br&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006y8lVagw1fb96u3rw6tj30dk0763zt.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;说白了就是因为 &lt;code&gt;equalTo:&lt;/code&gt; 这个方法里面能传的参数类型比较多，手动来一个一个限制一下，我们看到 ConstraintRelatableTarget 这里可以放一些原生的可以代表数字的类型，外加四个自定义的 Constraint 类型。其他的 Target 协议也差不多是这种情况。&lt;/p&gt;
+&lt;p&gt;个人觉得这种做法还是挺值得学习的。&lt;/p&gt;
+&lt;h1 id=&quot;其他内容补充_2&quot;&gt;其他内容补充 2&lt;/h1&gt;&lt;p&gt;SnapKit 里面用来表示位置主体的类其实不是 ConstraintView，而是 &lt;strong&gt;ConstraintItem&lt;/strong&gt;&lt;br&gt;我们管这个“主体”叫 target，一个 target，再加上一个 ConstraintAttributes 实例，就可以组成一个 ConstraintItem。&lt;br&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006y8lVagw1fb96ubrh7vj30f8072js2.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;有 attributes 属性很好理解，因为比如我们去做对齐，可以是 aView 的 top 和 bView 的 bottom 对齐，而不能是 aView 和 bView 对齐。但是为什么 target 的类型是 AnyObject 而不是 ConstraintView，即 UIView 或 NSView 呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在 ConstraintViewDSL 里面，target 确实是 ConstraintView 类型，&lt;br&gt;但在 ConstraintLayoutSupportDSL 里面，target 是 ConstraintLayoutSupport 类型，&lt;br&gt;在 ConstraintLayoutGuideDSL 里面，target 是 ConstraintLayoutGuide 类型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这部分就不具体解释了，想一探究竟的去看 &lt;a href=&quot;https://github.com/SnapKit/SnapKit/blob/develop/Source/LayoutConstraintItem.swift&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LayoutConstraintItem.swift&lt;/a&gt; 这个文件吧。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;&lt;p&gt;这是对 Swift 布局框架 &lt;a href=&quot;https://github.com/SnapKit/SnapKit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SnapKit&lt;/a&gt; 的源码的一点分析，尝试搞清，一
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>用 Carthage 摆脱 Bridging-Header.h</title>
@@ -1122,45 +1229,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
     
       <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Adobe Xd 简明教程 &lt;对比 Sketch&gt;</title>
-    <link href="/2016/03/16/Adobe-Xd-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E5%AF%B9%E6%AF%94-Sketch/"/>
-    <id>/2016/03/16/Adobe-Xd-简明教程-对比-Sketch/</id>
-    <published>2016-03-16T07:02:32.000Z</published>
-    <updated>2016-04-09T16:04:59.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望你能有所收获。&lt;/p&gt;
-&lt;p&gt;如果你还没装上 Adobe Xd，鉴于现在的 Xd 预览版并不收费，而国内的网络环境又实在不利于我等从 Adobe 官网装那个 Creative Cloud Desktop，我传了一份到&lt;a href=&quot;http://yun.baidu.com/share/link?shareid=3274616498&amp;amp;uk=2097307015&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度盘&lt;/a&gt;，戳链接下载吧。如果用不了的话，里面还有一份 Creative Cloud Installer，装上 Creative Cloud Desktop 之后，可以在线安装 Xd。Sketch 是收费软件，就不给地址了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-e6dbe297c846ad7b.png&quot; alt=&quot;这阵容！&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在那个没有 Sketch 的年代，Photoshop 作为图像处理软件之王，横行了很久。Sketch 出现之后呢，虽然 Photoshop 依然在横行，但是在 UI 这个领域，至少被 Sketch 冲击地不轻。而 Photoshop 有自己的产品定位，就是做综合功能最强大的 CG 软件（实际上它也确实做到了），不能为了 Sketch 而改掉自己。&lt;strong&gt;等了好久终于等到今天！Adobe 出了一款和 Sketch 定位一模一样的产品 —— Adobe Xd！&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;基础&quot;&gt;基础&lt;/h1&gt;&lt;p&gt;如果您已经会用 Sketch 的话，那是最好，如果是不会做 UI 的程序员的话……快去学一下噻（也只能凑合着看啦）&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;正文&quot;&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-907915cdb210cd36.png&quot; alt=&quot;Sketch &amp;amp; Xd&quot;&gt;&lt;br&gt;如图，左边是 Sketch，右边是 Xd，我分别加入了一个初始的 iPhone 6 大小的 Artboard，别说两边界面基本一样，就连用词都没差。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-cc71589e434133e5.png&quot; alt=&quot;Sketch Insert&quot;&gt;&lt;br&gt;Sketch 把插入新元素这个功能放到了 Insert 里面，平时使用基本都是用快捷键的，虽然 Xd 也支持用快捷键来调用这些工具，但是默认左边还有个边栏一直放在这，和 Photoshop 如出一辙，要知道 Xd 的工具比 Photoshop 少的不是一点半点啊，个人感觉这个栏有点鸡肋。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-84745362c36c3019.png&quot; alt=&quot;Xd 左栏&quot;&gt;&lt;br&gt;而 Sketch 那个丰富的顶部工具栏，在 Xd 里面被分拆了。如 Union、Subtract 等布尔运算，被放到了右侧栏，Mask、Group 等功能，放到了软件的顶部菜单栏里面，这使得 Xd 看起来更简洁一些。不过无所谓，在两个软件里，这些功能都可以用快捷键使用。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-c2984ebd38dab1b4.png&quot; alt=&quot;Sketch 顶部工具栏&quot;&gt;&lt;br&gt;那么 Xd 的顶部放了什么呢&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-ae4cceed563422d2.png&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;通过这个入口，加入了做原型的功能！一看就明了，有木有！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-a54c9d717608162a.png&quot; alt=&quot;Xd Prototype&quot;&gt;&lt;br&gt;如果你是做 iOS 开发的，这些 Segue、Easing、Duration、TARGET 的用词，不能再熟悉了，对开发人员不能再友好。&lt;/p&gt;
-&lt;p&gt;回到 Xd 的 Design 这个地方，我发现缺少了 Sketch 左边那个图层管理的列表，还是有些别扭。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-6390d788d164d403.png&quot; alt=&quot;一个较为复杂的 Sketch 项目&quot;&gt;&lt;/p&gt;
-&lt;p&gt;比如对于上面这个界面，如果没有左边这个管理界面的话，而如果这个东西又是别人做的，我必须要逐个点击才知道谁和谁是一组的，就很麻烦。而且在 Xd 里面，不导出，你是不知道某一个图层的名字的。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-76e65022be7f405a.png&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;比如这么一个圆形，虽然导出的时候我可以更改它的命名，但是如果我有20个不同的圆，我可能会希望先全部命名好，再批量导出。&lt;/p&gt;
-&lt;p&gt;不过在导出的时候，除了文件命名这个事情之外，有一个地方 Xd 做的非常棒，那就是自动生成 1x、2x、3x 等不同尺寸。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-28f74ff40fd51eb1.png&quot; alt=&quot;Xd Export&quot;&gt;&lt;br&gt;虽然在 Sketch 里面我们可以给每一个图层加一个 Slice，再给 Slice 设定导出的 1x、2x、3x，还是没有 Xd 的这个解决方案好。针对 Android，Xd 也给了相应的从 ldpi 到 xxxhdpi 的六种规格。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-f1227259089e931e.png&quot; alt=&quot;Sketch Slice&quot;&gt;&lt;br&gt;当然也不是说 Sketch 的 Slice 就一无是处，繁琐的东西它当然就自定义程度高一些。比如我们做了一个圆形，要导出一个左半圆和右半圆，那当然用 Slice 要方便的多。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;除此之外，Sketch 还有安装插件的功能，也凭借先发优势积累了大量的资源和论坛内容。不知道可以做原型的 Xd 和它的好爸爸 Adobe，能不能有机会一举杀入 Sketch 的阵地。&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;&lt;p&gt;因为我个人平时不做原型，对这个要求不高，所以现在 Xd 做原型的功能对我来说，简单、够用。&lt;br&gt;假设原型工具占了产品界面设计过程的 20%，那么 Adobe 可能会希望把以前的 PS + Sketch = 80% 的情况，变成 PS + Xd = 100% 吧。&lt;br&gt;就目前工作来说，我会尝试开始用 Xd，遇到个别情况，Xd 不顺手的话，会打开 Sketch，两把刷子一起用，等时间长了，哪个更适合我就有概念了。相当长的一段时间内，我是不会删掉 Sketch 的，就凭那些优质的 Sketch 资源，我也不会删。&lt;br&gt;于个人喜好，虽然我忠爱 Adobe，但垄断总是不好的，Sketch 坚挺住啊！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;写在前面&quot;&gt;写在前面&lt;/h1&gt;&lt;p&gt;本人在学了一年半平面设计之后（苦于不会画画，只会用软件，没做出个啥东西来），转做的 iOS 开发，算是能写点新手教程，如果您是职业设计师，就别对这篇文章抱太大希望啦。如果你是不会做 UI 的程序员（做 iOS 开发的最好），希望
-    
-    </summary>
-    
-    
-      <category term="设计" scheme="/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
