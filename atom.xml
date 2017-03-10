@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-12-30T14:42:12.000Z</updated>
+  <updated>2017-03-10T07:49:11.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从 xcarchive 到分发的 ipa</title>
+    <link href="/2017/03/10/%E4%BB%8E-xcarchive-%E5%88%B0%E5%88%86%E5%8F%91%E7%9A%84-ipa/"/>
+    <id>/2017/03/10/从-xcarchive-到分发的-ipa/</id>
+    <published>2017-03-10T07:48:53.000Z</published>
+    <updated>2017-03-10T07:49:11.000Z</updated>
+    
+    <content type="html">&lt;p&gt;写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。&lt;/p&gt;
+&lt;h2 id=&quot;各格式简要说明&quot;&gt;各格式简要说明&lt;/h2&gt;&lt;p&gt;.xcarchive&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;constant&quot;&gt;Xcode&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;Archive&lt;/span&gt;
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 由 &lt;span class=&quot;constant&quot;&gt;Xcode&lt;/span&gt; 进行 &lt;span class=&quot;constant&quot;&gt;Archive&lt;/span&gt; 操作产生的结果，出现在 &lt;span class=&quot;constant&quot;&gt;Xcode&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;Organizer&lt;/span&gt; 中
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 主要包含 .dSYM .app .dylib（针对 &lt;span class=&quot;constant&quot;&gt;Swift&lt;/span&gt;）
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 用于生成 .ipa 文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; &lt;img src=&quot;https://ww2.sinaimg.cn/large/006tNc79ly1fc4b4zgadvj30n80eagmt.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;.ipa（Xcode 产出）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; iPhone &lt;span class=&quot;constant&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;Archive&lt;/span&gt;
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 主要包含 .app .dylib（针对 &lt;span class=&quot;constant&quot;&gt;Swift&lt;/span&gt;）
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 最终从本地 upload 到 iTunes &lt;span class=&quot;constant&quot;&gt;Connect&lt;/span&gt; 的文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;.ipa（iTunes 下载）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; iPhone &lt;span class=&quot;constant&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;Archive&lt;/span&gt;
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 主要包含 .app iTunesMetadata iTunesArtwork
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; iTunes 用于管理应用软件安装包的形式&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;.app&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;constant&quot;&gt;Applicaiton&lt;/span&gt;
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 主要包含图片、语言文件等资源，以及动态库和 &lt;span class=&quot;constant&quot;&gt;Unix&lt;/span&gt; 可执行文件
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; 安装到 iOS 设备的文件的格式&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;从_xcarchive_到_ipa&quot;&gt;从 xcarchive 到 ipa&lt;/h2&gt;&lt;p&gt;在进行 Archive 操作之前，我们就可以在 Xcode 导航栏的 Products 目录中看到 .app 文件，extension target 对应的是 .appex 文件，所以归档出 .xcarchive 并不是一个非常复杂的操作，只需要编译、链接、简单的签名，如果是 Swift 项目的话还需要拷贝一下标准库。&lt;/p&gt;
+&lt;p&gt;我们查看 .xcarchive 里面的内容是通过“显示包内容”看见的，而 .ipa 则需要像 .zip 文件一样解压，那么也可以理解为什么打包出 ipa 文件相对耗时了，尤其是 Swift 项目，不光要进行压缩操作，要 processing，一堆原生动态库加上第三方 framework 还要轮着等着签名。&lt;br&gt;&lt;img src=&quot;https://ww4.sinaimg.cn/large/006tNc79ly1fc4aqn10yrj305204oq36.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;这些保证了 ipa 文件不能被模拟器装上（没有 x86 架构），只能被 iOS 设备安装，你买的应用程序发给别人，别人并不能直接装上。从兔兔助手等平台安装的盗版软件一定是被重新签名过的。&lt;br&gt;（由于 ipa 文件上传到 iTunes Connect 之后，还会被重新处理，所以个人尚且不知道后续的处理过程还进行过怎样的签名工作）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以 ipa 文件才可以作为加密文件放在软件商店，xcarchive 不可以。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;从_Xcode_产出的_ipa_到用户下载的_ipa&quot;&gt;从 Xcode 产出的 ipa 到用户下载的 ipa&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://ww3.sinaimg.cn/large/006tNc79ly1fc4bf03jhoj307e01mmx5.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;如图是我开发的一款软件打包过程的各个状态，可以看到压缩状态的 ipa 文件是体积最小的。如果将 ipa 文件解压成文件夹，它的体积会和 xcarchive 文件很接近，因为它内部包含了比它本身还要大的整个 .app 包。&lt;br&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tNc79ly1fc4c3yvidyj30lc0aqgmw.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;然后我分别通过 AppStore 和 TestFlight 安装了我上传的软件，结果都只占用了大约 15M 的空间。&lt;br&gt;前面提到，下载到设备的是 ipa，安装到设备的是 app。但看图，会发现 TestFlight 页面展示的体积和另外三张图相去甚远，30M+。仔细分析下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;iPhone 5S 推出之后，iOS 设备指令集从 armv6、armv7、armv7s 一路干到了 arm64，这么些个不同的设备安装到本地的文件肯定不一样吧&lt;/li&gt;
+&lt;li&gt;同一设备不同系统，安装的文件也不一样吧&lt;/li&gt;
+&lt;li&gt;Xcode 一次只产出一个 ipa，但是考虑到这款软件支持的系统版本数量和设备种类数量，可能最终几十种不同的 iOS 环境（自造词，系统版本或设备型号不同都算环境不同），从同一个 AppStore 页面，下载了几十个不同的 ipa 文件&lt;/li&gt;
+&lt;li&gt;尝试发布过 app 的开发者都知道，上传 ipa 文件完成之后，还要等待一段时间，才能在 iTunes Connect 页面看见一个“构建版本”。虽然不知道这个“构建版本”在 Apple 的服务器里面具体都有哪些东西，但至少应该包含一大堆的 ipa 文件，分别指定了对应什么系统版本、什么设备型号&lt;/li&gt;
+&lt;li&gt;在这个过程中 ipa 文件的体积发生了很大变化，&lt;a href=&quot;https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;App Thining&lt;/a&gt; 也发生在这个过程中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;至此可以看出，&lt;strong&gt;AppStore 页面显示的体积应该是预估的应用安装到设备的体积，而不是你下载这款软件所耗费的流量。&lt;/strong&gt;这也解释了我之前尝试用剩 1G 存储的 iPad 去装一个 AppStore 显示 大小不到 1G 的游戏，为什么会装不上，因为下载到 iPad 的文件实际可能大于 1G。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TestFlight 里面显示的 30M+，&lt;/strong&gt;肯定是经过 iTunes Connect 处理过的 ipa，但考虑到 .ipa 文件并不会比安装到设备的 .app 包体积更小，个人认为这&lt;strong&gt;是解压过后的 ipa 文件的体积。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;我的_app_是如何一步一步变小的&quot;&gt;我的 app 是如何一步一步变小的&lt;/h2&gt;&lt;p&gt;未处理的 .app - 85.6 M&lt;br&gt;&lt;strong&gt;（加入动态库、.dSYM 等）&lt;/strong&gt;&lt;br&gt;xcarchive - 167.7 M&lt;br&gt;未处理的 ipa 文件夹 - 172 M&lt;br&gt;&lt;strong&gt;（经过类似 zip 压缩）&lt;/strong&gt;&lt;br&gt;未处理的 .ipa - 70.8 M&lt;strong&gt;（开发者感受到的体积）&lt;/strong&gt;&lt;br&gt;（个人推测）处理后的 ipa 文件夹- 约 30M&lt;strong&gt;（用户下载需要耗费的流量）&lt;/strong&gt;&lt;br&gt;处理后的 .app - 约 15M&lt;strong&gt;（最终占用用户设备体积）&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;备注&quot;&gt;备注&lt;/h2&gt;&lt;p&gt;App Thining 包含 Slicing、Bitcode 和 On-Demand Resources，其中 Slicing 是默认启用、无法关闭的，但只在 iOS 9.0.2 之后有效，后面两个选项在 Xcode 中默认开启，可以手动关闭。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这是 Xcode 产物体积与用户下载到设备中的软件体积差距较大的主要原因。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;推荐阅读：&lt;a href=&quot;http://www.appcoda.com.tw/app-thinning/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;初探 iOS 9 的 App 瘦身功能&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。&lt;/p&gt;
+&lt;h2 id=&quot;各格式简要说明&quot;&gt;各格式简要说明&lt;/h2&gt;&lt;p&gt;.
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>SnapKit 是怎样炼成的</title>
@@ -1172,58 +1229,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
       &lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
 &lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、Tab
-    
-    </summary>
-    
-    
-      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>腾讯 iOS 开发实习电话面试记录（二）</title>
-    <link href="/2016/03/16/%E8%85%BE%E8%AE%AF-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>/2016/03/16/腾讯-iOS-开发实习电话面试记录（二）/</id>
-    <published>2016-03-16T07:04:28.000Z</published>
-    <updated>2016-04-09T07:12:51.000Z</updated>
-    
-    <content type="html">&lt;p&gt;继上一篇文章&lt;a href=&quot;http://www.jianshu.com/p/8e8871a9677a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【面试】腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;后，又接到了第二个电话，继续记录。根据回忆写的，问题先后可能不对。&lt;/p&gt;
-&lt;p&gt;（一开始让我自我介绍一下，这一介绍，就说了我基本在用 Swift 而不是 OC 写正式项目，然后他就开始偏重 Swift 来问，也不知道是照顾我，还是怕我撒谎）&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;说一下 C/C++ 里面变量定义和声明的区别&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OC 里面的 property 有没有像 Swift 里面一样的 public 和 private 之分&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;我看你简历里面说你写过超过5万行 Swift，你怎么知道你写过 5 万行？&lt;br&gt;（我说可以通过 Terminal 来统计我的项目文件夹里面任意后缀文件的行数）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;你这个5万行，包括第三方 API 吗？&lt;br&gt;（我说不包括，不过只要他问 Swift 少问 OC，我还是有信心）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;你说一下你对 Swift 这门语言的理解，有什么和 C、C++ 或 OC 不同的地方？&lt;br&gt;（我说了关于 protocol 和 extension 相关的东西，还有关于 OC 里面的 NSString 浅复制，现在 Swift 对 String 类型是深复制，以及 Swift 对这个值拷贝的优化的问题……会的东西还是要多说）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;平时你对你上架的这些产品是怎么监测崩溃情况的&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;平时怎么检测内存泄露，有什么解决方案&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;TableView 滑动卡顿有什么优化方案&lt;br&gt;（这个因为刚好在面试之前还准备了一下，噼里啪啦说了好多，可能还说了点面试官不知道的东西。然后他说你怎么知道这些东西的，平时都在用吗，我说都是在网上看的，因为平时没有做过非常复杂的 Cell，所以实际应用起来了的优化手段并不多）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;说一下 HTTP 协议&lt;br&gt;（我说不会，就简单说了下 http 和 https 的区别，和 iOS 9 开始引导访问 https 的问题，大家可以背一下这一段：&lt;strong&gt;【为了强制增强数据访问安全， iOS9 默认会把所有从&lt;code&gt;NSURLConnection&lt;/code&gt; 、 &lt;code&gt;CFURL&lt;/code&gt; 、 &lt;code&gt;NSURLSession&lt;/code&gt;发出的 HTTP 请求，都改为 HTTPS 请求：iOS9.x-SDK编译时，默认会让所有从&lt;code&gt;NSURLConnection&lt;/code&gt; 、 &lt;code&gt;CFURL&lt;/code&gt; 、 &lt;code&gt;NSURLSession&lt;/code&gt;发出的 HTTP 请求统一采用 TLS 1.2（SSL 3.1） 协议。】&lt;/strong&gt;）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;说一下你最复杂的一个项目的技术内容&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;你所有项目都是你独立开发完成的吗，包括切图、UI&lt;br&gt;（我说是，不过他也没问我 Photoshop，就此作罢）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;说一下不同版本 iPhone 的分辨率&lt;br&gt;（我说我没背下来那个 320*568 什么的分辨率，但我知道硬件屏幕上 dot 的数量和软件屏幕 pixel 数量的关系，而且很特殊的一点是，虽然 iPhone 3GS 对应的是 1x，iPhone 4S 开始对应 2x，但是 iPhone 6+ 对应的所谓 3x 实际上是 1：2.6几，Apple 帮我们做了把 3x 的图做成 2.6x 的这个工作）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;你平时是怎么做技术积累的&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;好像电话面试就此结束了，下次面试是面试官来本地走校招流程，然后之前打过电话、简历评级够好的，现场面试的时候会比较容易给 offer。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;继上一篇文章&lt;a href=&quot;http://www.jianshu.com/p/8e8871a9677a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【面试】腾讯 iOS 开发实习电话面试记录（一）&lt;/a&gt;后，又接到了第二个电话，继续记录。根据回忆写的，
     
     </summary>
     

@@ -78,25 +78,33 @@
 
 
 
-<meta name="description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
-let safari = SFSafariViewController(URL: url)
-self.presentViewController(safari, animated: true, completion: nil)
-这里我尝试给出一个简化版（仅仅展">
+<meta name="description" content="写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。
+各格式简要说明.xcarchive
+- Xcode Archive
+- 由 Xcode 进行 Archive 操作产生的结果，出现在 Xcode Organizer 中
+- 主要包含 .dSYM .a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="伪造一个 SFSafariViewController">
-<meta property="og:url" content="/2016/03/13/伪造一个-SFSafariViewController/index.html">
+<meta property="og:title" content="从 xcarchive 到分发的 ipa">
+<meta property="og:url" content="/2017/03/10/从-xcarchive-到分发的-ipa/index.html">
 <meta property="og:site_name" content="KyXu Tech">
-<meta property="og:description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
-let safari = SFSafariViewController(URL: url)
-self.presentViewController(safari, animated: true, completion: nil)
-这里我尝试给出一个简化版（仅仅展">
-<meta property="og:updated_time" content="2016-04-09T07:07:18.000Z">
+<meta property="og:description" content="写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。
+各格式简要说明.xcarchive
+- Xcode Archive
+- 由 Xcode 进行 Archive 操作产生的结果，出现在 Xcode Organizer 中
+- 主要包含 .dSYM .a">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fc4b4zgadvj30n80eagmt.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79ly1fc4aqn10yrj305204oq36.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79ly1fc4bf03jhoj307e01mmx5.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79ly1fc4c3yvidyj30lc0aqgmw.jpg">
+<meta property="og:updated_time" content="2017-03-10T07:49:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="伪造一个 SFSafariViewController">
-<meta name="twitter:description" content="iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：
-let safari = SFSafariViewController(URL: url)
-self.presentViewController(safari, animated: true, completion: nil)
-这里我尝试给出一个简化版（仅仅展">
+<meta name="twitter:title" content="从 xcarchive 到分发的 ipa">
+<meta name="twitter:description" content="写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。
+各格式简要说明.xcarchive
+- Xcode Archive
+- 由 Xcode 进行 Archive 操作产生的结果，出现在 Xcode Organizer 中
+- 主要包含 .dSYM .a">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fc4b4zgadvj30n80eagmt.jpg">
 
 
 
@@ -114,7 +122,7 @@ self.presentViewController(safari, animated: true, completion: nil)
   };
 </script>
 
-  <title> 伪造一个 SFSafariViewController | KyXu Tech </title>
+  <title> 从 xcarchive 到分发的 ipa | KyXu Tech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +282,7 @@ self.presentViewController(safari, animated: true, completion: nil)
             
             
               
-                伪造一个 SFSafariViewController
+                从 xcarchive 到分发的 ipa
               
             
           </h1>
@@ -286,8 +294,8 @@ self.presentViewController(safari, animated: true, completion: nil)
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-13T15:06:54+08:00" content="2016-03-13">
-              2016-03-13
+            <time itemprop="dateCreated" datetime="2017-03-10T15:48:53+08:00" content="2017-03-10">
+              2017-03-10
             </time>
           </span>
 
@@ -297,8 +305,8 @@ self.presentViewController(safari, animated: true, completion: nil)
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/13/伪造一个-SFSafariViewController/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/13/伪造一个-SFSafariViewController/" itemprop="commentsCount"></span>
+                <a href="/2017/03/10/从-xcarchive-到分发的-ipa/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/10/从-xcarchive-到分发的-ipa/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,7 +316,7 @@ self.presentViewController(safari, animated: true, completion: nil)
 
           
           
-             <span id="/2016/03/13/伪造一个-SFSafariViewController/" class="leancloud_visitors" data-flag-title="伪造一个 SFSafariViewController">
+             <span id="/2017/03/10/从-xcarchive-到分发的-ipa/" class="leancloud_visitors" data-flag-title="从 xcarchive 到分发的 ipa">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -329,56 +337,42 @@ self.presentViewController(safari, animated: true, completion: nil)
       
 
       
-        <p>iOS 9 中的 SFSafariViewController 可以使我们非常方便的传入一个 url 来展示一个网页，调用起来是下面这样：</p>
-<pre><code>let safari = <span class="function"><span class="title">SFSafariViewController</span><span class="params">(URL: url)</span></span>
-self.<span class="function"><span class="title">presentViewController</span><span class="params">(safari, animated: true, completion: nil)</span></span>
-</code></pre><p>这里我尝试给出一个简化版（仅仅展示网页，没有其他功能）的 SFSafariViewController，来方便地在 iOS 9 以下的系统中调用。</p>
-<pre><code><span class="keyword">import</span> UIKit
-<span class="keyword">import</span> WebKit
-
-<span class="comment">// 如果用户使用 iOS 8，则没有 SFSafariViewController，用这个 VC 来加载一个网页</span>
-<span class="class"><span class="keyword">class</span> <span class="title">FakeSafariViewController</span>: <span class="title">UIViewController</span> </span>{
-
-    <span class="keyword">var</span> url:<span class="type">NSURL</span>!
-    <span class="keyword">let</span> webview = <span class="type">WKWebView</span>()
-
-
-    <span class="comment">// MARK: - Init</span>
-    <span class="keyword">convenience</span> <span class="keyword">init</span> (<span class="type">URL</span>: <span class="type">NSURL</span>) {
-        <span class="keyword">self</span>.<span class="keyword">init</span>()
-        <span class="keyword">self</span>.url = <span class="type">URL</span>
-    }
-
-
-
-    <span class="comment">// MARK: - Main</span>
-    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> {
-        <span class="keyword">super</span>.viewDidLoad()
-
-        <span class="comment">// webview</span>
-        webview.frame = <span class="keyword">self</span>.view.frame
-        webview.loadRequest(<span class="type">NSURLRequest</span>(<span class="type">URL</span>: url))
-        view.addSubview(webview)
-
-        <span class="comment">// 屏幕旋转监听</span>
-        <span class="type">NSNotificationCenter</span>.defaultCenter().addObserver(<span class="keyword">self</span>, selector: <span class="string">"screenRotate:"</span>,
-            name: <span class="type">UIDeviceOrientationDidChangeNotification</span>, object: <span class="literal">nil</span>)
-    }
-
-    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> {
-        <span class="keyword">super</span>.didReceiveMemoryWarning()
-    }
-
-    <span class="func"><span class="keyword">func</span> <span class="title">screenRotate</span><span class="params">(notification:NSNotification)</span></span> {
-        webview.frame = <span class="keyword">self</span>.view.frame
-    }
-}
-</code></pre><p>调用时，表现起来和 SFSafariViewController 是一样的：</p>
-<pre><code>let realSafari = <span class="function"><span class="title">SFSafariViewController</span><span class="params">(URL: url)</span></span>
-let fakeSafari = <span class="function"><span class="title">FakeSafariViewController</span><span class="params">(URL: url)</span></span>
-</code></pre><p>当然，如果如果你要在 iOS 8 以下的环境中使用的话，把 WKWebView 换成 UIWebView 就好了。</p>
-<hr>
-<p>【Github】<a href="https://github.com/OpenMarshall/SwiftGG/blob/master/SwiftGG/FakeSafariVC.swift" target="_blank" rel="external">这段代码</a>出现在了<a href="https://github.com/OpenMarshall/SwiftGG" target="_blank" rel="external"> SwiftGG 项目</a></p>
+        <p>写这篇文章的起因是要更新 app ，然而上传 ipa 文件到 iTunes Connect 时发现体积巨大，是 App Store 显示的体积的好几倍，于是仔细研究了一下，各种体积的文件都是些什么。</p>
+<h2 id="各格式简要说明">各格式简要说明</h2><p>.xcarchive</p>
+<pre><code>-<span class="ruby"> <span class="constant">Xcode</span> <span class="constant">Archive</span>
+</span>-<span class="ruby"> 由 <span class="constant">Xcode</span> 进行 <span class="constant">Archive</span> 操作产生的结果，出现在 <span class="constant">Xcode</span> <span class="constant">Organizer</span> 中
+</span>-<span class="ruby"> 主要包含 .dSYM .app .dylib（针对 <span class="constant">Swift</span>）
+</span>-<span class="ruby"> 用于生成 .ipa 文件</span>
+</code></pre><p> <img src="https://ww2.sinaimg.cn/large/006tNc79ly1fc4b4zgadvj30n80eagmt.jpg" alt=""></p>
+<p>.ipa（Xcode 产出）</p>
+<pre><code>-<span class="ruby"> iPhone <span class="constant">Application</span> <span class="constant">Archive</span>
+</span>-<span class="ruby"> 主要包含 .app .dylib（针对 <span class="constant">Swift</span>）
+</span>-<span class="ruby"> 最终从本地 upload 到 iTunes <span class="constant">Connect</span> 的文件</span>
+</code></pre><p>.ipa（iTunes 下载）</p>
+<pre><code>-<span class="ruby"> iPhone <span class="constant">Application</span> <span class="constant">Archive</span>
+</span>-<span class="ruby"> 主要包含 .app iTunesMetadata iTunesArtwork
+</span>-<span class="ruby"> iTunes 用于管理应用软件安装包的形式</span>
+</code></pre><p>.app</p>
+<pre><code>-<span class="ruby"> <span class="constant">Applicaiton</span>
+</span>-<span class="ruby"> 主要包含图片、语言文件等资源，以及动态库和 <span class="constant">Unix</span> 可执行文件
+</span>-<span class="ruby"> 安装到 iOS 设备的文件的格式</span>
+</code></pre><h2 id="从_xcarchive_到_ipa">从 xcarchive 到 ipa</h2><p>在进行 Archive 操作之前，我们就可以在 Xcode 导航栏的 Products 目录中看到 .app 文件，extension target 对应的是 .appex 文件，所以归档出 .xcarchive 并不是一个非常复杂的操作，只需要编译、链接、简单的签名，如果是 Swift 项目的话还需要拷贝一下标准库。</p>
+<p>我们查看 .xcarchive 里面的内容是通过“显示包内容”看见的，而 .ipa 则需要像 .zip 文件一样解压，那么也可以理解为什么打包出 ipa 文件相对耗时了，尤其是 Swift 项目，不光要进行压缩操作，要 processing，一堆原生动态库加上第三方 framework 还要轮着等着签名。<br><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fc4aqn10yrj305204oq36.jpg" alt=""><br>这些保证了 ipa 文件不能被模拟器装上（没有 x86 架构），只能被 iOS 设备安装，你买的应用程序发给别人，别人并不能直接装上。从兔兔助手等平台安装的盗版软件一定是被重新签名过的。<br>（由于 ipa 文件上传到 iTunes Connect 之后，还会被重新处理，所以个人尚且不知道后续的处理过程还进行过怎样的签名工作）</p>
+<p><strong>所以 ipa 文件才可以作为加密文件放在软件商店，xcarchive 不可以。</strong></p>
+<h2 id="从_Xcode_产出的_ipa_到用户下载的_ipa">从 Xcode 产出的 ipa 到用户下载的 ipa</h2><p><img src="https://ww3.sinaimg.cn/large/006tNc79ly1fc4bf03jhoj307e01mmx5.jpg" alt=""><br>如图是我开发的一款软件打包过程的各个状态，可以看到压缩状态的 ipa 文件是体积最小的。如果将 ipa 文件解压成文件夹，它的体积会和 xcarchive 文件很接近，因为它内部包含了比它本身还要大的整个 .app 包。<br><img src="https://ww1.sinaimg.cn/large/006tNc79ly1fc4c3yvidyj30lc0aqgmw.jpg" alt=""><br>然后我分别通过 AppStore 和 TestFlight 安装了我上传的软件，结果都只占用了大约 15M 的空间。<br>前面提到，下载到设备的是 ipa，安装到设备的是 app。但看图，会发现 TestFlight 页面展示的体积和另外三张图相去甚远，30M+。仔细分析下：</p>
+<ol>
+<li>iPhone 5S 推出之后，iOS 设备指令集从 armv6、armv7、armv7s 一路干到了 arm64，这么些个不同的设备安装到本地的文件肯定不一样吧</li>
+<li>同一设备不同系统，安装的文件也不一样吧</li>
+<li>Xcode 一次只产出一个 ipa，但是考虑到这款软件支持的系统版本数量和设备种类数量，可能最终几十种不同的 iOS 环境（自造词，系统版本或设备型号不同都算环境不同），从同一个 AppStore 页面，下载了几十个不同的 ipa 文件</li>
+<li>尝试发布过 app 的开发者都知道，上传 ipa 文件完成之后，还要等待一段时间，才能在 iTunes Connect 页面看见一个“构建版本”。虽然不知道这个“构建版本”在 Apple 的服务器里面具体都有哪些东西，但至少应该包含一大堆的 ipa 文件，分别指定了对应什么系统版本、什么设备型号</li>
+<li>在这个过程中 ipa 文件的体积发生了很大变化，<a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html" target="_blank" rel="external">App Thining</a> 也发生在这个过程中。</li>
+</ol>
+<p>至此可以看出，<strong>AppStore 页面显示的体积应该是预估的应用安装到设备的体积，而不是你下载这款软件所耗费的流量。</strong>这也解释了我之前尝试用剩 1G 存储的 iPad 去装一个 AppStore 显示 大小不到 1G 的游戏，为什么会装不上，因为下载到 iPad 的文件实际可能大于 1G。</p>
+<p><strong>TestFlight 里面显示的 30M+，</strong>肯定是经过 iTunes Connect 处理过的 ipa，但考虑到 .ipa 文件并不会比安装到设备的 .app 包体积更小，个人认为这<strong>是解压过后的 ipa 文件的体积。</strong></p>
+<h2 id="我的_app_是如何一步一步变小的">我的 app 是如何一步一步变小的</h2><p>未处理的 .app - 85.6 M<br><strong>（加入动态库、.dSYM 等）</strong><br>xcarchive - 167.7 M<br>未处理的 ipa 文件夹 - 172 M<br><strong>（经过类似 zip 压缩）</strong><br>未处理的 .ipa - 70.8 M<strong>（开发者感受到的体积）</strong><br>（个人推测）处理后的 ipa 文件夹- 约 30M<strong>（用户下载需要耗费的流量）</strong><br>处理后的 .app - 约 15M<strong>（最终占用用户设备体积）</strong></p>
+<h2 id="备注">备注</h2><p>App Thining 包含 Slicing、Bitcode 和 On-Demand Resources，其中 Slicing 是默认启用、无法关闭的，但只在 iOS 9.0.2 之后有效，后面两个选项在 Xcode 中默认开启，可以手动关闭。</p>
+<p><strong>这是 Xcode 产物体积与用户下载到设备中的软件体积差距较大的主要原因。</strong></p>
+<p>推荐阅读：<a href="http://www.appcoda.com.tw/app-thinning/" target="_blank" rel="external">初探 iOS 9 的 App 瘦身功能</a></p>
 
       
     </div>
@@ -429,17 +423,13 @@ let fakeSafari = <span class="function"><span class="title">FakeSafariViewContro
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/12/使用-protocol-与-extension-来限制函数作用域/" rel="next" title="使用 protocol 与 extension 来限制函数作用域">
-                <i class="fa fa-chevron-left"></i> 使用 protocol 与 extension 来限制函数作用域
+              <a href="/2016/12/30/SnapKit-是怎样炼成的/" rel="next" title="SnapKit 是怎样炼成的">
+                <i class="fa fa-chevron-left"></i> SnapKit 是怎样炼成的
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/14/在你的-App-中使用《一拳超人》背景色/" rel="prev" title="在你的 App 中使用《一拳超人》背景色">
-                在你的 App 中使用《一拳超人》背景色 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -465,8 +455,8 @@ let fakeSafari = <span class="function"><span class="title">FakeSafariViewContro
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/13/伪造一个-SFSafariViewController/"
-           data-title="伪造一个 SFSafariViewController" data-url="/2016/03/13/伪造一个-SFSafariViewController/">
+      <div class="ds-thread" data-thread-key="2017/03/10/从-xcarchive-到分发的-ipa/"
+           data-title="从 xcarchive 到分发的 ipa" data-url="/2017/03/10/从-xcarchive-到分发的-ipa/">
       </div>
     
   </div>
@@ -629,7 +619,7 @@ let fakeSafari = <span class="function"><span class="title">FakeSafariViewContro
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#各格式简要说明"><span class="nav-number">1.</span> <span class="nav-text">各格式简要说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从_xcarchive_到_ipa"><span class="nav-number">2.</span> <span class="nav-text">从 xcarchive 到 ipa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从_Xcode_产出的_ipa_到用户下载的_ipa"><span class="nav-number">3.</span> <span class="nav-text">从 Xcode 产出的 ipa 到用户下载的 ipa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的_app_是如何一步一步变小的"><span class="nav-number">4.</span> <span class="nav-text">我的 app 是如何一步一步变小的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备注"><span class="nav-number">5.</span> <span class="nav-text">备注</span></a></li></ol></div>
             
           </div>
         </section>
