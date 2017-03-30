@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2017-03-10T07:49:11.000Z</updated>
+  <updated>2017-03-30T16:20:55.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 10.3 如何更换 app 图标</title>
+    <link href="/2017/03/30/iOS-10-3-%E5%A6%82%E4%BD%95%E6%9B%B4%E6%8D%A2-app-%E5%9B%BE%E6%A0%87/"/>
+    <id>/2017/03/30/iOS-10-3-如何更换-app-图标/</id>
+    <published>2017-03-29T16:15:57.000Z</published>
+    <updated>2017-03-30T16:20:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS 10.3 开放了更换 app 图标的 API，核心方法是下面这个：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setAlternateIconName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; alternateIconName: String?, 
+    completionHandler: &lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;params&quot;&gt;(Error?)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; -&amp;gt; &lt;span class=&quot;type&quot;&gt;Void&lt;/span&gt;)? = &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是&lt;a href=&quot;https://developer.apple.com/reference/uikit/uiapplication/2806818-setalternateiconname#parameters&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;，但是你还需要在 info.plist 里面填一些东西才能让它起作用，&lt;a href=&quot;https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-SW14&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这部分官方注释内容在这里&lt;/a&gt;。&lt;br&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tNbRwgy1fe5bqm96j9j30yg0ab41z.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;但 info.plist 如何填写这部分读起来还是有些晦涩，一时可能搞不清楚如何操作，下面做个示范。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006tNc79gy1fe5brg4s0rj30xx0aydh3.jpg&quot; alt=&quot;Assets.xcassets&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://ww2.sinaimg.cn/large/006tKfTcgy1fe5brrc6jdj30nq0exwhw.jpg&quot; alt=&quot;info.plist&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;CFBundleIcons&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;CFBundleAlternateIcons&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;blackBgColor&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;CFBundleIconFiles&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;array&lt;/span&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;string&lt;/span&gt;&amp;gt;&lt;/span&gt;blackBgColor&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;string&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;array&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;UIPrerenderedIcon&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;false&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;CFBundlePrimaryIcon&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;CFBundleIconFiles&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;array&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;string&lt;/span&gt;&amp;gt;&lt;/span&gt;AppIcon60x60&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;string&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;array&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;dict&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如图，&lt;code&gt;Primary Icon&lt;/code&gt; 字段写为 &lt;code&gt;AppIcon60x60&lt;/code&gt; 是因为这里 xcassets 里面我只导入了 60pt@2x 和 60pt@3x 的图片资源，这里选为 60 是因为对于 iPhone，60pt 的图片资源图标所需最高质量，更低分辨率的版本系统会自动压缩以展示。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;blackBgColor&lt;/code&gt; 是我的用于替换原生图标的图片资源。文件名需要和 info.plist 中保持一致（注意 info.plist 中用到了两次 “blackBgColor”），同时这也是你在代码中设置图标时，需要给 API 传入的参数。同样是 60pt@2x 和 60pt@3x 的图片资源，文件不通过 Assets.xcassets 添加进来，而是直接放到目录中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果你需要支持 iPad，建议这里使用 83.5pt（iPad Pro）的图片资源。&lt;/strong&gt;另外还有些其他关于在 iPad 上替换图标的注意事项，&lt;a href=&quot;https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-SW14&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;在这里有说明&lt;/a&gt;，注意我们这里在 info.plist 里面所用的 key 是&lt;code&gt; CFBundleIcons&lt;/code&gt;，还有另外一个 key 是 &lt;code&gt;CFBundleIcons~ipad&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;替换图标部分的代码就超级简单了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; UIKit
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewController&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;UIViewController&lt;/span&gt; &lt;/span&gt;{
+
+    &lt;span class=&quot;keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.viewDidLoad()
+    }
+
+    &lt;span class=&quot;preprocessor&quot;&gt;@IBAction&lt;/span&gt; &lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;changeAppIcon&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt; sender: Any)&lt;/span&gt;&lt;/span&gt; {
+
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.supportsAlternateIcons {
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;you can change this app&#39;s icon&quot;&lt;/span&gt;)
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;you cannot change this app&#39;s icon&quot;&lt;/span&gt;)
+            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;
+        }
+
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.alternateIconName {
+            &lt;span class=&quot;comment&quot;&gt;// CHANGE TO PRIMARY ICON&lt;/span&gt;
+            &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.setAlternateIconName(&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;) { (err:&lt;span class=&quot;type&quot;&gt;Error&lt;/span&gt;?) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;
+                &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;set icon error：&lt;span class=&quot;subst&quot;&gt;\(String(describing: err)&lt;/span&gt;)&quot;&lt;/span&gt;)
+            }
+            &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;the alternate icon&#39;s name is &lt;span class=&quot;subst&quot;&gt;\(name)&lt;/span&gt;&quot;&lt;/span&gt;)
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+            &lt;span class=&quot;comment&quot;&gt;// CHANGE TO ALTERNATE ICON&lt;/span&gt;
+            &lt;span class=&quot;type&quot;&gt;UIApplication&lt;/span&gt;.shared.setAlternateIconName(&lt;span class=&quot;string&quot;&gt;&quot;blackBgColor&quot;&lt;/span&gt;) { (err:&lt;span class=&quot;type&quot;&gt;Error&lt;/span&gt;?) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;
+                &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;set icon error：&lt;span class=&quot;subst&quot;&gt;\(String(describing: err)&lt;/span&gt;)&quot;&lt;/span&gt;)
+            }
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/OpenMarshall/AlternateIconsSample&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这是上述所有内容的完整 demo 地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ww4.sinaimg.cn/large/006tKfTcgy1fe5bs3le2cj30ku11275a.jpg&quot; alt=&quot;screentshot0&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tKfTcgy1fe5bs8uum2j30ku112t9o.jpg&quot; alt=&quot;screentshot1&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS 10.3 开放了更换 app 图标的 API，核心方法是下面这个：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;func&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setAlternat
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>从 xcarchive 到分发的 ipa</title>
@@ -1198,42 +1285,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
     
       <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里 iOS 开发实习电话面试记录（一）</title>
-    <link href="/2016/03/19/%E9%98%BF%E9%87%8C-iOS-%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>/2016/03/19/阿里-iOS-开发实习电话面试记录（一）/</id>
-    <published>2016-03-19T06:59:54.000Z</published>
-    <updated>2016-04-09T07:12:13.000Z</updated>
-    
-    <content type="html">&lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
-&lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、TableView滑动卡顿解决方案等等，因为之前已经被腾讯虐了一波，这次对答如流，他就直说给过，等下一次电话。&lt;/p&gt;
-&lt;h2 id=&quot;第二轮&quot;&gt;第二轮&lt;/h2&gt;&lt;p&gt;这个打了二十分钟，一个技术题没问。可能跟我简历写的有关系，我说独立做了几个 App，然后他让我自我介绍之后，问我是不是整个产品全部是独立做的，我说是，他就只问这个层面的东西了。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;怎么想到要做这些东西的，idea 的来源？&lt;/li&gt;
-&lt;li&gt;身边的人都在用吗？&lt;/li&gt;
-&lt;li&gt;App 更新情况怎么样，通过什么来更新，怎么了解自己做的东西的缺陷？&lt;/li&gt;
-&lt;li&gt;知不知道平时自己的东西活跃度怎么样，每天有多少人用？&lt;/li&gt;
-&lt;li&gt;怎么推广自己的东西，推广渠道？除了你已经采用的这些渠道，再想点别的？&lt;/li&gt;
-&lt;li&gt;你看淘宝客户端一般都是全五星评论，你怎么来让你的 App 在 AppStore 呈现好的评分？&lt;/li&gt;
-&lt;li&gt;（之前谈到有些 App 因为产品思路不对的问题，做失败了）这些放弃了的 App 是哪里有问题？&lt;/li&gt;
-&lt;li&gt;如果一定要拯救一下这些 App，你该怎么更新？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;基本就是这些问题，最后说我可以问他一个问题，我就问了一下招聘流程，然后他说每年都有小的变动，目前我也只能保证电话畅通了……&lt;/p&gt;
-&lt;p&gt;目测后面的人要猛问技术问题了，Not Afraid。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;写这篇文章的时候我已经接到阿里的两个电话了，只是因为可能他们安排的面试轮次比较多，所以打一次电话并没能说太多东西，攒了两次一起写。&lt;/p&gt;
-&lt;h2 id=&quot;第一轮&quot;&gt;第一轮&lt;/h2&gt;&lt;p&gt;打了不到十分钟就结束了。都是问的所谓必考的那些基本题目：循环引用、检测内存泄露、Tab
-    
-    </summary>
-    
-    
-      <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
