@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2017-03-30T16:20:55.000Z</updated>
+  <updated>2017-08-08T12:08:47.000Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 iMazing 进行沙盒调试</title>
+    <link href="/2017/08/08/%E4%BD%BF%E7%94%A8-iMazing-%E8%BF%9B%E8%A1%8C%E6%B2%99%E7%9B%92%E8%B0%83%E8%AF%95/"/>
+    <id>/2017/08/08/使用-iMazing-进行沙盒调试/</id>
+    <published>2017-08-08T12:06:33.000Z</published>
+    <updated>2017-08-08T12:08:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;当开发项目有可能进行图片的缓存、清理操作时，我们可能会需要&lt;strong&gt;手动去 app 的沙盒里面删除、替换一些内容&lt;/strong&gt;来进行测试，但是通过代码去目录下查找文件可能不是很方便，也不够直观，这里提供一个方法来方便这个调试过程，使用工具：&lt;strong&gt;&lt;a href=&quot;https://imazing.com/zh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;iMazing&lt;/a&gt; + Chrome&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用 iMazing 软件，通过 WiFi 或者 USB 将 iOS 设备连接到电脑之后，可以看到如下这样的界面。&lt;br&gt;&lt;img src=&quot;![](https://ws1.sinaimg.cn/large/006tKfTcly1ficknrbc20j30yg0kwwgx.jpg&quot; alt=&quot;&quot;&gt;)&lt;br&gt;如果你的 app 是自己构建到设备，而不是通过 App Store 下载的，那么除了 &lt;strong&gt;文稿&lt;/strong&gt; 文件夹以外，应该还可以看见 &lt;strong&gt;开发者&lt;/strong&gt; 文件夹，而其中的&lt;br&gt; &lt;strong&gt;Documents&lt;/strong&gt; 目录下会有一些你自己通过各种各样的方式进行存储的内容，点开其中某一个目录，可能会发现是这样：&lt;br&gt;&lt;img src=&quot;![](https://ws1.sinaimg.cn/large/006tKfTcly1ficknsmcppj309d0l3tb2.jpg&quot; alt=&quot;&quot;&gt;)&lt;br&gt;走到这一步，就说明你已经定位到了你缓存过的内容，但是这里发现了一个问题：&lt;strong&gt;除了 .mp4 和 .sqlite 之外，我发现很多其他内容没有文件后缀，没办法直接进行预览&lt;/strong&gt;。解决方法：首先把整个文件夹拷贝到本地（iMazing 软件里面的“拷贝至设备”按钮），然后将整个文件夹拖拽到 Chrome 里面，像这样：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;![](https://ws2.sinaimg.cn/large/006tKfTcly1ficknvyfjjj30yg0gzwl6.jpg&quot; alt=&quot;&quot;&gt;)&lt;br&gt;然后你就可以通过 Chrome 强大的文件查看功能，直接查看这里面的视频、JSON、图片文件，甚至 macOS 无法直接预览的 webp 格式图片都可以直接查看，然后按文件名在 iMazing 里面找到源文件进行删改再回到 Xcode 进行测试即可。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当开发项目有可能进行图片的缓存、清理操作时，我们可能会需要&lt;strong&gt;手动去 app 的沙盒里面删除、替换一些内容&lt;/strong&gt;来进行测试，但是通过代码去目录下查找文件可能不是很方便，也不够直观，这里提供一个方法来方便这个调试过程，使用工具：&lt;strong&gt;&lt;a h
+    
+    </summary>
+    
+    
+      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS 10.3 如何更换 app 图标</title>
@@ -1264,27 +1287,6 @@ self&lt;span class=&quot;class&quot;&gt;.view&lt;/span&gt;&lt;span class=&quot;c
     
     
       <category term="面试" scheme="/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Swift Print 高级用法</title>
-    <link href="/2016/03/27/Swift-Print-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/"/>
-    <id>/2016/03/27/Swift-Print-高级用法/</id>
-    <published>2016-03-27T06:59:00.000Z</published>
-    <updated>2016-04-09T15:57:44.000Z</updated>
-    
-    <content type="html">&lt;p&gt;这个东西不是我写的，&lt;a href=&quot;http://stackoverflow.com/questions/30865233/print-without-newline-in-swift-2-0/30865283#30865283&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;出自 StackOverFlow&lt;/a&gt;，但我觉得实在是写得太好了，于是截取了该部分分享出来，感谢原作者。&lt;br&gt;&lt;img src=&quot;http://7xssu3.com2.z0.glb.clouddn.com/251884-36ae85cb732a2b30.png&quot; alt=&quot;StackOverFlow&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这个东西不是我写的，&lt;a href=&quot;http://stackoverflow.com/questions/30865233/print-without-newline-in-swift-2-0/30865283#30865283&quot; target=&quot;_blank&quot; rel=
-    
-    </summary>
-    
-    
-      <category term="iOS 开发" scheme="/tags/iOS-%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
